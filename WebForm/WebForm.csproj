@@ -1,0 +1,392 @@
+﻿<Project ToolsVersion="15.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProductVersion>
+    </ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{D50C7226-3494-498D-B7C1-AFE115483964}</ProjectGuid>
+    <ProjectTypeGuids>{349c5851-65df-11da-9384-00065b846f21};{fae04ec0-301f-11d3-bf4b-00c04f79efbc}</ProjectTypeGuids>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>WebForm</RootNamespace>
+    <AssemblyName>WebForm</AssemblyName>
+    <TargetFrameworkVersion>v4.8</TargetFrameworkVersion>
+    <UseIISExpress>true</UseIISExpress>
+    <Use64BitIISExpress />
+    <IISExpressSSLPort>44370</IISExpressSSLPort>
+    <IISExpressAnonymousAuthentication />
+    <IISExpressWindowsAuthentication />
+    <IISExpressUseClassicPipelineMode />
+    <UseGlobalApplicationHostFile />
+    <NuGetPackageImportStamp>
+    </NuGetPackageImportStamp>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="Microsoft.CodeDom.Providers.DotNetCompilerPlatform, Version=4.1.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.4.1.0\lib\net472\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Runtime.Serialization" />
+    <Reference Include="System.ServiceModel" />
+    <Reference Include="System.Web.DynamicData" />
+    <Reference Include="System.Web.Entity" />
+    <Reference Include="System.Web.ApplicationServices" />
+    <Reference Include="System.ComponentModel.DataAnnotations" />
+    <Reference Include="System" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="System.Web.Extensions" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Web" />
+    <Reference Include="System.Xml" />
+    <Reference Include="System.Configuration" />
+    <Reference Include="System.Web.Services" />
+    <Reference Include="System.EnterpriseServices" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Components\Path.ascx" />
+    <None Include="Connected Services\ServicioWS\configuration91.svcinfo" />
+    <None Include="Connected Services\ServicioWS\configuration.svcinfo" />
+    <None Include="Connected Services\ServicioWS\Reference.svcmap">
+      <Generator>WCF Proxy Generator</Generator>
+      <LastGenOutput>Reference.cs</LastGenOutput>
+    </None>
+    <Content Include="Public\css\bootstrap\bootstrap-grid.css" />
+    <Content Include="Public\css\bootstrap\bootstrap-grid.min.css" />
+    <Content Include="Public\css\bootstrap\bootstrap-grid.rtl.css" />
+    <Content Include="Public\css\bootstrap\bootstrap-grid.rtl.min.css" />
+    <Content Include="Public\css\bootstrap\bootstrap-reboot.css" />
+    <Content Include="Public\css\bootstrap\bootstrap-reboot.min.css" />
+    <Content Include="Public\css\bootstrap\bootstrap-reboot.rtl.css" />
+    <Content Include="Public\css\bootstrap\bootstrap-reboot.rtl.min.css" />
+    <Content Include="Public\css\bootstrap\bootstrap-utilities.css" />
+    <Content Include="Public\css\bootstrap\bootstrap-utilities.min.css" />
+    <Content Include="Public\css\bootstrap\bootstrap-utilities.rtl.css" />
+    <Content Include="Public\css\bootstrap\bootstrap-utilities.rtl.min.css" />
+    <Content Include="Public\css\bootstrap\bootstrap.css" />
+    <Content Include="Public\css\bootstrap\bootstrap.min.css" />
+    <Content Include="Public\css\bootstrap\bootstrap.rtl.css" />
+    <Content Include="Public\css\bootstrap\bootstrap.rtl.min.css" />
+    <Content Include="Public\css\estilos_cursos_cajas.css" />
+    <Content Include="Public\css\main.css" />
+    <Content Include="Public\img\images %281%29.png" />
+    <Content Include="Public\img\logoColegio.jpeg" />
+    <Content Include="Public\img\logoColegio.png" />
+    <Content Include="Public\img\pedro.gif" />
+    <Content Include="Public\js\bootstrap\bootstrap.bundle.js" />
+    <Content Include="Public\js\bootstrap\bootstrap.bundle.min.js" />
+    <Content Include="Public\js\bootstrap\bootstrap.esm.js" />
+    <Content Include="Public\js\bootstrap\bootstrap.esm.min.js" />
+    <Content Include="Public\js\bootstrap\bootstrap.js" />
+    <Content Include="Public\js\bootstrap\bootstrap.min.js" />
+    <Content Include="View\Admin\Estudiantes\Estudiantes.aspx" />
+    <Content Include="View\Admin\Profesores\Profesores.js" />
+    <Content Include="View\Admin\Profesores\Profesores.aspx" />
+    <Content Include="View\Alumno\Alumno.js" />
+    <Content Include="View\Alumno\Alumno.aspx" />
+    <Content Include="View\Alumno\AsistenciaAlumno.aspx" />
+    <Content Include="View\Profesor\AsistenciaProfesor.aspx" />
+    <Content Include="View\Alumno\CalendarioAlumno.aspx" />
+    <Content Include="View\Profesor\CompetenciaProfesor.aspx" />
+    <Content Include="View\Alumno\CursoAlumno.aspx" />
+    <Content Include="View\Profesor\CursoProfesor.aspx" />
+    <Content Include="View\Error\Error404.aspx" />
+    <Content Include="View\Login\Login.aspx" />
+    <Content Include="View\Profesor\NotaProfesor.aspx" />
+    <Content Include="View\Profesor\Profesor.css" />
+    <Content Include="View\Profesor\Profesor.js" />
+    <Content Include="View\Profesor\ProfesorVista.aspx" />
+    <Content Include="Web.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Components\Path.ascx.cs">
+      <DependentUpon>Path.ascx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Components\Path.ascx.designer.cs">
+      <DependentUpon>Path.ascx</DependentUpon>
+    </Compile>
+    <Compile Include="Connected Services\ServicioWS\Reference.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Compile>
+    <Compile Include="Layout\Main.Master.cs">
+      <DependentUpon>Main.Master</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Layout\Main.Master.designer.cs">
+      <DependentUpon>Main.Master</DependentUpon>
+    </Compile>
+    <Compile Include="Layout\MainAdmin.Master.cs">
+      <DependentUpon>MainAdmin.Master</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Layout\MainAdmin.Master.designer.cs">
+      <DependentUpon>MainAdmin.Master</DependentUpon>
+    </Compile>
+    <Compile Include="Layout\MainAdministrador.master.cs">
+      <DependentUpon>MainAdministrador.master</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Layout\MainAdministrador.master.designer.cs">
+      <DependentUpon>MainAdministrador.master</DependentUpon>
+    </Compile>
+    <Compile Include="Layout\MainAlumno.master.cs">
+      <DependentUpon>MainAlumno.master</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Layout\MainAlumno.master.designer.cs">
+      <DependentUpon>MainAlumno.master</DependentUpon>
+    </Compile>
+    <Compile Include="Layout\MainProfesor.master.cs">
+      <DependentUpon>MainProfesor.master</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Layout\MainProfesor.master.designer.cs">
+      <DependentUpon>MainProfesor.master</DependentUpon>
+    </Compile>
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="View\Admin\Estudiantes\Estudiantes.aspx.cs">
+      <DependentUpon>Estudiantes.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="View\Admin\Estudiantes\Estudiantes.aspx.designer.cs">
+      <DependentUpon>Estudiantes.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="View\Admin\Profesores\Profesores.aspx.cs">
+      <DependentUpon>Profesores.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="View\Admin\Profesores\Profesores.aspx.designer.cs">
+      <DependentUpon>Profesores.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="View\Alumno\Alumno.aspx.cs">
+      <DependentUpon>Alumno.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="View\Alumno\Alumno.aspx.designer.cs">
+      <DependentUpon>Alumno.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="View\Alumno\AsistenciaAlumno.aspx.cs">
+      <DependentUpon>AsistenciaAlumno.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="View\Alumno\AsistenciaAlumno.aspx.designer.cs">
+      <DependentUpon>AsistenciaAlumno.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="View\Profesor\AsistenciaProfesor.aspx.cs">
+      <DependentUpon>AsistenciaProfesor.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="View\Profesor\AsistenciaProfesor.aspx.designer.cs">
+      <DependentUpon>AsistenciaProfesor.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="View\Alumno\CalendarioAlumno.aspx.cs">
+      <DependentUpon>CalendarioAlumno.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="View\Alumno\CalendarioAlumno.aspx.designer.cs">
+      <DependentUpon>CalendarioAlumno.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="View\Profesor\CompetenciaProfesor.aspx.cs">
+      <DependentUpon>CompetenciaProfesor.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="View\Profesor\CompetenciaProfesor.aspx.designer.cs">
+      <DependentUpon>CompetenciaProfesor.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="View\Alumno\CursoAlumno.aspx.cs">
+      <DependentUpon>CursoAlumno.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="View\Alumno\CursoAlumno.aspx.designer.cs">
+      <DependentUpon>CursoAlumno.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="View\Profesor\CursoProfesor.aspx.cs">
+      <DependentUpon>CursoProfesor.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="View\Profesor\CursoProfesor.aspx.designer.cs">
+      <DependentUpon>CursoProfesor.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="View\Error\Error404.aspx.cs">
+      <DependentUpon>Error404.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="View\Error\Error404.aspx.designer.cs">
+      <DependentUpon>Error404.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="View\Login\Login.aspx.cs">
+      <DependentUpon>Login.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="View\Login\Login.aspx.designer.cs">
+      <DependentUpon>Login.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="View\Profesor\NotaProfesor.aspx.cs">
+      <DependentUpon>NotaProfesor.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="View\Profesor\NotaProfesor.aspx.designer.cs">
+      <DependentUpon>NotaProfesor.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="View\Profesor\ProfesorVista.aspx.cs">
+      <DependentUpon>ProfesorVista.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="View\Profesor\ProfesorVista.aspx.designer.cs">
+      <DependentUpon>ProfesorVista.aspx</DependentUpon>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Layout\Main.Master" />
+    <Content Include="Public\css\bootstrap\bootstrap.rtl.min.css.map" />
+    <Content Include="Public\css\bootstrap\bootstrap.rtl.css.map" />
+    <Content Include="Public\css\bootstrap\bootstrap.min.css.map" />
+    <Content Include="Public\css\bootstrap\bootstrap.css.map" />
+    <Content Include="Public\css\bootstrap\bootstrap-utilities.rtl.min.css.map" />
+    <Content Include="Public\css\bootstrap\bootstrap-utilities.rtl.css.map" />
+    <Content Include="Public\css\bootstrap\bootstrap-utilities.min.css.map" />
+    <Content Include="Public\css\bootstrap\bootstrap-utilities.css.map" />
+    <Content Include="Public\css\bootstrap\bootstrap-reboot.rtl.min.css.map" />
+    <Content Include="Public\css\bootstrap\bootstrap-reboot.rtl.css.map" />
+    <Content Include="Public\css\bootstrap\bootstrap-reboot.min.css.map" />
+    <Content Include="Public\css\bootstrap\bootstrap-reboot.css.map" />
+    <Content Include="Public\css\bootstrap\bootstrap-grid.rtl.min.css.map" />
+    <Content Include="Public\css\bootstrap\bootstrap-grid.rtl.css.map" />
+    <Content Include="Public\css\bootstrap\bootstrap-grid.min.css.map" />
+    <Content Include="Public\css\bootstrap\bootstrap-grid.css.map" />
+    <Content Include="Layout\MainAdmin.Master" />
+    <Content Include="Layout\MainAlumno.master" />
+    <Content Include="Layout\MainProfesor.master" />
+    <None Include="Connected Services\ServicioWS\LKServicioWeb.wsdl" />
+    <None Include="Connected Services\ServicioWS\LKServicioWeb.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <Content Include="Connected Services\ServicioWS\WebForm.ServicioWS.helloResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Content>
+    <Content Include="Connected Services\ServicioWS\WebForm.ServicioWS.listarUsuariosResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Content>
+    <Content Include="Connected Services\ServicioWS\WebForm.ServicioWS.usuario.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Content>
+    <Content Include="Connected Services\ServicioWS\WebForm.ServicioWS.alumno.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Content>
+    <Content Include="Connected Services\ServicioWS\WebForm.ServicioWS.listarAdministradoresResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Content>
+    <Content Include="Connected Services\ServicioWS\WebForm.ServicioWS.listarAlumnosResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Content>
+    <Content Include="Connected Services\ServicioWS\WebForm.ServicioWS.listarProfesoresResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Content>
+    <Content Include="Connected Services\ServicioWS\WebForm.ServicioWS.personalAdministrativo.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Content>
+    <Content Include="Connected Services\ServicioWS\WebForm.ServicioWS.profesor.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Content>
+    <Content Include="Layout\MainAdministrador.master" />
+    <None Include="packages.config" />
+    <Content Include="Public\js\bootstrap\bootstrap.min.js.map" />
+    <Content Include="Public\js\bootstrap\bootstrap.js.map" />
+    <Content Include="Public\js\bootstrap\bootstrap.esm.min.js.map" />
+    <Content Include="Public\js\bootstrap\bootstrap.esm.js.map" />
+    <Content Include="Public\js\bootstrap\bootstrap.bundle.min.js.map" />
+    <Content Include="Public\js\bootstrap\bootstrap.bundle.js.map" />
+    <None Include="Web.Debug.config">
+      <DependentUpon>Web.config</DependentUpon>
+    </None>
+    <None Include="Web.Release.config">
+      <DependentUpon>Web.config</DependentUpon>
+    </None>
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="Public\multimedia\" />
+    <Folder Include="Scripts\" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\Models\Models.csproj">
+      <Project>{e00b17ba-b0c3-4179-aa5b-6681c0c9d6de}</Project>
+      <Name>Models</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\Asistencia\TestAsistenciaModel.csproj">
+      <Project>{09dc1302-c4e8-4537-b2d9-0cb496df14fa}</Project>
+      <Name>TestAsistenciaModel</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <WCFMetadata Include="Connected Services\" />
+  </ItemGroup>
+  <ItemGroup>
+    <WCFMetadataStorage Include="Connected Services\ServicioWS\" />
+  </ItemGroup>
+  <PropertyGroup>
+    <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
+    <VSToolsPath Condition="'$(VSToolsPath)' == ''">$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)</VSToolsPath>
+  </PropertyGroup>
+  <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
+  <Import Project="$(VSToolsPath)\WebApplications\Microsoft.WebApplication.targets" Condition="'$(VSToolsPath)' != ''" />
+  <Import Project="$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v10.0\WebApplications\Microsoft.WebApplication.targets" Condition="false" />
+  <ProjectExtensions>
+    <VisualStudio>
+      <FlavorProperties GUID="{349c5851-65df-11da-9384-00065b846f21}">
+        <WebProjectProperties>
+          <UseIIS>True</UseIIS>
+          <AutoAssignPort>True</AutoAssignPort>
+          <DevelopmentServerPort>51077</DevelopmentServerPort>
+          <DevelopmentServerVPath>/</DevelopmentServerVPath>
+          <IISUrl>http://localhost:44370/</IISUrl>
+          <NTLMAuthentication>False</NTLMAuthentication>
+          <UseCustomServer>False</UseCustomServer>
+          <CustomServerUrl>
+          </CustomServerUrl>
+          <SaveServerSettingsInUserFile>False</SaveServerSettingsInUserFile>
+        </WebProjectProperties>
+      </FlavorProperties>
+    </VisualStudio>
+  </ProjectExtensions>
+  <Import Project="..\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.4.1.0\build\net472\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.targets" Condition="Exists('..\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.4.1.0\build\net472\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.targets')" />
+  <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">
+    <PropertyGroup>
+      <ErrorText>This project references NuGet package(s) that are missing on this computer. Use NuGet Package Restore to download them.  For more information, see http://go.microsoft.com/fwlink/?LinkID=322105. The missing file is {0}.</ErrorText>
+    </PropertyGroup>
+    <Error Condition="!Exists('..\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.4.1.0\build\net472\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.targets')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.4.1.0\build\net472\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.targets'))" />
+  </Target>
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

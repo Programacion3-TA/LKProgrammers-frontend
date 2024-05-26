@@ -1,0 +1,39 @@
+﻿<%@ Master Language="C#" MasterPageFile="~/Layout/Main.Master" AutoEventWireup="true" CodeBehind="MainAdministrador.master.cs" Inherits="WebForm.Layout.MainAdministrador" %>
+<asp:Content ID="Content1" ContentPlaceHolderID="Title" runat="server">
+    <asp:ContentPlaceHolder ID="Title" runat="server"></asp:ContentPlaceHolder>
+</asp:Content>
+<asp:Content ID="Content2" ContentPlaceHolderID="Styles" runat="server">
+    <!-- styles para administradores-->
+      <asp:ContentPlaceHolder ID="Styles" runat="server"></asp:ContentPlaceHolder>
+</asp:Content>
+<asp:Content ID="Content3" ContentPlaceHolderID="Navegacion" runat="server">
+    <!--bar de navegacion para administradores-->
+    <li class="nav-item mb-1">
+        <a href="/View/Admin/Profesores/Profesores.aspx">
+            <i class="fa-solid fa-person-chalkboard"></i>
+            Profesores
+        </a>
+    </li>
+
+    <li class="nav-item mb-1">
+        <a href="/View/Admin/Estudiantes/Estudiantes.aspx">
+            <i class="fa-solid fa-user-graduate"></i>
+            Estudiantes
+        </a>
+    </li>
+</asp:Content>
+
+<asp:Content ID="Content4" ContentPlaceHolderID="ImagenPerfil" runat="server">
+    <asp:ContentPlaceHolder ID="ImagenPerfil" runat="server"></asp:ContentPlaceHolder> 
+</asp:Content>
+
+<asp:Content ID="Content5" ContentPlaceHolderID="Navusuarios" runat="server">
+    <asp:ContentPlaceHolder ID="Navusuarios" runat="server"></asp:ContentPlaceHolder>
+</asp:Content>
+
+<asp:Content ID="Content6" ContentPlaceHolderID="MainContent" runat="server">
+<asp:ContentPlaceHolder ID="MainContent" runat="server"></asp:ContentPlaceHolder>
+</asp:Content>
+<asp:Content ID="Content7" ContentPlaceHolderID="Script" runat="server">
+<asp:ContentPlaceHolder ID="Script" runat="server"></asp:ContentPlaceHolder>
+</asp:Content>

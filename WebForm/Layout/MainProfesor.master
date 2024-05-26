@@ -1,0 +1,53 @@
+﻿<%@ Master Language="C#" MasterPageFile="~/Layout/Main.Master" AutoEventWireup="true" CodeBehind="MainProfesor.master.cs" Inherits="WebForm.Layout.MainProfesor" %>
+
+<asp:Content ID="Content1" ContentPlaceHolderID="Title" runat="server">
+    <asp:ContentPlaceHolder ID="Title" runat="server"></asp:ContentPlaceHolder>
+</asp:Content>
+
+<asp:Content ID="Content2" ContentPlaceHolderID="Styles" runat="server">
+    <asp:ContentPlaceHolder ID="Styles" runat="server"></asp:ContentPlaceHolder>
+</asp:Content>
+
+
+
+<asp:Content ID="Content3" ContentPlaceHolderID="Navegacion" runat="server">
+    <li class="nav-item mb-1">
+        <a href="/View/Profesor/Profesor.aspx">
+            <i class="fa-solid fa-house me-1"></i>
+            Principal
+        </a>
+    </li>
+
+    <li class="nav-item mb-1">
+        <a href="/View/Profesor/AsistenciaProfesor.aspx">
+            <i class="fa-solid fa-user-clock me-1"></i>
+            Asistencias
+        </a>
+    </li>
+</asp:Content>
+
+
+<asp:Content ID="Content4" ContentPlaceHolderID="ImagenPerfil" runat="server">
+
+    <img src="/Public/img/pedro.gif" />
+
+</asp:Content>
+
+<asp:Content ID="Content5" ContentPlaceHolderID="Navusuarios" runat="server">
+
+    <asp:ContentPlaceHolder ID="Navusuarios" runat="server"></asp:ContentPlaceHolder>
+
+</asp:Content>
+
+<asp:Content ID="Content6" ContentPlaceHolderID="MainContent" runat="server">
+
+    <asp:ContentPlaceHolder ID="MainContent" runat="server"></asp:ContentPlaceHolder>
+
+</asp:Content>
+
+
+<asp:Content ID="Content7" ContentPlaceHolderID="Script" runat="server">
+
+    <asp:ContentPlaceHolder ID="Script" runat="server"></asp:ContentPlaceHolder>
+
+</asp:Content>

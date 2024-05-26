@@ -1,0 +1,56 @@
+﻿<%@ Master Language="C#" MasterPageFile="~/Layout/Main.Master" AutoEventWireup="true" CodeBehind="MainAlumno.master.cs" Inherits="WebForm.Layout.MainAlumno" %>
+<asp:Content ID="Content1" ContentPlaceHolderID="Title" runat="server">
+    <asp:ContentPlaceHolder ID="Title" runat="server"></asp:ContentPlaceHolder>
+</asp:Content>
+<asp:Content ID="Content2" ContentPlaceHolderID="Styles" runat="server">
+    <asp:ContentPlaceHolder ID="Styles" runat="server"></asp:ContentPlaceHolder>
+</asp:Content>
+<asp:Content ID="Content3" ContentPlaceHolderID="Navegacion" runat="server">
+    <li class="nav-item mb-1">
+        <a href="/View/Alumno/Alumno.aspx">
+            <i class="fa-solid fa-house me-1"></i>
+            Principal/Cursos
+        </a>
+    </li>
+
+    <li class="nav-item mb-1">
+        <a href="/View/CalendarioAlumno/CalendarioAlumno.aspx">
+            <i class="fa-solid fa-calendar-days me-1"></i>
+            Calendario
+        </a>
+    </li>
+
+    <li class="nav-item mb-1">
+        <a href="#">
+            <i class="fa-solid fa-star me-1"></i>
+            Notas
+        </a>
+    </li>
+
+    <li class="nav-item mb-1">
+        <a href="/View/AsistenciaAlumno/AsistenciaAlumno.aspx">
+            <i class="fa-solid fa-user-clock me-1"></i>
+            Asistencias
+        </a>
+    </li>
+
+    <li class="nav-item mb-1">
+        <a href="#">
+            <i class="fa-solid fa-triangle-exclamation me-1"></i>
+            Exoneración
+        </a>
+    </li>
+</asp:Content>
+<asp:Content ID="Content2_5" ContentPlaceHolderID="ImagenPerfil" runat="server">
+    <img src="/Public/img/pedro.gif" />
+</asp:Content>
+<asp:Content ID="Content4" ContentPlaceHolderID="Navusuarios" runat="server">
+    <asp:ContentPlaceHolder ID="Navusuarios" runat="server"></asp:ContentPlaceHolder>
+</asp:Content>
+<asp:Content ID="Content5" ContentPlaceHolderID="MainContent" runat="server">
+    <!--Contenido principal para administrador-->
+    <asp:ContentPlaceHolder ID="MainContent" runat="server"></asp:ContentPlaceHolder>
+</asp:Content>
+<asp:Content ID="Content6" ContentPlaceHolderID="Script" runat="server">
+    <asp:ContentPlaceHolder ID="Script" runat="server"></asp:ContentPlaceHolder>
+</asp:Content>
