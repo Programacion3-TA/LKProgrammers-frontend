@@ -43,7 +43,6 @@ namespace WebForm.View.Login
                 Session["Tipo"] = "Profesor";
                 Response.Redirect("/View/Profesor/CursoProfesor.aspx");
             }
-            //rayita estuvo aqui, 
             if (user is alumno)
             {
                 Session["Tipo"] = "Alumno";
