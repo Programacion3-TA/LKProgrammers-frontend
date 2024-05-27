@@ -6,65 +6,15 @@ using System.Web.UI;
 using System.Web.UI.WebControls;
 using Models;
 using WebForm.ServicioWS;
+
 namespace WebForm.View.Login
 {
     public partial class Login : System.Web.UI.Page
     {
-        public List<Usuario> usuarios; 
-        private ServicioWS.LKServicioWebClient daoServicio;
-        public Login() {
-            usuarios = new List<Usuario>();
-
-            usuarios.Add(new Profesor()
-            {
-                Codigo = "001",
-                Nombre = "Juan",
-                ApellidoPat = "Perez",
-                ApellidoMat = "Dávila",
-                Sexo = 'M',
-                Direccion = "Su casa",
-                Correo = "hola@gmail.com",
-                Username = "juanp",
-                Telefono = "960589039",
-                Dni = "72207476",
-                Password = "1234",
-                Especialidad = "Matematicas",
-
-            });
-
-            usuarios.Add(new AlumnoN()
-            {
-                Codigo = 1,
-                Dni = "76835856",
-                Grado = "PRIM1",
-                Nombre = "Fidel",
-                ApellidoPat = "Apari",
-                ApellidoMat = "Sanchez",
-                Username="FidelApari",
-                Password="1234",
-                Sexo = '?',
-                Correo = "Elapari@uWuntu.com",
-                Telefono = "+91 222 111 222"
-
-            });
-
-            usuarios.Add(new Administrador() {
-                Codigo = 2,
-                Dni = "33333",
-                Nombre = "Administrador1",
-                ApellidoPat = "Admin",
-                ApellidoMat = "Admin2",
-                Username = "myadmin",
-                Password = "1234",
-                Sexo = 'M',
-                Correo = "admin@gmail.com",
-                Telefono="+93333333",
-            });
-
-        }
+        private LKServicioWebClient daoServicio;
         protected void Page_Load(object sender, EventArgs e)
         {
-            daoServicio = new ServicioWS.LKServicioWebClient();
+            daoServicio = new LKServicioWebClient();
 
             if (Session["Usuario"] != null && Session["Tipo"] != null)
             {
@@ -80,11 +30,10 @@ namespace WebForm.View.Login
             //redireccionamiento de paginas dependiendo del usuario
             if(user == null)
             {
-
-                //implementar estilos de errores con JS
                 TxtUsuario.Text = "";
                 TxtContrasenia.Text = "";
-                Response.Redirect("/View/Login/Login.aspx");
+                string script = "alert('Usuario o contraseña incorrectos');";
+                ClientScript.RegisterStartupScript(this.GetType(), "AlertScript", script, true);
             }
 
             Session["Usuario"] = user;
