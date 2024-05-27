@@ -23,33 +23,26 @@ namespace WebForm.View.Login
         }
         protected void BtnIngresar_Click(object sender, EventArgs e)
         {
-          //  Usuario usuario = usuarios.Find(pro => (pro.Username == TxtUsuario.Text || pro.Correo == TxtUsuario.Text) && pro.Password == TxtContrasenia.Text);
-            List<usuario> usuarios = daoServicio.listarUsuarios().ToList();
-            usuario user = usuarios.Find(x => (x.usuario1 == TxtUsuario.Text || x.correoElectronico == TxtUsuario.Text) && x.contrasenia == TxtContrasenia.Text);
-
+            char t = (char)daoServicio.acceder_a_pagina(TxtUsuario.Text, TxtContrasenia.Text);
             //redireccionamiento de paginas dependiendo del usuario
-            if(user == null)
+            if (t == 'N') //NO ES NADIE ASI QUE EMITE UN ERROR
             {
+                //implementar estilos de errores con JS
                 TxtUsuario.Text = "";
                 TxtContrasenia.Text = "";
-                string script = "alert('Usuario o contraseña incorrectos');";
-                ClientScript.RegisterStartupScript(this.GetType(), "AlertScript", script, true);
+                Response.Redirect("/View/Login/Login.aspx");
             }
-
-            Session["Usuario"] = user;
-            //Session["AnimacionInicio"] = true; webada de fidel
-            if(user is profesor)
+            if (t == 'P') //ES EL PROFESOR
             {
                 Session["Tipo"] = "Profesor";
                 Response.Redirect("/View/Profesor/CursoProfesor.aspx");
             }
-
-            if (user is alumno)
+            if (t == 'E')//ES EL ESTUDIANTE
             {
                 Session["Tipo"] = "Alumno";
                 Response.Redirect("/View/Alumno/Alumno.aspx");
             }
-            if(user is personalAdministrativo)
+            if (t == 'A') //ADMINISTRATIVO
             {
                 Session["Tipo"] = "Administrador";
                 Response.Redirect("/View/Admin/Profesores/Profesores.aspx");

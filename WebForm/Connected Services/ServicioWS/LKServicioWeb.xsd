@@ -1,7 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
 <xs:schema xmlns:tns="http://services.service.lkprogrammers.org/" targetNamespace="http://services.service.lkprogrammers.org/" version="1.0" xmlns:xs="http://www.w3.org/2001/XMLSchema">
-  <xs:element name="hello" type="tns:hello" />
-  <xs:element name="helloResponse" type="tns:helloResponse" />
+  <xs:element name="Reporte_general_notas_de_alumno" type="tns:Reporte_general_notas_de_alumno" />
+  <xs:element name="Reporte_general_notas_de_alumnoResponse" type="tns:Reporte_general_notas_de_alumnoResponse" />
+  <xs:element name="acceder_a_pagina" type="tns:acceder_a_pagina" />
+  <xs:element name="acceder_a_paginaResponse" type="tns:acceder_a_paginaResponse" />
   <xs:element name="listarAdministradores" type="tns:listarAdministradores" />
   <xs:element name="listarAdministradoresResponse" type="tns:listarAdministradoresResponse" />
   <xs:element name="listarAlumnos" type="tns:listarAlumnos" />
@@ -10,25 +12,38 @@
   <xs:element name="listarProfesoresResponse" type="tns:listarProfesoresResponse" />
   <xs:element name="listarUsuarios" type="tns:listarUsuarios" />
   <xs:element name="listarUsuariosResponse" type="tns:listarUsuariosResponse" />
-  <xs:complexType name="hello">
+  <xs:complexType name="acceder_a_pagina">
     <xs:sequence>
-      <xs:element minOccurs="0" name="name" type="xs:string" />
+      <xs:element minOccurs="0" name="arg0" type="xs:string" />
+      <xs:element minOccurs="0" name="arg1" type="xs:string" />
     </xs:sequence>
   </xs:complexType>
-  <xs:complexType name="helloResponse">
+  <xs:complexType name="acceder_a_paginaResponse">
     <xs:sequence>
-      <xs:element minOccurs="0" name="return" type="xs:string" />
+      <xs:element name="return" type="xs:unsignedShort" />
     </xs:sequence>
   </xs:complexType>
-  <xs:complexType name="listarUsuarios">
-    <xs:sequence />
-  </xs:complexType>
-  <xs:complexType name="listarUsuariosResponse">
+  <xs:complexType name="Reporte_general_notas_de_alumno">
     <xs:sequence>
-      <xs:element minOccurs="0" maxOccurs="unbounded" name="return" type="tns:usuario" />
+      <xs:element name="arg0" type="xs:int" />
     </xs:sequence>
   </xs:complexType>
-  <xs:complexType name="usuario">
+  <xs:complexType name="Reporte_general_notas_de_alumnoResponse">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="return" type="tns:alumno" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="alumno">
+    <xs:complexContent mixed="false">
+      <xs:extension base="tns:usuario">
+        <xs:sequence>
+          <xs:element name="codigoAlumno" type="xs:int" />
+          <xs:element minOccurs="0" name="grado" type="tns:grado" />
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:complexType name="usuario" abstract="true">
     <xs:sequence>
       <xs:element minOccurs="0" name="apellidoMaterno" type="xs:string" />
       <xs:element minOccurs="0" name="apellidoPaterno" type="xs:string" />
@@ -41,6 +56,14 @@
       <xs:element minOccurs="0" name="nombres" type="xs:string" />
       <xs:element minOccurs="0" name="telefono" type="xs:string" />
       <xs:element minOccurs="0" name="usuario" type="xs:string" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="listarUsuarios">
+    <xs:sequence />
+  </xs:complexType>
+  <xs:complexType name="listarUsuariosResponse">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="return" type="tns:usuario" />
     </xs:sequence>
   </xs:complexType>
   <xs:complexType name="listarProfesores">
@@ -69,16 +92,6 @@
       <xs:element minOccurs="0" maxOccurs="unbounded" name="return" type="tns:alumno" />
     </xs:sequence>
   </xs:complexType>
-  <xs:complexType name="alumno">
-    <xs:complexContent mixed="false">
-      <xs:extension base="tns:usuario">
-        <xs:sequence>
-          <xs:element name="codigoAlumno" type="xs:int" />
-          <xs:element minOccurs="0" name="grado" type="tns:grado" />
-        </xs:sequence>
-      </xs:extension>
-    </xs:complexContent>
-  </xs:complexType>
   <xs:complexType name="listarAdministradores">
     <xs:sequence />
   </xs:complexType>
@@ -99,6 +112,7 @@
   </xs:complexType>
   <xs:simpleType name="grado">
     <xs:restriction base="xs:string">
+      <xs:enumeration value="NN" />
       <xs:enumeration value="INI2" />
       <xs:enumeration value="INI3" />
       <xs:enumeration value="INI4" />
