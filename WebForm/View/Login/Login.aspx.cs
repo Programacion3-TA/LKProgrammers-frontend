@@ -25,24 +25,24 @@ namespace WebForm.View.Login
         {
             char t = (char)daoServicio.acceder_a_pagina(TxtUsuario.Text, TxtContrasenia.Text);
             //redireccionamiento de paginas dependiendo del usuario
-            if (t == 'N')
+            if (t == 'N') //NO ES NADIE ASI QUE EMITE UN ERROR
             {
                 //implementar estilos de errores con JS
                 TxtUsuario.Text = "";
                 TxtContrasenia.Text = "";
                 Response.Redirect("/View/Login/Login.aspx");
             }
-            if (t == 'P')
+            if (t == 'P') //ES EL PROFESOR
             {
                 Session["Tipo"] = "Profesor";
                 Response.Redirect("/View/Profesor/CursoProfesor.aspx");
             }
-            if (t == 'E')
+            if (t == 'E')//ES EL ESTUDIANTE
             {
                 Session["Tipo"] = "Alumno";
                 Response.Redirect("/View/Alumno/Alumno.aspx");
             }
-            if (t == 'A')
+            if (t == 'A') //ADMINISTRATIVO
             {
                 Session["Tipo"] = "Administrador";
                 Response.Redirect("/View/Admin/Profesores/Profesores.aspx");
