@@ -5,7 +5,7 @@
 <asp:Content ID="Content2" ContentPlaceHolderID="Styles" runat="server">
 </asp:Content>
 <asp:Content ID="Content3" ContentPlaceHolderID="Navusuarios" runat="server">
-    <uc:Path ID="MyCustomControl1" runat="server" TiposURL="Calendario"/>
+    <!--<uc:Path ID="MyCustomControl1" runat="server" TiposURL="Calendario"/>-->
 </asp:Content>
 <asp:Content ID="Content4" ContentPlaceHolderID="MainContent" runat="server">
     

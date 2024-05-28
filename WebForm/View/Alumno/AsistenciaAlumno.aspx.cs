@@ -4,13 +4,12 @@ using System.Linq;
 using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
-using TestAsistenciaModel;
 
 namespace WebForm.View.AsistenciaAlumno
 {
     public partial class AsistenciaAlumno : System.Web.UI.Page
     {
-        public static List<Asistencia> lista; // Lista de asistencias por alumno
+       // public static List<Asistencia> lista; // Lista de asistencias por alumno
 
         protected void Page_Load(object sender, EventArgs e)
         {
@@ -23,6 +22,7 @@ namespace WebForm.View.AsistenciaAlumno
 
         protected void InicializarAsistencias()
         {
+            /*
             lista = new List<Asistencia>();
             lista.Add(new Asistencia() { Fecha = DateTime.Now, Estado = "Presente" });
             lista.Add(new Asistencia() { Fecha = DateTime.Now.AddDays(-1), Estado = "Presente" });
@@ -34,13 +34,14 @@ namespace WebForm.View.AsistenciaAlumno
             lista.Add(new Asistencia() { Fecha = DateTime.Now.AddDays(-7), Estado = "Presente" });
             lista.Add(new Asistencia() { Fecha = DateTime.Now.AddDays(-8), Estado = "Falta" });
             lista.Add(new Asistencia() { Fecha = DateTime.Now.AddDays(-9), Estado = "Presente" });
-            lista.Add(new Asistencia() { Fecha = DateTime.Now.AddDays(-10), Estado = "Presente" });
+            lista.Add(new Asistencia() { Fecha = DateTime.Now.AddDays(-10), Estado = "Presente" });*/
         }
 
         protected void CargarAsistencias()
         {
+            /*
             GriAsistenciasAlumnos.DataSource = lista;
-            GriAsistenciasAlumnos.DataBind();
+            GriAsistenciasAlumnos.DataBind();*/
         }
     }
 }

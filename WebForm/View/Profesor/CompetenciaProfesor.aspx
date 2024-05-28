@@ -5,7 +5,7 @@
 <asp:Content ID="Content2" ContentPlaceHolderID="Styles" runat="server">
 </asp:Content>
 <asp:Content ID="Content3" ContentPlaceHolderID="Navusuarios" runat="server">
-    <uc:Path ID="MyCustomControl1" runat="server" TiposURL="Curso/Competencia"/>
+   <!-- <uc:Path ID="MyCustomControl1" runat="server" TiposURL="Curso/Competencia"/>-->
 </asp:Content>
 <asp:Content ID="Content4" ContentPlaceHolderID="MainContent" runat="server">
 <h1>
@@ -46,7 +46,7 @@
 
 <div id="competencia--modal" class="modal" tabindex="-1">
     <div class="modal-dialog modal-dialog-centered">
-        <form action="" method="post" class="modal-content">
+        <div  class="modal-content">
             <div class="modal-header">
                 <h5 class="modal-title">Ingresar/Actualizar competencia</h5>
                 <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
@@ -67,13 +67,13 @@
                 <button type="submit" class="btn btn-secondary" data-bs-dismiss="modal">Cancelar</button>
                 <button type="submit" class="btn btn-primary">Guardar cambios</button>
             </div>
-        </form>
+        </div>
     </div>
 </div>
 
 <div id="eliminar--modal" class="modal" tabindex="-1">
     <div class="modal-dialog modal-dialog-centered">
-        <form action="" class="modal-content">
+        <div class="modal-content">
             <div class="modal-header">
                 <h5 class="modal-title">¿Está seguro que quiere eliminar "${elemento}"?</h5>
                 <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
@@ -82,7 +82,7 @@
                 <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancelar</button>
                 <button type="submit" class="btn btn-primary">Eliminar</button>
             </div>
-        </form>
+        </div>
     </div>
 </div>
 </asp:Content>

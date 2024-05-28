@@ -11,7 +11,7 @@
     <script src="./Alumno.js"></script>
 </asp:Content>
 <asp:Content ID="Content5" ContentPlaceHolderID="Navusuarios" runat="server">
-    <uc:Path ID="MyCustomControl1" runat="server" TiposURL=""/>        
+   <!-- <uc:Path ID="MyCustomControl1" runat="server" TiposURL=""/>        -->
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="MainContent" runat="server">
   
