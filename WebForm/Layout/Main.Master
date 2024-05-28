@@ -7,6 +7,7 @@
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     <link href="/Public/css/bootstrap/bootstrap.css" rel="stylesheet" />
     <link href="/Public/css/main.css" rel="stylesheet" />
+    <link rel="icon" href="/Public/img/logoColegio.png" type="image/png" />
     <!--script iconos-->
     <script src="https://kit.fontawesome.com/7237f750bf.js" crossorigin="anonymous"></script>
     <script src="/Public/js/bootstrap/bootstrap.js" type="text/javascript"></script>

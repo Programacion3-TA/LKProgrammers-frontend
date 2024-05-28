@@ -13,7 +13,23 @@ namespace WebForm.View.AsistenciaProfesor
         protected void Page_Load(object sender, EventArgs e)
         {
             daoServicio = new LKServicioWebClient();
+            
+            if(!IsPostBack){
+                //if (!((string)(Session["Tipo"])).Equals("Profesor")) ; evita que ingresen cuentasn que no son tipo Profesor
+                int idsalon;
+                profesor profesor = (profesor)Session["Usuario"];
+                idsalon = daoServicio.esTutorAsignado(profesor.dni);
+                if (idsalon == -1) Response.Redirect("/View/Profesor/ErroNoTutor.aspx");
+                Session["idsalon"] = idsalon;
+            }
+               
+        }
 
+        protected void BtnRegistrarAsistencia_Click(object sender, EventArgs e)
+        {
+            int idsalon = (int)Session["idsalon"];
+
+            Response.Redirect("/View/Profesor/RegistroAsistencia.aspx?idsalon="+idsalon);
         }
     }
 }

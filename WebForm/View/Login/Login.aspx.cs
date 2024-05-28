@@ -14,7 +14,6 @@ namespace WebForm.View.Login
         protected void Page_Load(object sender, EventArgs e)
         {
             daoServicio = new LKServicioWebClient();
-
             if (Session["Usuario"] != null && Session["Tipo"] != null)
             {
                 Response.Redirect("/View/" + Session["Tipo"] + "/" + Session["Tipo"] + ".aspx");
@@ -27,6 +26,7 @@ namespace WebForm.View.Login
             if (t == 'N') //NO ES NADIE ASI QUE EMITE UN ERROR
             {
                 //implementar estilos de errores con JS
+                
                 TxtUsuario.Text = "";
                 TxtContrasenia.Text = "";
                 Response.Redirect("/View/Login/Login.aspx");

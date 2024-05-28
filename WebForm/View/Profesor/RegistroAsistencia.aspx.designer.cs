@@ -7,29 +7,38 @@
 // </generado automáticamente>
 //------------------------------------------------------------------------------
 
-namespace WebForm.View.AsistenciaProfesor
+namespace WebForm.View.Profesor
 {
 
 
-    public partial class AsistenciaProfesor
+    public partial class RegistroAsistencia
     {
 
         /// <summary>
-        /// Control MyCustomControl1.
+        /// Control GridAlumnos.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::WebForm.Components.Path MyCustomControl1;
+        protected global::System.Web.UI.WebControls.GridView GridAlumnos;
 
         /// <summary>
-        /// Control BtnRegistrarAsistencia.
+        /// Control BtnRegresar.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.LinkButton BtnRegistrarAsistencia;
+        protected global::System.Web.UI.WebControls.Button BtnRegresar;
+
+        /// <summary>
+        /// Control BtnGuardarAsistencia.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Button BtnGuardarAsistencia;
     }
 }

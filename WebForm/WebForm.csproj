@@ -119,6 +119,7 @@
     <Content Include="View\Profesor\Profesor.css" />
     <Content Include="View\Profesor\Profesor.js" />
     <Content Include="View\Profesor\ProfesorVista.aspx" />
+    <Content Include="View\Profesor\RegistroAsistencia.aspx" />
     <Content Include="Web.config" />
   </ItemGroup>
   <ItemGroup>
@@ -268,6 +269,13 @@
     <Compile Include="View\Profesor\ProfesorVista.aspx.designer.cs">
       <DependentUpon>ProfesorVista.aspx</DependentUpon>
     </Compile>
+    <Compile Include="View\Profesor\RegistroAsistencia.aspx.cs">
+      <DependentUpon>RegistroAsistencia.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="View\Profesor\RegistroAsistencia.aspx.designer.cs">
+      <DependentUpon>RegistroAsistencia.aspx</DependentUpon>
+    </Compile>
   </ItemGroup>
   <ItemGroup>
     <Content Include="Layout\Main.Master" />
@@ -329,6 +337,9 @@
       <DependentUpon>Reference.svcmap</DependentUpon>
     </Content>
     <Content Include="Connected Services\ServicioWS\WebForm.ServicioWS.helloResponse1.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Content>
+    <Content Include="Connected Services\ServicioWS\WebForm.ServicioWS.listarAlumnosxsalonResponse.datasource">
       <DependentUpon>Reference.svcmap</DependentUpon>
     </Content>
     <None Include="packages.config" />
