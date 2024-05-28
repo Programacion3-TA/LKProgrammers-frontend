@@ -8,6 +8,8 @@
   <xs:element name="esTutorAsignadoResponse" type="tns:esTutorAsignadoResponse" />
   <xs:element name="hello" type="tns:hello" />
   <xs:element name="helloResponse" type="tns:helloResponse" />
+  <xs:element name="insertarAsistencia" type="tns:insertarAsistencia" />
+  <xs:element name="insertarAsistenciaResponse" type="tns:insertarAsistenciaResponse" />
   <xs:element name="listarAdministradores" type="tns:listarAdministradores" />
   <xs:element name="listarAdministradoresResponse" type="tns:listarAdministradoresResponse" />
   <xs:element name="listarAlumnos" type="tns:listarAlumnos" />
@@ -18,17 +20,6 @@
   <xs:element name="listarProfesoresResponse" type="tns:listarProfesoresResponse" />
   <xs:element name="listarUsuarios" type="tns:listarUsuarios" />
   <xs:element name="listarUsuariosResponse" type="tns:listarUsuariosResponse" />
-  <xs:complexType name="acceder_a_pagina">
-    <xs:sequence>
-      <xs:element minOccurs="0" name="arg0" type="xs:string" />
-      <xs:element minOccurs="0" name="arg1" type="xs:string" />
-    </xs:sequence>
-  </xs:complexType>
-  <xs:complexType name="acceder_a_paginaResponse">
-    <xs:sequence>
-      <xs:element name="return" type="xs:unsignedShort" />
-    </xs:sequence>
-  </xs:complexType>
   <xs:complexType name="listarAlumnosxsalon">
     <xs:sequence>
       <xs:element name="idsalon" type="xs:int" />
@@ -62,6 +53,17 @@
       <xs:element minOccurs="0" name="nombres" type="xs:string" />
       <xs:element minOccurs="0" name="telefono" type="xs:string" />
       <xs:element minOccurs="0" name="usuario" type="xs:string" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="acceder_a_pagina">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="arg0" type="xs:string" />
+      <xs:element minOccurs="0" name="arg1" type="xs:string" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="acceder_a_paginaResponse">
+    <xs:sequence>
+      <xs:element name="return" type="xs:unsignedShort" />
     </xs:sequence>
   </xs:complexType>
   <xs:complexType name="Reporte_general_notas_de_alumno">
@@ -146,6 +148,24 @@
       <xs:element name="return" type="xs:int" />
     </xs:sequence>
   </xs:complexType>
+  <xs:complexType name="insertarAsistencia">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="asistencia" type="tns:asistencia" />
+      <xs:element minOccurs="0" name="dniAlumno" type="xs:string" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="asistencia">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="dniAlumno" type="xs:string" />
+      <xs:element minOccurs="0" name="estado" type="tns:estadoAsistencia" />
+      <xs:element minOccurs="0" name="fechaHora" type="xs:dateTime" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="insertarAsistenciaResponse">
+    <xs:sequence>
+      <xs:element name="return" type="xs:int" />
+    </xs:sequence>
+  </xs:complexType>
   <xs:simpleType name="grado">
     <xs:restriction base="xs:string">
       <xs:enumeration value="NN" />
@@ -159,6 +179,14 @@
       <xs:enumeration value="PRIM4" />
       <xs:enumeration value="PRIM5" />
       <xs:enumeration value="PRIM6" />
+    </xs:restriction>
+  </xs:simpleType>
+  <xs:simpleType name="estadoAsistencia">
+    <xs:restriction base="xs:string">
+      <xs:enumeration value="Presente" />
+      <xs:enumeration value="Tardanza" />
+      <xs:enumeration value="Ausente" />
+      <xs:enumeration value="Justificada" />
     </xs:restriction>
   </xs:simpleType>
 </xs:schema>

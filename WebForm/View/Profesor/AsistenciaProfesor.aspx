@@ -17,8 +17,7 @@
             </div>
             <div>
                 <div class="text-end p-3">
-                   <asp:LinkButton ID="BtnRegistrarAsistencia" runat="server" CssClass="btn btn-dark"
-                       Text="<i class='fa-solid fa-clipboard-user'> </i> Agregar" OnClick="BtnRegistrarAsistencia_Click"></asp:LinkButton>
+                   
                 </div>
             </div>
         </div>
