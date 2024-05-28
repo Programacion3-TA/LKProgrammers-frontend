@@ -4,6 +4,10 @@
   <xs:element name="Reporte_general_notas_de_alumnoResponse" type="tns:Reporte_general_notas_de_alumnoResponse" />
   <xs:element name="acceder_a_pagina" type="tns:acceder_a_pagina" />
   <xs:element name="acceder_a_paginaResponse" type="tns:acceder_a_paginaResponse" />
+  <xs:element name="esTutorAsignado" type="tns:esTutorAsignado" />
+  <xs:element name="esTutorAsignadoResponse" type="tns:esTutorAsignadoResponse" />
+  <xs:element name="hello" type="tns:hello" />
+  <xs:element name="helloResponse" type="tns:helloResponse" />
   <xs:element name="listarAdministradores" type="tns:listarAdministradores" />
   <xs:element name="listarAdministradoresResponse" type="tns:listarAdministradoresResponse" />
   <xs:element name="listarAlumnos" type="tns:listarAlumnos" />
@@ -58,6 +62,16 @@
       <xs:element minOccurs="0" name="usuario" type="xs:string" />
     </xs:sequence>
   </xs:complexType>
+  <xs:complexType name="hello">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="name" type="xs:string" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="helloResponse">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="return" type="xs:string" />
+    </xs:sequence>
+  </xs:complexType>
   <xs:complexType name="listarUsuarios">
     <xs:sequence />
   </xs:complexType>
@@ -109,6 +123,16 @@
         </xs:sequence>
       </xs:extension>
     </xs:complexContent>
+  </xs:complexType>
+  <xs:complexType name="esTutorAsignado">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="dniProfesor" type="xs:string" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="esTutorAsignadoResponse">
+    <xs:sequence>
+      <xs:element name="return" type="xs:boolean" />
+    </xs:sequence>
   </xs:complexType>
   <xs:simpleType name="grado">
     <xs:restriction base="xs:string">

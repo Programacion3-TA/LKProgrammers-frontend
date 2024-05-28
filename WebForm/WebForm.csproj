@@ -114,6 +114,7 @@
     <Content Include="View\Profesor\CursoProfesor.aspx" />
     <Content Include="View\Error\Error404.aspx" />
     <Content Include="View\Login\Login.aspx" />
+    <Content Include="View\Profesor\ErroNoTutor.aspx" />
     <Content Include="View\Profesor\NotaProfesor.aspx" />
     <Content Include="View\Profesor\Profesor.css" />
     <Content Include="View\Profesor\Profesor.js" />
@@ -246,6 +247,13 @@
     <Compile Include="View\Login\Login.aspx.designer.cs">
       <DependentUpon>Login.aspx</DependentUpon>
     </Compile>
+    <Compile Include="View\Profesor\ErroNoTutor.aspx.cs">
+      <DependentUpon>ErroNoTutor.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="View\Profesor\ErroNoTutor.aspx.designer.cs">
+      <DependentUpon>ErroNoTutor.aspx</DependentUpon>
+    </Compile>
     <Compile Include="View\Profesor\NotaProfesor.aspx.cs">
       <DependentUpon>NotaProfesor.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -315,6 +323,12 @@
       <DependentUpon>Reference.svcmap</DependentUpon>
     </Content>
     <Content Include="Connected Services\ServicioWS\WebForm.ServicioWS.usuario.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Content>
+    <Content Include="Connected Services\ServicioWS\WebForm.ServicioWS.esTutorAsignadoResponse1.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Content>
+    <Content Include="Connected Services\ServicioWS\WebForm.ServicioWS.helloResponse1.datasource">
       <DependentUpon>Reference.svcmap</DependentUpon>
     </Content>
     <None Include="packages.config" />

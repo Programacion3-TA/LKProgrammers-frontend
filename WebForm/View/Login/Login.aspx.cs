@@ -4,7 +4,6 @@ using System.Linq;
 using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
-using Models;
 using WebForm.ServicioWS;
 
 namespace WebForm.View.Login
@@ -34,16 +33,19 @@ namespace WebForm.View.Login
             }
             if (t == 'P') //ES EL PROFESOR
             {
+                Session["Usuario"] = daoServicio.listarProfesores().ToList().Find(x => (x.usuario1 == TxtUsuario.Text && x.contrasenia == TxtContrasenia.Text));
                 Session["Tipo"] = "Profesor";
                 Response.Redirect("/View/Profesor/CursoProfesor.aspx");
             }
             if (t == 'E')//ES EL ESTUDIANTE
             {
+                Session["Usuario"] = daoServicio.listarAlumnos().ToList().Find(x => (x.usuario1 == TxtUsuario.Text && x.contrasenia == TxtContrasenia.Text));
                 Session["Tipo"] = "Alumno";
                 Response.Redirect("/View/Alumno/Alumno.aspx");
             }
             if (t == 'A') //ADMINISTRATIVO
             {
+                Session["Usuario"] = daoServicio.listarAdministradores().ToList().Find(x => (x.usuario1 == TxtUsuario.Text && x.contrasenia == TxtContrasenia.Text));
                 Session["Tipo"] = "Administrador";
                 Response.Redirect("/View/Admin/Profesores/Profesores.aspx");
             }
