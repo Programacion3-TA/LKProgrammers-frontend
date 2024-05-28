@@ -101,6 +101,11 @@
     <Content Include="Public\js\bootstrap\bootstrap.esm.min.js" />
     <Content Include="Public\js\bootstrap\bootstrap.js" />
     <Content Include="Public\js\bootstrap\bootstrap.min.js" />
+    <None Include="Public\js\jquery\jquery-3.7.1.intellisense.js" />
+    <Content Include="Public\js\jquery\jquery-3.7.1.js" />
+    <Content Include="Public\js\jquery\jquery-3.7.1.min.js" />
+    <Content Include="Public\js\jquery\jquery-3.7.1.slim.js" />
+    <Content Include="Public\js\jquery\jquery-3.7.1.slim.min.js" />
     <Content Include="View\Admin\Estudiantes\Estudiantes.aspx" />
     <Content Include="View\Admin\Profesores\Profesores.js" />
     <Content Include="View\Admin\Profesores\Profesores.aspx" />
@@ -114,10 +119,12 @@
     <Content Include="View\Profesor\CursoProfesor.aspx" />
     <Content Include="View\Error\Error404.aspx" />
     <Content Include="View\Login\Login.aspx" />
+    <Content Include="View\Profesor\ErroNoTutor.aspx" />
     <Content Include="View\Profesor\NotaProfesor.aspx" />
     <Content Include="View\Profesor\Profesor.css" />
     <Content Include="View\Profesor\Profesor.js" />
     <Content Include="View\Profesor\ProfesorVista.aspx" />
+    <Content Include="View\Profesor\RegistroAsistencia.aspx" />
     <Content Include="Web.config" />
   </ItemGroup>
   <ItemGroup>
@@ -246,6 +253,13 @@
     <Compile Include="View\Login\Login.aspx.designer.cs">
       <DependentUpon>Login.aspx</DependentUpon>
     </Compile>
+    <Compile Include="View\Profesor\ErroNoTutor.aspx.cs">
+      <DependentUpon>ErroNoTutor.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="View\Profesor\ErroNoTutor.aspx.designer.cs">
+      <DependentUpon>ErroNoTutor.aspx</DependentUpon>
+    </Compile>
     <Compile Include="View\Profesor\NotaProfesor.aspx.cs">
       <DependentUpon>NotaProfesor.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -259,6 +273,13 @@
     </Compile>
     <Compile Include="View\Profesor\ProfesorVista.aspx.designer.cs">
       <DependentUpon>ProfesorVista.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="View\Profesor\RegistroAsistencia.aspx.cs">
+      <DependentUpon>RegistroAsistencia.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="View\Profesor\RegistroAsistencia.aspx.designer.cs">
+      <DependentUpon>RegistroAsistencia.aspx</DependentUpon>
     </Compile>
   </ItemGroup>
   <ItemGroup>
@@ -293,10 +314,22 @@
     <Content Include="Connected Services\ServicioWS\WebForm.ServicioWS.alumno.datasource">
       <DependentUpon>Reference.svcmap</DependentUpon>
     </Content>
+    <Content Include="Connected Services\ServicioWS\WebForm.ServicioWS.esTutorAsignadoResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Content>
+    <Content Include="Connected Services\ServicioWS\WebForm.ServicioWS.helloResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Content>
+    <Content Include="Connected Services\ServicioWS\WebForm.ServicioWS.insertarAsistenciaResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Content>
     <Content Include="Connected Services\ServicioWS\WebForm.ServicioWS.listarAdministradoresResponse.datasource">
       <DependentUpon>Reference.svcmap</DependentUpon>
     </Content>
     <Content Include="Connected Services\ServicioWS\WebForm.ServicioWS.listarAlumnosResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Content>
+    <Content Include="Connected Services\ServicioWS\WebForm.ServicioWS.listarAlumnosxsalonResponse.datasource">
       <DependentUpon>Reference.svcmap</DependentUpon>
     </Content>
     <Content Include="Connected Services\ServicioWS\WebForm.ServicioWS.listarProfesoresResponse.datasource">
@@ -324,6 +357,8 @@
     <Content Include="Public\js\bootstrap\bootstrap.esm.js.map" />
     <Content Include="Public\js\bootstrap\bootstrap.bundle.min.js.map" />
     <Content Include="Public\js\bootstrap\bootstrap.bundle.js.map" />
+    <Content Include="Public\js\jquery\jquery-3.7.1.slim.min.map" />
+    <Content Include="Public\js\jquery\jquery-3.7.1.min.map" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>

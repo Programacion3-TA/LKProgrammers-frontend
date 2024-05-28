@@ -14,7 +14,6 @@ namespace WebForm.View.Login
         protected void Page_Load(object sender, EventArgs e)
         {
             daoServicio = new LKServicioWebClient();
-
             if (Session["Usuario"] != null && Session["Tipo"] != null)
             {
                 Response.Redirect("/View/" + Session["Tipo"] + "/" + Session["Tipo"] + ".aspx");
@@ -27,22 +26,26 @@ namespace WebForm.View.Login
             if (t == 'N') //NO ES NADIE ASI QUE EMITE UN ERROR
             {
                 //implementar estilos de errores con JS
+                
                 TxtUsuario.Text = "";
                 TxtContrasenia.Text = "";
                 Response.Redirect("/View/Login/Login.aspx");
             }
             if (t == 'P') //ES EL PROFESOR
             {
+                Session["Usuario"] = daoServicio.listarProfesores().ToList().Find(x => (x.usuario1 == TxtUsuario.Text && x.contrasenia == TxtContrasenia.Text));
                 Session["Tipo"] = "Profesor";
-                Response.Redirect("/View/Profesor/CursoProfesor.aspx");
+                Response.Redirect("/View/Profesor/ProfesorVista.aspx");
             }
             if (t == 'E')//ES EL ESTUDIANTE
             {
+                Session["Usuario"] = daoServicio.listarAlumnos().ToList().Find(x => (x.usuario1 == TxtUsuario.Text && x.contrasenia == TxtContrasenia.Text));
                 Session["Tipo"] = "Alumno";
                 Response.Redirect("/View/Alumno/Alumno.aspx");
             }
             if (t == 'A') //ADMINISTRATIVO
             {
+                Session["Usuario"] = daoServicio.listarAdministradores().ToList().Find(x => (x.usuario1 == TxtUsuario.Text && x.contrasenia == TxtContrasenia.Text));
                 Session["Tipo"] = "Administrador";
                 Response.Redirect("/View/Admin/Profesores/Profesores.aspx");
             }
