@@ -25,32 +25,6 @@ namespace WebForm.ServicioWS {
         System.Threading.Tasks.Task<WebForm.ServicioWS.helloResponse> helloAsync(WebForm.ServicioWS.helloRequest request);
         
         // CODEGEN: El parámetro 'return' requiere información adicional de esquema que no se puede capturar con el modo de parámetros. El atributo específico es 'System.Xml.Serialization.XmlElementAttribute'.
-        [System.ServiceModel.OperationContractAttribute(Action="http://services.service.lkprogrammers.org/LKServicioWeb/insertarAsistenciaRequest" +
-            "", ReplyAction="http://services.service.lkprogrammers.org/LKServicioWeb/insertarAsistenciaRespons" +
-            "e")]
-        [System.ServiceModel.XmlSerializerFormatAttribute(SupportFaults=true)]
-        [return: System.ServiceModel.MessageParameterAttribute(Name="return")]
-        WebForm.ServicioWS.insertarAsistenciaResponse insertarAsistencia(WebForm.ServicioWS.insertarAsistenciaRequest request);
-        
-        [System.ServiceModel.OperationContractAttribute(Action="http://services.service.lkprogrammers.org/LKServicioWeb/insertarAsistenciaRequest" +
-            "", ReplyAction="http://services.service.lkprogrammers.org/LKServicioWeb/insertarAsistenciaRespons" +
-            "e")]
-        System.Threading.Tasks.Task<WebForm.ServicioWS.insertarAsistenciaResponse> insertarAsistenciaAsync(WebForm.ServicioWS.insertarAsistenciaRequest request);
-        
-        // CODEGEN: El parámetro 'return' requiere información adicional de esquema que no se puede capturar con el modo de parámetros. El atributo específico es 'System.Xml.Serialization.XmlElementAttribute'.
-        [System.ServiceModel.OperationContractAttribute(Action="http://services.service.lkprogrammers.org/LKServicioWeb/listarAlumnosxsalonReques" +
-            "t", ReplyAction="http://services.service.lkprogrammers.org/LKServicioWeb/listarAlumnosxsalonRespon" +
-            "se")]
-        [System.ServiceModel.XmlSerializerFormatAttribute(SupportFaults=true)]
-        [return: System.ServiceModel.MessageParameterAttribute(Name="return")]
-        WebForm.ServicioWS.listarAlumnosxsalonResponse listarAlumnosxsalon(WebForm.ServicioWS.listarAlumnosxsalonRequest request);
-        
-        [System.ServiceModel.OperationContractAttribute(Action="http://services.service.lkprogrammers.org/LKServicioWeb/listarAlumnosxsalonReques" +
-            "t", ReplyAction="http://services.service.lkprogrammers.org/LKServicioWeb/listarAlumnosxsalonRespon" +
-            "se")]
-        System.Threading.Tasks.Task<WebForm.ServicioWS.listarAlumnosxsalonResponse> listarAlumnosxsalonAsync(WebForm.ServicioWS.listarAlumnosxsalonRequest request);
-        
-        // CODEGEN: El parámetro 'return' requiere información adicional de esquema que no se puede capturar con el modo de parámetros. El atributo específico es 'System.Xml.Serialization.XmlElementAttribute'.
         [System.ServiceModel.OperationContractAttribute(Action="http://services.service.lkprogrammers.org/LKServicioWeb/Reporte_general_notas_de_" +
             "alumnoRequest", ReplyAction="http://services.service.lkprogrammers.org/LKServicioWeb/Reporte_general_notas_de_" +
             "alumnoResponse")]
@@ -95,13 +69,13 @@ namespace WebForm.ServicioWS {
         System.Threading.Tasks.Task<WebForm.ServicioWS.listarUsuariosResponse> listarUsuariosAsync(WebForm.ServicioWS.listarUsuariosRequest request);
         
         // CODEGEN: El parámetro 'return' requiere información adicional de esquema que no se puede capturar con el modo de parámetros. El atributo específico es 'System.Xml.Serialization.XmlElementAttribute'.
-        [System.ServiceModel.OperationContractAttribute(Action="http://services.service.lkprogrammers.org/LKServicioWeb/esTutorAsignadoRequest", ReplyAction="http://services.service.lkprogrammers.org/LKServicioWeb/esTutorAsignadoResponse")]
+        [System.ServiceModel.OperationContractAttribute(Action="http://services.service.lkprogrammers.org/LKServicioWeb/listarAlumnosRequest", ReplyAction="http://services.service.lkprogrammers.org/LKServicioWeb/listarAlumnosResponse")]
         [System.ServiceModel.XmlSerializerFormatAttribute(SupportFaults=true)]
         [return: System.ServiceModel.MessageParameterAttribute(Name="return")]
-        WebForm.ServicioWS.esTutorAsignadoResponse esTutorAsignado(WebForm.ServicioWS.esTutorAsignadoRequest request);
+        WebForm.ServicioWS.listarAlumnosResponse listarAlumnos(WebForm.ServicioWS.listarAlumnosRequest request);
         
-        [System.ServiceModel.OperationContractAttribute(Action="http://services.service.lkprogrammers.org/LKServicioWeb/esTutorAsignadoRequest", ReplyAction="http://services.service.lkprogrammers.org/LKServicioWeb/esTutorAsignadoResponse")]
-        System.Threading.Tasks.Task<WebForm.ServicioWS.esTutorAsignadoResponse> esTutorAsignadoAsync(WebForm.ServicioWS.esTutorAsignadoRequest request);
+        [System.ServiceModel.OperationContractAttribute(Action="http://services.service.lkprogrammers.org/LKServicioWeb/listarAlumnosRequest", ReplyAction="http://services.service.lkprogrammers.org/LKServicioWeb/listarAlumnosResponse")]
+        System.Threading.Tasks.Task<WebForm.ServicioWS.listarAlumnosResponse> listarAlumnosAsync(WebForm.ServicioWS.listarAlumnosRequest request);
         
         // CODEGEN: El parámetro 'return' requiere información adicional de esquema que no se puede capturar con el modo de parámetros. El atributo específico es 'System.Xml.Serialization.XmlElementAttribute'.
         [System.ServiceModel.OperationContractAttribute(Action="http://services.service.lkprogrammers.org/LKServicioWeb/acceder_a_paginaRequest", ReplyAction="http://services.service.lkprogrammers.org/LKServicioWeb/acceder_a_paginaResponse")]
@@ -113,13 +87,26 @@ namespace WebForm.ServicioWS {
         System.Threading.Tasks.Task<WebForm.ServicioWS.acceder_a_paginaResponse> acceder_a_paginaAsync(WebForm.ServicioWS.acceder_a_paginaRequest request);
         
         // CODEGEN: El parámetro 'return' requiere información adicional de esquema que no se puede capturar con el modo de parámetros. El atributo específico es 'System.Xml.Serialization.XmlElementAttribute'.
-        [System.ServiceModel.OperationContractAttribute(Action="http://services.service.lkprogrammers.org/LKServicioWeb/listarAlumnosRequest", ReplyAction="http://services.service.lkprogrammers.org/LKServicioWeb/listarAlumnosResponse")]
+        [System.ServiceModel.OperationContractAttribute(Action="http://services.service.lkprogrammers.org/LKServicioWeb/esTutorAsignadoRequest", ReplyAction="http://services.service.lkprogrammers.org/LKServicioWeb/esTutorAsignadoResponse")]
         [System.ServiceModel.XmlSerializerFormatAttribute(SupportFaults=true)]
         [return: System.ServiceModel.MessageParameterAttribute(Name="return")]
-        WebForm.ServicioWS.listarAlumnosResponse listarAlumnos(WebForm.ServicioWS.listarAlumnosRequest request);
+        WebForm.ServicioWS.esTutorAsignadoResponse esTutorAsignado(WebForm.ServicioWS.esTutorAsignadoRequest request);
         
-        [System.ServiceModel.OperationContractAttribute(Action="http://services.service.lkprogrammers.org/LKServicioWeb/listarAlumnosRequest", ReplyAction="http://services.service.lkprogrammers.org/LKServicioWeb/listarAlumnosResponse")]
-        System.Threading.Tasks.Task<WebForm.ServicioWS.listarAlumnosResponse> listarAlumnosAsync(WebForm.ServicioWS.listarAlumnosRequest request);
+        [System.ServiceModel.OperationContractAttribute(Action="http://services.service.lkprogrammers.org/LKServicioWeb/esTutorAsignadoRequest", ReplyAction="http://services.service.lkprogrammers.org/LKServicioWeb/esTutorAsignadoResponse")]
+        System.Threading.Tasks.Task<WebForm.ServicioWS.esTutorAsignadoResponse> esTutorAsignadoAsync(WebForm.ServicioWS.esTutorAsignadoRequest request);
+        
+        // CODEGEN: El parámetro 'return' requiere información adicional de esquema que no se puede capturar con el modo de parámetros. El atributo específico es 'System.Xml.Serialization.XmlElementAttribute'.
+        [System.ServiceModel.OperationContractAttribute(Action="http://services.service.lkprogrammers.org/LKServicioWeb/listarAlumnosxsalonReques" +
+            "t", ReplyAction="http://services.service.lkprogrammers.org/LKServicioWeb/listarAlumnosxsalonRespon" +
+            "se")]
+        [System.ServiceModel.XmlSerializerFormatAttribute(SupportFaults=true)]
+        [return: System.ServiceModel.MessageParameterAttribute(Name="return")]
+        WebForm.ServicioWS.listarAlumnosxsalonResponse listarAlumnosxsalon(WebForm.ServicioWS.listarAlumnosxsalonRequest request);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://services.service.lkprogrammers.org/LKServicioWeb/listarAlumnosxsalonReques" +
+            "t", ReplyAction="http://services.service.lkprogrammers.org/LKServicioWeb/listarAlumnosxsalonRespon" +
+            "se")]
+        System.Threading.Tasks.Task<WebForm.ServicioWS.listarAlumnosxsalonResponse> listarAlumnosxsalonAsync(WebForm.ServicioWS.listarAlumnosxsalonRequest request);
     }
     
     [System.Diagnostics.DebuggerStepThroughAttribute()]
@@ -164,84 +151,47 @@ namespace WebForm.ServicioWS {
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.ComponentModel.DesignerCategoryAttribute("code")]
     [System.Xml.Serialization.XmlTypeAttribute(Namespace="http://services.service.lkprogrammers.org/")]
-    public partial class asistencia : object, System.ComponentModel.INotifyPropertyChanged {
+    public partial class alumno : usuario {
         
-        private string dniAlumnoField;
+        private int codigoAlumnoField;
         
-        private estadoAsistencia estadoField;
+        private grado gradoField;
         
-        private bool estadoFieldSpecified;
-        
-        private System.DateTime fechaHoraField;
-        
-        private bool fechaHoraFieldSpecified;
+        private bool gradoFieldSpecified;
         
         /// <remarks/>
         [System.Xml.Serialization.XmlElementAttribute(Form=System.Xml.Schema.XmlSchemaForm.Unqualified, Order=0)]
-        public string dniAlumno {
+        public int codigoAlumno {
             get {
-                return this.dniAlumnoField;
+                return this.codigoAlumnoField;
             }
             set {
-                this.dniAlumnoField = value;
-                this.RaisePropertyChanged("dniAlumno");
+                this.codigoAlumnoField = value;
+                this.RaisePropertyChanged("codigoAlumno");
             }
         }
         
         /// <remarks/>
         [System.Xml.Serialization.XmlElementAttribute(Form=System.Xml.Schema.XmlSchemaForm.Unqualified, Order=1)]
-        public estadoAsistencia estado {
+        public grado grado {
             get {
-                return this.estadoField;
+                return this.gradoField;
             }
             set {
-                this.estadoField = value;
-                this.RaisePropertyChanged("estado");
+                this.gradoField = value;
+                this.RaisePropertyChanged("grado");
             }
         }
         
         /// <remarks/>
         [System.Xml.Serialization.XmlIgnoreAttribute()]
-        public bool estadoSpecified {
+        public bool gradoSpecified {
             get {
-                return this.estadoFieldSpecified;
+                return this.gradoFieldSpecified;
             }
             set {
-                this.estadoFieldSpecified = value;
-                this.RaisePropertyChanged("estadoSpecified");
-            }
-        }
-        
-        /// <remarks/>
-        [System.Xml.Serialization.XmlElementAttribute(Form=System.Xml.Schema.XmlSchemaForm.Unqualified, Order=2)]
-        public System.DateTime fechaHora {
-            get {
-                return this.fechaHoraField;
-            }
-            set {
-                this.fechaHoraField = value;
-                this.RaisePropertyChanged("fechaHora");
-            }
-        }
-        
-        /// <remarks/>
-        [System.Xml.Serialization.XmlIgnoreAttribute()]
-        public bool fechaHoraSpecified {
-            get {
-                return this.fechaHoraFieldSpecified;
-            }
-            set {
-                this.fechaHoraFieldSpecified = value;
-                this.RaisePropertyChanged("fechaHoraSpecified");
-            }
-        }
-        
-        public event System.ComponentModel.PropertyChangedEventHandler PropertyChanged;
-        
-        protected void RaisePropertyChanged(string propertyName) {
-            System.ComponentModel.PropertyChangedEventHandler propertyChanged = this.PropertyChanged;
-            if ((propertyChanged != null)) {
-                propertyChanged(this, new System.ComponentModel.PropertyChangedEventArgs(propertyName));
+                this.gradoFieldSpecified = value;
+                this.RaisePropertyChanged("gradoSpecified");
             }
         }
     }
@@ -250,19 +200,40 @@ namespace WebForm.ServicioWS {
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.8.9032.0")]
     [System.SerializableAttribute()]
     [System.Xml.Serialization.XmlTypeAttribute(Namespace="http://services.service.lkprogrammers.org/")]
-    public enum estadoAsistencia {
+    public enum grado {
         
         /// <remarks/>
-        Presente,
+        NN,
         
         /// <remarks/>
-        Tardanza,
+        INI2,
         
         /// <remarks/>
-        Ausente,
+        INI3,
         
         /// <remarks/>
-        Justificada,
+        INI4,
+        
+        /// <remarks/>
+        INI5,
+        
+        /// <remarks/>
+        PRIM1,
+        
+        /// <remarks/>
+        PRIM2,
+        
+        /// <remarks/>
+        PRIM3,
+        
+        /// <remarks/>
+        PRIM4,
+        
+        /// <remarks/>
+        PRIM5,
+        
+        /// <remarks/>
+        PRIM6,
     }
     
     /// <remarks/>
@@ -528,174 +499,6 @@ namespace WebForm.ServicioWS {
         }
     }
     
-    /// <remarks/>
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.8.9032.0")]
-    [System.SerializableAttribute()]
-    [System.Diagnostics.DebuggerStepThroughAttribute()]
-    [System.ComponentModel.DesignerCategoryAttribute("code")]
-    [System.Xml.Serialization.XmlTypeAttribute(Namespace="http://services.service.lkprogrammers.org/")]
-    public partial class alumno : usuario {
-        
-        private int codigoAlumnoField;
-        
-        private grado gradoField;
-        
-        private bool gradoFieldSpecified;
-        
-        /// <remarks/>
-        [System.Xml.Serialization.XmlElementAttribute(Form=System.Xml.Schema.XmlSchemaForm.Unqualified, Order=0)]
-        public int codigoAlumno {
-            get {
-                return this.codigoAlumnoField;
-            }
-            set {
-                this.codigoAlumnoField = value;
-                this.RaisePropertyChanged("codigoAlumno");
-            }
-        }
-        
-        /// <remarks/>
-        [System.Xml.Serialization.XmlElementAttribute(Form=System.Xml.Schema.XmlSchemaForm.Unqualified, Order=1)]
-        public grado grado {
-            get {
-                return this.gradoField;
-            }
-            set {
-                this.gradoField = value;
-                this.RaisePropertyChanged("grado");
-            }
-        }
-        
-        /// <remarks/>
-        [System.Xml.Serialization.XmlIgnoreAttribute()]
-        public bool gradoSpecified {
-            get {
-                return this.gradoFieldSpecified;
-            }
-            set {
-                this.gradoFieldSpecified = value;
-                this.RaisePropertyChanged("gradoSpecified");
-            }
-        }
-    }
-    
-    /// <remarks/>
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.8.9032.0")]
-    [System.SerializableAttribute()]
-    [System.Xml.Serialization.XmlTypeAttribute(Namespace="http://services.service.lkprogrammers.org/")]
-    public enum grado {
-        
-        /// <remarks/>
-        NN,
-        
-        /// <remarks/>
-        INI2,
-        
-        /// <remarks/>
-        INI3,
-        
-        /// <remarks/>
-        INI4,
-        
-        /// <remarks/>
-        INI5,
-        
-        /// <remarks/>
-        PRIM1,
-        
-        /// <remarks/>
-        PRIM2,
-        
-        /// <remarks/>
-        PRIM3,
-        
-        /// <remarks/>
-        PRIM4,
-        
-        /// <remarks/>
-        PRIM5,
-        
-        /// <remarks/>
-        PRIM6,
-    }
-    
-    [System.Diagnostics.DebuggerStepThroughAttribute()]
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
-    [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
-    [System.ServiceModel.MessageContractAttribute(WrapperName="insertarAsistencia", WrapperNamespace="http://services.service.lkprogrammers.org/", IsWrapped=true)]
-    public partial class insertarAsistenciaRequest {
-        
-        [System.ServiceModel.MessageBodyMemberAttribute(Namespace="http://services.service.lkprogrammers.org/", Order=0)]
-        [System.Xml.Serialization.XmlElementAttribute(Form=System.Xml.Schema.XmlSchemaForm.Unqualified)]
-        public WebForm.ServicioWS.asistencia asistencia;
-        
-        [System.ServiceModel.MessageBodyMemberAttribute(Namespace="http://services.service.lkprogrammers.org/", Order=1)]
-        [System.Xml.Serialization.XmlElementAttribute(Form=System.Xml.Schema.XmlSchemaForm.Unqualified)]
-        public string dniAlumno;
-        
-        public insertarAsistenciaRequest() {
-        }
-        
-        public insertarAsistenciaRequest(WebForm.ServicioWS.asistencia asistencia, string dniAlumno) {
-            this.asistencia = asistencia;
-            this.dniAlumno = dniAlumno;
-        }
-    }
-    
-    [System.Diagnostics.DebuggerStepThroughAttribute()]
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
-    [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
-    [System.ServiceModel.MessageContractAttribute(WrapperName="insertarAsistenciaResponse", WrapperNamespace="http://services.service.lkprogrammers.org/", IsWrapped=true)]
-    public partial class insertarAsistenciaResponse {
-        
-        [System.ServiceModel.MessageBodyMemberAttribute(Namespace="http://services.service.lkprogrammers.org/", Order=0)]
-        [System.Xml.Serialization.XmlElementAttribute(Form=System.Xml.Schema.XmlSchemaForm.Unqualified)]
-        public int @return;
-        
-        public insertarAsistenciaResponse() {
-        }
-        
-        public insertarAsistenciaResponse(int @return) {
-            this.@return = @return;
-        }
-    }
-    
-    [System.Diagnostics.DebuggerStepThroughAttribute()]
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
-    [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
-    [System.ServiceModel.MessageContractAttribute(WrapperName="listarAlumnosxsalon", WrapperNamespace="http://services.service.lkprogrammers.org/", IsWrapped=true)]
-    public partial class listarAlumnosxsalonRequest {
-        
-        [System.ServiceModel.MessageBodyMemberAttribute(Namespace="http://services.service.lkprogrammers.org/", Order=0)]
-        [System.Xml.Serialization.XmlElementAttribute(Form=System.Xml.Schema.XmlSchemaForm.Unqualified)]
-        public int idsalon;
-        
-        public listarAlumnosxsalonRequest() {
-        }
-        
-        public listarAlumnosxsalonRequest(int idsalon) {
-            this.idsalon = idsalon;
-        }
-    }
-    
-    [System.Diagnostics.DebuggerStepThroughAttribute()]
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
-    [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
-    [System.ServiceModel.MessageContractAttribute(WrapperName="listarAlumnosxsalonResponse", WrapperNamespace="http://services.service.lkprogrammers.org/", IsWrapped=true)]
-    public partial class listarAlumnosxsalonResponse {
-        
-        [System.ServiceModel.MessageBodyMemberAttribute(Namespace="http://services.service.lkprogrammers.org/", Order=0)]
-        [System.Xml.Serialization.XmlElementAttribute("return", Form=System.Xml.Schema.XmlSchemaForm.Unqualified)]
-        public WebForm.ServicioWS.alumno[] @return;
-        
-        public listarAlumnosxsalonResponse() {
-        }
-        
-        public listarAlumnosxsalonResponse(WebForm.ServicioWS.alumno[] @return) {
-            this.@return = @return;
-        }
-    }
-    
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
     [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
@@ -819,35 +622,27 @@ namespace WebForm.ServicioWS {
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
     [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
-    [System.ServiceModel.MessageContractAttribute(WrapperName="esTutorAsignado", WrapperNamespace="http://services.service.lkprogrammers.org/", IsWrapped=true)]
-    public partial class esTutorAsignadoRequest {
+    [System.ServiceModel.MessageContractAttribute(WrapperName="listarAlumnos", WrapperNamespace="http://services.service.lkprogrammers.org/", IsWrapped=true)]
+    public partial class listarAlumnosRequest {
         
-        [System.ServiceModel.MessageBodyMemberAttribute(Namespace="http://services.service.lkprogrammers.org/", Order=0)]
-        [System.Xml.Serialization.XmlElementAttribute(Form=System.Xml.Schema.XmlSchemaForm.Unqualified)]
-        public string dniProfesor;
-        
-        public esTutorAsignadoRequest() {
-        }
-        
-        public esTutorAsignadoRequest(string dniProfesor) {
-            this.dniProfesor = dniProfesor;
+        public listarAlumnosRequest() {
         }
     }
     
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
     [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
-    [System.ServiceModel.MessageContractAttribute(WrapperName="esTutorAsignadoResponse", WrapperNamespace="http://services.service.lkprogrammers.org/", IsWrapped=true)]
-    public partial class esTutorAsignadoResponse {
+    [System.ServiceModel.MessageContractAttribute(WrapperName="listarAlumnosResponse", WrapperNamespace="http://services.service.lkprogrammers.org/", IsWrapped=true)]
+    public partial class listarAlumnosResponse {
         
         [System.ServiceModel.MessageBodyMemberAttribute(Namespace="http://services.service.lkprogrammers.org/", Order=0)]
-        [System.Xml.Serialization.XmlElementAttribute(Form=System.Xml.Schema.XmlSchemaForm.Unqualified)]
-        public int @return;
+        [System.Xml.Serialization.XmlElementAttribute("return", Form=System.Xml.Schema.XmlSchemaForm.Unqualified)]
+        public WebForm.ServicioWS.alumno[] @return;
         
-        public esTutorAsignadoResponse() {
+        public listarAlumnosResponse() {
         }
         
-        public esTutorAsignadoResponse(int @return) {
+        public listarAlumnosResponse(WebForm.ServicioWS.alumno[] @return) {
             this.@return = @return;
         }
     }
@@ -896,27 +691,71 @@ namespace WebForm.ServicioWS {
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
     [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
-    [System.ServiceModel.MessageContractAttribute(WrapperName="listarAlumnos", WrapperNamespace="http://services.service.lkprogrammers.org/", IsWrapped=true)]
-    public partial class listarAlumnosRequest {
+    [System.ServiceModel.MessageContractAttribute(WrapperName="esTutorAsignado", WrapperNamespace="http://services.service.lkprogrammers.org/", IsWrapped=true)]
+    public partial class esTutorAsignadoRequest {
         
-        public listarAlumnosRequest() {
+        [System.ServiceModel.MessageBodyMemberAttribute(Namespace="http://services.service.lkprogrammers.org/", Order=0)]
+        [System.Xml.Serialization.XmlElementAttribute(Form=System.Xml.Schema.XmlSchemaForm.Unqualified)]
+        public string dniProfesor;
+        
+        public esTutorAsignadoRequest() {
+        }
+        
+        public esTutorAsignadoRequest(string dniProfesor) {
+            this.dniProfesor = dniProfesor;
         }
     }
     
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
     [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
-    [System.ServiceModel.MessageContractAttribute(WrapperName="listarAlumnosResponse", WrapperNamespace="http://services.service.lkprogrammers.org/", IsWrapped=true)]
-    public partial class listarAlumnosResponse {
+    [System.ServiceModel.MessageContractAttribute(WrapperName="esTutorAsignadoResponse", WrapperNamespace="http://services.service.lkprogrammers.org/", IsWrapped=true)]
+    public partial class esTutorAsignadoResponse {
+        
+        [System.ServiceModel.MessageBodyMemberAttribute(Namespace="http://services.service.lkprogrammers.org/", Order=0)]
+        [System.Xml.Serialization.XmlElementAttribute(Form=System.Xml.Schema.XmlSchemaForm.Unqualified)]
+        public int @return;
+        
+        public esTutorAsignadoResponse() {
+        }
+        
+        public esTutorAsignadoResponse(int @return) {
+            this.@return = @return;
+        }
+    }
+    
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
+    [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+    [System.ServiceModel.MessageContractAttribute(WrapperName="listarAlumnosxsalon", WrapperNamespace="http://services.service.lkprogrammers.org/", IsWrapped=true)]
+    public partial class listarAlumnosxsalonRequest {
+        
+        [System.ServiceModel.MessageBodyMemberAttribute(Namespace="http://services.service.lkprogrammers.org/", Order=0)]
+        [System.Xml.Serialization.XmlElementAttribute(Form=System.Xml.Schema.XmlSchemaForm.Unqualified)]
+        public int idsalon;
+        
+        public listarAlumnosxsalonRequest() {
+        }
+        
+        public listarAlumnosxsalonRequest(int idsalon) {
+            this.idsalon = idsalon;
+        }
+    }
+    
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
+    [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+    [System.ServiceModel.MessageContractAttribute(WrapperName="listarAlumnosxsalonResponse", WrapperNamespace="http://services.service.lkprogrammers.org/", IsWrapped=true)]
+    public partial class listarAlumnosxsalonResponse {
         
         [System.ServiceModel.MessageBodyMemberAttribute(Namespace="http://services.service.lkprogrammers.org/", Order=0)]
         [System.Xml.Serialization.XmlElementAttribute("return", Form=System.Xml.Schema.XmlSchemaForm.Unqualified)]
         public WebForm.ServicioWS.alumno[] @return;
         
-        public listarAlumnosResponse() {
+        public listarAlumnosxsalonResponse() {
         }
         
-        public listarAlumnosResponse(WebForm.ServicioWS.alumno[] @return) {
+        public listarAlumnosxsalonResponse(WebForm.ServicioWS.alumno[] @return) {
             this.@return = @return;
         }
     }
@@ -969,54 +808,6 @@ namespace WebForm.ServicioWS {
             WebForm.ServicioWS.helloRequest inValue = new WebForm.ServicioWS.helloRequest();
             inValue.name = name;
             return ((WebForm.ServicioWS.LKServicioWeb)(this)).helloAsync(inValue);
-        }
-        
-        [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
-        WebForm.ServicioWS.insertarAsistenciaResponse WebForm.ServicioWS.LKServicioWeb.insertarAsistencia(WebForm.ServicioWS.insertarAsistenciaRequest request) {
-            return base.Channel.insertarAsistencia(request);
-        }
-        
-        public int insertarAsistencia(WebForm.ServicioWS.asistencia asistencia, string dniAlumno) {
-            WebForm.ServicioWS.insertarAsistenciaRequest inValue = new WebForm.ServicioWS.insertarAsistenciaRequest();
-            inValue.asistencia = asistencia;
-            inValue.dniAlumno = dniAlumno;
-            WebForm.ServicioWS.insertarAsistenciaResponse retVal = ((WebForm.ServicioWS.LKServicioWeb)(this)).insertarAsistencia(inValue);
-            return retVal.@return;
-        }
-        
-        [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
-        System.Threading.Tasks.Task<WebForm.ServicioWS.insertarAsistenciaResponse> WebForm.ServicioWS.LKServicioWeb.insertarAsistenciaAsync(WebForm.ServicioWS.insertarAsistenciaRequest request) {
-            return base.Channel.insertarAsistenciaAsync(request);
-        }
-        
-        public System.Threading.Tasks.Task<WebForm.ServicioWS.insertarAsistenciaResponse> insertarAsistenciaAsync(WebForm.ServicioWS.asistencia asistencia, string dniAlumno) {
-            WebForm.ServicioWS.insertarAsistenciaRequest inValue = new WebForm.ServicioWS.insertarAsistenciaRequest();
-            inValue.asistencia = asistencia;
-            inValue.dniAlumno = dniAlumno;
-            return ((WebForm.ServicioWS.LKServicioWeb)(this)).insertarAsistenciaAsync(inValue);
-        }
-        
-        [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
-        WebForm.ServicioWS.listarAlumnosxsalonResponse WebForm.ServicioWS.LKServicioWeb.listarAlumnosxsalon(WebForm.ServicioWS.listarAlumnosxsalonRequest request) {
-            return base.Channel.listarAlumnosxsalon(request);
-        }
-        
-        public WebForm.ServicioWS.alumno[] listarAlumnosxsalon(int idsalon) {
-            WebForm.ServicioWS.listarAlumnosxsalonRequest inValue = new WebForm.ServicioWS.listarAlumnosxsalonRequest();
-            inValue.idsalon = idsalon;
-            WebForm.ServicioWS.listarAlumnosxsalonResponse retVal = ((WebForm.ServicioWS.LKServicioWeb)(this)).listarAlumnosxsalon(inValue);
-            return retVal.@return;
-        }
-        
-        [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
-        System.Threading.Tasks.Task<WebForm.ServicioWS.listarAlumnosxsalonResponse> WebForm.ServicioWS.LKServicioWeb.listarAlumnosxsalonAsync(WebForm.ServicioWS.listarAlumnosxsalonRequest request) {
-            return base.Channel.listarAlumnosxsalonAsync(request);
-        }
-        
-        public System.Threading.Tasks.Task<WebForm.ServicioWS.listarAlumnosxsalonResponse> listarAlumnosxsalonAsync(int idsalon) {
-            WebForm.ServicioWS.listarAlumnosxsalonRequest inValue = new WebForm.ServicioWS.listarAlumnosxsalonRequest();
-            inValue.idsalon = idsalon;
-            return ((WebForm.ServicioWS.LKServicioWeb)(this)).listarAlumnosxsalonAsync(inValue);
         }
         
         [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
@@ -1106,26 +897,24 @@ namespace WebForm.ServicioWS {
         }
         
         [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
-        WebForm.ServicioWS.esTutorAsignadoResponse WebForm.ServicioWS.LKServicioWeb.esTutorAsignado(WebForm.ServicioWS.esTutorAsignadoRequest request) {
-            return base.Channel.esTutorAsignado(request);
+        WebForm.ServicioWS.listarAlumnosResponse WebForm.ServicioWS.LKServicioWeb.listarAlumnos(WebForm.ServicioWS.listarAlumnosRequest request) {
+            return base.Channel.listarAlumnos(request);
         }
         
-        public int esTutorAsignado(string dniProfesor) {
-            WebForm.ServicioWS.esTutorAsignadoRequest inValue = new WebForm.ServicioWS.esTutorAsignadoRequest();
-            inValue.dniProfesor = dniProfesor;
-            WebForm.ServicioWS.esTutorAsignadoResponse retVal = ((WebForm.ServicioWS.LKServicioWeb)(this)).esTutorAsignado(inValue);
+        public WebForm.ServicioWS.alumno[] listarAlumnos() {
+            WebForm.ServicioWS.listarAlumnosRequest inValue = new WebForm.ServicioWS.listarAlumnosRequest();
+            WebForm.ServicioWS.listarAlumnosResponse retVal = ((WebForm.ServicioWS.LKServicioWeb)(this)).listarAlumnos(inValue);
             return retVal.@return;
         }
         
         [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
-        System.Threading.Tasks.Task<WebForm.ServicioWS.esTutorAsignadoResponse> WebForm.ServicioWS.LKServicioWeb.esTutorAsignadoAsync(WebForm.ServicioWS.esTutorAsignadoRequest request) {
-            return base.Channel.esTutorAsignadoAsync(request);
+        System.Threading.Tasks.Task<WebForm.ServicioWS.listarAlumnosResponse> WebForm.ServicioWS.LKServicioWeb.listarAlumnosAsync(WebForm.ServicioWS.listarAlumnosRequest request) {
+            return base.Channel.listarAlumnosAsync(request);
         }
         
-        public System.Threading.Tasks.Task<WebForm.ServicioWS.esTutorAsignadoResponse> esTutorAsignadoAsync(string dniProfesor) {
-            WebForm.ServicioWS.esTutorAsignadoRequest inValue = new WebForm.ServicioWS.esTutorAsignadoRequest();
-            inValue.dniProfesor = dniProfesor;
-            return ((WebForm.ServicioWS.LKServicioWeb)(this)).esTutorAsignadoAsync(inValue);
+        public System.Threading.Tasks.Task<WebForm.ServicioWS.listarAlumnosResponse> listarAlumnosAsync() {
+            WebForm.ServicioWS.listarAlumnosRequest inValue = new WebForm.ServicioWS.listarAlumnosRequest();
+            return ((WebForm.ServicioWS.LKServicioWeb)(this)).listarAlumnosAsync(inValue);
         }
         
         [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
@@ -1154,24 +943,49 @@ namespace WebForm.ServicioWS {
         }
         
         [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
-        WebForm.ServicioWS.listarAlumnosResponse WebForm.ServicioWS.LKServicioWeb.listarAlumnos(WebForm.ServicioWS.listarAlumnosRequest request) {
-            return base.Channel.listarAlumnos(request);
+        WebForm.ServicioWS.esTutorAsignadoResponse WebForm.ServicioWS.LKServicioWeb.esTutorAsignado(WebForm.ServicioWS.esTutorAsignadoRequest request) {
+            return base.Channel.esTutorAsignado(request);
         }
         
-        public WebForm.ServicioWS.alumno[] listarAlumnos() {
-            WebForm.ServicioWS.listarAlumnosRequest inValue = new WebForm.ServicioWS.listarAlumnosRequest();
-            WebForm.ServicioWS.listarAlumnosResponse retVal = ((WebForm.ServicioWS.LKServicioWeb)(this)).listarAlumnos(inValue);
+        public int esTutorAsignado(string dniProfesor) {
+            WebForm.ServicioWS.esTutorAsignadoRequest inValue = new WebForm.ServicioWS.esTutorAsignadoRequest();
+            inValue.dniProfesor = dniProfesor;
+            WebForm.ServicioWS.esTutorAsignadoResponse retVal = ((WebForm.ServicioWS.LKServicioWeb)(this)).esTutorAsignado(inValue);
             return retVal.@return;
         }
         
         [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
-        System.Threading.Tasks.Task<WebForm.ServicioWS.listarAlumnosResponse> WebForm.ServicioWS.LKServicioWeb.listarAlumnosAsync(WebForm.ServicioWS.listarAlumnosRequest request) {
-            return base.Channel.listarAlumnosAsync(request);
+        System.Threading.Tasks.Task<WebForm.ServicioWS.esTutorAsignadoResponse> WebForm.ServicioWS.LKServicioWeb.esTutorAsignadoAsync(WebForm.ServicioWS.esTutorAsignadoRequest request) {
+            return base.Channel.esTutorAsignadoAsync(request);
         }
         
-        public System.Threading.Tasks.Task<WebForm.ServicioWS.listarAlumnosResponse> listarAlumnosAsync() {
-            WebForm.ServicioWS.listarAlumnosRequest inValue = new WebForm.ServicioWS.listarAlumnosRequest();
-            return ((WebForm.ServicioWS.LKServicioWeb)(this)).listarAlumnosAsync(inValue);
+        public System.Threading.Tasks.Task<WebForm.ServicioWS.esTutorAsignadoResponse> esTutorAsignadoAsync(string dniProfesor) {
+            WebForm.ServicioWS.esTutorAsignadoRequest inValue = new WebForm.ServicioWS.esTutorAsignadoRequest();
+            inValue.dniProfesor = dniProfesor;
+            return ((WebForm.ServicioWS.LKServicioWeb)(this)).esTutorAsignadoAsync(inValue);
+        }
+        
+        [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+        WebForm.ServicioWS.listarAlumnosxsalonResponse WebForm.ServicioWS.LKServicioWeb.listarAlumnosxsalon(WebForm.ServicioWS.listarAlumnosxsalonRequest request) {
+            return base.Channel.listarAlumnosxsalon(request);
+        }
+        
+        public WebForm.ServicioWS.alumno[] listarAlumnosxsalon(int idsalon) {
+            WebForm.ServicioWS.listarAlumnosxsalonRequest inValue = new WebForm.ServicioWS.listarAlumnosxsalonRequest();
+            inValue.idsalon = idsalon;
+            WebForm.ServicioWS.listarAlumnosxsalonResponse retVal = ((WebForm.ServicioWS.LKServicioWeb)(this)).listarAlumnosxsalon(inValue);
+            return retVal.@return;
+        }
+        
+        [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+        System.Threading.Tasks.Task<WebForm.ServicioWS.listarAlumnosxsalonResponse> WebForm.ServicioWS.LKServicioWeb.listarAlumnosxsalonAsync(WebForm.ServicioWS.listarAlumnosxsalonRequest request) {
+            return base.Channel.listarAlumnosxsalonAsync(request);
+        }
+        
+        public System.Threading.Tasks.Task<WebForm.ServicioWS.listarAlumnosxsalonResponse> listarAlumnosxsalonAsync(int idsalon) {
+            WebForm.ServicioWS.listarAlumnosxsalonRequest inValue = new WebForm.ServicioWS.listarAlumnosxsalonRequest();
+            inValue.idsalon = idsalon;
+            return ((WebForm.ServicioWS.LKServicioWeb)(this)).listarAlumnosxsalonAsync(inValue);
         }
     }
 }

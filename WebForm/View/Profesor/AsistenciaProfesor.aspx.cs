@@ -25,9 +25,11 @@ namespace WebForm.View.AsistenciaProfesor
                
         }
 
-        /*protected void BtnRegistrarAsistencia_Click(object sender, EventArgs e)
+        protected void BtnRegistrarAsistencia_Click(object sender, EventArgs e)
         {
-            Response.Redirect("/View/Profesor/RegistroAsistencia.aspx");
-        }*/
+            int idsalon = (int)Session["idsalon"];
+
+            Response.Redirect("/View/Profesor/RegistroAsistencia.aspx?idsalon="+idsalon);
+        }
     }
 }

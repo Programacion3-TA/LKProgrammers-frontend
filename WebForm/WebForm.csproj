@@ -101,11 +101,6 @@
     <Content Include="Public\js\bootstrap\bootstrap.esm.min.js" />
     <Content Include="Public\js\bootstrap\bootstrap.js" />
     <Content Include="Public\js\bootstrap\bootstrap.min.js" />
-    <None Include="Public\js\jquery\jquery-3.7.1.intellisense.js" />
-    <Content Include="Public\js\jquery\jquery-3.7.1.js" />
-    <Content Include="Public\js\jquery\jquery-3.7.1.min.js" />
-    <Content Include="Public\js\jquery\jquery-3.7.1.slim.js" />
-    <Content Include="Public\js\jquery\jquery-3.7.1.slim.min.js" />
     <Content Include="View\Admin\Estudiantes\Estudiantes.aspx" />
     <Content Include="View\Admin\Profesores\Profesores.js" />
     <Content Include="View\Admin\Profesores\Profesores.aspx" />
@@ -314,22 +309,10 @@
     <Content Include="Connected Services\ServicioWS\WebForm.ServicioWS.alumno.datasource">
       <DependentUpon>Reference.svcmap</DependentUpon>
     </Content>
-    <Content Include="Connected Services\ServicioWS\WebForm.ServicioWS.esTutorAsignadoResponse.datasource">
-      <DependentUpon>Reference.svcmap</DependentUpon>
-    </Content>
-    <Content Include="Connected Services\ServicioWS\WebForm.ServicioWS.helloResponse.datasource">
-      <DependentUpon>Reference.svcmap</DependentUpon>
-    </Content>
-    <Content Include="Connected Services\ServicioWS\WebForm.ServicioWS.insertarAsistenciaResponse.datasource">
-      <DependentUpon>Reference.svcmap</DependentUpon>
-    </Content>
     <Content Include="Connected Services\ServicioWS\WebForm.ServicioWS.listarAdministradoresResponse.datasource">
       <DependentUpon>Reference.svcmap</DependentUpon>
     </Content>
     <Content Include="Connected Services\ServicioWS\WebForm.ServicioWS.listarAlumnosResponse.datasource">
-      <DependentUpon>Reference.svcmap</DependentUpon>
-    </Content>
-    <Content Include="Connected Services\ServicioWS\WebForm.ServicioWS.listarAlumnosxsalonResponse.datasource">
       <DependentUpon>Reference.svcmap</DependentUpon>
     </Content>
     <Content Include="Connected Services\ServicioWS\WebForm.ServicioWS.listarProfesoresResponse.datasource">
@@ -350,6 +333,15 @@
     <Content Include="Connected Services\ServicioWS\WebForm.ServicioWS.usuario.datasource">
       <DependentUpon>Reference.svcmap</DependentUpon>
     </Content>
+    <Content Include="Connected Services\ServicioWS\WebForm.ServicioWS.esTutorAsignadoResponse1.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Content>
+    <Content Include="Connected Services\ServicioWS\WebForm.ServicioWS.helloResponse1.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Content>
+    <Content Include="Connected Services\ServicioWS\WebForm.ServicioWS.listarAlumnosxsalonResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Content>
     <None Include="packages.config" />
     <Content Include="Public\js\bootstrap\bootstrap.min.js.map" />
     <Content Include="Public\js\bootstrap\bootstrap.js.map" />
@@ -357,8 +349,6 @@
     <Content Include="Public\js\bootstrap\bootstrap.esm.js.map" />
     <Content Include="Public\js\bootstrap\bootstrap.bundle.min.js.map" />
     <Content Include="Public\js\bootstrap\bootstrap.bundle.js.map" />
-    <Content Include="Public\js\jquery\jquery-3.7.1.slim.min.map" />
-    <Content Include="Public\js\jquery\jquery-3.7.1.min.map" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
