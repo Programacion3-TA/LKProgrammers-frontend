@@ -336,18 +336,6 @@
     <Folder Include="Scripts\" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\Models\Models.csproj">
-      <Project>{e00b17ba-b0c3-4179-aa5b-6681c0c9d6de}</Project>
-      <Name>Models</Name>
-    </ProjectReference>
-  </ItemGroup>
-  <ItemGroup>
-    <ProjectReference Include="..\Asistencia\TestAsistenciaModel.csproj">
-      <Project>{09dc1302-c4e8-4537-b2d9-0cb496df14fa}</Project>
-      <Name>TestAsistenciaModel</Name>
-    </ProjectReference>
-  </ItemGroup>
-  <ItemGroup>
     <WCFMetadata Include="Connected Services\" />
   </ItemGroup>
   <ItemGroup>
