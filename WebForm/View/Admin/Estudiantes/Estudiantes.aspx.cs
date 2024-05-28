@@ -4,12 +4,12 @@ using System.Linq;
 using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
-using Models;
 
 namespace WebForm.View.Admin.Estudiantes
 {
     public partial class Estudiantes : System.Web.UI.Page
     {
+        /*
         public static List<AlumnoN> alumnos;
 
         static Estudiantes()
@@ -28,19 +28,19 @@ namespace WebForm.View.Admin.Estudiantes
                    Telefono="+91 222 111 222",
 
                });
-        }
+        }*/
         protected void Page_Load(object sender, EventArgs e)
         {
             CargarTabla();
         }
         protected void CargarTabla()
         {
-            GridAlumnos.DataSource = alumnos;
-            GridAlumnos.DataBind();
+         /*   GridAlumnos.DataSource = alumnos;
+            GridAlumnos.DataBind();*/
         }
         protected void EditRow_Click(object sender, EventArgs e)
         {
-            LinkButton btn = (LinkButton)sender;
+           /* LinkButton btn = (LinkButton)sender;
             int codigoBusca = int.Parse(btn.CommandArgument);
 
             AlumnoN alumno = alumnos.Find(alu => alu.Codigo == codigoBusca);
@@ -52,16 +52,17 @@ namespace WebForm.View.Admin.Estudiantes
             TxtApellidoMat.Text = alumno.ApellidoMat;
             TxtCorreo.Text = alumno.Correo;
             SLGrado.SelectedValue = alumno.Grado;
-            CallJavascritp("showModalForm()");
+            CallJavascritp("showModalForm()");*/
 
         }
         protected void DelRow_Click(object sender, EventArgs e)
         {
+            /*
             LinkButton btn = ( LinkButton )sender;
             int codigo = int.Parse(btn.CommandArgument);
             AlumnoN alu = alumnos.Find(al => al.Codigo == codigo);
             alumnos.Remove(alu);
-            CargarTabla();
+            CargarTabla();*/
 
         }
         protected void BtnNuevo_Click(object sender, EventArgs e)
@@ -79,7 +80,7 @@ namespace WebForm.View.Admin.Estudiantes
         }
         protected void BntGuardar_Click(object sender, EventArgs e)
         {
-            AlumnoN alumno = new AlumnoN();
+          /*  AlumnoN alumno = new AlumnoN();
             bool actualizaOcrea = string.IsNullOrEmpty(TxtCode.Text);
             if (actualizaOcrea)
             {
@@ -101,7 +102,7 @@ namespace WebForm.View.Admin.Estudiantes
             {
                 alumnos.Add(alumno);
             }
-            CargarTabla() ;
+            CargarTabla() ;*/
         }
         private void CallJavascritp(string function)
         {

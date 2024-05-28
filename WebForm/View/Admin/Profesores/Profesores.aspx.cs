@@ -4,35 +4,14 @@ using System.Linq;
 using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
-using Models;
+
 
 namespace WebForm.View.Admin.Profesores
 {
     
     public partial class Profesores : System.Web.UI.Page
     {
-        public static List<Profesor> ListaProfesor;
-        static Profesores()
-        {
-            ListaProfesor = new List<Profesor>();
-            ListaProfesor.Add(new Profesor() {
-                Codigo= "001",
-                Nombre="Juan",
-                ApellidoPat="Perez",
-                ApellidoMat="Dávila",
-                Sexo='M',
-                Direccion="Su casa",
-                Correo="hola@gmail.com",
-                Username="juanp",
-                Telefono="960589039",
-                Dni="72207476",
-                Password="1234",
-                Especialidad="Matematicas",
-
-            });
-
-
-        }
+        //lo comente para evitar problemas , 
         protected void Page_Load(object sender, EventArgs e)
         {
             CargarTabla();
@@ -40,13 +19,13 @@ namespace WebForm.View.Admin.Profesores
 
         private void CargarTabla()
         {
-            GridProfesores.DataSource = ListaProfesor;
-            GridProfesores.DataBind();
+            /*GridProfesores.DataSource = ListaProfesor;
+            GridProfesores.DataBind();*/
         }
 
         protected void EditRow_Click(object sender, EventArgs e)
         {
-            Button btn = (Button)sender;
+           /* Button btn = (Button)sender;
             string code = btn.CommandArgument;
             Profesor profesor = ListaProfesor.Find(x => x.Codigo == code);
             TxtCode.Text = profesor.Codigo;
@@ -54,19 +33,21 @@ namespace WebForm.View.Admin.Profesores
             TxtApellidoPat.Text = profesor.ApellidoPat;
             TxtApellidoMat.Text = profesor.ApellidoMat;
             TxtEspecialidad.Text = profesor.Especialidad;
-            CallJavascritp("showModalForm()");
+            CallJavascritp("showModalForm()");*/
         }
         protected void DelRow_Click(object sender, EventArgs e)
         {
+            /*
             Button btn = (Button)sender;
             string code = btn.CommandArgument;
             Profesor profesor = ListaProfesor.Find(x => x.Codigo == code);
             ListaProfesor.Remove(profesor);
-            CargarTabla();
+            CargarTabla();*/
         }
 
         protected void ButGuardar_Click(object sender, EventArgs e)
         {
+            /*
             Profesor profesor = new Profesor();
             if (string.IsNullOrEmpty(TxtCode.Text)) // crear
             {
@@ -87,7 +68,7 @@ namespace WebForm.View.Admin.Profesores
                 profesor.Especialidad = TxtEspecialidad.Text;
                 CargarTabla();
             }
-            Response.Redirect(Request.Url.AbsoluteUri);
+            Response.Redirect(Request.Url.AbsoluteUri);*/
         }
 
         protected void BtnNuevo_Click(object sender, EventArgs e)

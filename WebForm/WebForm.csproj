@@ -107,6 +107,7 @@
     <Content Include="View\Alumno\Alumno.js" />
     <Content Include="View\Alumno\Alumno.aspx" />
     <Content Include="View\Alumno\AsistenciaAlumno.aspx" />
+    <Content Include="View\Login\WebForm1.aspx" />
     <Content Include="View\Profesor\AsistenciaProfesor.aspx" />
     <Content Include="View\Alumno\CalendarioAlumno.aspx" />
     <Content Include="View\Profesor\CompetenciaProfesor.aspx" />
@@ -114,6 +115,7 @@
     <Content Include="View\Profesor\CursoProfesor.aspx" />
     <Content Include="View\Error\Error404.aspx" />
     <Content Include="View\Login\Login.aspx" />
+    <Content Include="View\Profesor\ErroNoTutor.aspx" />
     <Content Include="View\Profesor\NotaProfesor.aspx" />
     <Content Include="View\Profesor\Profesor.css" />
     <Content Include="View\Profesor\Profesor.js" />
@@ -197,6 +199,13 @@
     <Compile Include="View\Alumno\AsistenciaAlumno.aspx.designer.cs">
       <DependentUpon>AsistenciaAlumno.aspx</DependentUpon>
     </Compile>
+    <Compile Include="View\Login\WebForm1.aspx.cs">
+      <DependentUpon>WebForm1.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="View\Login\WebForm1.aspx.designer.cs">
+      <DependentUpon>WebForm1.aspx</DependentUpon>
+    </Compile>
     <Compile Include="View\Profesor\AsistenciaProfesor.aspx.cs">
       <DependentUpon>AsistenciaProfesor.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -245,6 +254,13 @@
     </Compile>
     <Compile Include="View\Login\Login.aspx.designer.cs">
       <DependentUpon>Login.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="View\Profesor\ErroNoTutor.aspx.cs">
+      <DependentUpon>ErroNoTutor.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="View\Profesor\ErroNoTutor.aspx.designer.cs">
+      <DependentUpon>ErroNoTutor.aspx</DependentUpon>
     </Compile>
     <Compile Include="View\Profesor\NotaProfesor.aspx.cs">
       <DependentUpon>NotaProfesor.aspx</DependentUpon>
@@ -314,6 +330,9 @@
       <DependentUpon>Reference.svcmap</DependentUpon>
     </Content>
     <Content Include="Layout\MainAdministrador.master" />
+    <Content Include="Connected Services\ServicioWS\WebForm.ServicioWS.esTutorResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Content>
     <None Include="packages.config" />
     <Content Include="Public\js\bootstrap\bootstrap.min.js.map" />
     <Content Include="Public\js\bootstrap\bootstrap.js.map" />
@@ -331,18 +350,6 @@
   <ItemGroup>
     <Folder Include="Public\multimedia\" />
     <Folder Include="Scripts\" />
-  </ItemGroup>
-  <ItemGroup>
-    <ProjectReference Include="..\Models\Models.csproj">
-      <Project>{e00b17ba-b0c3-4179-aa5b-6681c0c9d6de}</Project>
-      <Name>Models</Name>
-    </ProjectReference>
-  </ItemGroup>
-  <ItemGroup>
-    <ProjectReference Include="..\Asistencia\TestAsistenciaModel.csproj">
-      <Project>{09dc1302-c4e8-4537-b2d9-0cb496df14fa}</Project>
-      <Name>TestAsistenciaModel</Name>
-    </ProjectReference>
   </ItemGroup>
   <ItemGroup>
     <WCFMetadata Include="Connected Services\" />
