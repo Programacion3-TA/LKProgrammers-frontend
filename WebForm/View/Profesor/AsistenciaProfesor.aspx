@@ -17,7 +17,7 @@
             </div>
             <div>
                 <div class="text-end p-3">
-                   
+                    <asp:LinkButton ID="LinkButton1" runat="server" OnClick="LinkButton1_Click">LinkButton</asp:LinkButton>
                 </div>
             </div>
         </div>

@@ -101,6 +101,52 @@
     <Content Include="Public\js\bootstrap\bootstrap.esm.min.js" />
     <Content Include="Public\js\bootstrap\bootstrap.js" />
     <Content Include="Public\js\bootstrap\bootstrap.min.js" />
+    <None Include="Connected Services\ServicioWS\LKServicioWeb.wsdl" />
+    <None Include="Connected Services\ServicioWS\LKServicioWeb.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <Content Include="Connected Services\ServicioWS\WebForm.ServicioWS.acceder_a_paginaResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Content>
+    <Content Include="Connected Services\ServicioWS\WebForm.ServicioWS.alumno.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Content>
+    <Content Include="Connected Services\ServicioWS\WebForm.ServicioWS.esTutorAsignadoResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Content>
+    <Content Include="Connected Services\ServicioWS\WebForm.ServicioWS.helloResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Content>
+    <Content Include="Connected Services\ServicioWS\WebForm.ServicioWS.insertarAsistenciaResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Content>
+    <Content Include="Connected Services\ServicioWS\WebForm.ServicioWS.listarAdministradoresResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Content>
+    <Content Include="Connected Services\ServicioWS\WebForm.ServicioWS.listarAlumnosResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Content>
+    <Content Include="Connected Services\ServicioWS\WebForm.ServicioWS.listarAlumnosxsalonResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Content>
+    <Content Include="Connected Services\ServicioWS\WebForm.ServicioWS.listarProfesoresResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Content>
+    <Content Include="Connected Services\ServicioWS\WebForm.ServicioWS.listarUsuariosResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Content>
+    <Content Include="Connected Services\ServicioWS\WebForm.ServicioWS.personalAdministrativo.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Content>
+    <Content Include="Connected Services\ServicioWS\WebForm.ServicioWS.profesor.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Content>
+    <Content Include="Connected Services\ServicioWS\WebForm.ServicioWS.Reporte_general_notas_de_alumnoResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Content>
+    <Content Include="Connected Services\ServicioWS\WebForm.ServicioWS.usuario.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Content>
     <None Include="Public\js\jquery\jquery-3.7.1.intellisense.js" />
     <Content Include="Public\js\jquery\jquery-3.7.1.js" />
     <Content Include="Public\js\jquery\jquery-3.7.1.min.js" />
@@ -304,52 +350,6 @@
     <Content Include="Layout\MainAlumno.master" />
     <Content Include="Layout\MainProfesor.master" />
     <Content Include="Layout\MainAdministrador.master" />
-    <None Include="Connected Services\ServicioWS\LKServicioWeb.wsdl" />
-    <None Include="Connected Services\ServicioWS\LKServicioWeb.xsd">
-      <SubType>Designer</SubType>
-    </None>
-    <Content Include="Connected Services\ServicioWS\WebForm.ServicioWS.acceder_a_paginaResponse.datasource">
-      <DependentUpon>Reference.svcmap</DependentUpon>
-    </Content>
-    <Content Include="Connected Services\ServicioWS\WebForm.ServicioWS.alumno.datasource">
-      <DependentUpon>Reference.svcmap</DependentUpon>
-    </Content>
-    <Content Include="Connected Services\ServicioWS\WebForm.ServicioWS.esTutorAsignadoResponse.datasource">
-      <DependentUpon>Reference.svcmap</DependentUpon>
-    </Content>
-    <Content Include="Connected Services\ServicioWS\WebForm.ServicioWS.helloResponse.datasource">
-      <DependentUpon>Reference.svcmap</DependentUpon>
-    </Content>
-    <Content Include="Connected Services\ServicioWS\WebForm.ServicioWS.insertarAsistenciaResponse.datasource">
-      <DependentUpon>Reference.svcmap</DependentUpon>
-    </Content>
-    <Content Include="Connected Services\ServicioWS\WebForm.ServicioWS.listarAdministradoresResponse.datasource">
-      <DependentUpon>Reference.svcmap</DependentUpon>
-    </Content>
-    <Content Include="Connected Services\ServicioWS\WebForm.ServicioWS.listarAlumnosResponse.datasource">
-      <DependentUpon>Reference.svcmap</DependentUpon>
-    </Content>
-    <Content Include="Connected Services\ServicioWS\WebForm.ServicioWS.listarAlumnosxsalonResponse.datasource">
-      <DependentUpon>Reference.svcmap</DependentUpon>
-    </Content>
-    <Content Include="Connected Services\ServicioWS\WebForm.ServicioWS.listarProfesoresResponse.datasource">
-      <DependentUpon>Reference.svcmap</DependentUpon>
-    </Content>
-    <Content Include="Connected Services\ServicioWS\WebForm.ServicioWS.listarUsuariosResponse.datasource">
-      <DependentUpon>Reference.svcmap</DependentUpon>
-    </Content>
-    <Content Include="Connected Services\ServicioWS\WebForm.ServicioWS.personalAdministrativo.datasource">
-      <DependentUpon>Reference.svcmap</DependentUpon>
-    </Content>
-    <Content Include="Connected Services\ServicioWS\WebForm.ServicioWS.profesor.datasource">
-      <DependentUpon>Reference.svcmap</DependentUpon>
-    </Content>
-    <Content Include="Connected Services\ServicioWS\WebForm.ServicioWS.Reporte_general_notas_de_alumnoResponse.datasource">
-      <DependentUpon>Reference.svcmap</DependentUpon>
-    </Content>
-    <Content Include="Connected Services\ServicioWS\WebForm.ServicioWS.usuario.datasource">
-      <DependentUpon>Reference.svcmap</DependentUpon>
-    </Content>
     <None Include="packages.config" />
     <Content Include="Public\js\bootstrap\bootstrap.min.js.map" />
     <Content Include="Public\js\bootstrap\bootstrap.js.map" />
