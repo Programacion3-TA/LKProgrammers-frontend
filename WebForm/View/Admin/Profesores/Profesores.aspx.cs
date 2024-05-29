@@ -95,7 +95,7 @@ namespace WebForm.View.Admin.Profesores
                 profesor.contrasenia = TxtPassword.Text;
                 profesor.fechaNac = DateTime.ParseExact(TxtFechaNacimiento.Text, "yyyy-MM-dd", CultureInfo.InvariantCulture);
                 profesor.dni = TxtDNI.Text;
-                daoServicio.editarprofesor(profesor);
+                daoServicio.editarProfesor(profesor);
                 CargarTabla();
             }
             Response.Redirect(Request.Url.AbsoluteUri);

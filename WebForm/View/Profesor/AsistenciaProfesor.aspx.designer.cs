@@ -24,6 +24,24 @@ namespace WebForm.View.AsistenciaProfesor
         protected global::WebForm.Components.Path MyCustomControl1;
 
         /// <summary>
+        /// Control TxtBuscarDias.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.TextBox TxtBuscarDias;
+
+        /// <summary>
+        /// Control BtnBuscarDias.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Button BtnBuscarDias;
+
+        /// <summary>
         /// Control BtnRegistrarAsistencia.
         /// </summary>
         /// <remarks>
@@ -31,5 +49,14 @@ namespace WebForm.View.AsistenciaProfesor
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
         protected global::System.Web.UI.WebControls.LinkButton BtnRegistrarAsistencia;
+
+        /// <summary>
+        /// Control GridAsistenciasFechas.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.GridView GridAsistenciasFechas;
     }
 }
