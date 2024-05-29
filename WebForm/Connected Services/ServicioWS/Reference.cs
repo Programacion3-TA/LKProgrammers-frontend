@@ -312,6 +312,46 @@ namespace WebForm.ServicioWS {
     }
     
     /// <remarks/>
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.8.9032.0")]
+    [System.SerializableAttribute()]
+    [System.Xml.Serialization.XmlTypeAttribute(Namespace="http://services.service.lkprogrammers.org/")]
+    public enum grado {
+        
+        /// <remarks/>
+        NN,
+        
+        /// <remarks/>
+        INI2,
+        
+        /// <remarks/>
+        INI3,
+        
+        /// <remarks/>
+        INI4,
+        
+        /// <remarks/>
+        INI5,
+        
+        /// <remarks/>
+        PRIM1,
+        
+        /// <remarks/>
+        PRIM2,
+        
+        /// <remarks/>
+        PRIM3,
+        
+        /// <remarks/>
+        PRIM4,
+        
+        /// <remarks/>
+        PRIM5,
+        
+        /// <remarks/>
+        PRIM6,
+    }
+    
+    /// <remarks/>
     [System.Xml.Serialization.XmlIncludeAttribute(typeof(alumno))]
     [System.Xml.Serialization.XmlIncludeAttribute(typeof(personalAdministrativo))]
     [System.Xml.Serialization.XmlIncludeAttribute(typeof(profesor))]
@@ -615,46 +655,31 @@ namespace WebForm.ServicioWS {
     [System.ComponentModel.DesignerCategoryAttribute("code")]
     [System.Xml.Serialization.XmlTypeAttribute(Namespace="http://services.service.lkprogrammers.org/")]
     public partial class anioEscolar : object, System.ComponentModel.INotifyPropertyChanged {
+        private int codigoProfesorField;
         
-        private ushort estadoField;
-        
-        private System.DateTime fechaCerradoField;
-        
-        private bool fechaCerradoFieldSpecified;
-        
-        private System.DateTime fechaFinField;
-        
-        private bool fechaFinFieldSpecified;
-        
-        private System.DateTime fechaInicioField;
-        
-        private bool fechaInicioFieldSpecified;
-        
-        private int idField;
-        
-        private string nombreField;
+        private string especialidadField;
         
         /// <remarks/>
         [System.Xml.Serialization.XmlElementAttribute(Form=System.Xml.Schema.XmlSchemaForm.Unqualified, Order=0)]
-        public ushort estado {
+        public int codigoProfesor {
             get {
-                return this.estadoField;
+                return this.codigoProfesorField;
             }
             set {
-                this.estadoField = value;
-                this.RaisePropertyChanged("estado");
+                this.codigoProfesorField = value;
+                this.RaisePropertyChanged("codigoProfesor");
             }
         }
         
         /// <remarks/>
         [System.Xml.Serialization.XmlElementAttribute(Form=System.Xml.Schema.XmlSchemaForm.Unqualified, Order=1)]
-        public System.DateTime fechaCerrado {
+        public string especialidad {
             get {
-                return this.fechaCerradoField;
+                return this.especialidadField;
             }
             set {
-                this.fechaCerradoField = value;
-                this.RaisePropertyChanged("fechaCerrado");
+                this.especialidadField = value;
+                this.RaisePropertyChanged("especialidad");
             }
         }
         
