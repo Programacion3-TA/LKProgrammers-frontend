@@ -9,6 +9,27 @@
 <asp:Content ID="Content3" ContentPlaceHolderID="Navegacion" runat="server">
     <!--bar de navegacion para administradores-->
     <li class="nav-item mb-1">
+        <a href="/View/Admin/AnioAcademico/AniosAcademicos.aspx">
+            <i class=" fa-solid fas fa-calendar-alt"></i>
+            Año Académico
+        </a>
+    </li>
+
+    <li class="nav-item mb-1">
+        <a href="/View/Admin/Cursos/CursosAdmin.aspx">
+            <i class="fa-solid fa-edit"></i>
+            Cursos
+        </a>
+    </li>
+    
+    <li class="nav-item mb-1">
+        <a href="/View/Admin/Salones/SalonesAdmin.aspx">
+            <i class="fa-solid fa-users"></i>
+            Salones
+        </a>
+    </li>
+
+    <li class="nav-item mb-1">
         <a href="/View/Admin/Profesores/Profesores.aspx">
             <i class="fa-solid fa-person-chalkboard"></i>
             Profesores
@@ -20,7 +41,7 @@
             <i class="fa-solid fa-user-graduate"></i>
             Estudiantes
         </a>
-    </li>
+    </li>    
 </asp:Content>
 
 <asp:Content ID="Content4" ContentPlaceHolderID="ImagenPerfil" runat="server">

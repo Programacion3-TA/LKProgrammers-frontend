@@ -21,7 +21,7 @@
         <div class="container">
             <div class="container row">
                 <div class="text-end p-3 mx-auto">
-                    <asp:LinkButton ID="BtnAgregar" runat="server" Text="<i class='fas fa-plus pe-2'> </i> Agregar"
+                    <asp:LinkButton ID="BtnAgregar" runat="server" Text="<i class='fas fa-plus pe-2'> </i> Agregar Profesor"
                         CssClass="btn btn-success"
                         OnClick="BtnNuevo_Click"/>
                 </div>
@@ -37,8 +37,8 @@
                         <asp:BoundField DataField="apellidoPaterno" HeaderText="Apellido Paterno" />
                         <asp:BoundField DataField="apellidoMaterno" HeaderText="Apellido Materno" />
                         <asp:BoundField DataField="especialidad" HeaderText="Especialidad" />
-                        
-                        <asp:TemplateField HeaderText="">
+
+                        <asp:TemplateField HeaderText="Acciones">
                             <ItemTemplate>
                                 <asp:Button ID="BtnEditar" runat="server" Text="Editar" CssClass="btn btn-warning"
                                     CommandArgument='<%#Eval("codigoProfesor") %>' OnClick="EditRow_Click" />
@@ -52,79 +52,44 @@
             </div>
         </div>
         <div id="modalForm" class="modal" tabindex="-1">
-    <div class="modal-dialog">
-        <div class="modal-content">
-            <div class="modal-header">
-                <h5 class="modal-title">Profesor</h5>
-                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-            </div>
-            <div class="modal-body">
-                <div class="container p-3">
-                    <div class="row">
-                        <div class="col-md-6 mb-3">
-                            <asp:Label ID="LblCode" runat="server" Text="Código:" CssClass="form-label"></asp:Label>
-                            <asp:TextBox ID="TxtCode" runat="server" CssClass="form-control" Enabled="false"></asp:TextBox>
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title">Profesor</h5>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                    </div>
+                    <div class="modal-body">
+                        <div class="container p-3 ">
+                            <div class="col-md-12  mb-3">
+                                <asp:Label ID="LblCode" runat="server" Text="Código:" CssClass="form-label"></asp:Label>
+                                <asp:TextBox ID="TxtCode" runat="server" CssClass="form-control" Enabled="false"></asp:TextBox>
+                            </div>
+                            <div class="col-md-12 mb-3">
+                                <asp:Label ID="LblNombre" runat="server" Text="Nombre:" CssClass="form-label"></asp:Label>
+                                <asp:TextBox ID="TxtNombre" runat="server" CssClass="form-control"></asp:TextBox>
+                            </div>
+                            <div class="col-md-12 mb-3">
+                                <asp:Label ID="LblApellidoPat" runat="server" Text="Apellido paterno:" CssClass="form-label"></asp:Label>
+                                <asp:TextBox ID="TxtApellidoPat" runat="server" CssClass="form-control"></asp:TextBox>
+                            </div>
+                            <div class="col-md-12 mb-3">
+                                <asp:Label ID="LblApellidoMat" runat="server" Text="Apellido materno:" CssClass="form-label"></asp:Label>
+                                <asp:TextBox ID="TxtApellidoMat" runat="server" CssClass="form-control"></asp:TextBox>
+                            </div>
+                            <div>
+                                <asp:Label ID="LblEspecialidad" runat="server" Text="Especialidad:" CssClass="form-label"></asp:Label>
+                                <asp:TextBox ID="TxtEspecialidad" runat="server" CssClass="form-control"></asp:TextBox>
+                            </div>
                         </div>
-                        <div class="col-md-6 mb-3">
-                            <asp:Label ID="LblNombre" runat="server" Text="Nombre:" CssClass="form-label"></asp:Label>
-                            <asp:TextBox ID="TxtNombre" runat="server" CssClass="form-control"></asp:TextBox>
-                        </div>
-                        <div class="col-md-6 mb-3">
-                            <asp:Label ID="LblApellidoPat" runat="server" Text="Apellido paterno:" CssClass="form-label"></asp:Label>
-                            <asp:TextBox ID="TxtApellidoPat" runat="server" CssClass="form-control"></asp:TextBox>
-                        </div>
-                        <div class="col-md-6 mb-3">
-                            <asp:Label ID="LblApellidoMat" runat="server" Text="Apellido materno:" CssClass="form-label"></asp:Label>
-                            <asp:TextBox ID="TxtApellidoMat" runat="server" CssClass="form-control"></asp:TextBox>
-                        </div>
-                        <div class="col-12 mb-3">
-                            <asp:Label ID="LblDireccion" runat="server" Text="Dirección:" CssClass="form-label"></asp:Label>
-                            <asp:TextBox ID="TxtDireccion" runat="server" CssClass="form-control"></asp:TextBox>
-                        </div>
-                        <div class="col-6 mb-3">
-                            <asp:Label ID="LblGenero" runat="server" Text="Género:" CssClass="form-label"></asp:Label>
-                            <asp:TextBox ID="TxtGenero" runat="server" CssClass="form-control"></asp:TextBox>
-                        </div>
-                        <div class="col-md-6 mb-3">
-                            <asp:Label ID="LblCorreo" runat="server" Text="Correo electrónico:" CssClass="form-label"></asp:Label>
-                            <asp:TextBox ID="TxtCorreo" runat="server" CssClass="form-control"></asp:TextBox>
-                        </div>
-                        <div class="col-md-6 mb-3">
-                            <asp:Label ID="LblUsername" runat="server" Text="Nombre de usuario:" CssClass="form-label"></asp:Label>
-                            <asp:TextBox ID="TxtUsername" runat="server" CssClass="form-control"></asp:TextBox>
-                        </div>
-                        <div class="col-md-6 mb-3">
-                            <asp:Label ID="LblPassword" runat="server" Text="Contraseña:" CssClass="form-label"></asp:Label>
-                            <asp:TextBox ID="TxtPassword" runat="server" CssClass="form-control"></asp:TextBox>
-                        </div>
-                        <div class="col-md-6 mb-3">
-                            <asp:Label ID="LblTelefono" runat="server" Text="Teléfono:" CssClass="form-label"></asp:Label>
-                            <asp:TextBox ID="TxtTelefono" runat="server" CssClass="form-control"></asp:TextBox>
-                        </div>
-                        <div class="col-md-6 mb-3">
-                            <asp:Label ID="LblFechaNacimiento" runat="server" Text="Fecha de Nacimiento:" CssClass="form-label"></asp:Label>
-                            <asp:TextBox ID="TxtFechaNacimiento" runat="server" CssClass="form-control"></asp:TextBox>
-                        </div>
-                        <div class="col-md-6 mb-3">
-                            <asp:Label ID="LblDNI" runat="server" Text="DNI del Profesor:" CssClass="form-label"></asp:Label>
-                            <asp:TextBox ID="TxtDNI" runat="server" CssClass="form-control"></asp:TextBox>
-                        </div>
-                        <div class="col-md-6 mb-3">
-                            <asp:Label ID="LblEspecialidad" runat="server" Text="Especialidad:" CssClass="form-label"></asp:Label>
-                            <asp:TextBox ID="TxtEspecialidad" runat="server" CssClass="form-control"></asp:TextBox>
-                        </div>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancelar</button>
+                        <asp:Button ID="ButGuardar" runat="server" Text="Guardar" CssClass="btn btn-primary"
+                            OnClick="ButGuardar_Click" OnClientClick="return validarFormulario();" />
                     </div>
                 </div>
             </div>
-            <div class="modal-footer">
-                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancelar</button>
-                <asp:Button ID="ButGuardar" runat="server" Text="Guardar" CssClass="btn btn-primary"
-                    OnClick="ButGuardar_Click" OnClientClick="return validarFormulario();" />
-            </div>
         </div>
-    </div>
-</div>
-
     </div>
 </asp:Content>
 <asp:Content ID="Content5" ContentPlaceHolderID="Script" runat="server">

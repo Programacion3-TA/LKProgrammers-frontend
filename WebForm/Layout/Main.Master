@@ -84,6 +84,9 @@
                     
                     <div class="ms-3">
                         <p style="color:#e0e0e0;">Nombre Usuario</p>
+                        <asp:ContentPlaceHolder ID="NombreUsuario" runat="server">
+
+                        </asp:ContentPlaceHolder>
                     </div>
                 </div>
             </header>

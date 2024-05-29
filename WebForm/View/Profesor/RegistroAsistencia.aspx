@@ -17,22 +17,17 @@
                 <asp:GridView ID="GridAlumnos" runat="server" AutoGenerateColumns="false"
                     AllowPaging="true" CssClass="table table-hover table-responsive table-striped">
                     <Columns>
-                        <asp:BoundField DataField="dni" HeaderText="Código del alumno" ItemStyle-HorizontalAlign="Center"  ItemStyle-VerticalAlign="Middle"/>
+                        <asp:BoundField DataField="codigoAlumno" HeaderText="Código del alumno" ItemStyle-HorizontalAlign="Center"  ItemStyle-VerticalAlign="Middle"/>
                         <asp:BoundField DataField="nombres" HeaderText="Nombre Completo del alumno"  ItemStyle-HorizontalAlign="Center"  ItemStyle-VerticalAlign="Middle"/>
-                        
                         <asp:TemplateField HeaderText="Marcar Asistencia">
                             <ItemTemplate>
                                 <asp:RadioButtonList ID="RadAsistencia" runat="server" RepeatDirection="Horizontal" CellPadding="10"
                                     CssClass=" d-flex justify-content-center " OnSelectedIndexChanged="RadAsistencia_SelectedIndexChanged" AutoPostBack="true">
-                                    <asp:ListItem Value="P" Text="Presente" Selected="True" />
-                                    <asp:ListItem Value="T" Text="Tardanza" />
-                                    <asp:ListItem Value="A" Text="Falta"/>
+                                    <asp:ListItem Value="P" Text="Presente"  />
+                                    <asp:ListItem Value="F" Text="Falta"/>
                                 </asp:RadioButtonList>
-                                <!--Asegura que se elija almenos uno-->
-                                <asp:HiddenField ID="HiddenDniAlumno" runat="server" Value='<%#Eval("dni") %>' />
-         
                             </ItemTemplate>
-                            <ItemStyle HorizontalAlign="Center" Width="350px" />
+                            <ItemStyle HorizontalAlign="Center" Width="200px" />
                         </asp:TemplateField>
                     </Columns>
                     <HeaderStyle HorizontalAlign="Center"/>

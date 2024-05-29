@@ -16,6 +16,10 @@ namespace WebForm.View.Login
             daoServicio = new LKServicioWebClient();
             if (Session["Usuario"] != null && Session["Tipo"] != null)
             {
+               if (Session["Tipo"] as string == "Administrador")
+                {
+                    Response.Redirect("/View/Admin/AnioAcademico/AniosAcademicos.aspx");
+                }
                 Response.Redirect("/View/" + Session["Tipo"] + "/" + Session["Tipo"] + ".aspx");
             }
         }
@@ -46,7 +50,7 @@ namespace WebForm.View.Login
 >>>>>>> master
             {
                 Session["Tipo"] = "Profesor";
-                Response.Redirect("/View/Profesor/ProfesorVista.aspx");
+                Response.Redirect("/View/Profesor/CursoProfesor.aspx");
             }
 <<<<<<< HEAD
             if (t is alumno)//ES EL ESTUDIANTE
@@ -64,7 +68,7 @@ namespace WebForm.View.Login
 >>>>>>> master
             {
                 Session["Tipo"] = "Administrador";
-                Response.Redirect("/View/Admin/Profesores/Profesores.aspx");
+                Response.Redirect("/View/Admin/AnioAcademico/AniosAcademicos.aspx");
             }
         }
     }

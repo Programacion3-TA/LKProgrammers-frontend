@@ -7,30 +7,48 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace WebForm.View.Admin.Profesores
+namespace WebForm.View.Admin.AnioAcademico
 {
 
 
-    public partial class Profesores
+    public partial class AniosAcademicos
     {
 
         /// <summary>
-        /// BtnAgregar control.
+        /// LblAnioVigente control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.LinkButton BtnAgregar;
+        protected global::System.Web.UI.WebControls.Label LblAnioVigente;
 
         /// <summary>
-        /// GridProfesores control.
+        /// GVAnioVigente control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.GridView GridProfesores;
+        protected global::System.Web.UI.WebControls.GridView GVAnioVigente;
+
+        /// <summary>
+        /// BtnAgregarAnio control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.LinkButton BtnAgregarAnio;
+
+        /// <summary>
+        /// GVAnios control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.GridView GVAnios;
 
         /// <summary>
         /// LblCode control.
@@ -69,66 +87,66 @@ namespace WebForm.View.Admin.Profesores
         protected global::System.Web.UI.WebControls.TextBox TxtNombre;
 
         /// <summary>
-        /// LblApellidoPat control.
+        /// LblFechaInicio control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Label LblApellidoPat;
+        protected global::System.Web.UI.WebControls.Label LblFechaInicio;
 
         /// <summary>
-        /// TxtApellidoPat control.
+        /// TxtFechaInicio control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox TxtApellidoPat;
+        protected global::System.Web.UI.WebControls.TextBox TxtFechaInicio;
 
         /// <summary>
-        /// LblApellidoMat control.
+        /// LblFechaFin control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Label LblApellidoMat;
+        protected global::System.Web.UI.WebControls.Label LblFechaFin;
 
         /// <summary>
-        /// TxtApellidoMat control.
+        /// TxtFechaFin control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox TxtApellidoMat;
+        protected global::System.Web.UI.WebControls.TextBox TxtFechaFin;
 
         /// <summary>
-        /// LblEspecialidad control.
+        /// LblFechaCerrado control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Label LblEspecialidad;
+        protected global::System.Web.UI.WebControls.Label LblFechaCerrado;
 
         /// <summary>
-        /// TxtEspecialidad control.
+        /// TxtFechaCerrado control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox TxtEspecialidad;
+        protected global::System.Web.UI.WebControls.TextBox TxtFechaCerrado;
 
         /// <summary>
-        /// ButGuardar control.
+        /// BtnGuardar control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Button ButGuardar;
+        protected global::System.Web.UI.WebControls.Button BtnGuardar;
     }
 }
