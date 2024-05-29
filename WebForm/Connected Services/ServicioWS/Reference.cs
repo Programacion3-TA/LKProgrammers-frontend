@@ -267,35 +267,89 @@ namespace WebForm.ServicioWS {
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.ComponentModel.DesignerCategoryAttribute("code")]
     [System.Xml.Serialization.XmlTypeAttribute(Namespace="http://services.service.lkprogrammers.org/")]
-    public partial class profesor : usuario {
+    public partial class alumno : usuario {
         
-        private int codigoProfesorField;
+        private int codigoAlumnoField;
         
-        private string especialidadField;
+        private grado gradoField;
+        
+        private bool gradoFieldSpecified;
         
         /// <remarks/>
         [System.Xml.Serialization.XmlElementAttribute(Form=System.Xml.Schema.XmlSchemaForm.Unqualified, Order=0)]
-        public int codigoProfesor {
+        public int codigoAlumno {
             get {
-                return this.codigoProfesorField;
+                return this.codigoAlumnoField;
             }
             set {
-                this.codigoProfesorField = value;
-                this.RaisePropertyChanged("codigoProfesor");
+                this.codigoAlumnoField = value;
+                this.RaisePropertyChanged("codigoAlumno");
             }
         }
         
         /// <remarks/>
         [System.Xml.Serialization.XmlElementAttribute(Form=System.Xml.Schema.XmlSchemaForm.Unqualified, Order=1)]
-        public string especialidad {
+        public grado grado {
             get {
-                return this.especialidadField;
+                return this.gradoField;
             }
             set {
-                this.especialidadField = value;
-                this.RaisePropertyChanged("especialidad");
+                this.gradoField = value;
+                this.RaisePropertyChanged("grado");
             }
         }
+        
+        /// <remarks/>
+        [System.Xml.Serialization.XmlIgnoreAttribute()]
+        public bool gradoSpecified {
+            get {
+                return this.gradoFieldSpecified;
+            }
+            set {
+                this.gradoFieldSpecified = value;
+                this.RaisePropertyChanged("gradoSpecified");
+            }
+        }
+    }
+    
+    /// <remarks/>
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.8.9032.0")]
+    [System.SerializableAttribute()]
+    [System.Xml.Serialization.XmlTypeAttribute(Namespace="http://services.service.lkprogrammers.org/")]
+    public enum grado {
+        
+        /// <remarks/>
+        NN,
+        
+        /// <remarks/>
+        INI2,
+        
+        /// <remarks/>
+        INI3,
+        
+        /// <remarks/>
+        INI4,
+        
+        /// <remarks/>
+        INI5,
+        
+        /// <remarks/>
+        PRIM1,
+        
+        /// <remarks/>
+        PRIM2,
+        
+        /// <remarks/>
+        PRIM3,
+        
+        /// <remarks/>
+        PRIM4,
+        
+        /// <remarks/>
+        PRIM5,
+        
+        /// <remarks/>
+        PRIM6,
     }
     
     /// <remarks/>
@@ -602,33 +656,31 @@ namespace WebForm.ServicioWS {
     [System.Xml.Serialization.XmlTypeAttribute(Namespace="http://services.service.lkprogrammers.org/")]
     public partial class alumno : usuario {
         
-        private int codigoAlumnoField;
+        private int codigoProfesorField;
         
-        private grado gradoField;
-        
-        private bool gradoFieldSpecified;
+        private string especialidadField;
         
         /// <remarks/>
         [System.Xml.Serialization.XmlElementAttribute(Form=System.Xml.Schema.XmlSchemaForm.Unqualified, Order=0)]
-        public int codigoAlumno {
+        public int codigoProfesor {
             get {
-                return this.codigoAlumnoField;
+                return this.codigoProfesorField;
             }
             set {
-                this.codigoAlumnoField = value;
-                this.RaisePropertyChanged("codigoAlumno");
+                this.codigoProfesorField = value;
+                this.RaisePropertyChanged("codigoProfesor");
             }
         }
         
         /// <remarks/>
         [System.Xml.Serialization.XmlElementAttribute(Form=System.Xml.Schema.XmlSchemaForm.Unqualified, Order=1)]
-        public grado grado {
+        public string especialidad {
             get {
-                return this.gradoField;
+                return this.especialidadField;
             }
             set {
-                this.gradoField = value;
-                this.RaisePropertyChanged("grado");
+                this.especialidadField = value;
+                this.RaisePropertyChanged("especialidad");
             }
         }
         

@@ -312,6 +312,12 @@
     <Content Include="Connected Services\ServicioWS\WebForm.ServicioWS.editarProfesorResponse.datasource">
       <DependentUpon>Reference.svcmap</DependentUpon>
     </Content>
+    <Content Include="Connected Services\ServicioWS\WebForm.ServicioWS.eliminarAlumnoResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Content>
+    <Content Include="Connected Services\ServicioWS\WebForm.ServicioWS.eliminarProfesorResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Content>
     <Content Include="Connected Services\ServicioWS\WebForm.ServicioWS.esTutorAsignadoResponse.datasource">
       <DependentUpon>Reference.svcmap</DependentUpon>
     </Content>
