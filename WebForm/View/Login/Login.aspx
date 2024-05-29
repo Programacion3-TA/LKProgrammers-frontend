@@ -47,7 +47,7 @@
                     <div class="card-header text-center">
                         <h4>San Pedro Nolasco</h4>
                         <img src="/Public/img/logoColegio.png" width="120" />
-                        <hr />
+                        <hr/>
                         <h5>Bienvenido/a</h5>
                     </div>
                     <div class="card-body d-flex flex-column gap-3">
