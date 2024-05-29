@@ -4,10 +4,20 @@
   <xs:element name="Reporte_general_notas_de_alumnoResponse" type="tns:Reporte_general_notas_de_alumnoResponse" />
   <xs:element name="acceder_a_pagina" type="tns:acceder_a_pagina" />
   <xs:element name="acceder_a_paginaResponse" type="tns:acceder_a_paginaResponse" />
+  <xs:element name="editaralumno" type="tns:editaralumno" />
+  <xs:element name="editaralumnoResponse" type="tns:editaralumnoResponse" />
+  <xs:element name="editarprofesor" type="tns:editarprofesor" />
+  <xs:element name="editarprofesorResponse" type="tns:editarprofesorResponse" />
   <xs:element name="esTutorAsignado" type="tns:esTutorAsignado" />
   <xs:element name="esTutorAsignadoResponse" type="tns:esTutorAsignadoResponse" />
   <xs:element name="hello" type="tns:hello" />
   <xs:element name="helloResponse" type="tns:helloResponse" />
+  <xs:element name="insertarAsistencia" type="tns:insertarAsistencia" />
+  <xs:element name="insertarAsistenciaResponse" type="tns:insertarAsistenciaResponse" />
+  <xs:element name="insertaralumno" type="tns:insertaralumno" />
+  <xs:element name="insertaralumnoResponse" type="tns:insertaralumnoResponse" />
+  <xs:element name="insertarprofesor" type="tns:insertarprofesor" />
+  <xs:element name="insertarprofesorResponse" type="tns:insertarprofesorResponse" />
   <xs:element name="listarAdministradores" type="tns:listarAdministradores" />
   <xs:element name="listarAdministradoresResponse" type="tns:listarAdministradoresResponse" />
   <xs:element name="listarAlumnos" type="tns:listarAlumnos" />
@@ -18,6 +28,85 @@
   <xs:element name="listarProfesoresResponse" type="tns:listarProfesoresResponse" />
   <xs:element name="listarUsuarios" type="tns:listarUsuarios" />
   <xs:element name="listarUsuariosResponse" type="tns:listarUsuariosResponse" />
+  <xs:complexType name="hello">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="name" type="xs:string" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="helloResponse">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="return" type="xs:string" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="listarUsuarios">
+    <xs:sequence />
+  </xs:complexType>
+  <xs:complexType name="listarUsuariosResponse">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="return" type="tns:usuario" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="usuario" abstract="true">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="apellidoMaterno" type="xs:string" />
+      <xs:element minOccurs="0" name="apellidoPaterno" type="xs:string" />
+      <xs:element minOccurs="0" name="contrasenia" type="xs:string" />
+      <xs:element minOccurs="0" name="correoElectronico" type="xs:string" />
+      <xs:element minOccurs="0" name="direccion" type="xs:string" />
+      <xs:element minOccurs="0" name="dni" type="xs:string" />
+      <xs:element minOccurs="0" name="fechaNac" type="xs:dateTime" />
+      <xs:element name="genero" type="xs:unsignedShort" />
+      <xs:element minOccurs="0" name="nombres" type="xs:string" />
+      <xs:element minOccurs="0" name="telefono" type="xs:string" />
+      <xs:element minOccurs="0" name="usuario" type="xs:string" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="listarProfesores">
+    <xs:sequence />
+  </xs:complexType>
+  <xs:complexType name="listarProfesoresResponse">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="return" type="tns:profesor" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="profesor">
+    <xs:complexContent mixed="false">
+      <xs:extension base="tns:usuario">
+        <xs:sequence>
+          <xs:element name="codigoProfesor" type="xs:int" />
+          <xs:element minOccurs="0" name="especialidad" type="xs:string" />
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:complexType name="listarAlumnos">
+    <xs:sequence />
+  </xs:complexType>
+  <xs:complexType name="listarAlumnosResponse">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="return" type="tns:alumno" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="alumno">
+    <xs:complexContent mixed="false">
+      <xs:extension base="tns:usuario">
+        <xs:sequence>
+          <xs:element name="codigoAlumno" type="xs:int" />
+          <xs:element minOccurs="0" name="grado" type="tns:grado" />
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:complexType name="editarprofesor">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="arg0" type="tns:profesor" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="editarprofesorResponse">
+    <xs:sequence>
+      <xs:element name="return" type="xs:int" />
+    </xs:sequence>
+  </xs:complexType>
   <xs:complexType name="acceder_a_pagina">
     <xs:sequence>
       <xs:element minOccurs="0" name="arg0" type="xs:string" />
@@ -39,31 +128,6 @@
       <xs:element minOccurs="0" maxOccurs="unbounded" name="return" type="tns:alumno" />
     </xs:sequence>
   </xs:complexType>
-  <xs:complexType name="alumno">
-    <xs:complexContent mixed="false">
-      <xs:extension base="tns:usuario">
-        <xs:sequence>
-          <xs:element name="codigoAlumno" type="xs:int" />
-          <xs:element minOccurs="0" name="grado" type="tns:grado" />
-        </xs:sequence>
-      </xs:extension>
-    </xs:complexContent>
-  </xs:complexType>
-  <xs:complexType name="usuario" abstract="true">
-    <xs:sequence>
-      <xs:element minOccurs="0" name="apellidoMaterno" type="xs:string" />
-      <xs:element minOccurs="0" name="apellidoPaterno" type="xs:string" />
-      <xs:element minOccurs="0" name="contrasenia" type="xs:string" />
-      <xs:element minOccurs="0" name="correoElectronico" type="xs:string" />
-      <xs:element minOccurs="0" name="direccion" type="xs:string" />
-      <xs:element minOccurs="0" name="dni" type="xs:string" />
-      <xs:element minOccurs="0" name="fechaNac" type="xs:dateTime" />
-      <xs:element name="genero" type="xs:unsignedShort" />
-      <xs:element minOccurs="0" name="nombres" type="xs:string" />
-      <xs:element minOccurs="0" name="telefono" type="xs:string" />
-      <xs:element minOccurs="0" name="usuario" type="xs:string" />
-    </xs:sequence>
-  </xs:complexType>
   <xs:complexType name="Reporte_general_notas_de_alumno">
     <xs:sequence>
       <xs:element name="arg0" type="xs:int" />
@@ -74,40 +138,24 @@
       <xs:element minOccurs="0" name="return" type="tns:alumno" />
     </xs:sequence>
   </xs:complexType>
-  <xs:complexType name="hello">
+  <xs:complexType name="insertaralumno">
     <xs:sequence>
-      <xs:element minOccurs="0" name="name" type="xs:string" />
+      <xs:element minOccurs="0" name="arg0" type="tns:alumno" />
     </xs:sequence>
   </xs:complexType>
-  <xs:complexType name="helloResponse">
+  <xs:complexType name="insertaralumnoResponse">
     <xs:sequence>
-      <xs:element minOccurs="0" name="return" type="xs:string" />
+      <xs:element name="return" type="xs:int" />
     </xs:sequence>
   </xs:complexType>
-  <xs:complexType name="listarProfesores">
-    <xs:sequence />
-  </xs:complexType>
-  <xs:complexType name="listarProfesoresResponse">
+  <xs:complexType name="editaralumno">
     <xs:sequence>
-      <xs:element minOccurs="0" maxOccurs="unbounded" name="return" type="tns:profesor" />
+      <xs:element minOccurs="0" name="arg0" type="tns:alumno" />
     </xs:sequence>
   </xs:complexType>
-  <xs:complexType name="profesor">
-    <xs:complexContent mixed="false">
-      <xs:extension base="tns:usuario">
-        <xs:sequence>
-          <xs:element name="codigoProfesor" type="xs:int" />
-          <xs:element minOccurs="0" name="especialidad" type="xs:string" />
-        </xs:sequence>
-      </xs:extension>
-    </xs:complexContent>
-  </xs:complexType>
-  <xs:complexType name="listarUsuarios">
-    <xs:sequence />
-  </xs:complexType>
-  <xs:complexType name="listarUsuariosResponse">
+  <xs:complexType name="editaralumnoResponse">
     <xs:sequence>
-      <xs:element minOccurs="0" maxOccurs="unbounded" name="return" type="tns:usuario" />
+      <xs:element name="return" type="xs:int" />
     </xs:sequence>
   </xs:complexType>
   <xs:complexType name="listarAdministradores">
@@ -128,20 +176,40 @@
       </xs:extension>
     </xs:complexContent>
   </xs:complexType>
-  <xs:complexType name="listarAlumnos">
-    <xs:sequence />
-  </xs:complexType>
-  <xs:complexType name="listarAlumnosResponse">
-    <xs:sequence>
-      <xs:element minOccurs="0" maxOccurs="unbounded" name="return" type="tns:alumno" />
-    </xs:sequence>
-  </xs:complexType>
   <xs:complexType name="esTutorAsignado">
     <xs:sequence>
       <xs:element minOccurs="0" name="dniProfesor" type="xs:string" />
     </xs:sequence>
   </xs:complexType>
   <xs:complexType name="esTutorAsignadoResponse">
+    <xs:sequence>
+      <xs:element name="return" type="xs:int" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="insertarprofesor">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="arg0" type="tns:profesor" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="insertarprofesorResponse">
+    <xs:sequence>
+      <xs:element name="return" type="xs:int" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="insertarAsistencia">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="arg0" type="tns:asistencia" />
+      <xs:element minOccurs="0" name="arg1" type="xs:string" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="asistencia">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="dniAlumno" type="xs:string" />
+      <xs:element minOccurs="0" name="estado" type="tns:estadoAsistencia" />
+      <xs:element minOccurs="0" name="fechaHora" type="xs:dateTime" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="insertarAsistenciaResponse">
     <xs:sequence>
       <xs:element name="return" type="xs:int" />
     </xs:sequence>
@@ -159,6 +227,14 @@
       <xs:enumeration value="PRIM4" />
       <xs:enumeration value="PRIM5" />
       <xs:enumeration value="PRIM6" />
+    </xs:restriction>
+  </xs:simpleType>
+  <xs:simpleType name="estadoAsistencia">
+    <xs:restriction base="xs:string">
+      <xs:enumeration value="Presente" />
+      <xs:enumeration value="Tardanza" />
+      <xs:enumeration value="Ausente" />
+      <xs:enumeration value="Justificada" />
     </xs:restriction>
   </xs:simpleType>
 </xs:schema>
