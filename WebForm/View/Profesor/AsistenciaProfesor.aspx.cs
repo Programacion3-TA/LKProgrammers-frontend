@@ -12,6 +12,7 @@ namespace WebForm.View.AsistenciaProfesor
         private LKServicioWebClient daoServicio;
         protected void Page_Load(object sender, EventArgs e)
         {
+
             daoServicio = new LKServicioWebClient();
             
             if(!IsPostBack){
@@ -30,6 +31,11 @@ namespace WebForm.View.AsistenciaProfesor
             int idsalon = (int)Session["idsalon"];
 
             Response.Redirect("/View/Profesor/RegistroAsistencia.aspx?idsalon="+idsalon);
+        }
+
+        protected void BtnBuscarDias_Click(object sender, EventArgs e)
+        {
+
         }
     }
 }

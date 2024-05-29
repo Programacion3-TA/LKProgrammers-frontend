@@ -21,10 +21,16 @@ namespace WebForm.View.Login
         }
         protected void BtnIngresar_Click(object sender, EventArgs e)
         {
+<<<<<<< HEAD
             daoServicio = new LKServicioWebClient();
             usuario t = daoServicio.verificarUsuario(TxtUsuario.Text, TxtContrasenia.Text);
             //redireccionamiento de paginas dependiendo del usuario
             if (!((t is profesor) || (t is alumno) || (t is personalAdministrativo))) //NO ES NADIE ASI QUE EMITE UN ERROR
+=======
+            usuario user = (usuario)daoServicio.verificarUsuario(TxtUsuario.Text, TxtContrasenia.Text);
+            //redireccionamiento de paginas dependiendo del usuario
+            if (user == null) //NO ES NADIE ASI QUE EMITE UN ERROR
+>>>>>>> master
             {
                 //implementar estilos de errores con JS
                 
@@ -32,21 +38,31 @@ namespace WebForm.View.Login
                 TxtContrasenia.Text = "";
                 Response.Redirect("/View/Login/Login.aspx");
             }
+<<<<<<< HEAD
             if (t is profesor) //ES EL PROFESOR
+=======
+            Session["Usuario"] = user;
+            if (user is profesor) //ES EL PROFESOR
+>>>>>>> master
             {
-                Session["Usuario"] = daoServicio.listarProfesores().ToList().Find(x => (x.usuario1 == TxtUsuario.Text && x.contrasenia == TxtContrasenia.Text));
                 Session["Tipo"] = "Profesor";
-                Response.Redirect("/View/Profesor/CursoProfesor.aspx");
+                Response.Redirect("/View/Profesor/ProfesorVista.aspx");
             }
+<<<<<<< HEAD
             if (t is alumno)//ES EL ESTUDIANTE
+=======
+            else if (user is alumno)//ES EL ESTUDIANTE
+>>>>>>> master
             {
-                Session["Usuario"] = daoServicio.listarAlumnos().ToList().Find(x => (x.usuario1 == TxtUsuario.Text && x.contrasenia == TxtContrasenia.Text));
                 Session["Tipo"] = "Alumno";
                 Response.Redirect("/View/Alumno/Alumno.aspx");
             }
+<<<<<<< HEAD
             if (t is personalAdministrativo) //ADMINISTRATIVO
+=======
+            else if (user is personalAdministrativo) //ADMINISTRATIVO
+>>>>>>> master
             {
-                Session["Usuario"] = daoServicio.listarAdministradores().ToList().Find(x => (x.usuario1 == TxtUsuario.Text && x.contrasenia == TxtContrasenia.Text));
                 Session["Tipo"] = "Administrador";
                 Response.Redirect("/View/Admin/Profesores/Profesores.aspx");
             }
