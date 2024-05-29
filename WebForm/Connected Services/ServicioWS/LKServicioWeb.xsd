@@ -4,6 +4,10 @@
   <xs:element name="editarAlumnoResponse" type="tns:editarAlumnoResponse" />
   <xs:element name="editarProfesor" type="tns:editarProfesor" />
   <xs:element name="editarProfesorResponse" type="tns:editarProfesorResponse" />
+  <xs:element name="eliminarAlumno" type="tns:eliminarAlumno" />
+  <xs:element name="eliminarAlumnoResponse" type="tns:eliminarAlumnoResponse" />
+  <xs:element name="eliminarProfesor" type="tns:eliminarProfesor" />
+  <xs:element name="eliminarProfesorResponse" type="tns:eliminarProfesorResponse" />
   <xs:element name="esTutorAsignado" type="tns:esTutorAsignado" />
   <xs:element name="esTutorAsignadoResponse" type="tns:esTutorAsignadoResponse" />
   <xs:element name="hello" type="tns:hello" />
@@ -30,6 +34,33 @@
   <xs:element name="reporteGeneralNotasAlumnoResponse" type="tns:reporteGeneralNotasAlumnoResponse" />
   <xs:element name="verificarUsuario" type="tns:verificarUsuario" />
   <xs:element name="verificarUsuarioResponse" type="tns:verificarUsuarioResponse" />
+  <xs:complexType name="eliminarAlumno">
+    <xs:sequence>
+      <xs:element name="arg0" type="xs:int" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="eliminarAlumnoResponse">
+    <xs:sequence>
+      <xs:element name="return" type="xs:int" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="insertarAsistencia">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="asistencia" type="tns:asistencia" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="asistencia">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="dniAlumno" type="xs:string" />
+      <xs:element minOccurs="0" name="estado" type="tns:estadoAsistencia" />
+      <xs:element minOccurs="0" name="fechaHora" type="xs:dateTime" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="insertarAsistenciaResponse">
+    <xs:sequence>
+      <xs:element name="return" type="xs:int" />
+    </xs:sequence>
+  </xs:complexType>
   <xs:complexType name="editarProfesor">
     <xs:sequence>
       <xs:element minOccurs="0" name="arg0" type="tns:profesor" />
@@ -64,6 +95,24 @@
     <xs:sequence>
       <xs:element name="return" type="xs:int" />
     </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="listarAdministradores">
+    <xs:sequence />
+  </xs:complexType>
+  <xs:complexType name="listarAdministradoresResponse">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="return" type="tns:personalAdministrativo" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="personalAdministrativo">
+    <xs:complexContent mixed="false">
+      <xs:extension base="tns:usuario">
+        <xs:sequence>
+          <xs:element name="codigoPersonal" type="xs:int" />
+          <xs:element minOccurs="0" name="puestoEjecutivo" type="xs:string" />
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
   </xs:complexType>
   <xs:complexType name="hello">
     <xs:sequence>
@@ -124,14 +173,17 @@
       <xs:element minOccurs="0" maxOccurs="unbounded" name="arg0" type="tns:asistencia" />
     </xs:sequence>
   </xs:complexType>
-  <xs:complexType name="asistencia">
+  <xs:complexType name="insertaTodasAsistenciasResponse">
     <xs:sequence>
-      <xs:element minOccurs="0" name="dniAlumno" type="xs:string" />
-      <xs:element minOccurs="0" name="estado" type="tns:estadoAsistencia" />
-      <xs:element minOccurs="0" name="fechaHora" type="xs:dateTime" />
+      <xs:element name="return" type="xs:int" />
     </xs:sequence>
   </xs:complexType>
-  <xs:complexType name="insertaTodasAsistenciasResponse">
+  <xs:complexType name="eliminarProfesor">
+    <xs:sequence>
+      <xs:element name="arg0" type="xs:int" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="eliminarProfesorResponse">
     <xs:sequence>
       <xs:element name="return" type="xs:int" />
     </xs:sequence>
@@ -166,24 +218,6 @@
       <xs:element name="return" type="xs:int" />
     </xs:sequence>
   </xs:complexType>
-  <xs:complexType name="listarAdministradores">
-    <xs:sequence />
-  </xs:complexType>
-  <xs:complexType name="listarAdministradoresResponse">
-    <xs:sequence>
-      <xs:element minOccurs="0" maxOccurs="unbounded" name="return" type="tns:personalAdministrativo" />
-    </xs:sequence>
-  </xs:complexType>
-  <xs:complexType name="personalAdministrativo">
-    <xs:complexContent mixed="false">
-      <xs:extension base="tns:usuario">
-        <xs:sequence>
-          <xs:element name="codigoPersonal" type="xs:int" />
-          <xs:element minOccurs="0" name="puestoEjecutivo" type="xs:string" />
-        </xs:sequence>
-      </xs:extension>
-    </xs:complexContent>
-  </xs:complexType>
   <xs:complexType name="verificarUsuario">
     <xs:sequence>
       <xs:element minOccurs="0" name="usuario" type="xs:string" />
@@ -215,17 +249,14 @@
       <xs:element name="return" type="xs:int" />
     </xs:sequence>
   </xs:complexType>
-  <xs:complexType name="insertarAsistencia">
-    <xs:sequence>
-      <xs:element minOccurs="0" name="asistencia" type="tns:asistencia" />
-      <xs:element minOccurs="0" name="dniAlumno" type="xs:string" />
-    </xs:sequence>
-  </xs:complexType>
-  <xs:complexType name="insertarAsistenciaResponse">
-    <xs:sequence>
-      <xs:element name="return" type="xs:int" />
-    </xs:sequence>
-  </xs:complexType>
+  <xs:simpleType name="estadoAsistencia">
+    <xs:restriction base="xs:string">
+      <xs:enumeration value="Presente" />
+      <xs:enumeration value="Tardanza" />
+      <xs:enumeration value="Ausente" />
+      <xs:enumeration value="Justificada" />
+    </xs:restriction>
+  </xs:simpleType>
   <xs:simpleType name="grado">
     <xs:restriction base="xs:string">
       <xs:enumeration value="NN" />
@@ -239,14 +270,6 @@
       <xs:enumeration value="PRIM4" />
       <xs:enumeration value="PRIM5" />
       <xs:enumeration value="PRIM6" />
-    </xs:restriction>
-  </xs:simpleType>
-  <xs:simpleType name="estadoAsistencia">
-    <xs:restriction base="xs:string">
-      <xs:enumeration value="Presente" />
-      <xs:enumeration value="Tardanza" />
-      <xs:enumeration value="Ausente" />
-      <xs:enumeration value="Justificada" />
     </xs:restriction>
   </xs:simpleType>
 </xs:schema>

@@ -32,5 +32,10 @@ namespace WebForm.View.AsistenciaProfesor
 
             Response.Redirect("/View/Profesor/RegistroAsistencia.aspx?idsalon="+idsalon);
         }
+
+        protected void BtnBuscarDias_Click(object sender, EventArgs e)
+        {
+
+        }
     }
 }
