@@ -45,7 +45,10 @@
             <div class="col-md-4">
                 <div class="card">
                     <div class="card-header text-center">
-                        <h4>Bienvenido/a</h4>
+                        <h4>San Pedro Nolasco</h4>
+                        <img src="/Public/img/logoColegio.png" width="120" />
+                        <hr />
+                        <h5>Bienvenido/a</h5>
                     </div>
                     <div class="card-body d-flex flex-column gap-3">
                             <div class="form-group">
@@ -53,7 +56,7 @@
                                  <asp:TextBox ID="TxtUsuario" runat="server" CssClass="form-control" placeholder="Ingrese su usuario o correo electrónico..."></asp:TextBox>
                             </div>
                             <div class="form-group">
-                                <asp:Label ID="LblContrasenia" runat="server" Text="Contrasenia:" CssClass="form-label"></asp:Label>
+                                <asp:Label ID="LblContrasenia" runat="server" Text="Constraseña" CssClass="form-label"></asp:Label>
                                 <asp:TextBox ID="TxtContrasenia" runat="server" CssClass="form-control" TextMode="Password" placeholder="Ingrese su contraseña..."></asp:TextBox>
                             </div>
                           <asp:Button ID="BtnIngresar" runat="server" Text="Iniciar sesión" CssClass="btn btn-black btn-block"

@@ -11,19 +11,18 @@
         <ol class="breadcrumb">
             <li class="breadcrumb-item">
                 <i class="fa-solid fa-house"></i>
-            </li>
-            <li class="breadcrumb-item">Alumnos</li>
-            <li class="breadcrumb-item">Listar</li>
+            </li>            
+            <li class="breadcrumb-item">Estudiantes</li>
         </ol>
     </nav>
     <div class="mx-auto d-flex flex-column justify-content-center">
-        <h2 class="px-2">Listado de Estudiantes </h2>
+        <h2 class="px-2">Estudiantes</h2>
 
         <div class="container">
             <!--Boton de agregar un alumno al colegio-->
             <div class="container row">
                 <div class="text-end p-3 mx-auto">
-                    <asp:LinkButton ID="LinkButton1" runat="server" Text="<i class='fas fa-plus pe-2'> </i> Agregar"
+                    <asp:LinkButton ID="LinkButton1" runat="server" Text="<i class='fas fa-plus pe-2'> </i> Agregar Nuevo Estudiante"
                         CssClass="btn btn-success"
                         OnClick="BtnNuevo_Click"
                          />
@@ -35,21 +34,19 @@
                     AllowPaging="true" PageSize="5"
                     CssClass="table table-hover table-responsive table-striped">
                     <Columns>
-                        <asp:BoundField DataField="Codigo" HeaderText="Codigo"/>
-                        <asp:BoundField DataField="Dni" HeaderText="Dni" />
-                        <asp:BoundField DataField="Nombre" HeaderText="Nombre" />
-                        <asp:BoundField DataField="ApellidoPat" HeaderText="Apellido Paterno" />
-                        <asp:BoundField DataField="ApellidoMat" HeaderText="Apellido Materno" />
-                        <asp:BoundField DataField="Correo" HeaderText ="Correo electrónico" />
-                        <asp:BoundField DataField="Telefono" HeaderText ="Telefono" />
-                        <asp:BoundField DataField="Grado" HeaderText="Grado" />
-                        <asp:TemplateField HeaderText=" ">
+                        <asp:BoundField DataField="codigoAlumno" HeaderText="Codigo"/>
+                        <asp:BoundField DataField="dni" HeaderText="Dni" />
+                        <asp:BoundField DataField="nombres" HeaderText="Nombre" />
+                        <asp:BoundField DataField="apellidoPaterno" HeaderText="Apellido Paterno" />
+                        <asp:BoundField DataField="apellidoMaterno" HeaderText="Apellido Materno" />
+                        <asp:BoundField DataField="correoElectronico" HeaderText ="Correo electrónico" />                        
+                        <asp:BoundField DataField="grado" HeaderText="Grado" />
+                        <asp:TemplateField HeaderText="Acciones">
                             <ItemTemplate>
                                 <asp:LinkButton runat="server" Text="Editar" CssClass="btn btn-warning"
-                                CommandArgument='<%# Eval("Codigo") %>' OnClick="EditRow_Click"/>
+                                CommandArgument='<%# Eval("codigoAlumno") %>' OnClick="EditRow_Click"/>
                                 <asp:LinkButton runat="server" Text="Eliminar" CssClass="btn btn-danger"
-                                CommandArgument='<%# Eval("Codigo") %>' OnClick="DelRow_Click"/>
-                                                        
+                                CommandArgument='<%# Eval("codigoAlumno") %>' OnClick="DelRow_Click"/>
                             </ItemTemplate>
                         </asp:TemplateField>
                     </Columns>
@@ -57,8 +54,8 @@
             </div>
         </div>
 
-        <!--Modal-->
-        <div id="modalForm" class="modal" tabindex="-1">
+        <!--Modal Alumno: Agregar-->
+        <div id="modalAgregarEstudiante" class="modal" tabindex="-1">
             <div class="modal-dialog">
                 <div class="modal-content">
                     <div class="modal-header">
@@ -68,35 +65,72 @@
                     <div class="modal-body">
                         <div class="container p-3 ">
                             <div class="col-md-12  mb-3">
-                                <asp:Label ID="LblCode" runat="server" Text="Código:" CssClass="form-label"></asp:Label>
+                                <h6>Información Personal</h6>
+                            </div>
+                            
+                            <div class="col-md-12  mb-3">
+                                <asp:Label ID="LblCode" runat="server" Text="Código" CssClass="form-label"></asp:Label>
                                 <asp:TextBox ID="TxtCode" runat="server" CssClass="form-control" Enabled="false"></asp:TextBox>
                             </div>
                             <div class="col-md-12  mb-3">
-                                <asp:Label ID="LblDNI" runat="server" Text="DNI:" CssClass="form-label"></asp:Label>
+                                <asp:Label ID="LblDNI" runat="server" Text="DNI" CssClass="form-label"></asp:Label>
                                 <asp:TextBox ID="TxtDNI" runat="server" CssClass="form-control" Enabled="true"></asp:TextBox>
                             </div>
                             <div class="col-md-12 mb-3">
-                                <asp:Label ID="LblNombre" runat="server" Text="Nombre:" CssClass="form-label"></asp:Label>
+                                <asp:Label ID="LblNombre" runat="server" Text="Nombre" CssClass="form-label"></asp:Label>
                                 <asp:TextBox ID="TxtNombre" runat="server" CssClass="form-control"></asp:TextBox>
                             </div>
                             <div class="col-md-12 mb-3">
-                                <asp:Label ID="LblApellidoPat" runat="server" Text="Apellido paterno:" CssClass="form-label"></asp:Label>
+                                <asp:Label ID="LblApellidoPat" runat="server" Text="Apellido paterno" CssClass="form-label"></asp:Label>
                                 <asp:TextBox ID="TxtApellidoPat" runat="server" CssClass="form-control"></asp:TextBox>
                             </div>
                             <div class="col-md-12 mb-3">
-                                <asp:Label ID="LblApellidoMat" runat="server" Text="Apellido materno:" CssClass="form-label"></asp:Label>
+                                <asp:Label ID="LblApellidoMat" runat="server" Text="Apellido materno" CssClass="form-label"></asp:Label>
                                 <asp:TextBox ID="TxtApellidoMat" runat="server" CssClass="form-control"></asp:TextBox>
                             </div>
-                            <div>
-                                <asp:Label ID="LblCorreo" runat="server" Text="Correo electrónico:" CssClass="form-label"></asp:Label>
-                                <asp:TextBox ID="TxtCorreo" runat="server" CssClass="form-control" ></asp:TextBox>
+                            <div class="col-md-12 mb-3">
+                                <asp:Label ID="LblGenero" runat="server" Text="Genero" CssClass="form-label"></asp:Label>
+                                <asp:DropDownList ID="DDGenero" runat="server" CssClass="form-select">
+                                    <asp:ListItem Value="F">Femenino</asp:ListItem>
+                                    <asp:ListItem Value="M">Masculino</asp:ListItem>
+                                </asp:DropDownList>
+                            </div>
+
+                            <div  class="col-md-12  mb-3">
+                                <asp:Label ID="LblDireccion" runat="server" Text="Dirección" CssClass="form-label"></asp:Label>
+                                <asp:TextBox ID="TxtDireccion" runat="server" CssClass="form-control" ></asp:TextBox>    
+                            </div>
+
+                            <div  class="col-md-12  mb-3">
+                                <asp:Label ID="LblCorreo" runat="server" Text="Correo electrónico" CssClass="form-label"></asp:Label>
+                                <asp:TextBox ID="TxtCorreo" runat="server" CssClass="form-control" TextMode="Email"></asp:TextBox>
                                 
                             </div>
-                            <div>
-                                <asp:Label ID="LblTelefono" runat="server" Text="Telefono:" CssClass="form-label"></asp:Label>
+
+                            <div  class="col-md-12  mb-3">
+                                <asp:Label ID="LblUsuario" runat="server" Text="Usuario de Intranet" CssClass="form-label"></asp:Label>
+                                <asp:TextBox ID="TxtUsuario" runat="server" CssClass="form-control" ></asp:TextBox>    
+                            </div>
+
+                             <div  class="col-md-12  mb-3">
+                                 <asp:Label ID="LblContrasenia" runat="server" Text="Contraseña" CssClass="form-label"></asp:Label>
+                                 <asp:TextBox ID="TxtContrasenia" runat="server" CssClass="form-control" ></asp:TextBox>    
+                             </div>
+
+                            <div  class="col-md-12  mb-3">
+                                <asp:Label ID="LblTelefono" runat="server" Text="Telefono" CssClass="form-label"></asp:Label>
                                 <asp:TextBox ID="TxtTelefono" runat="server" CssClass="form-control" ></asp:TextBox>
                             </div>
-                            <div>
+
+                            <div  class="col-md-12  mb-3">
+                                <asp:Label ID="Lbl" runat="server" Text="Fecha de nacimiento" CssClass="form-label"></asp:Label>
+                                <asp:TextBox ID="TxtFechaNac" runat="server" CssClass="form-control"  TextMode="Date"></asp:TextBox>
+                            </div>
+                            <div class="col-md-12  mb-3">
+                                <h6>Información Académica</h6>
+                            </div>
+                            
+                            <div >
                                 <asp:Label ID="LblGrado" runat="server" Text="Grado" CssClass="form-label"></asp:Label>
                                 <asp:DropDownList ID="SLGrado" runat="server" CssClass="form-select" AutoPostBack="false">
                                     <asp:ListItem Value="INI2">2do-Inicial</asp:ListItem>
@@ -122,18 +156,16 @@
             </div>
         </div>
     </div>
+
+    
 </asp:Content>
+
 <asp:Content ID="Content5" ContentPlaceHolderID="Script" runat="server">
-    <script>
-        function showModalForm() {
-            var modalForm = new bootstrap.Modal(document.getElementById('modalForm'));
-            modalForm.toggle();
-        }     
-    </script>
+   <script src="EstudianteAgregar.js"></script>
 </asp:Content>
 
 <asp:Content ID="Content6" ContentPlaceHolderID="Navusuarios" runat="server">
-  
+  <script src="EstudianteAgregar.js"></script>
 </asp:Content>
 
 

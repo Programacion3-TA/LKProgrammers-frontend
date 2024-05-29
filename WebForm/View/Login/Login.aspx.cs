@@ -16,6 +16,10 @@ namespace WebForm.View.Login
             daoServicio = new LKServicioWebClient();
             if (Session["Usuario"] != null && Session["Tipo"] != null)
             {
+               if (Session["Tipo"] as string == "Administrador")
+                {
+                    Response.Redirect("/View/Admin/AnioAcademico/AniosAcademicos.aspx");
+                }
                 Response.Redirect("/View/" + Session["Tipo"] + "/" + Session["Tipo"] + ".aspx");
             }
         }
@@ -23,7 +27,7 @@ namespace WebForm.View.Login
         {
             char t = (char)daoServicio.acceder_a_pagina(TxtUsuario.Text, TxtContrasenia.Text);
             //redireccionamiento de paginas dependiendo del usuario
-            if (t == 'N') //NO ES NADIE ASI QUE EMITE UN ERROR
+            if (t == 'N') //NO ES NADIE ASI QUE EMITE UN ERROR: 78 en ASCII
             {
                 //implementar estilos de errores con JS
                 
@@ -35,9 +39,9 @@ namespace WebForm.View.Login
             {
                 Session["Usuario"] = daoServicio.listarProfesores().ToList().Find(x => (x.usuario1 == TxtUsuario.Text && x.contrasenia == TxtContrasenia.Text));
                 Session["Tipo"] = "Profesor";
-                Response.Redirect("/View/Profesor/ProfesorVista.aspx");
+                Response.Redirect("/View/Profesor/CursoProfesor.aspx");
             }
-            if (t == 'E')//ES EL ESTUDIANTE
+            if (t == 'E')//ES EL ESTUDIANTE: 69 ASCII
             {
                 Session["Usuario"] = daoServicio.listarAlumnos().ToList().Find(x => (x.usuario1 == TxtUsuario.Text && x.contrasenia == TxtContrasenia.Text));
                 Session["Tipo"] = "Alumno";
@@ -47,7 +51,7 @@ namespace WebForm.View.Login
             {
                 Session["Usuario"] = daoServicio.listarAdministradores().ToList().Find(x => (x.usuario1 == TxtUsuario.Text && x.contrasenia == TxtContrasenia.Text));
                 Session["Tipo"] = "Administrador";
-                Response.Redirect("/View/Admin/Profesores/Profesores.aspx");
+                Response.Redirect("/View/Admin/AnioAcademico/AniosAcademicos.aspx");
             }
         }
     }

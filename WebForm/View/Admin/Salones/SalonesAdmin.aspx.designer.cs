@@ -7,11 +7,11 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace WebForm.View.Admin.Profesores
+namespace WebForm.View.Admin.Salones
 {
 
 
-    public partial class Profesores
+    public partial class SalonesAdmin
     {
 
         /// <summary>
@@ -24,13 +24,13 @@ namespace WebForm.View.Admin.Profesores
         protected global::System.Web.UI.WebControls.LinkButton BtnAgregar;
 
         /// <summary>
-        /// GridProfesores control.
+        /// GridSalones control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.GridView GridProfesores;
+        protected global::System.Web.UI.WebControls.GridView GridSalones;
 
         /// <summary>
         /// LblCode control.
@@ -51,84 +51,102 @@ namespace WebForm.View.Admin.Profesores
         protected global::System.Web.UI.WebControls.TextBox TxtCode;
 
         /// <summary>
-        /// LblNombre control.
+        /// LblAnioEscolar control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Label LblNombre;
+        protected global::System.Web.UI.WebControls.Label LblAnioEscolar;
 
         /// <summary>
-        /// TxtNombre control.
+        /// DDAnioEscolar control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox TxtNombre;
+        protected global::System.Web.UI.WebControls.DropDownList DDAnioEscolar;
 
         /// <summary>
-        /// LblApellidoPat control.
+        /// LblGrado control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Label LblApellidoPat;
+        protected global::System.Web.UI.WebControls.Label LblGrado;
 
         /// <summary>
-        /// TxtApellidoPat control.
+        /// SLGrado control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox TxtApellidoPat;
+        protected global::System.Web.UI.WebControls.DropDownList SLGrado;
 
         /// <summary>
-        /// LblApellidoMat control.
+        /// LblCapMaxima control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Label LblApellidoMat;
+        protected global::System.Web.UI.WebControls.Label LblCapMaxima;
 
         /// <summary>
-        /// TxtApellidoMat control.
+        /// TxtCapMaxima control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox TxtApellidoMat;
+        protected global::System.Web.UI.WebControls.TextBox TxtCapMaxima;
 
         /// <summary>
-        /// LblEspecialidad control.
+        /// LblCapMinima control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Label LblEspecialidad;
+        protected global::System.Web.UI.WebControls.Label LblCapMinima;
 
         /// <summary>
-        /// TxtEspecialidad control.
+        /// TxtCapMinima control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox TxtEspecialidad;
+        protected global::System.Web.UI.WebControls.TextBox TxtCapMinima;
 
         /// <summary>
-        /// ButGuardar control.
+        /// LblTutor control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Button ButGuardar;
+        protected global::System.Web.UI.WebControls.Label LblTutor;
+
+        /// <summary>
+        /// DDTutor control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.DropDownList DDTutor;
+
+        /// <summary>
+        /// BtnGuardar control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Button BtnGuardar;
     }
 }

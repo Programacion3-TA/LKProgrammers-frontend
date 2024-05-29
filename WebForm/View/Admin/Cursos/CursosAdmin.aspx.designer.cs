@@ -7,92 +7,92 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace WebForm
+namespace WebForm.View.Admin.Cursos
 {
 
 
-    public partial class Main
+    public partial class CursosAdmin
     {
 
         /// <summary>
-        /// Title control.
+        /// BtnNuevo control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.ContentPlaceHolder Title;
+        protected global::System.Web.UI.WebControls.LinkButton BtnNuevo;
 
         /// <summary>
-        /// Styles control.
+        /// GridCursos control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.ContentPlaceHolder Styles;
+        protected global::System.Web.UI.WebControls.GridView GridCursos;
 
         /// <summary>
-        /// Navegacion control.
+        /// LblCode control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.ContentPlaceHolder Navegacion;
+        protected global::System.Web.UI.WebControls.Label LblCode;
 
         /// <summary>
-        /// CerrarSesionBtn control.
+        /// TxtCode control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.LinkButton CerrarSesionBtn;
+        protected global::System.Web.UI.WebControls.TextBox TxtCode;
 
         /// <summary>
-        /// ImagenPerfil control.
+        /// LblNombre control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.ContentPlaceHolder ImagenPerfil;
+        protected global::System.Web.UI.WebControls.Label LblNombre;
 
         /// <summary>
-        /// NombreUsuario control.
+        /// TxtNombre control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.ContentPlaceHolder NombreUsuario;
+        protected global::System.Web.UI.WebControls.TextBox TxtNombre;
 
         /// <summary>
-        /// Navusuarios control.
+        /// LblDescripcion control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.ContentPlaceHolder Navusuarios;
+        protected global::System.Web.UI.WebControls.Label LblDescripcion;
 
         /// <summary>
-        /// MainContent control.
+        /// TxtDescripción control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.ContentPlaceHolder MainContent;
+        protected global::System.Web.UI.WebControls.TextBox TxtDescripción;
 
         /// <summary>
-        /// Script control.
+        /// BtnGuardar control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.ContentPlaceHolder Script;
+        protected global::System.Web.UI.WebControls.Button BtnGuardar;
     }
 }
