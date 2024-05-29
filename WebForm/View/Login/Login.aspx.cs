@@ -35,7 +35,7 @@ namespace WebForm.View.Login
             {
                 Session["Usuario"] = daoServicio.listarProfesores().ToList().Find(x => (x.usuario1 == TxtUsuario.Text && x.contrasenia == TxtContrasenia.Text));
                 Session["Tipo"] = "Profesor";
-                Response.Redirect("/View/Profesor/CursoProfesor.aspx");
+                Response.Redirect("/View/Profesor/ProfesorVista.aspx");
             }
             if (t == 'E')//ES EL ESTUDIANTE
             {
