@@ -12,7 +12,7 @@ namespace WebForm.View.Admin.Profesores
     
     public partial class Profesores : System.Web.UI.Page // Vista administrativa de profesores
     {
-        private ServicioWS.LKServicioWebClient daoservicio;
+        private LKServicioWebClient daoservicio;
         private BindingList<profesor> profesores;
         protected void Page_Load(object sender, EventArgs e)
         {
@@ -23,7 +23,7 @@ namespace WebForm.View.Admin.Profesores
             }
             else
             {
-                daoservicio = new ServicioWS.LKServicioWebClient();
+                daoservicio = new LKServicioWebClient();
                 string tipo = Session["Tipo"] as string; // Verifico el tipo
                 if (tipo != "Administrador") Response.Redirect("/View/Login/Login.aspx");
                 usuario usuario_actual = Session["Usuario"] as usuario;
@@ -64,10 +64,10 @@ namespace WebForm.View.Admin.Profesores
             
             // Eliminar profesor. Ahora mismo no funciona
             profesores.Remove(profe);            
-            daoServicio = new LKServicioWebClient();
-            Button btn = (Button)sender;
-            string code = btn.CommandArgument;
-            daoServicio.eliminarProfesor(int.Parse(code));
+            daoservicio = new LKServicioWebClient();
+            Button botn = (Button)sender;
+            string codigo = botn.CommandArgument;
+            daoservicio.eliminarProfesor(int.Parse(codigo));
             CargarTabla();
         }
 
@@ -83,7 +83,7 @@ namespace WebForm.View.Admin.Profesores
                 profe.apellidoMaterno = TxtApellidoMat.Text;
                 profe.especialidad = TxtEspecialidad.Text;
                 // Agregar profesor
-                rofesores.Add(profe);
+                profesores.Add(profe);
               /*
                 profesor.codigoProfesor = ListaProfesor.Count() + 1;
                 profesor.nombres = TxtNombre.Text;

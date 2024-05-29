@@ -24,7 +24,9 @@ namespace WebForm.View.Profesor
                         asistencia asistencia = new asistencia();
                         asistencia.dniAlumno = alumno.dni;
                         asistencia.fechaHora = DateTime.Now;
+                        asistencia.fechaHoraSpecified = true;
                         asistencia.estado = estadoAsistencia.Presente;
+                        asistencia.estadoSpecified = true;
 
                         asistencias.Add(asistencia);
                     }
@@ -80,7 +82,7 @@ namespace WebForm.View.Profesor
 
             }
             asistenciaAlumno.fechaHora = DateTime.Now;
-
+            asistenciaAlumno.fechaHoraSpecified = true;
             switch (asistenciaEstado)
             {
                 case "P":
@@ -93,7 +95,7 @@ namespace WebForm.View.Profesor
                     asistenciaAlumno.estado = estadoAsistencia.Ausente;
                     break;
             }
-
+            asistenciaAlumno.estadoSpecified = true;
             asistencias.Add(asistenciaAlumno);
             Session["asistencias"] = asistencias;
         }
@@ -105,9 +107,14 @@ namespace WebForm.View.Profesor
 
         protected void BtnGuardarAsistencia_Click(object sender, EventArgs e)
         {
+            int asisHechas = 0;
             List<asistencia> asistencias = (List<asistencia>)Session["asistencias"];
-            asistencia[] asistenciaArray = asistencias.ToArray();
-         //  daoServicio.insertarAsistencia(asistenciaArray[0]);
+            //int asisHechas =daoServicio.insertarAsistencias(asistencias.ToArray());
+            foreach(asistencia asis in asistencias)
+            {
+                asisHechas += daoServicio.insertarAsistencia(asis, asis.dniAlumno);
+            }
+
             Response.Redirect("/View/Profesor/AsistenciaProfesor.aspx");
         }
     }

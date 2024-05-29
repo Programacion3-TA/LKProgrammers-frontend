@@ -41,7 +41,7 @@ namespace WebForm.View.Login
             if (user is profesor) //ES EL PROFESOR
             {
                 Session["Tipo"] = "Profesor";
-                Response.Redirect("/View/Profesor/CursoProfesor.aspx");
+                Response.Redirect("/View/Profesor/ProfesorVista.aspx");
             }
             else if (user is alumno)//ES EL ESTUDIANTE
             {

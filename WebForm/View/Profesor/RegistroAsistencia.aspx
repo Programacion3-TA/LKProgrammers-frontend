@@ -15,7 +15,7 @@
             </div>
             <div class="card-body">
                 <asp:GridView ID="GridAlumnos" runat="server" AutoGenerateColumns="false"
-                    AllowPaging="true" CssClass="table table-hover table-responsive table-striped">
+                    AllowPaging="true" CssClass="table table-hover table-responsive table-striped" >
                     <Columns>
                         <asp:BoundField DataField="codigoAlumno" HeaderText="Código del alumno" ItemStyle-HorizontalAlign="Center"  ItemStyle-VerticalAlign="Middle"/>
                         <asp:BoundField DataField="nombres" HeaderText="Nombre Completo del alumno"  ItemStyle-HorizontalAlign="Center"  ItemStyle-VerticalAlign="Middle"/>
@@ -23,11 +23,13 @@
                             <ItemTemplate>
                                 <asp:RadioButtonList ID="RadAsistencia" runat="server" RepeatDirection="Horizontal" CellPadding="10"
                                     CssClass=" d-flex justify-content-center " OnSelectedIndexChanged="RadAsistencia_SelectedIndexChanged" AutoPostBack="true">
-                                    <asp:ListItem Value="P" Text="Presente"  />
-                                    <asp:ListItem Value="F" Text="Falta"/>
+                                    <asp:ListItem Value="P" Text="Presente" Selected="True" />
+                                    <asp:ListItem Value="T" Text="Tardanza"/>
+                                    <asp:ListItem Value="A" Text="Ausente" />
                                 </asp:RadioButtonList>
+                                <asp:HiddenField ID="HiddenDniAlumno" runat="server" Value='<%#Eval("dni") %>'/>
                             </ItemTemplate>
-                            <ItemStyle HorizontalAlign="Center" Width="200px" />
+                            <ItemStyle HorizontalAlign="Center" Width="250px" />
                         </asp:TemplateField>
                     </Columns>
                     <HeaderStyle HorizontalAlign="Center"/>
@@ -43,6 +45,24 @@
             </div>
         </div>
     </div>
+
+    <div id="modalGuardarAsistencias" class="modal" tabindex="-1">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                  <div class="modal-header">
+                      <h5 class="modal-title">
+                          Asistencias registradas
+                      </h5>
+                  </div>
+                  <div class="modal-body">
+                    </div>
+            </div>
+
+            </div>
+        </div>
+
+    </div>
+
 </asp:Content>
 <asp:Content ID="Content6" ContentPlaceHolderID="Script" runat="server">
 </asp:Content>
