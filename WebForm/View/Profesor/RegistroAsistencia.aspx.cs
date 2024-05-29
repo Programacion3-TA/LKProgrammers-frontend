@@ -47,7 +47,7 @@ namespace WebForm.View.Profesor
 
         protected void BtnRegresar_Click(object sender, EventArgs e)
         {
-
+            Response.Redirect("/View/Profesor/AsistenciaProfesor.aspx");
         }
 
         protected void BtnGuardarAsistencia_Click(object sender, EventArgs e)
