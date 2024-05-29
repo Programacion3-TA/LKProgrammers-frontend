@@ -20,7 +20,7 @@ namespace WebForm.View.Admin.Profesores
             daoServicio = new LKServicioWebClient();
             CargarTabla();
         }
-
+        
         private void CargarTabla()
         {
             listProfesor = new BindingList<profesor>(daoServicio.listarProfesores());
@@ -50,12 +50,11 @@ namespace WebForm.View.Admin.Profesores
         }
         protected void DelRow_Click(object sender, EventArgs e)
         {
-            /*
+            daoServicio = new LKServicioWebClient();
             Button btn = (Button)sender;
             string code = btn.CommandArgument;
-            Profesor profesor = ListaProfesor.Find(x => x.Codigo == code);
-            ListaProfesor.Remove(profesor);
-            CargarTabla();*/
+            daoServicio.eliminarProfesor(int.Parse(code));
+            CargarTabla();
         }
         protected void ButGuardar_Click(object sender, EventArgs e)
         {
@@ -64,18 +63,19 @@ namespace WebForm.View.Admin.Profesores
             BindingList<profesor> ListaProfesor = new BindingList<profesor>(daoServicio.listarProfesores());
             if (string.IsNullOrEmpty(TxtCode.Text)) // crear
             {
-                profesor.codigoProfesor = ListaProfesor.Count()+1;
+                profesor.codigoProfesor = ListaProfesor.Count() + 1;
                 profesor.nombres = TxtNombre.Text;
                 profesor.apellidoPaterno = TxtApellidoPat.Text;
                 profesor.apellidoMaterno = TxtApellidoMat.Text;
                 profesor.especialidad = TxtEspecialidad.Text;
                 profesor.direccion = TxtDireccion.Text;
-                profesor.telefono =TxtTelefono.Text;
-                profesor.genero =TxtGenero.Text[0];
+                profesor.telefono = TxtTelefono.Text;
+                profesor.genero = TxtGenero.Text[0];
                 profesor.correoElectronico = TxtCorreo.Text;
                 profesor.usuario1 = TxtUsername.Text;
                 profesor.contrasenia = TxtPassword.Text;
-                profesor.fechaNac=DateTime.ParseExact(TxtFechaNacimiento.Text, "yyyy-MM-dd", CultureInfo.InvariantCulture);
+                profesor.fechaNac= DateTime.Parse(TxtFechaNacimiento.Text);
+                profesor.fechaNacSpecified = true;
                 profesor.dni = TxtDNI.Text;
                 daoServicio.insertarprofesor(profesor);
                 CargarTabla();
@@ -93,9 +93,10 @@ namespace WebForm.View.Admin.Profesores
                 profesor.correoElectronico = TxtCorreo.Text;
                 profesor.usuario1 = TxtUsername.Text;
                 profesor.contrasenia = TxtPassword.Text;
-                profesor.fechaNac = DateTime.ParseExact(TxtFechaNacimiento.Text, "yyyy-MM-dd", CultureInfo.InvariantCulture);
+                profesor.fechaNac = DateTime.Parse(TxtFechaNacimiento.Text);
+                profesor.fechaNacSpecified = true;
                 profesor.dni = TxtDNI.Text;
-                daoServicio.editarprofesor(profesor);
+                daoServicio.editarProfesor(profesor);
                 CargarTabla();
             }
             Response.Redirect(Request.Url.AbsoluteUri);

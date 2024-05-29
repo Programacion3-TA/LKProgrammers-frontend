@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<ReferenceGroup xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" ID="db705d7b-543f-403f-950b-9d9078dc3bda" xmlns="urn:schemas-microsoft-com:xml-wcfservicemap">
+<ReferenceGroup xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" ID="bdbbacd1-eb23-4977-9e35-ca4ce983fe64" xmlns="urn:schemas-microsoft-com:xml-wcfservicemap">
   <ClientOptions>
     <GenerateAsynchronousMethods>false</GenerateAsynchronousMethods>
     <GenerateTaskBasedAsynchronousMethod>true</GenerateTaskBasedAsynchronousMethod>
@@ -22,8 +22,8 @@
     <MetadataSource Address="http://localhost:8080/LKProgramService/LKServicioWeb?WSDL" Protocol="http" SourceId="1" />
   </MetadataSources>
   <Metadata>
-    <MetadataFile FileName="LKServicioWeb.wsdl" MetadataType="Wsdl" ID="28504533-f56e-4115-85ee-d6c4d3aa1652" SourceId="1" SourceUrl="http://localhost:8080/LKProgramService/LKServicioWeb?WSDL" />
-    <MetadataFile FileName="LKServicioWeb.xsd" MetadataType="Schema" ID="7b233d79-4b4c-45b8-b8ad-631f9c00b3d4" SourceId="1" SourceUrl="http://localhost:8080/LKProgramService/LKServicioWeb?xsd=1" />
+    <MetadataFile FileName="LKServicioWeb.wsdl" MetadataType="Wsdl" ID="9cfcaa18-ad56-45f9-9b1c-71e1cd472967" SourceId="1" SourceUrl="http://localhost:8080/LKProgramService/LKServicioWeb?WSDL" />
+    <MetadataFile FileName="LKServicioWeb.xsd" MetadataType="Schema" ID="2a1cc467-6a7c-4453-be8d-b84ac1a995ea" SourceId="1" SourceUrl="http://localhost:8080/LKProgramService/LKServicioWeb?xsd=1" />
   </Metadata>
   <Extensions>
     <ExtensionFile FileName="configuration91.svcinfo" Name="configuration91.svcinfo" />

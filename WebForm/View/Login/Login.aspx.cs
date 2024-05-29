@@ -21,9 +21,10 @@ namespace WebForm.View.Login
         }
         protected void BtnIngresar_Click(object sender, EventArgs e)
         {
-            char t = (char)daoServicio.acceder_a_pagina(TxtUsuario.Text, TxtContrasenia.Text);
+            daoServicio = new LKServicioWebClient();
+            usuario t = daoServicio.verificarUsuario(TxtUsuario.Text, TxtContrasenia.Text);
             //redireccionamiento de paginas dependiendo del usuario
-            if (t == 'N') //NO ES NADIE ASI QUE EMITE UN ERROR
+            if (!((t is profesor) || (t is alumno) || (t is personalAdministrativo))) //NO ES NADIE ASI QUE EMITE UN ERROR
             {
                 //implementar estilos de errores con JS
                 
@@ -31,19 +32,19 @@ namespace WebForm.View.Login
                 TxtContrasenia.Text = "";
                 Response.Redirect("/View/Login/Login.aspx");
             }
-            if (t == 'P') //ES EL PROFESOR
+            if (t is profesor) //ES EL PROFESOR
             {
                 Session["Usuario"] = daoServicio.listarProfesores().ToList().Find(x => (x.usuario1 == TxtUsuario.Text && x.contrasenia == TxtContrasenia.Text));
                 Session["Tipo"] = "Profesor";
                 Response.Redirect("/View/Profesor/CursoProfesor.aspx");
             }
-            if (t == 'E')//ES EL ESTUDIANTE
+            if (t is alumno)//ES EL ESTUDIANTE
             {
                 Session["Usuario"] = daoServicio.listarAlumnos().ToList().Find(x => (x.usuario1 == TxtUsuario.Text && x.contrasenia == TxtContrasenia.Text));
                 Session["Tipo"] = "Alumno";
                 Response.Redirect("/View/Alumno/Alumno.aspx");
             }
-            if (t == 'A') //ADMINISTRATIVO
+            if (t is personalAdministrativo) //ADMINISTRATIVO
             {
                 Session["Usuario"] = daoServicio.listarAdministradores().ToList().Find(x => (x.usuario1 == TxtUsuario.Text && x.contrasenia == TxtContrasenia.Text));
                 Session["Tipo"] = "Administrador";
