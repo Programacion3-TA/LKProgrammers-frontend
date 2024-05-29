@@ -25,9 +25,13 @@ namespace WebForm.View.Login
         }
         protected void BtnIngresar_Click(object sender, EventArgs e)
         {
-            char t = (char)daoServicio.acceder_a_pagina(TxtUsuario.Text, TxtContrasenia.Text);
+            usuario user = (usuario)daoServicio.verificarUsuario(TxtUsuario.Text, TxtContrasenia.Text);
             //redireccionamiento de paginas dependiendo del usuario
+<<<<<<< HEAD
             if (t == 'N') //NO ES NADIE ASI QUE EMITE UN ERROR: 78 en ASCII
+=======
+            if (user == null) //NO ES NADIE ASI QUE EMITE UN ERROR
+>>>>>>> master
             {
                 //implementar estilos de errores con JS
                 
@@ -35,21 +39,23 @@ namespace WebForm.View.Login
                 TxtContrasenia.Text = "";
                 Response.Redirect("/View/Login/Login.aspx");
             }
-            if (t == 'P') //ES EL PROFESOR
+            Session["Usuario"] = user;
+            if (user is profesor) //ES EL PROFESOR
             {
-                Session["Usuario"] = daoServicio.listarProfesores().ToList().Find(x => (x.usuario1 == TxtUsuario.Text && x.contrasenia == TxtContrasenia.Text));
                 Session["Tipo"] = "Profesor";
                 Response.Redirect("/View/Profesor/CursoProfesor.aspx");
             }
+<<<<<<< HEAD
             if (t == 'E')//ES EL ESTUDIANTE: 69 ASCII
+=======
+            else if (user is alumno)//ES EL ESTUDIANTE
+>>>>>>> master
             {
-                Session["Usuario"] = daoServicio.listarAlumnos().ToList().Find(x => (x.usuario1 == TxtUsuario.Text && x.contrasenia == TxtContrasenia.Text));
                 Session["Tipo"] = "Alumno";
                 Response.Redirect("/View/Alumno/Alumno.aspx");
             }
-            if (t == 'A') //ADMINISTRATIVO
+            else if (user is personalAdministrativo) //ADMINISTRATIVO
             {
-                Session["Usuario"] = daoServicio.listarAdministradores().ToList().Find(x => (x.usuario1 == TxtUsuario.Text && x.contrasenia == TxtContrasenia.Text));
                 Session["Tipo"] = "Administrador";
                 Response.Redirect("/View/Admin/AnioAcademico/AniosAcademicos.aspx");
             }

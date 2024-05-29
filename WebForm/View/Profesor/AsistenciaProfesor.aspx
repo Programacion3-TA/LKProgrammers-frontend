@@ -13,7 +13,13 @@
     <div class="container">
         <div class="container row pb-2 pt-2">
             <div class="col">
-                filtro
+                    <div class="input-group mb-3">
+                    <asp:TextBox ID="TxtBuscarDias" runat="server" CssClass="form-control" placeholder="Ingrese día de la semana"></asp:TextBox>
+                    <div class="input-group-append">
+                       <asp:Button ID="BtnBuscarDias" runat="server" Text="Buscar" CssClass="btn btn-outline-secondary"
+                           OnClick="BtnBuscarDias_Click"/>
+                    </div>
+                    </div>
             </div>
             <div>
                 <div class="text-end p-3">
@@ -23,40 +29,29 @@
             </div>
         </div>
     </div>
-    <button type="button" class="btn btn-secondary" data-bs-toggle="modal" data-bs-target="#guardar--modal">
-      <i class="fa-solid fa-gear"></i> Guardar
-    </button>
 
-    <table class="table table-striped">
-      <thead>
-        <tr>
-          <th scope="col">Alumno</th>
-          <th scope="col">Tipo asistencia</th>
-          <th scope="col">Editar</th>
-          <th scope="col">Eliminar</th>
-        </tr>
-      </thead>
-      <tbody>
-        <tr>
-          <th scope="row">Cueva Paz, Guanira Erasmo</th>
-          <td>Temprano</td>
-          <td><input class="form-check-input" type="checkbox" value="" id="flexCheckDefault2"></td>
-          <td><a class="link-opacity-100" style="cursor:pointer;" data-bs-toggle="modal" data-bs-target="#eliminar--modal">Eliminar <i class="fa-solid fa-trash" style="color:red;"></i></a></td>
-        </tr>
-        <tr>
-          <th scope="row">Phan Chau, Bernardo Julio</th>
-          <td>Temprano</td>
-          <td><input class="form-check-input" type="checkbox" value="" id="flexCheckDefault1"></td>
-          <td><a class="link-opacity-100" style="cursor:pointer;" data-bs-toggle="modal" data-bs-target="#eliminar--modal">Eliminar <i class="fa-solid fa-trash" style="color:red;"></i></a></td>
-        </tr>
-        <tr>
-          <th scope="row">Villanueva Villalobos, Vanessa Veth</th>
-          <td>Temprano</td>
-          <td><input class="form-check-input" type="checkbox" value="" id="flexCheckDefault"></td>
-          <td><a class="link-opacity-100" style="cursor:pointer;" data-bs-toggle="modal" data-bs-target="#eliminar--modal">Eliminar <i class="fa-solid fa-trash" style="color:red;"></i></a></td>
-        </tr>
-      </tbody>
-    </table>
+    <div class ="container">
+        <div class="card">
+            <div class="card-body">
+                <asp:GridView ID="GridAsistenciasFechas" runat="server" AutoGenerateColumns="false"
+                    AllowPaging ="true" CssClass="table table-hover table-responsive table-striped">
+                    <Columns>
+                        <asp:BoundField DataField="FechaHora" HeaderText ="Fecha de asistencias" />
+                        <asp:TemplateField HeaderText="Actualización de asistencias">
+                            <ItemTemplate>
+                                <asp:Button runat="server" />
+                            </ItemTemplate>
+                        </asp:TemplateField>
+                    </Columns>
+                    
+                </asp:GridView>
+            </div>
+        </div>
+    </div>
+
+
+
+
 
     <div id="guardar--modal" class="modal" tabindex="-1">
         <div class="modal-dialog modal-dialog-centered">

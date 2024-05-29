@@ -86,11 +86,28 @@ namespace WebForm.View.Admin.Profesores
             }
             /*else //actualizar
             {
+<<<<<<< HEAD
                 profesor = ListaProfesor.Find(x => x.Codigo == TxtCode.Text);
                 profesor.Nombre = TxtNombre.Text;
                 profesor.ApellidoMat= TxtApellidoMat.Text;
                 profesor.ApellidoPat = TxtApellidoPat.Text;
                 profesor.Especialidad = TxtEspecialidad.Text;
+=======
+                profesor = ListaProfesor.ToList().Find(x => x.codigoProfesor == int.Parse(TxtCode.Text));
+                profesor.nombres = TxtNombre.Text;
+                profesor.apellidoPaterno = TxtApellidoPat.Text;
+                profesor.apellidoMaterno = TxtApellidoMat.Text;
+                profesor.especialidad = TxtEspecialidad.Text;
+                profesor.direccion = TxtDireccion.Text;
+                profesor.telefono = TxtTelefono.Text;
+                profesor.genero = TxtGenero.Text[0];
+                profesor.correoElectronico = TxtCorreo.Text;
+                profesor.usuario1 = TxtUsername.Text;
+                profesor.contrasenia = TxtPassword.Text;
+                profesor.fechaNac = DateTime.ParseExact(TxtFechaNacimiento.Text, "yyyy-MM-dd", CultureInfo.InvariantCulture);
+                profesor.dni = TxtDNI.Text;
+                daoServicio.editarProfesor(profesor);
+>>>>>>> master
                 CargarTabla();
             }
             Response.Redirect(Request.Url.AbsoluteUri);*/
