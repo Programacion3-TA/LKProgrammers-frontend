@@ -29,12 +29,6 @@
   <message name="listarUsuariosResponse">
     <part name="parameters" element="tns:listarUsuariosResponse" />
   </message>
-  <message name="acceder_a_pagina">
-    <part name="parameters" element="tns:acceder_a_pagina" />
-  </message>
-  <message name="acceder_a_paginaResponse">
-    <part name="parameters" element="tns:acceder_a_paginaResponse" />
-  </message>
   <message name="listarAdministradores">
     <part name="parameters" element="tns:listarAdministradores" />
   </message>
@@ -53,23 +47,53 @@
   <message name="listarAlumnosxsalonResponse">
     <part name="parameters" element="tns:listarAlumnosxsalonResponse" />
   </message>
-  <message name="insertarAsistencia">
-    <part name="parameters" element="tns:insertarAsistencia" />
-  </message>
-  <message name="insertarAsistenciaResponse">
-    <part name="parameters" element="tns:insertarAsistenciaResponse" />
-  </message>
   <message name="insertaTodasAsistencias">
     <part name="parameters" element="tns:insertaTodasAsistencias" />
   </message>
   <message name="insertaTodasAsistenciasResponse">
     <part name="parameters" element="tns:insertaTodasAsistenciasResponse" />
   </message>
-  <message name="Reporte_general_notas_de_alumno">
-    <part name="parameters" element="tns:Reporte_general_notas_de_alumno" />
+  <message name="insertarAsistencia">
+    <part name="parameters" element="tns:insertarAsistencia" />
   </message>
-  <message name="Reporte_general_notas_de_alumnoResponse">
-    <part name="parameters" element="tns:Reporte_general_notas_de_alumnoResponse" />
+  <message name="insertarAsistenciaResponse">
+    <part name="parameters" element="tns:insertarAsistenciaResponse" />
+  </message>
+  <message name="reporteGeneralNotasAlumno">
+    <part name="parameters" element="tns:reporteGeneralNotasAlumno" />
+  </message>
+  <message name="reporteGeneralNotasAlumnoResponse">
+    <part name="parameters" element="tns:reporteGeneralNotasAlumnoResponse" />
+  </message>
+  <message name="insertarprofesor">
+    <part name="parameters" element="tns:insertarprofesor" />
+  </message>
+  <message name="insertarprofesorResponse">
+    <part name="parameters" element="tns:insertarprofesorResponse" />
+  </message>
+  <message name="editarAlumno">
+    <part name="parameters" element="tns:editarAlumno" />
+  </message>
+  <message name="editarAlumnoResponse">
+    <part name="parameters" element="tns:editarAlumnoResponse" />
+  </message>
+  <message name="editarProfesor">
+    <part name="parameters" element="tns:editarProfesor" />
+  </message>
+  <message name="editarProfesorResponse">
+    <part name="parameters" element="tns:editarProfesorResponse" />
+  </message>
+  <message name="insertarAlumno">
+    <part name="parameters" element="tns:insertarAlumno" />
+  </message>
+  <message name="insertarAlumnoResponse">
+    <part name="parameters" element="tns:insertarAlumnoResponse" />
+  </message>
+  <message name="verificarUsuario">
+    <part name="parameters" element="tns:verificarUsuario" />
+  </message>
+  <message name="verificarUsuarioResponse">
+    <part name="parameters" element="tns:verificarUsuarioResponse" />
   </message>
   <portType name="LKServicioWeb">
     <operation name="hello">
@@ -88,10 +112,6 @@
       <input wsam:Action="http://services.service.lkprogrammers.org/LKServicioWeb/listarUsuariosRequest" message="tns:listarUsuarios" />
       <output wsam:Action="http://services.service.lkprogrammers.org/LKServicioWeb/listarUsuariosResponse" message="tns:listarUsuariosResponse" />
     </operation>
-    <operation name="acceder_a_pagina">
-      <input wsam:Action="http://services.service.lkprogrammers.org/LKServicioWeb/acceder_a_paginaRequest" message="tns:acceder_a_pagina" />
-      <output wsam:Action="http://services.service.lkprogrammers.org/LKServicioWeb/acceder_a_paginaResponse" message="tns:acceder_a_paginaResponse" />
-    </operation>
     <operation name="listarAdministradores">
       <input wsam:Action="http://services.service.lkprogrammers.org/LKServicioWeb/listarAdministradoresRequest" message="tns:listarAdministradores" />
       <output wsam:Action="http://services.service.lkprogrammers.org/LKServicioWeb/listarAdministradoresResponse" message="tns:listarAdministradoresResponse" />
@@ -104,17 +124,37 @@
       <input wsam:Action="http://services.service.lkprogrammers.org/LKServicioWeb/listarAlumnosxsalonRequest" message="tns:listarAlumnosxsalon" />
       <output wsam:Action="http://services.service.lkprogrammers.org/LKServicioWeb/listarAlumnosxsalonResponse" message="tns:listarAlumnosxsalonResponse" />
     </operation>
-    <operation name="insertarAsistencia">
-      <input wsam:Action="http://services.service.lkprogrammers.org/LKServicioWeb/insertarAsistenciaRequest" message="tns:insertarAsistencia" />
-      <output wsam:Action="http://services.service.lkprogrammers.org/LKServicioWeb/insertarAsistenciaResponse" message="tns:insertarAsistenciaResponse" />
-    </operation>
     <operation name="insertaTodasAsistencias">
       <input wsam:Action="http://services.service.lkprogrammers.org/LKServicioWeb/insertaTodasAsistenciasRequest" message="tns:insertaTodasAsistencias" />
       <output wsam:Action="http://services.service.lkprogrammers.org/LKServicioWeb/insertaTodasAsistenciasResponse" message="tns:insertaTodasAsistenciasResponse" />
     </operation>
-    <operation name="Reporte_general_notas_de_alumno">
-      <input wsam:Action="http://services.service.lkprogrammers.org/LKServicioWeb/Reporte_general_notas_de_alumnoRequest" message="tns:Reporte_general_notas_de_alumno" />
-      <output wsam:Action="http://services.service.lkprogrammers.org/LKServicioWeb/Reporte_general_notas_de_alumnoResponse" message="tns:Reporte_general_notas_de_alumnoResponse" />
+    <operation name="insertarAsistencia">
+      <input wsam:Action="http://services.service.lkprogrammers.org/LKServicioWeb/insertarAsistenciaRequest" message="tns:insertarAsistencia" />
+      <output wsam:Action="http://services.service.lkprogrammers.org/LKServicioWeb/insertarAsistenciaResponse" message="tns:insertarAsistenciaResponse" />
+    </operation>
+    <operation name="reporteGeneralNotasAlumno">
+      <input wsam:Action="http://services.service.lkprogrammers.org/LKServicioWeb/reporteGeneralNotasAlumnoRequest" message="tns:reporteGeneralNotasAlumno" />
+      <output wsam:Action="http://services.service.lkprogrammers.org/LKServicioWeb/reporteGeneralNotasAlumnoResponse" message="tns:reporteGeneralNotasAlumnoResponse" />
+    </operation>
+    <operation name="insertarprofesor">
+      <input wsam:Action="http://services.service.lkprogrammers.org/LKServicioWeb/insertarprofesorRequest" message="tns:insertarprofesor" />
+      <output wsam:Action="http://services.service.lkprogrammers.org/LKServicioWeb/insertarprofesorResponse" message="tns:insertarprofesorResponse" />
+    </operation>
+    <operation name="editarAlumno">
+      <input wsam:Action="http://services.service.lkprogrammers.org/LKServicioWeb/editarAlumnoRequest" message="tns:editarAlumno" />
+      <output wsam:Action="http://services.service.lkprogrammers.org/LKServicioWeb/editarAlumnoResponse" message="tns:editarAlumnoResponse" />
+    </operation>
+    <operation name="editarProfesor">
+      <input wsam:Action="http://services.service.lkprogrammers.org/LKServicioWeb/editarProfesorRequest" message="tns:editarProfesor" />
+      <output wsam:Action="http://services.service.lkprogrammers.org/LKServicioWeb/editarProfesorResponse" message="tns:editarProfesorResponse" />
+    </operation>
+    <operation name="insertarAlumno">
+      <input wsam:Action="http://services.service.lkprogrammers.org/LKServicioWeb/insertarAlumnoRequest" message="tns:insertarAlumno" />
+      <output wsam:Action="http://services.service.lkprogrammers.org/LKServicioWeb/insertarAlumnoResponse" message="tns:insertarAlumnoResponse" />
+    </operation>
+    <operation name="verificarUsuario">
+      <input wsam:Action="http://services.service.lkprogrammers.org/LKServicioWeb/verificarUsuarioRequest" message="tns:verificarUsuario" />
+      <output wsam:Action="http://services.service.lkprogrammers.org/LKServicioWeb/verificarUsuarioResponse" message="tns:verificarUsuarioResponse" />
     </operation>
   </portType>
   <binding name="LKServicioWebPortBinding" type="tns:LKServicioWeb">
@@ -155,15 +195,6 @@
         <soap:body use="literal" />
       </output>
     </operation>
-    <operation name="acceder_a_pagina">
-      <soap:operation soapAction="" />
-      <input>
-        <soap:body use="literal" />
-      </input>
-      <output>
-        <soap:body use="literal" />
-      </output>
-    </operation>
     <operation name="listarAdministradores">
       <soap:operation soapAction="" />
       <input>
@@ -191,15 +222,6 @@
         <soap:body use="literal" />
       </output>
     </operation>
-    <operation name="insertarAsistencia">
-      <soap:operation soapAction="" />
-      <input>
-        <soap:body use="literal" />
-      </input>
-      <output>
-        <soap:body use="literal" />
-      </output>
-    </operation>
     <operation name="insertaTodasAsistencias">
       <soap:operation soapAction="" />
       <input>
@@ -209,7 +231,61 @@
         <soap:body use="literal" />
       </output>
     </operation>
-    <operation name="Reporte_general_notas_de_alumno">
+    <operation name="insertarAsistencia">
+      <soap:operation soapAction="" />
+      <input>
+        <soap:body use="literal" />
+      </input>
+      <output>
+        <soap:body use="literal" />
+      </output>
+    </operation>
+    <operation name="reporteGeneralNotasAlumno">
+      <soap:operation soapAction="" />
+      <input>
+        <soap:body use="literal" />
+      </input>
+      <output>
+        <soap:body use="literal" />
+      </output>
+    </operation>
+    <operation name="insertarprofesor">
+      <soap:operation soapAction="" />
+      <input>
+        <soap:body use="literal" />
+      </input>
+      <output>
+        <soap:body use="literal" />
+      </output>
+    </operation>
+    <operation name="editarAlumno">
+      <soap:operation soapAction="" />
+      <input>
+        <soap:body use="literal" />
+      </input>
+      <output>
+        <soap:body use="literal" />
+      </output>
+    </operation>
+    <operation name="editarProfesor">
+      <soap:operation soapAction="" />
+      <input>
+        <soap:body use="literal" />
+      </input>
+      <output>
+        <soap:body use="literal" />
+      </output>
+    </operation>
+    <operation name="insertarAlumno">
+      <soap:operation soapAction="" />
+      <input>
+        <soap:body use="literal" />
+      </input>
+      <output>
+        <soap:body use="literal" />
+      </output>
+    </operation>
+    <operation name="verificarUsuario">
       <soap:operation soapAction="" />
       <input>
         <soap:body use="literal" />

@@ -303,9 +303,6 @@
     <None Include="Connected Services\ServicioWS\LKServicioWeb.xsd">
       <SubType>Designer</SubType>
     </None>
-    <Content Include="Connected Services\ServicioWS\WebForm.ServicioWS.acceder_a_paginaResponse.datasource">
-      <DependentUpon>Reference.svcmap</DependentUpon>
-    </Content>
     <Content Include="Connected Services\ServicioWS\WebForm.ServicioWS.alumno.datasource">
       <DependentUpon>Reference.svcmap</DependentUpon>
     </Content>
@@ -342,10 +339,25 @@
     <Content Include="Connected Services\ServicioWS\WebForm.ServicioWS.profesor.datasource">
       <DependentUpon>Reference.svcmap</DependentUpon>
     </Content>
-    <Content Include="Connected Services\ServicioWS\WebForm.ServicioWS.Reporte_general_notas_de_alumnoResponse.datasource">
+    <Content Include="Connected Services\ServicioWS\WebForm.ServicioWS.usuario.datasource">
       <DependentUpon>Reference.svcmap</DependentUpon>
     </Content>
-    <Content Include="Connected Services\ServicioWS\WebForm.ServicioWS.usuario.datasource">
+    <Content Include="Connected Services\ServicioWS\WebForm.ServicioWS.editarAlumnoResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Content>
+    <Content Include="Connected Services\ServicioWS\WebForm.ServicioWS.editarProfesorResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Content>
+    <Content Include="Connected Services\ServicioWS\WebForm.ServicioWS.insertarAlumnoResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Content>
+    <Content Include="Connected Services\ServicioWS\WebForm.ServicioWS.insertarprofesorResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Content>
+    <Content Include="Connected Services\ServicioWS\WebForm.ServicioWS.reporteGeneralNotasAlumnoResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Content>
+    <Content Include="Connected Services\ServicioWS\WebForm.ServicioWS.verificarUsuarioResponse.datasource">
       <DependentUpon>Reference.svcmap</DependentUpon>
     </Content>
     <None Include="packages.config" />
