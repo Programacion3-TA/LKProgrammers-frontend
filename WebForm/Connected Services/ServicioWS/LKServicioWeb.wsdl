@@ -47,6 +47,12 @@
   <message name="listarAdministradoresResponse">
     <part name="parameters" element="tns:listarAdministradoresResponse" />
   </message>
+  <message name="insertarTodasAsistencias">
+    <part name="parameters" element="tns:insertarTodasAsistencias" />
+  </message>
+  <message name="insertarTodasAsistenciasResponse">
+    <part name="parameters" element="tns:insertarTodasAsistenciasResponse" />
+  </message>
   <message name="Reporte_general_notas_de_alumno">
     <part name="parameters" element="tns:Reporte_general_notas_de_alumno" />
   </message>
@@ -93,6 +99,10 @@
     <operation name="listarAdministradores">
       <input wsam:Action="http://services.service.lkprogrammers.org/LKServicioWeb/listarAdministradoresRequest" message="tns:listarAdministradores" />
       <output wsam:Action="http://services.service.lkprogrammers.org/LKServicioWeb/listarAdministradoresResponse" message="tns:listarAdministradoresResponse" />
+    </operation>
+    <operation name="insertarTodasAsistencias">
+      <input wsam:Action="http://services.service.lkprogrammers.org/LKServicioWeb/insertarTodasAsistenciasRequest" message="tns:insertarTodasAsistencias" />
+      <output wsam:Action="http://services.service.lkprogrammers.org/LKServicioWeb/insertarTodasAsistenciasResponse" message="tns:insertarTodasAsistenciasResponse" />
     </operation>
     <operation name="Reporte_general_notas_de_alumno">
       <input wsam:Action="http://services.service.lkprogrammers.org/LKServicioWeb/Reporte_general_notas_de_alumnoRequest" message="tns:Reporte_general_notas_de_alumno" />
@@ -164,6 +174,15 @@
       </output>
     </operation>
     <operation name="listarAdministradores">
+      <soap:operation soapAction="" />
+      <input>
+        <soap:body use="literal" />
+      </input>
+      <output>
+        <soap:body use="literal" />
+      </output>
+    </operation>
+    <operation name="insertarTodasAsistencias">
       <soap:operation soapAction="" />
       <input>
         <soap:body use="literal" />

@@ -12,8 +12,13 @@ namespace WebForm.View.AsistenciaProfesor
         private LKServicioWebClient daoServicio;
         protected void Page_Load(object sender, EventArgs e)
         {
+            //no tocar
+            ValidationSettings.UnobtrusiveValidationMode = UnobtrusiveValidationMode.None;
+
             daoServicio = new LKServicioWebClient();
             
+
+
             if(!IsPostBack){
                 //if (!((string)(Session["Tipo"])).Equals("Profesor")) ; evita que ingresen cuentasn que no son tipo Profesor
                 int idsalon;

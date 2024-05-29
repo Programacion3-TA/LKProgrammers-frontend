@@ -13,23 +13,36 @@ namespace WebForm.View.Profesor
 
         protected void Page_Load(object sender, EventArgs e)
         {
+            ValidationSettings.UnobtrusiveValidationMode = UnobtrusiveValidationMode.None;
             daoServicio = new LKServicioWebClient();
             if (!IsPostBack) {
 
-                int idsalon = (int)Session["idsalon"];                                   
+                int idsalon = (int)Session["idsalon"];     
+                
                 List<asistencia> asistencias = new List<asistencia>();
+                List<alumno> alumnos = daoServicio.listarAlumnosxsalon(idsalon).ToList();
+
+                //lleno los alumnos con asistencia presente
+                foreach(alumno alumno in alumnos)
+                {
+                    asistencia asistencia = new asistencia();
+                    asistencia.dniAlumno = alumno.dni;
+                    asistencia.fechaHora = DateTime.Now;
+                    asistencia.estado = estadoAsistencia.Presente;
+
+                    asistencias.Add(asistencia);
+                }
+
                 Session["asistencias"] = asistencias;
                 //identificar si se hizo la asistencia
-                mostrarAlumnosSalon(idsalon);
+                mostrarAlumnosSalon(alumnos);
                 
 
             }
 
         }
-        protected void mostrarAlumnosSalon(int idsalon)
+        protected void mostrarAlumnosSalon(List<alumno> alumnos)
         {
-            
-            List<alumno> alumnos = daoServicio.listarAlumnosxsalon(idsalon).ToList();
             
             //por ahora para mostrar el nombre completo
             foreach(alumno alu in alumnos)
@@ -44,7 +57,7 @@ namespace WebForm.View.Profesor
 
         protected void RadAsistencia_SelectedIndexChanged(object sender, EventArgs e)
         {
-            /*
+            
             RadioButtonList radioList = (RadioButtonList)sender; //radioQue disparo
 
             GridViewRow fila = (GridViewRow)(radioList.NamingContainer);
@@ -87,7 +100,7 @@ namespace WebForm.View.Profesor
 
             asistencias.Add(asistenciaAlumno);
             Session["asistencias"] = asistencias;
-            */
+            
         }
 
         protected void BtnRegresar_Click(object sender, EventArgs e)
@@ -98,7 +111,15 @@ namespace WebForm.View.Profesor
         protected void BtnGuardarAsistencia_Click(object sender, EventArgs e)
         {
             //registramos todo en la base de datos
+            List<asistencia> asistencias = (List<asistencia>)Session["asistencias"];
+            asistencia[] asistenciaArray = asistencias.ToArray();
+
+            daoServicio.insertarTodasAsistencias(asistenciaArray);
+            
+            Response.Redirect("/View/Profesor/AsistenciaProfesor.aspx");
         }
+
+         
     }
 
 }

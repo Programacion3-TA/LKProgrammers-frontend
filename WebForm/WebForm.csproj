@@ -147,6 +147,9 @@
     <Content Include="Connected Services\ServicioWS\WebForm.ServicioWS.usuario.datasource">
       <DependentUpon>Reference.svcmap</DependentUpon>
     </Content>
+    <Content Include="Connected Services\ServicioWS\WebForm.ServicioWS.insertarTodasAsistenciasResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Content>
     <None Include="Public\js\jquery\jquery-3.7.1.intellisense.js" />
     <Content Include="Public\js\jquery\jquery-3.7.1.js" />
     <Content Include="Public\js\jquery\jquery-3.7.1.min.js" />

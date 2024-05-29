@@ -17,14 +17,12 @@
             </div>
             <div>
                 <div class="text-end p-3">
-                    <asp:LinkButton ID="LinkButton1" runat="server" OnClick="LinkButton1_Click">LinkButton</asp:LinkButton>
+                    <asp:LinkButton ID="LinkButton1" runat="server" OnClick="LinkButton1_Click"
+                        CssClass="btn btn-dark" Text="<i class='fa-solid fa-clipboard-user'></i> Marcar asistencia"></asp:LinkButton>
                 </div>
             </div>
         </div>
     </div>
-    <button type="button" class="btn btn-secondary" data-bs-toggle="modal" data-bs-target="#guardar--modal">
-      <i class="fa-solid fa-gear"></i> Guardar
-    </button>
 
     <table class="table table-striped">
       <thead>
@@ -56,36 +54,6 @@
         </tr>
       </tbody>
     </table>
-
-    <div id="guardar--modal" class="modal" tabindex="-1">
-        <div class="modal-dialog modal-dialog-centered">
-            <div  class="modal-content">
-                <div class="modal-header">
-                    <h5 class="modal-title">Guardar cambios</h5>
-                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                </div>
-                <div class="modal-footer">
-                    <button type="submit" class="btn btn-secondary" data-bs-dismiss="modal">Cancelar</button>
-                    <button type="submit" class="btn btn-primary">Sí, aceptar</button>
-                </div>
-            </div>
-        </div>
-    </div>
-
-    <div id="eliminar--modal" class="modal" tabindex="-1">
-        <div class="modal-dialog modal-dialog-centered">
-            <div class="modal-content">
-                <div class="modal-header">
-                    <h5 class="modal-title">¿Está seguro que quiere eliminar "${elemento}"?</h5>
-                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                </div>
-                <div class="modal-footer">
-                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancelar</button>
-                    <button type="submit" class="btn btn-primary">Eliminar</button>
-                </div>
-            </div>
-        </div>
-    </div>
 </asp:Content>
 <asp:Content ID="Content5" ContentPlaceHolderID="Script" runat="server">
 </asp:Content>

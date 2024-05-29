@@ -10,6 +10,8 @@
   <xs:element name="helloResponse" type="tns:helloResponse" />
   <xs:element name="insertarAsistencia" type="tns:insertarAsistencia" />
   <xs:element name="insertarAsistenciaResponse" type="tns:insertarAsistenciaResponse" />
+  <xs:element name="insertarTodasAsistencias" type="tns:insertarTodasAsistencias" />
+  <xs:element name="insertarTodasAsistenciasResponse" type="tns:insertarTodasAsistenciasResponse" />
   <xs:element name="listarAdministradores" type="tns:listarAdministradores" />
   <xs:element name="listarAdministradoresResponse" type="tns:listarAdministradoresResponse" />
   <xs:element name="listarAlumnos" type="tns:listarAlumnos" />
@@ -138,16 +140,6 @@
       </xs:extension>
     </xs:complexContent>
   </xs:complexType>
-  <xs:complexType name="esTutorAsignado">
-    <xs:sequence>
-      <xs:element minOccurs="0" name="dniProfesor" type="xs:string" />
-    </xs:sequence>
-  </xs:complexType>
-  <xs:complexType name="esTutorAsignadoResponse">
-    <xs:sequence>
-      <xs:element name="return" type="xs:int" />
-    </xs:sequence>
-  </xs:complexType>
   <xs:complexType name="insertarAsistencia">
     <xs:sequence>
       <xs:element minOccurs="0" name="asistencia" type="tns:asistencia" />
@@ -162,6 +154,26 @@
     </xs:sequence>
   </xs:complexType>
   <xs:complexType name="insertarAsistenciaResponse">
+    <xs:sequence>
+      <xs:element name="return" type="xs:int" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="esTutorAsignado">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="dniProfesor" type="xs:string" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="esTutorAsignadoResponse">
+    <xs:sequence>
+      <xs:element name="return" type="xs:int" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="insertarTodasAsistencias">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="asistencias" type="tns:asistencia" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="insertarTodasAsistenciasResponse">
     <xs:sequence>
       <xs:element name="return" type="xs:int" />
     </xs:sequence>

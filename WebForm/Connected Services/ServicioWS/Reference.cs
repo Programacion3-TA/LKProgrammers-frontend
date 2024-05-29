@@ -83,6 +83,19 @@ namespace WebForm.ServicioWS {
         System.Threading.Tasks.Task<WebForm.ServicioWS.listarAdministradoresResponse> listarAdministradoresAsync(WebForm.ServicioWS.listarAdministradoresRequest request);
         
         // CODEGEN: El parámetro 'return' requiere información adicional de esquema que no se puede capturar con el modo de parámetros. El atributo específico es 'System.Xml.Serialization.XmlElementAttribute'.
+        [System.ServiceModel.OperationContractAttribute(Action="http://services.service.lkprogrammers.org/LKServicioWeb/insertarTodasAsistenciasR" +
+            "equest", ReplyAction="http://services.service.lkprogrammers.org/LKServicioWeb/insertarTodasAsistenciasR" +
+            "esponse")]
+        [System.ServiceModel.XmlSerializerFormatAttribute(SupportFaults=true)]
+        [return: System.ServiceModel.MessageParameterAttribute(Name="return")]
+        WebForm.ServicioWS.insertarTodasAsistenciasResponse insertarTodasAsistencias(WebForm.ServicioWS.insertarTodasAsistenciasRequest request);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://services.service.lkprogrammers.org/LKServicioWeb/insertarTodasAsistenciasR" +
+            "equest", ReplyAction="http://services.service.lkprogrammers.org/LKServicioWeb/insertarTodasAsistenciasR" +
+            "esponse")]
+        System.Threading.Tasks.Task<WebForm.ServicioWS.insertarTodasAsistenciasResponse> insertarTodasAsistenciasAsync(WebForm.ServicioWS.insertarTodasAsistenciasRequest request);
+        
+        // CODEGEN: El parámetro 'return' requiere información adicional de esquema que no se puede capturar con el modo de parámetros. El atributo específico es 'System.Xml.Serialization.XmlElementAttribute'.
         [System.ServiceModel.OperationContractAttribute(Action="http://services.service.lkprogrammers.org/LKServicioWeb/Reporte_general_notas_de_" +
             "alumnoRequest", ReplyAction="http://services.service.lkprogrammers.org/LKServicioWeb/Reporte_general_notas_de_" +
             "alumnoResponse")]
@@ -811,6 +824,42 @@ namespace WebForm.ServicioWS {
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
     [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+    [System.ServiceModel.MessageContractAttribute(WrapperName="insertarTodasAsistencias", WrapperNamespace="http://services.service.lkprogrammers.org/", IsWrapped=true)]
+    public partial class insertarTodasAsistenciasRequest {
+        
+        [System.ServiceModel.MessageBodyMemberAttribute(Namespace="http://services.service.lkprogrammers.org/", Order=0)]
+        [System.Xml.Serialization.XmlElementAttribute("asistencias", Form=System.Xml.Schema.XmlSchemaForm.Unqualified)]
+        public WebForm.ServicioWS.asistencia[] asistencias;
+        
+        public insertarTodasAsistenciasRequest() {
+        }
+        
+        public insertarTodasAsistenciasRequest(WebForm.ServicioWS.asistencia[] asistencias) {
+            this.asistencias = asistencias;
+        }
+    }
+    
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
+    [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+    [System.ServiceModel.MessageContractAttribute(WrapperName="insertarTodasAsistenciasResponse", WrapperNamespace="http://services.service.lkprogrammers.org/", IsWrapped=true)]
+    public partial class insertarTodasAsistenciasResponse {
+        
+        [System.ServiceModel.MessageBodyMemberAttribute(Namespace="http://services.service.lkprogrammers.org/", Order=0)]
+        [System.Xml.Serialization.XmlElementAttribute(Form=System.Xml.Schema.XmlSchemaForm.Unqualified)]
+        public int @return;
+        
+        public insertarTodasAsistenciasResponse() {
+        }
+        
+        public insertarTodasAsistenciasResponse(int @return) {
+            this.@return = @return;
+        }
+    }
+    
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
+    [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
     [System.ServiceModel.MessageContractAttribute(WrapperName="Reporte_general_notas_de_alumno", WrapperNamespace="http://services.service.lkprogrammers.org/", IsWrapped=true)]
     public partial class Reporte_general_notas_de_alumnoRequest {
         
@@ -1101,6 +1150,29 @@ namespace WebForm.ServicioWS {
         public System.Threading.Tasks.Task<WebForm.ServicioWS.listarAdministradoresResponse> listarAdministradoresAsync() {
             WebForm.ServicioWS.listarAdministradoresRequest inValue = new WebForm.ServicioWS.listarAdministradoresRequest();
             return ((WebForm.ServicioWS.LKServicioWeb)(this)).listarAdministradoresAsync(inValue);
+        }
+        
+        [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+        WebForm.ServicioWS.insertarTodasAsistenciasResponse WebForm.ServicioWS.LKServicioWeb.insertarTodasAsistencias(WebForm.ServicioWS.insertarTodasAsistenciasRequest request) {
+            return base.Channel.insertarTodasAsistencias(request);
+        }
+        
+        public int insertarTodasAsistencias(WebForm.ServicioWS.asistencia[] asistencias) {
+            WebForm.ServicioWS.insertarTodasAsistenciasRequest inValue = new WebForm.ServicioWS.insertarTodasAsistenciasRequest();
+            inValue.asistencias = asistencias;
+            WebForm.ServicioWS.insertarTodasAsistenciasResponse retVal = ((WebForm.ServicioWS.LKServicioWeb)(this)).insertarTodasAsistencias(inValue);
+            return retVal.@return;
+        }
+        
+        [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+        System.Threading.Tasks.Task<WebForm.ServicioWS.insertarTodasAsistenciasResponse> WebForm.ServicioWS.LKServicioWeb.insertarTodasAsistenciasAsync(WebForm.ServicioWS.insertarTodasAsistenciasRequest request) {
+            return base.Channel.insertarTodasAsistenciasAsync(request);
+        }
+        
+        public System.Threading.Tasks.Task<WebForm.ServicioWS.insertarTodasAsistenciasResponse> insertarTodasAsistenciasAsync(WebForm.ServicioWS.asistencia[] asistencias) {
+            WebForm.ServicioWS.insertarTodasAsistenciasRequest inValue = new WebForm.ServicioWS.insertarTodasAsistenciasRequest();
+            inValue.asistencias = asistencias;
+            return ((WebForm.ServicioWS.LKServicioWeb)(this)).insertarTodasAsistenciasAsync(inValue);
         }
         
         [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]

@@ -1,4 +1,4 @@
-﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Layout/MainProfesor.master" AutoEventWireup="true" CodeBehind="RegistroAsistencia.aspx.cs" Inherits="WebForm.View.Profesor.RegistroAsistencia"  %>
+﻿<%@ Page Title=""  Language="C#" MasterPageFile="~/Layout/MainProfesor.master" AutoEventWireup="true" CodeBehind="RegistroAsistencia.aspx.cs" Inherits="WebForm.View.Profesor.RegistroAsistencia"  %>
 <asp:Content ID="Content1" ContentPlaceHolderID="Title" runat="server">
     Registro de Asistencia
 </asp:Content>
@@ -25,13 +25,13 @@
 
                                 <asp:RadioButtonList ID="RadAsistencia" runat="server" RepeatDirection="Horizontal" CellPadding="10"
                                     CssClass=" d-flex justify-content-center " OnSelectedIndexChanged="RadAsistencia_SelectedIndexChanged" AutoPostBack="true">
-                                    <asp:ListItem Value="P" Text="Presente" />
+                                    <asp:ListItem Value="P" Text="Presente" Selected="True" />
                                     <asp:ListItem Value="T" Text="Tardanza" />
                                     <asp:ListItem Value="A" Text="Falta"/>
                                 </asp:RadioButtonList>
                                 <!--Asegura que se elija almenos uno-->
                                 <asp:RequiredFieldValidator ID="rfvRadAsistencia" runat="server" ControlToValidate="RadAsistencia"
-                                InitialValue="" ErrorMessage="Seleccione una opción" CssClass="text-danger" Display="Dynamic" />
+                                InitialValue="" ErrorMessage="Falta seleccionar" CssClass="text-danger" Display="Dynamic" />
                             </ItemTemplate>
                             <ItemStyle HorizontalAlign="Center" Width="350px" />
                         </asp:TemplateField>
