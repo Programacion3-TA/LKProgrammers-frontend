@@ -57,7 +57,7 @@
             </div>
         </div>
 
-        <div id="modalCurso" class="modal" tabindex="-1">
+        <div id="modalCurso" class="modal" tabindex="-1" >
             <div class="modal-dialog">
                 <div class="modal-content">
                     <div class="modal-header">
