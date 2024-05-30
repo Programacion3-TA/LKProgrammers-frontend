@@ -5,7 +5,7 @@ Repositorio del proyecto frontend para el colegio San Pedro
 * Visual studio
 * Git bash
 * Java SDK 21
-  
+
 ## Normas
 * Avisar previamente qué es lo que trabajarás al grupo
 * Antes de trabajar en el proyecto, crear una rama con un nombre identificatorio
@@ -24,3 +24,9 @@ git clone git@github.com:Programacion3-TA/LKProgrammers-la-venganza.git
 git clone https://github.com/Programacion3-TA/LKProgrammers-la-venganza.git
 ```
 
+## Problemas con Nuggets
+Si se encuentran problemas al ver el diseño del proyecto, es posible por un problema de nuggets.
+Introducir el comando mostrado en  Herramientas -> Administrador de paquetes NugGet -> Consola del Administrador de paquetes
+```
+Update-Package Microsoft.CodeDom.Providers.DotNetCompilerPlatform -r
+```
