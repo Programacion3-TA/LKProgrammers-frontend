@@ -12,8 +12,8 @@ namespace WebForm.View.Admin.Profesores
     
     public partial class Profesores : System.Web.UI.Page // Vista administrativa de profesores
     {
-        private LKServicioWebClient daoservicio;
-        private BindingList<profesor> profesores;
+        private LKServicioWebClient daoServicio;
+        private BindingList<profesor> listProfesor;
         protected void Page_Load(object sender, EventArgs e)
         {
             // Comprobamos que se trata de un admin
@@ -23,7 +23,7 @@ namespace WebForm.View.Admin.Profesores
             }
             else
             {
-                daoservicio = new LKServicioWebClient();
+                daoServicio = new LKServicioWebClient();
                 string tipo = Session["Tipo"] as string; // Verifico el tipo
                 if (tipo != "Administrador") Response.Redirect("/View/Login/Login.aspx");
                 usuario usuario_actual = Session["Usuario"] as usuario;
@@ -35,98 +35,93 @@ namespace WebForm.View.Admin.Profesores
         
         private void CargarTabla()
         {
-            profesores = new BindingList<profesor> (daoservicio.listarProfesores().ToList());
-            
-            GridProfesores.DataSource = profesores;
+            var profesores = daoServicio.listarProfesores();
+            if (profesores != null)
+            {
+                listProfesor = new BindingList<profesor>(profesores);
+            }
+            else
+            {
+                listProfesor = new BindingList<profesor>();
+            }
+            GridProfesores.DataSource = listProfesor;
             GridProfesores.DataBind();
         }
 
         protected void EditRow_Click(object sender, EventArgs e)
         {
-            
-            Button btn = (Button)sender;
-            string code = btn.CommandArgument; // recibo el codigo del profesor
 
-            profesor profe = profesores.ToList().Find(x => x.codigoProfesor == Int32.Parse(code));
-            // Busco y recupero los datos del profe
-            TxtCode.Text = profe.codigoProfesor.ToString();
-            TxtNombre.Text = profe.nombres;
-            TxtApellidoPat.Text = profe.apellidoPaterno;
-            TxtApellidoMat.Text = profe.apellidoMaterno;
-            TxtEspecialidad.Text = profe.especialidad;
+            Button btn = (Button)sender;
+            int code = Int32.Parse(btn.CommandArgument);
+            profesor profesor = listProfesor.FirstOrDefault(x => x.codigoProfesor == code);
+            TxtCode.Text = profesor.codigoProfesor.ToString();
+            TxtNombre.Text = profesor.nombres;
+            TxtApellidoPat.Text = profesor.apellidoPaterno;
+            TxtApellidoMat.Text = profesor.apellidoMaterno;
+            TxtDireccion.Text = profesor.direccion;
+            TxtTelefono.Text = profesor.telefono;
+            TxtGenero.Text = ((char)profesor.genero).ToString();
+            TxtCorreo.Text = profesor.correoElectronico;
+            TxtUsername.Text = profesor.usuario1;
+            TxtPassword.Text = profesor.contrasenia;
+            TxtFechaNacimiento.Text = profesor.fechaNac.ToShortDateString();
+            TxtDNI.Text = profesor.dni;
+            TxtEspecialidad.Text = profesor.especialidad;
             CallJavascritp("showModalForm()");
         }
         protected void DelRow_Click(object sender, EventArgs e)
         {
+
             Button btn = (Button)sender;
             string code = btn.CommandArgument;
-            profesor profe = profesores.ToList().Find(x => x.codigoProfesor == Int32.Parse(code));
-            
-            // Eliminar profesor. Ahora mismo no funciona
-            profesores.Remove(profe);            
-            daoservicio = new LKServicioWebClient();
-            Button botn = (Button)sender;
-            string codigo = botn.CommandArgument;
-            daoservicio.eliminarProfesor(int.Parse(codigo));
+            daoServicio.eliminarProfesor(int.Parse(code));
             CargarTabla();
         }
 
         protected void ButGuardar_Click(object sender, EventArgs e)
-        {            
-            profesor profe = new profesor();
-            if (string.IsNullOrEmpty(TxtCode.Text)) // crear si es que no tiene codigo (es nuevo)
+        {
+            daoServicio = new LKServicioWebClient();
+            profesor op = new profesor();
+            BindingList<profesor> ListaProfesor = new BindingList<profesor>(daoServicio.listarProfesores());
+            if (string.IsNullOrEmpty(TxtCode.Text)) // crear
             {
-                // Insertamos un nuevo profesor
-
-                profe.nombres = TxtNombre.Text;
-                profe.apellidoPaterno = TxtApellidoPat.Text;
-                profe.apellidoMaterno = TxtApellidoMat.Text;
-                profe.especialidad = TxtEspecialidad.Text;
-                // Agregar profesor
-                profesores.Add(profe);
-              /*
-                profesor.codigoProfesor = ListaProfesor.Count() + 1;
-                profesor.nombres = TxtNombre.Text;
-                profesor.apellidoPaterno = TxtApellidoPat.Text;
-                profesor.apellidoMaterno = TxtApellidoMat.Text;
-                profesor.especialidad = TxtEspecialidad.Text;
-                profesor.direccion = TxtDireccion.Text;
-                profesor.telefono = TxtTelefono.Text;
-                profesor.genero = TxtGenero.Text[0];
-                profesor.correoElectronico = TxtCorreo.Text;
-                profesor.usuario1 = TxtUsername.Text;
-                profesor.contrasenia = TxtPassword.Text;
-                profesor.fechaNac= DateTime.Parse(TxtFechaNacimiento.Text);
-                profesor.fechaNacSpecified = true;
-                profesor.dni = TxtDNI.Text;
-                daoServicio.insertarprofesor(profesor);*/
+                op.codigoProfesor = ListaProfesor.Count() + 1;
+                op.nombres = TxtNombre.Text;
+                op.apellidoPaterno = TxtApellidoPat.Text;
+                op.apellidoMaterno = TxtApellidoMat.Text;
+                op.especialidad = TxtEspecialidad.Text;
+                op.direccion = TxtDireccion.Text;
+                op.telefono = TxtTelefono.Text;
+                op.genero = TxtGenero.Text[0];
+                op.correoElectronico = TxtCorreo.Text;
+                op.usuario1 = TxtUsername.Text;
+                op.contrasenia = TxtPassword.Text;
+                op.fechaNacSpecified = true;
+                op.fechaNac = DateTime.Parse(TxtFechaNacimiento.Text);
+                op.dni = TxtDNI.Text;
+                daoServicio.insertarprofesor(op);
                 CargarTabla();
             }
-            /*else //actualizar
+            else //actualizar
             {
-                profesor = ListaProfesor.Find(x => x.Codigo == TxtCode.Text);
-                profesor.Nombre = TxtNombre.Text;
-                profesor.ApellidoMat= TxtApellidoMat.Text;
-                profesor.ApellidoPat = TxtApellidoPat.Text;
-                profesor.Especialidad = TxtEspecialidad.Text;
-                profesor = ListaProfesor.ToList().Find(x => x.codigoProfesor == int.Parse(TxtCode.Text));
-                profesor.nombres = TxtNombre.Text;
-                profesor.apellidoPaterno = TxtApellidoPat.Text;
-                profesor.apellidoMaterno = TxtApellidoMat.Text;
-                profesor.especialidad = TxtEspecialidad.Text;
-                profesor.direccion = TxtDireccion.Text;
-                profesor.telefono = TxtTelefono.Text;
-                profesor.genero = TxtGenero.Text[0];
-                profesor.correoElectronico = TxtCorreo.Text;
-                profesor.usuario1 = TxtUsername.Text;
-                profesor.contrasenia = TxtPassword.Text;
-                profesor.fechaNac = DateTime.Parse(TxtFechaNacimiento.Text);
-                profesor.fechaNacSpecified = true;
-                profesor.dni = TxtDNI.Text;
-                daoServicio.editarProfesor(profesor);
+                op = ListaProfesor.ToList().Find(x => x.codigoProfesor == int.Parse(TxtCode.Text));
+                op.nombres = TxtNombre.Text;
+                op.apellidoPaterno = TxtApellidoPat.Text;
+                op.apellidoMaterno = TxtApellidoMat.Text;
+                op.especialidad = TxtEspecialidad.Text;
+                op.direccion = TxtDireccion.Text;
+                op.telefono = TxtTelefono.Text;
+                op.genero = TxtGenero.Text[0];
+                op.correoElectronico = TxtCorreo.Text;
+                op.usuario1 = TxtUsername.Text;
+                op.contrasenia = TxtPassword.Text;
+                op.fechaNacSpecified = true;
+                op.fechaNac = DateTime.Parse(TxtFechaNacimiento.Text);
+                op.dni = TxtDNI.Text;
+                daoServicio.editarProfesor(op);
                 CargarTabla();
             }
-            Response.Redirect(Request.Url.AbsoluteUri);*/
+            Response.Redirect(Request.Url.AbsoluteUri);
         }
 
         protected void BtnNuevo_Click(object sender, EventArgs e)
