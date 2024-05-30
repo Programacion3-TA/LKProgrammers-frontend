@@ -56,14 +56,39 @@
                       </h5>
                   </div>
                   <div class="modal-body">
-                    </div>
+                      Se registraron exitosamente las asistencias para el dia de hoy!.
+                  </div>
+                <div class="modal-footer">
+                    <asp:LinkButton ID="BtnRegresarAsistencias1" runat="server" CssClass="btn btn-secondary" OnClick="BtnRegresar_Click">Volver</asp:LinkButton>
+                </div>                    
             </div>
 
             </div>
         </div>
+    <!--
+    <div class="modal fade" id="asistenRegistradasModal" tabindex="-1" role="dialog" aria-labelledby="asistenRegistradasModalLabel" aria-hidden="true">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="asistenRegistradasModalLabel">Asistencias registrada</h5>
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                </div>
+                <div class="modal-body">
+                      Se registraron exitosamente las asistencias para el dia de hoy!.
+                </div>
+                <div class="modal-footer">
+                    <asp:LinkButton ID="BtnRegresarAsistencias" runat="server" CssClass="btn btn-secondary" OnClick="BtnRegresar_Click">Volver</asp:LinkButton>
+                    
+                </div>
+            </div>
+        </div>
+    </div>-->
 
-    </div>
 
 </asp:Content>
 <asp:Content ID="Content6" ContentPlaceHolderID="Script" runat="server">
+    <script src="asistenciasProfesor.js">
+    </script>
 </asp:Content>

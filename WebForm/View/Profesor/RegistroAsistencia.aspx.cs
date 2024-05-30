@@ -24,8 +24,8 @@ namespace WebForm.View.Profesor
                         asistencia asistencia = new asistencia();
                         asistencia.dniAlumno = alumno.dni;
                         asistencia.fechaHora = DateTime.Now;
-                        asistencia.fechaHoraSpecified = true;
                         asistencia.estado = estadoAsistencia.Presente;
+                        asistencia.fechaHoraSpecified = true;
                         asistencia.estadoSpecified = true;
 
                         asistencias.Add(asistencia);
@@ -82,7 +82,6 @@ namespace WebForm.View.Profesor
 
             }
             asistenciaAlumno.fechaHora = DateTime.Now;
-            asistenciaAlumno.fechaHoraSpecified = true;
             switch (asistenciaEstado)
             {
                 case "P":
@@ -95,28 +94,38 @@ namespace WebForm.View.Profesor
                     asistenciaAlumno.estado = estadoAsistencia.Ausente;
                     break;
             }
+
             asistenciaAlumno.estadoSpecified = true;
+            asistenciaAlumno.fechaHoraSpecified = true;
             asistencias.Add(asistenciaAlumno);
             Session["asistencias"] = asistencias;
         }
 
         protected void BtnRegresar_Click(object sender, EventArgs e)
         {
-
+            Response.Redirect("/View/Profesor/AsistenciaProfesor.aspx");
         }
 
         protected void BtnGuardarAsistencia_Click(object sender, EventArgs e)
         {
-            int asisHechas = 0;
+          /* int asisHechas = 0;
             List<asistencia> asistencias = (List<asistencia>)Session["asistencias"];
-            //int asisHechas =daoServicio.insertarAsistencias(asistencias.ToArray());
-            foreach(asistencia asis in asistencias)
-            {
-                asisHechas += daoServicio.insertarAsistencia(asis, asis.dniAlumno);
-            }
 
-            Response.Redirect("/View/Profesor/AsistenciaProfesor.aspx");
+            foreach(asistencia asistencia_ in asistencias)
+            {
+                //aveces no guarda todo : Comunications link failure
+                asisHechas += daoServicio.insertarAsistencia(asistencia_);
+            }*/
+
+            CallJavascript("showModal()");
         }
+        private void CallJavascript(string function)
+        {
+            string script = "window.onload = function() {" + function + "; };";
+            ClientScript.RegisterStartupScript(GetType(),"", script, true);
+        }
+
+
     }
 
 }

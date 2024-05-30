@@ -116,6 +116,7 @@
     <Content Include="View\Alumno\AsistenciaAlumno.aspx" />
     <Content Include="View\Profesor\AsistenciaProfesor.aspx" />
     <Content Include="View\Alumno\CalendarioAlumno.aspx" />
+    <Content Include="View\Profesor\asistenciasProfesor.js" />
     <Content Include="View\Profesor\CompetenciaProfesor.aspx" />
     <Content Include="View\Alumno\CursoAlumno.aspx" />
     <Content Include="View\Profesor\CursoProfesor.aspx" />
