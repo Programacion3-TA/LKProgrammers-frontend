@@ -46,6 +46,7 @@
         </div>
     </div>
 
+    <!--Modal para afirmar o negar que realizó el registro asistencias-->
     <div id="modalGuardarAsistencias" class="modal" tabindex="-1">
         <div class="modal-dialog">
             <div class="modal-content">
