@@ -16,11 +16,11 @@ Repositorio del proyecto frontend para el colegio San Pedro
 
 ## Formas para clonar
 * Metodo SHH
-'''
-git clone  git@github.com:Programacion3-TA/LKProgrammers-la-venganza.git
-'''
+```
+git clone git@github.com:Programacion3-TA/LKProgrammers-la-venganza.git
+```
 * Método HTTPS
-'''
+```
 git clone https://github.com/Programacion3-TA/LKProgrammers-la-venganza.git
-'''
-}
+```
+
