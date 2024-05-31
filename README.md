@@ -9,7 +9,8 @@ Repositorio del proyecto frontend para el colegio San Pedro
 ## Normas
 * Avisar previamente qué es lo que trabajarás al grupo
 * Antes de trabajar en el proyecto, crear una rama con un nombre identificatorio
-* Una vez termines, realizar un PR (Pull request)
+* Una vez termines, verificar antes que el proyecto del backend esté actualizado con tus cambios, si es que lo cambiaste 
+* realizar un PR (Pull request)
 * Informar a los integrantes acerca del PR
 * Intentar que tú y otros verifiquen en PR
 * Eliminar la rama que ya no requieres utilizar
