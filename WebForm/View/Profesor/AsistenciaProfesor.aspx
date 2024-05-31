@@ -1,6 +1,7 @@
 ﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Layout/MainProfesor.Master" AutoEventWireup="true" CodeBehind="AsistenciaProfesor.aspx.cs" Inherits="WebForm.View.AsistenciaProfesor.AsistenciaProfesor" %>
 <%@ Register Src="~/Components/Path.ascx" TagName="Path" TagPrefix="uc"%>
 <asp:Content ID="Content1" ContentPlaceHolderID="Title" runat="server">
+    Asistencias del salon
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="Styles" runat="server">
 </asp:Content>
@@ -22,9 +23,10 @@
                     </div>
             </div>
             <div>
-                <div class="text-end p-3">
-                   <asp:LinkButton ID="BtnRegistrarAsistencia" runat="server" CssClass="btn btn-dark"
-                       Text="<i class='fa-solid fa-clipboard-user'> </i> Agregar" OnClick="BtnRegistrarAsistencia_Click"></asp:LinkButton>
+                <div class="text-end p-3 d-flex justify-content-end">
+                   <asp:LinkButton ID="BtnRegistrarAsistencia" runat="server" CssClass="btn btn-dark d-flex gap-2 end-0 align-items-center"
+                       Text="<i class='fa-solid fa-clipboard-user'> </i> Agregar" OnClick="BtnRegistrarAsistencia_Click">
+                   </asp:LinkButton>
                 </div>
             </div>
         </div>

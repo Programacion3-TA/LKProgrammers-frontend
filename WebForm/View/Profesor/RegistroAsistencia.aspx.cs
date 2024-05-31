@@ -19,6 +19,8 @@ namespace WebForm.View.Profesor
                 {
                     List<asistencia> asistencias = new List<asistencia>();
                     List<alumno> alumnos = daoServicio.listarAlumnosxsalon(int.Parse(idsalon)).ToList();
+
+
                     foreach (alumno alumno in alumnos)
                     {
                         asistencia asistencia = new asistencia();
@@ -108,16 +110,16 @@ namespace WebForm.View.Profesor
 
         protected void BtnGuardarAsistencia_Click(object sender, EventArgs e)
         {
-          /* int asisHechas = 0;
+            int asisHechas = 0;
             List<asistencia> asistencias = (List<asistencia>)Session["asistencias"];
 
             foreach(asistencia asistencia_ in asistencias)
             {
                 //aveces no guarda todo : Comunications link failure
                 asisHechas += daoServicio.insertarAsistencia(asistencia_);
-            }*/
+            }
 
-            CallJavascript("showModal()");
+            CallJavascript("showModal('asistenRegistradasModal')");
         }
         private void CallJavascript(string function)
         {

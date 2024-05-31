@@ -21,6 +21,7 @@ namespace WebForm.View.AsistenciaProfesor
                 idsalon = daoServicio.esTutorAsignado(profesor.dni);
                 if (idsalon == -1) Response.Redirect("/View/Profesor/ErroNoTutor.aspx");
                 Session["idsalon"] = idsalon;
+
             }
                
         }
