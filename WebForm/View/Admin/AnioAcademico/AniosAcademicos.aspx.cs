@@ -28,7 +28,6 @@ namespace WebForm.View.Admin.AnioAcademico
         protected void cargarAnioVigente()
         {
             anioVigente = new BindingList<anioEscolar>(serviciodao.listarAnioEscolarVigente().ToList());
-            
             if (anioVigente != null)
             {
                 // Muestro el (o los) anio escolar vigente
@@ -88,12 +87,43 @@ namespace WebForm.View.Admin.AnioAcademico
 
         protected void DelRow_Click(object sender, EventArgs e)
         {
-
+            Button btn = (Button)sender;
+            string code = btn.CommandArgument;
+            serviciodao.elimar_anio_escolar(int.Parse(code));
+            cargarAnioVigente();
+            cargarAniosEscolares();
         }
 
         protected void BtnGuardar_Click(object sender, EventArgs e)
         {
-
+            serviciodao = new LKServicioWebClient();
+            anioEscolar op = new anioEscolar();
+            BindingList<anioEscolar> Lis_anio = new BindingList<anioEscolar>(serviciodao.listarAnioEscolarVigente());
+            if (string.IsNullOrEmpty(TxtCode.Text)) // crear
+            {
+                op.id = Lis_anio.Count() + 1;
+                op.nombre = TxtNombre.Text;
+                op.fechaInicioSpecified = true;
+                op.fechaInicio = DateTime.Parse(TxtFechaInicio.Text);
+                op.fechaFinSpecified = true;
+                op.fechaFin = DateTime.Parse(TxtFechaFin.Text);
+                serviciodao.insertar_new_age(op);
+                cargarAnioVigente();
+                cargarAniosEscolares();
+            }
+            else //actualizar
+            {
+                op = Lis_anio.ToList().Find(x => x.id == int.Parse(TxtCode.Text));
+                op.nombre = TxtNombre.Text;
+                op.fechaInicioSpecified = true;
+                op.fechaInicio = DateTime.Parse(TxtFechaInicio.Text);
+                op.fechaFinSpecified = true;
+                op.fechaFin = DateTime.Parse(TxtFechaFin.Text);
+                serviciodao.editar_age(op);
+                cargarAnioVigente();
+                cargarAniosEscolares();
+            }
+            Response.Redirect(Request.Url.AbsoluteUri);
         }
 
         private void CallJavascript(string function)
