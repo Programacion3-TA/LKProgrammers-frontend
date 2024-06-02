@@ -12,7 +12,6 @@ namespace WebForm.View.AsistenciaProfesor
     public partial class AsistenciaProfesor : System.Web.UI.Page
     {
         private LKServicioWebClient daoServicio;
-        private bool realizoRegistroAsistencia;
         protected void Page_Load(object sender, EventArgs e)
         {
             daoServicio = new LKServicioWebClient();
@@ -33,13 +32,9 @@ namespace WebForm.View.AsistenciaProfesor
                 {
                     idsalon = (int)Session["idsalon"];
                     CargarFechas(idsalon);
-                    realizoRegistroAsistencia = VerificarRegistroAsistenciaActual();
+                    Session["RealizoAsistenica"]= VerificarRegistroAsistenciaActual();
                 }
 
-                if (realizoRegistroAsistencia) {
-                    //si se realizo se cambia el valor del onclikc
-                    BtnRegistrarAsistencia.Click += new EventHandler(this.BtnNiegaRegistros_Click);
-                }
             }
                
         }
@@ -55,18 +50,16 @@ namespace WebForm.View.AsistenciaProfesor
             List<string> fechasFormato = TransformarFechas(fechas);
             List<object> fechasconFormato = new List<object>();
 
+            //llenamos la lista de objetos
             foreach(DateTime fecha in fechas)
             {
-                object key = new { Fecha = fecha, FechaFormato = fechasFormato[fechas.IndexOf(fecha)] };
+                object key = new { Fecha = fecha.Date, FechaFormato = fechasFormato[fechas.IndexOf(fecha)] };
                 fechasconFormato.Add(key);
             }
+
             Session["fechas"] = fechas;
             GridAsistenciasFechas.DataSource = fechasconFormato; //verificar el Datafield
             GridAsistenciasFechas.DataBind();
-
-
-            //un objeto
-            //var fechasFormatoEnlazadas = fechasFormato.Select(f => new { Fecha = f }).ToList();
 
 
         }
@@ -86,7 +79,15 @@ namespace WebForm.View.AsistenciaProfesor
         {
             int idsalon = (int)Session["idsalon"];
 
-            Response.Redirect("/View/Profesor/RegistroAsistencia.aspx?idsalon="+idsalon);
+            if (!((bool)Session["RealizoAsistenica"]))
+            {
+                Session["fechaEdicion"] = null;
+                Response.Redirect("/View/Profesor/RegistroAsistencia.aspx?idsalon="+idsalon);
+            }
+            else
+            {
+                CallJavascript("showModal('bloqueoRegistroModal')");
+            }
         }
 
         protected void BtnBuscarDias_Click(object sender, EventArgs e)
@@ -107,6 +108,16 @@ namespace WebForm.View.AsistenciaProfesor
         {
             string script = "window.onload = function() {" + function + "; };";
             ClientScript.RegisterStartupScript(GetType(), "", script, true);
+        }
+
+        protected void editarAsistencia_Click(object sender, EventArgs e)
+        {
+            int idsalon = (int)Session["idsalon"];
+            Button btn = (Button)sender;
+            string fecha = btn.CommandArgument;
+            Session["fechaEdicion"] = fecha; //editaremos los registros de esta fecha
+            Session["asistencias"] = new List<asistencia>();
+            Response.Redirect("/View/Profesor/RegistroAsistencia.aspx?idsalon=" + idsalon);
         }
     }
 }

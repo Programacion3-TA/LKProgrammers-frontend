@@ -20,9 +20,9 @@
             </div>
             <div class="card-body">
                 <asp:GridView ID="GridAlumnos" runat="server" AutoGenerateColumns="false"
-                    AllowPaging="true" CssClass="table table-hover table-responsive table-striped" >
+                    AllowPaging="true" CssClass="table table-hover table-responsive table-striped" OnRowDataBound="GridAlumnos_RowDataBound" >
                     <Columns>
-                        <asp:BoundField DataField="codigoAlumno" HeaderText="Código del alumno" ItemStyle-HorizontalAlign="Center"  ItemStyle-VerticalAlign="Middle"/>
+                        <asp:BoundField DataField="dni" HeaderText="Código del alumno" ItemStyle-HorizontalAlign="Center"  ItemStyle-VerticalAlign="Middle"/>
                         <asp:BoundField DataField="nombres" HeaderText="Nombre Completo del alumno"  ItemStyle-HorizontalAlign="Center"  ItemStyle-VerticalAlign="Middle"/>
                         <asp:TemplateField HeaderText="Marcar Asistencia">
                             <ItemTemplate>
@@ -78,7 +78,7 @@
                     <h5 class="modal-title" id="asistenRegistradasModalLabel">Asistencias registrada</h5>
                        
                 </div>
-                <div class="modal-body">
+                <div class="modal-body" id="modalBody">
                       Se registraron exitosamente las asistencias para el dia de hoy!.
                 </div>
                 <div class="modal-footer">

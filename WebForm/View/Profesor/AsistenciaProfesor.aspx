@@ -41,8 +41,8 @@
                         <asp:BoundField DataField="FechaFormato" HeaderText ="Fecha de asistencias" ItemStyle-HorizontalAlign="Center"  ItemStyle-VerticalAlign="Middle"/>
                         <asp:TemplateField HeaderText="Actualización de asistencias">
                             <ItemTemplate>
-                                <asp:Button runat="server" CssClass="btn btn-primary" Text="Editar"
-                                    CommandArgument='<%#Eval("Fecha") %>'/>
+                                <asp:Button runat="server" CssClass="btn btn-primary" Text="Editar" ID="editarAsistencia"
+                                    CommandArgument='<%#Eval("Fecha") %>' OnClick="editarAsistencia_Click"/>
                             </ItemTemplate>
                             <ItemStyle HorizontalAlign="Center" Width="300px" />
                         </asp:TemplateField>
