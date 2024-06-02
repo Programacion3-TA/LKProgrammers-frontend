@@ -1,0 +1,550 @@
+<?xml version="1.0" encoding="utf-8"?>
+<definitions xmlns:wsam="http://www.w3.org/2007/05/addressing/metadata" xmlns:wsp="http://www.w3.org/ns/ws-policy" xmlns:wsp1_2="http://schemas.xmlsoap.org/ws/2004/09/policy" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:tns="http://services.service.lkprogrammers.org/" xmlns:wsu="http://docs.oasis-open.org/wss/2004/01/oasis-200401-wss-wssecurity-utility-1.0.xsd" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" name="LKServicioWeb" targetNamespace="http://services.service.lkprogrammers.org/" xmlns="http://schemas.xmlsoap.org/wsdl/">
+  <types>
+    <xsd:schema>
+      <xsd:import schemaLocation="http://localhost:8080/LKProgramService/LKServicioWeb?xsd=1" namespace="http://services.service.lkprogrammers.org/" />
+    </xsd:schema>
+  </types>
+  <message name="editar_age">
+    <part name="parameters" element="tns:editar_age" />
+  </message>
+  <message name="editar_ageResponse">
+    <part name="parameters" element="tns:editar_ageResponse" />
+  </message>
+  <message name="verificarUsuario">
+    <part name="parameters" element="tns:verificarUsuario" />
+  </message>
+  <message name="verificarUsuarioResponse">
+    <part name="parameters" element="tns:verificarUsuarioResponse" />
+  </message>
+  <message name="listarAdministradores">
+    <part name="parameters" element="tns:listarAdministradores" />
+  </message>
+  <message name="listarAdministradoresResponse">
+    <part name="parameters" element="tns:listarAdministradoresResponse" />
+  </message>
+  <message name="listarUsuarios">
+    <part name="parameters" element="tns:listarUsuarios" />
+  </message>
+  <message name="listarUsuariosResponse">
+    <part name="parameters" element="tns:listarUsuariosResponse" />
+  </message>
+  <message name="insertarprofesor">
+    <part name="parameters" element="tns:insertarprofesor" />
+  </message>
+  <message name="insertarprofesorResponse">
+    <part name="parameters" element="tns:insertarprofesorResponse" />
+  </message>
+  <message name="insertarAlumno">
+    <part name="parameters" element="tns:insertarAlumno" />
+  </message>
+  <message name="insertarAlumnoResponse">
+    <part name="parameters" element="tns:insertarAlumnoResponse" />
+  </message>
+  <message name="editarProfesor">
+    <part name="parameters" element="tns:editarProfesor" />
+  </message>
+  <message name="editarProfesorResponse">
+    <part name="parameters" element="tns:editarProfesorResponse" />
+  </message>
+  <message name="editarAlumno">
+    <part name="parameters" element="tns:editarAlumno" />
+  </message>
+  <message name="editarAlumnoResponse">
+    <part name="parameters" element="tns:editarAlumnoResponse" />
+  </message>
+  <message name="eliminarAlumno">
+    <part name="parameters" element="tns:eliminarAlumno" />
+  </message>
+  <message name="eliminarAlumnoResponse">
+    <part name="parameters" element="tns:eliminarAlumnoResponse" />
+  </message>
+  <message name="eliminarProfesor">
+    <part name="parameters" element="tns:eliminarProfesor" />
+  </message>
+  <message name="eliminarProfesorResponse">
+    <part name="parameters" element="tns:eliminarProfesorResponse" />
+  </message>
+  <message name="esTutorAsignado">
+    <part name="parameters" element="tns:esTutorAsignado" />
+  </message>
+  <message name="esTutorAsignadoResponse">
+    <part name="parameters" element="tns:esTutorAsignadoResponse" />
+  </message>
+  <message name="acceder_a_pagina">
+    <part name="parameters" element="tns:acceder_a_pagina" />
+  </message>
+  <message name="acceder_a_paginaResponse">
+    <part name="parameters" element="tns:acceder_a_paginaResponse" />
+  </message>
+  <message name="listarProfesores">
+    <part name="parameters" element="tns:listarProfesores" />
+  </message>
+  <message name="listarProfesoresResponse">
+    <part name="parameters" element="tns:listarProfesoresResponse" />
+  </message>
+  <message name="insertarAsistencia">
+    <part name="parameters" element="tns:insertarAsistencia" />
+  </message>
+  <message name="insertarAsistenciaResponse">
+    <part name="parameters" element="tns:insertarAsistenciaResponse" />
+  </message>
+  <message name="listarSalones">
+    <part name="parameters" element="tns:listarSalones" />
+  </message>
+  <message name="listarSalonesResponse">
+    <part name="parameters" element="tns:listarSalonesResponse" />
+  </message>
+  <message name="listarCompetencias">
+    <part name="parameters" element="tns:listarCompetencias" />
+  </message>
+  <message name="listarCompetenciasResponse">
+    <part name="parameters" element="tns:listarCompetenciasResponse" />
+  </message>
+  <message name="listarAlumnos">
+    <part name="parameters" element="tns:listarAlumnos" />
+  </message>
+  <message name="listarAlumnosResponse">
+    <part name="parameters" element="tns:listarAlumnosResponse" />
+  </message>
+  <message name="listarCursos">
+    <part name="parameters" element="tns:listarCursos" />
+  </message>
+  <message name="listarCursosResponse">
+    <part name="parameters" element="tns:listarCursosResponse" />
+  </message>
+  <message name="insertar_new_age">
+    <part name="parameters" element="tns:insertar_new_age" />
+  </message>
+  <message name="insertar_new_ageResponse">
+    <part name="parameters" element="tns:insertar_new_ageResponse" />
+  </message>
+  <message name="modificarAsistencia">
+    <part name="parameters" element="tns:modificarAsistencia" />
+  </message>
+  <message name="modificarAsistenciaResponse">
+    <part name="parameters" element="tns:modificarAsistenciaResponse" />
+  </message>
+  <message name="insertarAsistencias">
+    <part name="parameters" element="tns:insertarAsistencias" />
+  </message>
+  <message name="insertarAsistenciasResponse">
+    <part name="parameters" element="tns:insertarAsistenciasResponse" />
+  </message>
+  <message name="listarAniosEscolares">
+    <part name="parameters" element="tns:listarAniosEscolares" />
+  </message>
+  <message name="listarAniosEscolaresResponse">
+    <part name="parameters" element="tns:listarAniosEscolaresResponse" />
+  </message>
+  <message name="elimar_anio_escolar">
+    <part name="parameters" element="tns:elimar_anio_escolar" />
+  </message>
+  <message name="elimar_anio_escolarResponse">
+    <part name="parameters" element="tns:elimar_anio_escolarResponse" />
+  </message>
+  <message name="listarAlumnosxsalon">
+    <part name="parameters" element="tns:listarAlumnosxsalon" />
+  </message>
+  <message name="listarAlumnosxsalonResponse">
+    <part name="parameters" element="tns:listarAlumnosxsalonResponse" />
+  </message>
+  <message name="listarAsistenciaFecha">
+    <part name="parameters" element="tns:listarAsistenciaFecha" />
+  </message>
+  <message name="listarAsistenciaFechaResponse">
+    <part name="parameters" element="tns:listarAsistenciaFechaResponse" />
+  </message>
+  <message name="listarAnioEscolarVigente">
+    <part name="parameters" element="tns:listarAnioEscolarVigente" />
+  </message>
+  <message name="listarAnioEscolarVigenteResponse">
+    <part name="parameters" element="tns:listarAnioEscolarVigenteResponse" />
+  </message>
+  <message name="Reporte_general_notas_de_alumno">
+    <part name="parameters" element="tns:Reporte_general_notas_de_alumno" />
+  </message>
+  <message name="Reporte_general_notas_de_alumnoResponse">
+    <part name="parameters" element="tns:Reporte_general_notas_de_alumnoResponse" />
+  </message>
+  <message name="listarFechasAsistenciaSalon">
+    <part name="parameters" element="tns:listarFechasAsistenciaSalon" />
+  </message>
+  <message name="listarFechasAsistenciaSalonResponse">
+    <part name="parameters" element="tns:listarFechasAsistenciaSalonResponse" />
+  </message>
+  <portType name="LKServicioWeb">
+    <operation name="editar_age">
+      <input wsam:Action="http://services.service.lkprogrammers.org/LKServicioWeb/editar_ageRequest" message="tns:editar_age" />
+      <output wsam:Action="http://services.service.lkprogrammers.org/LKServicioWeb/editar_ageResponse" message="tns:editar_ageResponse" />
+    </operation>
+    <operation name="verificarUsuario">
+      <input wsam:Action="http://services.service.lkprogrammers.org/LKServicioWeb/verificarUsuarioRequest" message="tns:verificarUsuario" />
+      <output wsam:Action="http://services.service.lkprogrammers.org/LKServicioWeb/verificarUsuarioResponse" message="tns:verificarUsuarioResponse" />
+    </operation>
+    <operation name="listarAdministradores">
+      <input wsam:Action="http://services.service.lkprogrammers.org/LKServicioWeb/listarAdministradoresRequest" message="tns:listarAdministradores" />
+      <output wsam:Action="http://services.service.lkprogrammers.org/LKServicioWeb/listarAdministradoresResponse" message="tns:listarAdministradoresResponse" />
+    </operation>
+    <operation name="listarUsuarios">
+      <input wsam:Action="http://services.service.lkprogrammers.org/LKServicioWeb/listarUsuariosRequest" message="tns:listarUsuarios" />
+      <output wsam:Action="http://services.service.lkprogrammers.org/LKServicioWeb/listarUsuariosResponse" message="tns:listarUsuariosResponse" />
+    </operation>
+    <operation name="insertarprofesor">
+      <input wsam:Action="http://services.service.lkprogrammers.org/LKServicioWeb/insertarprofesorRequest" message="tns:insertarprofesor" />
+      <output wsam:Action="http://services.service.lkprogrammers.org/LKServicioWeb/insertarprofesorResponse" message="tns:insertarprofesorResponse" />
+    </operation>
+    <operation name="insertarAlumno">
+      <input wsam:Action="http://services.service.lkprogrammers.org/LKServicioWeb/insertarAlumnoRequest" message="tns:insertarAlumno" />
+      <output wsam:Action="http://services.service.lkprogrammers.org/LKServicioWeb/insertarAlumnoResponse" message="tns:insertarAlumnoResponse" />
+    </operation>
+    <operation name="editarProfesor">
+      <input wsam:Action="http://services.service.lkprogrammers.org/LKServicioWeb/editarProfesorRequest" message="tns:editarProfesor" />
+      <output wsam:Action="http://services.service.lkprogrammers.org/LKServicioWeb/editarProfesorResponse" message="tns:editarProfesorResponse" />
+    </operation>
+    <operation name="editarAlumno">
+      <input wsam:Action="http://services.service.lkprogrammers.org/LKServicioWeb/editarAlumnoRequest" message="tns:editarAlumno" />
+      <output wsam:Action="http://services.service.lkprogrammers.org/LKServicioWeb/editarAlumnoResponse" message="tns:editarAlumnoResponse" />
+    </operation>
+    <operation name="eliminarAlumno">
+      <input wsam:Action="http://services.service.lkprogrammers.org/LKServicioWeb/eliminarAlumnoRequest" message="tns:eliminarAlumno" />
+      <output wsam:Action="http://services.service.lkprogrammers.org/LKServicioWeb/eliminarAlumnoResponse" message="tns:eliminarAlumnoResponse" />
+    </operation>
+    <operation name="eliminarProfesor">
+      <input wsam:Action="http://services.service.lkprogrammers.org/LKServicioWeb/eliminarProfesorRequest" message="tns:eliminarProfesor" />
+      <output wsam:Action="http://services.service.lkprogrammers.org/LKServicioWeb/eliminarProfesorResponse" message="tns:eliminarProfesorResponse" />
+    </operation>
+    <operation name="esTutorAsignado">
+      <input wsam:Action="http://services.service.lkprogrammers.org/LKServicioWeb/esTutorAsignadoRequest" message="tns:esTutorAsignado" />
+      <output wsam:Action="http://services.service.lkprogrammers.org/LKServicioWeb/esTutorAsignadoResponse" message="tns:esTutorAsignadoResponse" />
+    </operation>
+    <operation name="acceder_a_pagina">
+      <input wsam:Action="http://services.service.lkprogrammers.org/LKServicioWeb/acceder_a_paginaRequest" message="tns:acceder_a_pagina" />
+      <output wsam:Action="http://services.service.lkprogrammers.org/LKServicioWeb/acceder_a_paginaResponse" message="tns:acceder_a_paginaResponse" />
+    </operation>
+    <operation name="listarProfesores">
+      <input wsam:Action="http://services.service.lkprogrammers.org/LKServicioWeb/listarProfesoresRequest" message="tns:listarProfesores" />
+      <output wsam:Action="http://services.service.lkprogrammers.org/LKServicioWeb/listarProfesoresResponse" message="tns:listarProfesoresResponse" />
+    </operation>
+    <operation name="insertarAsistencia">
+      <input wsam:Action="http://services.service.lkprogrammers.org/LKServicioWeb/insertarAsistenciaRequest" message="tns:insertarAsistencia" />
+      <output wsam:Action="http://services.service.lkprogrammers.org/LKServicioWeb/insertarAsistenciaResponse" message="tns:insertarAsistenciaResponse" />
+    </operation>
+    <operation name="listarSalones">
+      <input wsam:Action="http://services.service.lkprogrammers.org/LKServicioWeb/listarSalonesRequest" message="tns:listarSalones" />
+      <output wsam:Action="http://services.service.lkprogrammers.org/LKServicioWeb/listarSalonesResponse" message="tns:listarSalonesResponse" />
+    </operation>
+    <operation name="listarCompetencias">
+      <input wsam:Action="http://services.service.lkprogrammers.org/LKServicioWeb/listarCompetenciasRequest" message="tns:listarCompetencias" />
+      <output wsam:Action="http://services.service.lkprogrammers.org/LKServicioWeb/listarCompetenciasResponse" message="tns:listarCompetenciasResponse" />
+    </operation>
+    <operation name="listarAlumnos">
+      <input wsam:Action="http://services.service.lkprogrammers.org/LKServicioWeb/listarAlumnosRequest" message="tns:listarAlumnos" />
+      <output wsam:Action="http://services.service.lkprogrammers.org/LKServicioWeb/listarAlumnosResponse" message="tns:listarAlumnosResponse" />
+    </operation>
+    <operation name="listarCursos">
+      <input wsam:Action="http://services.service.lkprogrammers.org/LKServicioWeb/listarCursosRequest" message="tns:listarCursos" />
+      <output wsam:Action="http://services.service.lkprogrammers.org/LKServicioWeb/listarCursosResponse" message="tns:listarCursosResponse" />
+    </operation>
+    <operation name="insertar_new_age">
+      <input wsam:Action="http://services.service.lkprogrammers.org/LKServicioWeb/insertar_new_ageRequest" message="tns:insertar_new_age" />
+      <output wsam:Action="http://services.service.lkprogrammers.org/LKServicioWeb/insertar_new_ageResponse" message="tns:insertar_new_ageResponse" />
+    </operation>
+    <operation name="modificarAsistencia">
+      <input wsam:Action="http://services.service.lkprogrammers.org/LKServicioWeb/modificarAsistenciaRequest" message="tns:modificarAsistencia" />
+      <output wsam:Action="http://services.service.lkprogrammers.org/LKServicioWeb/modificarAsistenciaResponse" message="tns:modificarAsistenciaResponse" />
+    </operation>
+    <operation name="insertarAsistencias">
+      <input wsam:Action="http://services.service.lkprogrammers.org/LKServicioWeb/insertarAsistenciasRequest" message="tns:insertarAsistencias" />
+      <output wsam:Action="http://services.service.lkprogrammers.org/LKServicioWeb/insertarAsistenciasResponse" message="tns:insertarAsistenciasResponse" />
+    </operation>
+    <operation name="listarAniosEscolares">
+      <input wsam:Action="http://services.service.lkprogrammers.org/LKServicioWeb/listarAniosEscolaresRequest" message="tns:listarAniosEscolares" />
+      <output wsam:Action="http://services.service.lkprogrammers.org/LKServicioWeb/listarAniosEscolaresResponse" message="tns:listarAniosEscolaresResponse" />
+    </operation>
+    <operation name="elimar_anio_escolar">
+      <input wsam:Action="http://services.service.lkprogrammers.org/LKServicioWeb/elimar_anio_escolarRequest" message="tns:elimar_anio_escolar" />
+      <output wsam:Action="http://services.service.lkprogrammers.org/LKServicioWeb/elimar_anio_escolarResponse" message="tns:elimar_anio_escolarResponse" />
+    </operation>
+    <operation name="listarAlumnosxsalon">
+      <input wsam:Action="http://services.service.lkprogrammers.org/LKServicioWeb/listarAlumnosxsalonRequest" message="tns:listarAlumnosxsalon" />
+      <output wsam:Action="http://services.service.lkprogrammers.org/LKServicioWeb/listarAlumnosxsalonResponse" message="tns:listarAlumnosxsalonResponse" />
+    </operation>
+    <operation name="listarAsistenciaFecha">
+      <input wsam:Action="http://services.service.lkprogrammers.org/LKServicioWeb/listarAsistenciaFechaRequest" message="tns:listarAsistenciaFecha" />
+      <output wsam:Action="http://services.service.lkprogrammers.org/LKServicioWeb/listarAsistenciaFechaResponse" message="tns:listarAsistenciaFechaResponse" />
+    </operation>
+    <operation name="listarAnioEscolarVigente">
+      <input wsam:Action="http://services.service.lkprogrammers.org/LKServicioWeb/listarAnioEscolarVigenteRequest" message="tns:listarAnioEscolarVigente" />
+      <output wsam:Action="http://services.service.lkprogrammers.org/LKServicioWeb/listarAnioEscolarVigenteResponse" message="tns:listarAnioEscolarVigenteResponse" />
+    </operation>
+    <operation name="Reporte_general_notas_de_alumno">
+      <input wsam:Action="http://services.service.lkprogrammers.org/LKServicioWeb/Reporte_general_notas_de_alumnoRequest" message="tns:Reporte_general_notas_de_alumno" />
+      <output wsam:Action="http://services.service.lkprogrammers.org/LKServicioWeb/Reporte_general_notas_de_alumnoResponse" message="tns:Reporte_general_notas_de_alumnoResponse" />
+    </operation>
+    <operation name="listarFechasAsistenciaSalon">
+      <input wsam:Action="http://services.service.lkprogrammers.org/LKServicioWeb/listarFechasAsistenciaSalonRequest" message="tns:listarFechasAsistenciaSalon" />
+      <output wsam:Action="http://services.service.lkprogrammers.org/LKServicioWeb/listarFechasAsistenciaSalonResponse" message="tns:listarFechasAsistenciaSalonResponse" />
+    </operation>
+  </portType>
+  <binding name="LKServicioWebPortBinding" type="tns:LKServicioWeb">
+    <soap:binding transport="http://schemas.xmlsoap.org/soap/http" />
+    <operation name="editar_age">
+      <soap:operation soapAction="" />
+      <input>
+        <soap:body use="literal" />
+      </input>
+      <output>
+        <soap:body use="literal" />
+      </output>
+    </operation>
+    <operation name="verificarUsuario">
+      <soap:operation soapAction="" />
+      <input>
+        <soap:body use="literal" />
+      </input>
+      <output>
+        <soap:body use="literal" />
+      </output>
+    </operation>
+    <operation name="listarAdministradores">
+      <soap:operation soapAction="" />
+      <input>
+        <soap:body use="literal" />
+      </input>
+      <output>
+        <soap:body use="literal" />
+      </output>
+    </operation>
+    <operation name="listarUsuarios">
+      <soap:operation soapAction="" />
+      <input>
+        <soap:body use="literal" />
+      </input>
+      <output>
+        <soap:body use="literal" />
+      </output>
+    </operation>
+    <operation name="insertarprofesor">
+      <soap:operation soapAction="" />
+      <input>
+        <soap:body use="literal" />
+      </input>
+      <output>
+        <soap:body use="literal" />
+      </output>
+    </operation>
+    <operation name="insertarAlumno">
+      <soap:operation soapAction="" />
+      <input>
+        <soap:body use="literal" />
+      </input>
+      <output>
+        <soap:body use="literal" />
+      </output>
+    </operation>
+    <operation name="editarProfesor">
+      <soap:operation soapAction="" />
+      <input>
+        <soap:body use="literal" />
+      </input>
+      <output>
+        <soap:body use="literal" />
+      </output>
+    </operation>
+    <operation name="editarAlumno">
+      <soap:operation soapAction="" />
+      <input>
+        <soap:body use="literal" />
+      </input>
+      <output>
+        <soap:body use="literal" />
+      </output>
+    </operation>
+    <operation name="eliminarAlumno">
+      <soap:operation soapAction="" />
+      <input>
+        <soap:body use="literal" />
+      </input>
+      <output>
+        <soap:body use="literal" />
+      </output>
+    </operation>
+    <operation name="eliminarProfesor">
+      <soap:operation soapAction="" />
+      <input>
+        <soap:body use="literal" />
+      </input>
+      <output>
+        <soap:body use="literal" />
+      </output>
+    </operation>
+    <operation name="esTutorAsignado">
+      <soap:operation soapAction="" />
+      <input>
+        <soap:body use="literal" />
+      </input>
+      <output>
+        <soap:body use="literal" />
+      </output>
+    </operation>
+    <operation name="acceder_a_pagina">
+      <soap:operation soapAction="" />
+      <input>
+        <soap:body use="literal" />
+      </input>
+      <output>
+        <soap:body use="literal" />
+      </output>
+    </operation>
+    <operation name="listarProfesores">
+      <soap:operation soapAction="" />
+      <input>
+        <soap:body use="literal" />
+      </input>
+      <output>
+        <soap:body use="literal" />
+      </output>
+    </operation>
+    <operation name="insertarAsistencia">
+      <soap:operation soapAction="" />
+      <input>
+        <soap:body use="literal" />
+      </input>
+      <output>
+        <soap:body use="literal" />
+      </output>
+    </operation>
+    <operation name="listarSalones">
+      <soap:operation soapAction="" />
+      <input>
+        <soap:body use="literal" />
+      </input>
+      <output>
+        <soap:body use="literal" />
+      </output>
+    </operation>
+    <operation name="listarCompetencias">
+      <soap:operation soapAction="" />
+      <input>
+        <soap:body use="literal" />
+      </input>
+      <output>
+        <soap:body use="literal" />
+      </output>
+    </operation>
+    <operation name="listarAlumnos">
+      <soap:operation soapAction="" />
+      <input>
+        <soap:body use="literal" />
+      </input>
+      <output>
+        <soap:body use="literal" />
+      </output>
+    </operation>
+    <operation name="listarCursos">
+      <soap:operation soapAction="" />
+      <input>
+        <soap:body use="literal" />
+      </input>
+      <output>
+        <soap:body use="literal" />
+      </output>
+    </operation>
+    <operation name="insertar_new_age">
+      <soap:operation soapAction="" />
+      <input>
+        <soap:body use="literal" />
+      </input>
+      <output>
+        <soap:body use="literal" />
+      </output>
+    </operation>
+    <operation name="modificarAsistencia">
+      <soap:operation soapAction="" />
+      <input>
+        <soap:body use="literal" />
+      </input>
+      <output>
+        <soap:body use="literal" />
+      </output>
+    </operation>
+    <operation name="insertarAsistencias">
+      <soap:operation soapAction="" />
+      <input>
+        <soap:body use="literal" />
+      </input>
+      <output>
+        <soap:body use="literal" />
+      </output>
+    </operation>
+    <operation name="listarAniosEscolares">
+      <soap:operation soapAction="" />
+      <input>
+        <soap:body use="literal" />
+      </input>
+      <output>
+        <soap:body use="literal" />
+      </output>
+    </operation>
+    <operation name="elimar_anio_escolar">
+      <soap:operation soapAction="" />
+      <input>
+        <soap:body use="literal" />
+      </input>
+      <output>
+        <soap:body use="literal" />
+      </output>
+    </operation>
+    <operation name="listarAlumnosxsalon">
+      <soap:operation soapAction="" />
+      <input>
+        <soap:body use="literal" />
+      </input>
+      <output>
+        <soap:body use="literal" />
+      </output>
+    </operation>
+    <operation name="listarAsistenciaFecha">
+      <soap:operation soapAction="" />
+      <input>
+        <soap:body use="literal" />
+      </input>
+      <output>
+        <soap:body use="literal" />
+      </output>
+    </operation>
+    <operation name="listarAnioEscolarVigente">
+      <soap:operation soapAction="" />
+      <input>
+        <soap:body use="literal" />
+      </input>
+      <output>
+        <soap:body use="literal" />
+      </output>
+    </operation>
+    <operation name="Reporte_general_notas_de_alumno">
+      <soap:operation soapAction="" />
+      <input>
+        <soap:body use="literal" />
+      </input>
+      <output>
+        <soap:body use="literal" />
+      </output>
+    </operation>
+    <operation name="listarFechasAsistenciaSalon">
+      <soap:operation soapAction="" />
+      <input>
+        <soap:body use="literal" />
+      </input>
+      <output>
+        <soap:body use="literal" />
+      </output>
+    </operation>
+  </binding>
+  <service name="LKServicioWeb">
+    <port name="LKServicioWebPort" binding="tns:LKServicioWebPortBinding">
+      <soap:address location="http://localhost:8080/LKProgramService/LKServicioWeb" />
+    </port>
+  </service>
+</definitions>
