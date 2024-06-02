@@ -3,6 +3,11 @@
     Registro de Asistencia
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="Styles" runat="server">
+    <style>
+        body{
+            min-height:100vh;
+        }
+    </style>
 </asp:Content>
 
 <asp:Content ID="Content4" ContentPlaceHolderID="Navusuarios" runat="server">
@@ -15,9 +20,9 @@
             </div>
             <div class="card-body">
                 <asp:GridView ID="GridAlumnos" runat="server" AutoGenerateColumns="false"
-                    AllowPaging="true" CssClass="table table-hover table-responsive table-striped" >
+                    AllowPaging="true" CssClass="table table-hover table-responsive table-striped" OnRowDataBound="GridAlumnos_RowDataBound" >
                     <Columns>
-                        <asp:BoundField DataField="codigoAlumno" HeaderText="Código del alumno" ItemStyle-HorizontalAlign="Center"  ItemStyle-VerticalAlign="Middle"/>
+                        <asp:BoundField DataField="dni" HeaderText="Código del alumno" ItemStyle-HorizontalAlign="Center"  ItemStyle-VerticalAlign="Middle"/>
                         <asp:BoundField DataField="nombres" HeaderText="Nombre Completo del alumno"  ItemStyle-HorizontalAlign="Center"  ItemStyle-VerticalAlign="Middle"/>
                         <asp:TemplateField HeaderText="Marcar Asistencia">
                             <ItemTemplate>
@@ -47,7 +52,7 @@
     </div>
 
     <!--Modal para afirmar o negar que realizó el registro asistencias-->
-    <div id="modalGuardarAsistencias" class="modal" tabindex="-1">
+    <!--<div id="modalGuardarAsistencias" class="modal" tabindex="-1">
         <div class="modal-dialog">
             <div class="modal-content">
                   <div class="modal-header">
@@ -64,27 +69,25 @@
             </div>
 
             </div>
-        </div>
-    <!--
+        </div>-->
+    
     <div class="modal fade" id="asistenRegistradasModal" tabindex="-1" role="dialog" aria-labelledby="asistenRegistradasModalLabel" aria-hidden="true">
         <div class="modal-dialog" role="document">
             <div class="modal-content">
                 <div class="modal-header">
                     <h5 class="modal-title" id="asistenRegistradasModalLabel">Asistencias registrada</h5>
-                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                            <span aria-hidden="true">&times;</span>
-                        </button>
+                       
                 </div>
-                <div class="modal-body">
+                <div class="modal-body" id="modalBody">
                       Se registraron exitosamente las asistencias para el dia de hoy!.
                 </div>
                 <div class="modal-footer">
-                    <asp:LinkButton ID="BtnRegresarAsistencias" runat="server" CssClass="btn btn-secondary" OnClick="BtnRegresar_Click">Volver</asp:LinkButton>
+                    <asp:LinkButton ID="BtnRegresarAsistencias" runat="server" CssClass="btn btn-primary" OnClick="BtnRegresar_Click">Volver</asp:LinkButton>
                     
                 </div>
             </div>
         </div>
-    </div>-->
+    </div>
 
 
 </asp:Content>
