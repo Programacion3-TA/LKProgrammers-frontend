@@ -364,3 +364,5 @@ FodyWeavers.xsd
 
 #Proyecto WebForm
 WebForm/obj/
+#Ignora webservice
+Connected\ Services/ServicioWS
