@@ -27,10 +27,15 @@ git clone https://github.com/Programacion3-TA/LKProgrammers-la-venganza.git
 
 
 
-## Problemas con Nuggets
+## Problemas 
 Si se encuentran problemas al ver el diseño del proyecto, es posible por un problema de nuggets.
 Introducir el comando mostrado en  Herramientas -> Administrador de paquetes NugGet -> Consola del Administrador de paquetes
 ```
 Update-Package Microsoft.CodeDom.Providers.DotNetCompilerPlatform -r
 ```
+Si se menciona el problema "El sistema no encuentra la ruta especificada"
+* Es posible que se deba a que no se encuentra 
+
 ![](https://i.pinimg.com/1200x/fe/f1/84/fef184fba21b4ee7e29d8ee6bdd3b1bf.jpg){width='100px'}
+
+
