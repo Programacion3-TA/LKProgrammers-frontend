@@ -1,4 +1,4 @@
-﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Layout/MainProfesor.Master" AutoEventWireup="true" CodeBehind="AsistenciaProfesor.aspx.cs" Inherits="WebForm.View.AsistenciaProfesor.AsistenciaProfesor" %>
+﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Layout/MainProfesor.Master" AutoEventWireup="true" CodeBehind="AsistenciaProfesor.aspx.cs" Inherits="WebForm.View.AsistenciaProfesor.AsistenciaProfesor" EnableEventValidation="false" %>
 <%@ Register Src="~/Components/Path.ascx" TagName="Path" TagPrefix="uc"%>
 <asp:Content ID="Content1" ContentPlaceHolderID="Title" runat="server">
     Asistencias del salon

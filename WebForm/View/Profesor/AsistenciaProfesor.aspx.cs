@@ -18,9 +18,21 @@ namespace WebForm.View.AsistenciaProfesor
 
             if (!IsPostBack) {
                 //if (!((string)(Session["Tipo"])).Equals("Profesor")) ; evita que ingresen cuentasn que no son tipo Profesor
-                int idsalon ;
+                int idsalon = (int)Session["idsalon"] ;
                 profesor profesor = (profesor)Session["Usuario"];
+                //cuando cargue, ya se verifico si es tutor 
 
+                if (idsalon != -1)
+                {
+                    CargarFechas(idsalon);
+                    Session["RealizoAsistenica"] = VerificarRegistroAsistenciaActual();
+                }
+                else
+                {
+                    Response.Redirect("/View/Profesor/ErroNoTutor.aspx");
+                }
+
+                /*
                 if (Session["idsalon"] == null)
                 {
                     idsalon = daoServicio.esTutorAsignado(profesor.dni);
@@ -33,7 +45,7 @@ namespace WebForm.View.AsistenciaProfesor
                     idsalon = (int)Session["idsalon"];
                     CargarFechas(idsalon);
                     Session["RealizoAsistenica"]= VerificarRegistroAsistenciaActual();
-                }
+                }*/
 
             }
                
