@@ -5,7 +5,12 @@ const contentModal = document.getElementById('modalBody');
 function showModal(idmodal) {
     var modalForm = new bootstrap.Modal(document.getElementById(idmodal));
     modalForm.show();
-}    
+}   
+function closeModal(idModal) {
+    var modalForm = new bootstrap.Modal(document.getElementById(idModal));
+    modalForm.hide();
+}
+
 function showUpdateModal(idmodal) {
 
     titleModal.textContent = "Asistencias actualizadas";
