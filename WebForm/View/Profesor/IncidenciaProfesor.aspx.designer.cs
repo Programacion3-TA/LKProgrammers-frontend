@@ -15,6 +15,24 @@ namespace WebForm.View.Profesor
     {
 
         /// <summary>
+        /// Control FiltrarAlumnosTxt.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.TextBox FiltrarAlumnosTxt;
+
+        /// <summary>
+        /// Control FiltrarAlumnosBtn.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.LinkButton FiltrarAlumnosBtn;
+
+        /// <summary>
         /// Control GridAlumnosSalon.
         /// </summary>
         /// <remarks>
@@ -22,6 +40,69 @@ namespace WebForm.View.Profesor
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
         protected global::System.Web.UI.WebControls.GridView GridAlumnosSalon;
+
+        /// <summary>
+        /// Control IncidenciasAlumnoLbl.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label IncidenciasAlumnoLbl;
+
+        /// <summary>
+        /// Control IncidenciasAlumnoGrid.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.GridView IncidenciasAlumnoGrid;
+
+        /// <summary>
+        /// Control CerrarNoHayIncidenciasModalBtn.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Button CerrarNoHayIncidenciasModalBtn;
+
+        /// <summary>
+        /// Control DescripcionShowLbl.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label DescripcionShowLbl;
+
+        /// <summary>
+        /// Control CerrarDescripcionModal.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Button CerrarDescripcionModal;
+
+        /// <summary>
+        /// Control NumeroIncidenciaLbl.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label NumeroIncidenciaLbl;
+
+        /// <summary>
+        /// Control NumeroIncidenciaTxt.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.TextBox NumeroIncidenciaTxt;
 
         /// <summary>
         /// Control NombreProfesorLbl.
@@ -121,5 +202,14 @@ namespace WebForm.View.Profesor
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
         protected global::System.Web.UI.WebControls.Button CerrarModalIncidenciaBtn;
+
+        /// <summary>
+        /// Control RegistrarIncidenciaBtn.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Button RegistrarIncidenciaBtn;
     }
 }
