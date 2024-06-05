@@ -11,7 +11,7 @@
     <div class="container">
         <nav class=" navbar bg-light navbar-light w-75">
             <div class="d-flex gap-3 w-100">
-            <asp:TextBox ID="FiltrarAlumnosTxt" runat="server" CssClass="form-control mr-sm-2 w-75" placeholder="Buscar por Alumno o Dni"></asp:TextBox>
+            <asp:TextBox ID="FiltrarAlumnosTxt" runat="server" CssClass="form-control mr-sm-2 w-75" placeholder="Buscar por Nombre de alumno o DNI"></asp:TextBox>
                 <asp:LinkButton ID="FiltrarAlumnosBtn" runat="server" CssClass="btn btn-success my-2 my-sm-0" OnClick="FiltrarAlumnosBtn_Click">
                     <i class="fa-solid fa-magnifying-glass"></i>
                 </asp:LinkButton>

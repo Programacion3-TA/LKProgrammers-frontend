@@ -7,6 +7,12 @@ using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
 using WebForm.ServicioWS;
+
+
+using iTextSharp.text;
+using iTextSharp.text.pdf;
+using iTextSharp.tool.xml;
+using System.IO;
 namespace WebForm.View.AsistenciaProfesor
 {
     public partial class AsistenciaProfesor : System.Web.UI.Page
@@ -25,7 +31,10 @@ namespace WebForm.View.AsistenciaProfesor
                 if (idsalon != -1)
                 {
                     CargarFechas(idsalon);
+                    List<alumno> alumnos = daoServicio.listarAlumnosxsalon(idsalon).ToList();
+                    Session["alumnosAsistencia"] = alumnos;
                     Session["RealizoAsistenica"] = VerificarRegistroAsistenciaActual();
+                    CargarAlumnosDropDown();
                 }
                 else
                 {
@@ -51,6 +60,18 @@ namespace WebForm.View.AsistenciaProfesor
                
         }
 
+        protected void CargarAlumnosDropDown()
+        {
+            List<alumno> alumnos = (List<alumno>)Session["alumnosAsistencia"];
+            foreach(alumno alu in alumnos)
+            {
+                alu.nombres += " " + alu.apellidoPaterno + " " + alu.apellidoMaterno;
+            }
+            
+            AlumnosDrpDown.DataSource = alumnos;
+            AlumnosDrpDown.DataBind();
+        }
+
         protected void BtnNiegaRegistros_Click(object sender, EventArgs e)
         {
             CallJavascript("showModal('bloqueoRegistroModal')");
@@ -70,6 +91,9 @@ namespace WebForm.View.AsistenciaProfesor
             }
 
             Session["fechas"] = fechas;
+            //se impleemnto para que funcione el filtrado -> mejorar
+            Session["fechasFormato"] = fechasFormato;
+            Session["fechasconFormato"] = fechasconFormato;
             GridAsistenciasFechas.DataSource = fechasconFormato; //verificar el Datafield
             GridAsistenciasFechas.DataBind();
 
@@ -102,9 +126,7 @@ namespace WebForm.View.AsistenciaProfesor
             }
         }
 
-        protected void BtnBuscarDias_Click(object sender, EventArgs e)
-        {
-        }
+        
         protected bool VerificarRegistroAsistenciaActual()
         {
             DateTime fechaHoy = DateTime.Now.Date;//comparamos fechas
@@ -130,6 +152,55 @@ namespace WebForm.View.AsistenciaProfesor
             Session["fechaEdicion"] = fecha; //editaremos los registros de esta fecha
             Session["asistencias"] = new List<asistencia>();
             Response.Redirect("/View/Profesor/RegistroAsistencia.aspx?idsalon=" + idsalon);
+        }
+
+        protected void FiltrarMesBtn_Click(object sender, EventArgs e)
+        {
+            //talvez deberia estar en el backend -> PASARLO
+
+            string mes = MesesDropDown.Text;
+            List<object> fechasconFormato;
+            if(!mes.Equals(""))
+            {
+                List<DateTime> fechas = (List<DateTime>)Session["fechas"];
+                List<string> fechasFormato = (List<string>)Session["fechasFormato"];
+
+                fechasconFormato = new List<object>();
+
+                //llenamos la lista de objetos
+                foreach (DateTime fecha in fechas)
+                {
+                    if (fechasFormato[fechas.IndexOf(fecha)].Contains(mes))
+                    {
+                        object key = new { Fecha = fecha.Date, FechaFormato = fechasFormato[fechas.IndexOf(fecha)] };
+                        fechasconFormato.Add(key);
+                    }
+                }
+            }
+            else
+            {
+                fechasconFormato = (List<object>)Session["fechasconFormato"];
+            }
+            GridAsistenciasFechas.DataSource = fechasconFormato;
+            GridAsistenciasFechas.DataBind();
+
+
+        }
+
+        protected void AsistenciasAlumnoBtn_Click(object sender, EventArgs e)
+        {
+            string dniAlumno = AlumnosDrpDown.Text;
+            List<asistencia> asistencias = daoServicio.listarAsitencias(dniAlumno).ToList();
+            alumno alumno = daoServicio.listarAlumnosFiltro(dniAlumno).ToList().FirstOrDefault();
+            AsistenciaAlumnoLbl.Text = "Reporte de asistencias de " + alumno.nombres + " " + alumno.apellidoPaterno;
+            AsistenciaAlumnoGrid.DataSource = asistencias;
+            AsistenciaAlumnoGrid.DataBind();
+            CallJavascript("showModal('AsistenciaAlumnoModalCenter')");
+        }
+
+        protected void CerrarModalIncidenciaBtn_Click(object sender, EventArgs e)
+        {
+
         }
     }
 }

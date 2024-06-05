@@ -1,4 +1,4 @@
-﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Layout/MainProfesor.master" AutoEventWireup="true" CodeBehind="RegistroAsistencia.aspx.cs" Inherits="WebForm.View.Profesor.RegistroAsistencia" EnableEventValidation="false" %>
+﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Layout/MainProfesor.master" AutoEventWireup="true" CodeBehind="RegistroAsistencia.aspx.cs" Inherits="WebForm.View.Profesor.RegistroAsistencia" EnableEventValidation="false" MaintainScrollPositionOnPostback="true"%>
 <asp:Content ID="Content1" ContentPlaceHolderID="Title" runat="server">
     Registro de Asistencia
 </asp:Content>
