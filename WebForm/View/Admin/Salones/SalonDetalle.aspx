@@ -34,12 +34,18 @@
                     AllowPaging="true" PageSize="5"
                     CssClass="table table-hover table-responsive table-striped">
                     <Columns>
-
+                        <asp:BoundField DataField="codigoAlumno" HeaderText="Codigo"/>
+                        <asp:BoundField DataField="dni" HeaderText="Dni" />
+                        <asp:BoundField DataField="nombres" HeaderText="Nombre" />
+                        <asp:BoundField DataField="apellidoPaterno" HeaderText="Apellido Paterno" />
+                        <asp:BoundField DataField="apellidoMaterno" HeaderText="Apellido Materno" />
+                        <asp:BoundField DataField="correoElectronico" HeaderText ="Correo electrónico" />                        
+                        <asp:BoundField DataField="grado" HeaderText="Grado" />
                         <asp:TemplateField HeaderText="Acciones">
                             <ItemTemplate>
                                 <div style="display: flex; gap: 0.6em">
                                     <asp:Button ID="BtnVer" runat="server" Text="Ver" CssClass="btn btn-primary"
-                                        CommandArgument='<%#Eval("id") %>' />
+                                        CommandArgument='<%#Eval("codigoAlumno") %>' />
                                 </div>
 
                             </ItemTemplate>
