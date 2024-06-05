@@ -110,6 +110,7 @@
     <Content Include="View\Admin\Profesores\Profesores.js" />
     <Content Include="View\Admin\Profesores\Profesores.aspx" />
     <Content Include="View\Admin\Salones\Salon.js" />
+    <Content Include="View\Admin\Salones\SalonDetalle.js" />
     <Content Include="View\Admin\Salones\SalonesAdmin.aspx" />
     <Content Include="View\Admin\Salones\SalonDetalle.aspx" />
     <Content Include="View\Alumno\Alumno.js" />
@@ -484,6 +485,12 @@
       <DependentUpon>Reference.svcmap</DependentUpon>
     </Content>
     <Content Include="Connected Services\ServicioWS\WebForm.ServicioWS.verificarUsuarioResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Content>
+    <Content Include="Connected Services\ServicioWS\WebForm.ServicioWS.eliminarSalonAlumnoResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Content>
+    <Content Include="Connected Services\ServicioWS\WebForm.ServicioWS.insertarSalonAlumnoResponse.datasource">
       <DependentUpon>Reference.svcmap</DependentUpon>
     </Content>
     <None Include="packages.config" />
