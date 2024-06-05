@@ -78,7 +78,7 @@ namespace WebForm.View.Admin.Salones
             Response.Redirect($"SalonDetalle.aspx?salonId={salonId}");
         }
 
-        }
+        
         protected void BtnEliminar_Click(object sender, EventArgs e)
         {
             Button btn = (Button)sender;
