@@ -50,7 +50,12 @@ namespace WebForm.View.Profesor
         private void CargarAlumnosSalon(int salon)
         {
             //cargamos
-            List<alumno> alumnos = daoServicio.listarAlumnosxsalon(salon).ToList();
+            List<alumno> alumnos = new List<alumno>();
+            var f = daoServicio.listarAlumnosxsalon(salon);
+            if (f != null)
+            {
+                alumnos = f.ToList();
+            }
             TransformaNombre(alumnos);
             CargarAlumnos(alumnos);
         }

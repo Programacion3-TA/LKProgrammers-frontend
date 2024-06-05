@@ -41,6 +41,8 @@ namespace WebForm.View.Admin.AnioAcademico
             {
                 // No hay ningun anio escolar vigente
                 LblAnioVigente.Text = "Actualmente, no existe ningún año escolar en curso.";
+                GVAnioVigente.DataSource = new BindingList<anioEscolar>(); ;
+                GVAnioVigente.DataBind();
             }
         }
 
