@@ -27,30 +27,28 @@
 </asp:Content>
 <asp:Content ID="Content4" ContentPlaceHolderID="MainContent" runat="server">
 
-    <form runat="server" class="AsistenciaForm">
-        <div class="container-fluid mt-2 ms-4 me-4 ">
-          <h2 class="mb-4 text-center text-md-start ">Asistencias por día</h2>
-            <asp:GridView ID="GriAsistenciasAlumnos" runat="server"
-            AutoGenerateColumns ="false" AllowPaging="true"
-            PageSize="30" CssClass="table table-hover table-responsive table-striped "
-                HeaderStyle-HorizontalAlign="Center">
-            <Columns>
-                <asp:BoundField DataField="fecha" HeaderText="Fecha Asistencia" ItemStyle-CssClass="col-1" ItemStyle-HorizontalAlign="Center"/>
-                <asp:BoundField DataField="estado" HeaderText="Asistencia" ItemStyle-CssClass="col-1"/>
-                <asp:TemplateField HeaderText="Acciones" ItemStyle-CssClass="col-1 " ItemStyle-HorizontalAlign="Center">
-                    <ItemTemplate>
-                        <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#justificar--modal">
-                            Justificar tardanza
-                        </button>
-                    </ItemTemplate>
-                    <ItemStyle HorizontalAlign="Center"  />
-                </asp:TemplateField>
-            </Columns>
-             <RowStyle CssClass="row-style" />
-             <AlternatingRowStyle CssClass="row-style" />
-            </asp:GridView>
-        </div>
-    </form>
+    <div class="container-fluid mt-2 ms-4 me-4 ">
+      <h2 class="mb-4 text-center text-md-start ">Asistencias por día</h2>
+        <asp:GridView ID="GriAsistenciasAlumnos" runat="server"
+        AutoGenerateColumns ="false" AllowPaging="true"
+        PageSize="30" CssClass="table table-hover table-responsive table-striped "
+            HeaderStyle-HorizontalAlign="Center">
+        <Columns>
+            <asp:BoundField DataField="fechaHora" HeaderText="Fecha Asistencia" ItemStyle-CssClass="col-1" ItemStyle-HorizontalAlign="Center"/>
+            <asp:BoundField DataField="estado" HeaderText="Asistencia" ItemStyle-CssClass="col-1"/>
+            <asp:TemplateField HeaderText="Acciones" ItemStyle-CssClass="col-1 " ItemStyle-HorizontalAlign="Center">
+                <ItemTemplate>
+                    <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#justificar--modal">
+                        Justificar tardanza
+                    </button>
+                </ItemTemplate>
+                <ItemStyle HorizontalAlign="Center"  />
+            </asp:TemplateField>
+        </Columns>
+         <RowStyle CssClass="row-style" />
+         <AlternatingRowStyle CssClass="row-style" />
+        </asp:GridView>
+    </div>
 
     <!--Modal-->
     <div id="justificar--modal" class="modal" tabindex="-1">

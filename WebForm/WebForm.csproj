@@ -400,6 +400,9 @@
     <Content Include="Connected Services\ServicioWS\WebForm.ServicioWS.eliminarProfesorResponse.datasource">
       <DependentUpon>Reference.svcmap</DependentUpon>
     </Content>
+    <Content Include="Connected Services\ServicioWS\WebForm.ServicioWS.eliminar_cursosResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Content>
     <Content Include="Connected Services\ServicioWS\WebForm.ServicioWS.eliminarSalonAlumnoResponse.datasource">
       <DependentUpon>Reference.svcmap</DependentUpon>
     </Content>
@@ -509,6 +512,12 @@
       <DependentUpon>Reference.svcmap</DependentUpon>
     </Content>
     <Content Include="Connected Services\ServicioWS\WebForm.ServicioWS.verificarUsuarioResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Content>
+    <Content Include="Connected Services\ServicioWS\WebForm.ServicioWS.listarCursosPorAlumnoResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Content>
+    <Content Include="Connected Services\ServicioWS\WebForm.ServicioWS.listarAsistenciasPorAlumnoResponse.datasource">
       <DependentUpon>Reference.svcmap</DependentUpon>
     </Content>
     <None Include="packages.config" />
