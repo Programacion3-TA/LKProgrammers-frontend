@@ -18,8 +18,8 @@ namespace WebForm.View.Profesor
             daoServicio = new LKServicioWebClient();
             if (!IsPostBack) {
                 string idsalon = Request.QueryString["idsalon"];
-                List<alumno> alumnos = daoServicio.listarAlumnosxsalon(int.Parse(idsalon)).ToList();
-
+                // List<alumno> alumnos = daoServicio.listarAlumnosxsalon(int.Parse(idsalon)).ToList();
+                List<alumno> alumnos = (List<alumno>)Session["alumnosAsistencia"];
 
                 //procedimiento cuando se realiza un registro
                 if (!string.IsNullOrEmpty(idsalon) && Session["fechaEdicion"] == null)

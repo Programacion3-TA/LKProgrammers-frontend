@@ -27,10 +27,11 @@ namespace WebForm.View.Admin.AnioAcademico
 
         protected void cargarAnioVigente()
         {
-            anioVigente = new BindingList<anioEscolar>(serviciodao.listarAnioEscolarVigente().ToList());
-            if (anioVigente != null)
+            var anioEscolar = serviciodao.listarAnioEscolarVigente();
+            if (anioEscolar != null)
             {
                 // Muestro el (o los) anio escolar vigente
+                anioVigente = new BindingList<anioEscolar>(anioEscolar);
                 GVAnioVigente.DataSource = anioVigente;
                 GVAnioVigente.DataBind();
 
@@ -45,13 +46,12 @@ namespace WebForm.View.Admin.AnioAcademico
 
         protected void cargarAniosEscolares()
         {
-            anios = new BindingList<anioEscolar>(serviciodao.listarAniosEscolares().ToList());
-
-            foreach (anioEscolar anio_esc in anioVigente)
+            anios = new BindingList<anioEscolar>();
+            var anio = serviciodao.listarAniosEscolares();
+            if(anio != null)
             {
-                anios.Remove(anio_esc);
-            }            
-            
+                anios = new BindingList<anioEscolar>(anio);
+            }
             GVAnios.DataSource = anios;
             GVAnios.DataBind();
         }
@@ -73,7 +73,7 @@ namespace WebForm.View.Admin.AnioAcademico
             Button btn = (Button)sender;
             string code = btn.CommandArgument; // recibo el codigo del profesor
 
-            anioEscolar anio = anios.ToList().Find(x => x.id == Int32.Parse(code));
+            anioEscolar anio = anios.ToList().Find(x => x.id == int.Parse(code));
             // Busco y recupero los datos del profe
             TxtCode.Text = anio.id.ToString();
             TxtNombre.Text = anio.nombre;
@@ -98,7 +98,12 @@ namespace WebForm.View.Admin.AnioAcademico
         {
             serviciodao = new LKServicioWebClient();
             anioEscolar op = new anioEscolar();
-            BindingList<anioEscolar> Lis_anio = new BindingList<anioEscolar>(serviciodao.listarAnioEscolarVigente());
+            var f = serviciodao.listarAnioEscolarVigente();
+            BindingList<anioEscolar> Lis_anio = new BindingList<anioEscolar>();
+            if (f != null)
+            {
+                Lis_anio = new BindingList<anioEscolar>(f);
+            }
             if (string.IsNullOrEmpty(TxtCode.Text)) // crear
             {
                 op.id = Lis_anio.Count() + 1;
@@ -112,7 +117,7 @@ namespace WebForm.View.Admin.AnioAcademico
                 cargarAniosEscolares();
             }
             else //actualizar
-            {
+            { 
                 op = Lis_anio.ToList().Find(x => x.id == int.Parse(TxtCode.Text));
                 op.nombre = TxtNombre.Text;
                 op.fechaInicioSpecified = true;
