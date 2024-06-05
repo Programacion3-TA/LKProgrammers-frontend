@@ -69,7 +69,14 @@ namespace WebForm.View.Admin.Salones
             TxtCapMaxima.Text = salonActual.capacidadMaxima.ToString();
             TxtCapMinima.Text = salonActual.capacidadMinima.ToString();
             DDTutor.SelectedValue = salonActual.tutor.codigoProfesor.ToString();
-            CallJavascript("showModalFormSalon()");
+            CallJavascript("showModalFormSalon()");   
+        }
+        protected void BtnVer_Click(object sender, EventArgs e)
+        {
+            Button btn = (Button)sender;
+            string salonId = btn.CommandArgument;
+            Response.Redirect($"SalonDetalle.aspx?salonId={salonId}");
+        }
 
         }
         protected void BtnEliminar_Click(object sender, EventArgs e)
