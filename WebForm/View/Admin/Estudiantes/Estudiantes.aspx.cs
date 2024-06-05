@@ -13,7 +13,6 @@ namespace WebForm.View.Admin.Estudiantes
     public partial class Estudiantes : System.Web.UI.Page
     {
         private ServicioWS.LKServicioWebClient daoservicio;
-        private BindingList<alumno> estudiantes;
         protected void Page_Load(object sender, EventArgs e)
         {
             // Comprobamos que se trata de un admin
@@ -32,9 +31,7 @@ namespace WebForm.View.Admin.Estudiantes
         }
         protected void CargarTabla()
         {
-            estudiantes = new BindingList<alumno>(daoservicio.listarAlumnos().ToList());
-
-            GridAlumnos.DataSource = estudiantes;
+            GridAlumnos.DataSource = new BindingList<alumno>(daoservicio.listarAlumnos()); 
             GridAlumnos.DataBind();
         }
         protected void EditRow_Click(object sender, EventArgs e)
@@ -43,7 +40,7 @@ namespace WebForm.View.Admin.Estudiantes
             LinkButton btn = (LinkButton)sender;
             int codigoBusca = int.Parse(btn.CommandArgument); // Recibe el codigo del alumno
 
-            alumno alumn = estudiantes.ToList().Find(alu => alu.codigoAlumno == codigoBusca);
+            alumno alumn = daoservicio.listarAlumnos().ToList().Find(alu => alu.codigoAlumno == codigoBusca);
             TxtCode.Text = alumn.codigoAlumno.ToString();
             TxtDNI.Text = alumn.dni.ToString();
             TxtNombre.Text = alumn.nombres;
@@ -67,8 +64,7 @@ namespace WebForm.View.Admin.Estudiantes
             
             LinkButton btn = ( LinkButton )sender;
             int codigo = int.Parse(btn.CommandArgument);
-            alumno alu = estudiantes.ToList().Find(al => al.codigoAlumno == codigo);
-            estudiantes.ToList().Remove(alu);
+            daoservicio.eliminarAlumno(codigo);
             CargarTabla();
 
         }
@@ -95,30 +91,40 @@ namespace WebForm.View.Admin.Estudiantes
         }
         protected void BntGuardar_Click(object sender, EventArgs e)
         {
-            /*
-            AlumnoN alumno = new AlumnoN();
+            
+            alumno al = new alumno();
             bool actualizaOcrea = string.IsNullOrEmpty(TxtCode.Text);
             if (actualizaOcrea)
             {
-                alumno.Codigo = alumnos.Count + 1;
+                al.codigoAlumno = daoservicio.listarAlumnos().Count() + 1;
             }
             else
             {
-                alumno = alumnos.Find(alu => alu.Codigo == int.Parse(TxtCode.Text));
+                al = daoservicio.listarAlumnos().ToList().Find(alu => alu.codigoAlumno == int.Parse(TxtCode.Text));
             }
-            alumno.Dni = TxtDNI.Text;
-            alumno.Nombre = TxtNombre.Text;
-            alumno.ApellidoPat = TxtApellidoPat.Text;
-            alumno.ApellidoMat = TxtApellidoMat.Text;
-            alumno.Correo = TxtCorreo.Text;
-            alumno.Telefono = TxtTelefono.Text;
-            alumno.Grado = SLGrado.SelectedValue;
-
+            al.dni = TxtDNI.Text;//1
+            al.nombres = TxtNombre.Text;//2
+            al.apellidoPaterno = TxtApellidoPat.Text;//3
+            al.apellidoMaterno = TxtApellidoMat.Text;//4
+            al.correoElectronico = TxtCorreo.Text;//5
+            al.telefono = TxtTelefono.Text;//6
+            al.direccion = TxtDireccion.Text;//7
+            al.genero = DDGenero.SelectedValue.ToString()[0];//8
+            al.gradoSpecified = true;
+            al.fechaNacSpecified = true;
+            al.fechaNac = DateTime.Parse(TxtFechaNac.Text);//9
+            al.grado = (grado)Enum.Parse(typeof(grado), SLGrado.Text);//10
+            al.usuario1 = TxtUsuario.Text;
+            al.contrasenia = TxtContrasenia.Text;
             if (actualizaOcrea)
             {
-                alumnos.Add(alumno);
+                daoservicio.insertarAlumno(al);
             }
-            CargarTabla() ;*/
+            else
+            {
+                daoservicio.editarAlumno(al);
+            }
+            CargarTabla() ;
         }
         private void CallJavascript(string function)
         {
