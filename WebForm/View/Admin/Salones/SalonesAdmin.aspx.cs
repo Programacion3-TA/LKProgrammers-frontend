@@ -19,13 +19,15 @@ namespace WebForm.View.Admin.Salones
         protected void Page_Load(object sender, EventArgs e)
         {
             serviciodao = new ServicioWS.LKServicioWebClient();
+            salones = new BindingList<salon>(serviciodao.listarSalones());
             cargarTabla();
             cargarProfesores();
             cargarAnisoEscolares();
         }
         private void cargarAnisoEscolares()
         {
-            BindingList<anioEscolar> anios = new BindingList<anioEscolar>(serviciodao.listarAnioEscolarVigente().ToList());
+            var list = serviciodao.listarAnioEscolarVigente().ToList();
+            BindingList<anioEscolar> anios = list != null ? new BindingList<anioEscolar>(list) : new BindingList<anioEscolar>();
             DDAnioEscolar.DataSource = anios;
             DDAnioEscolar.DataValueField = "id";
             DDAnioEscolar.DataTextField = "nombre";
@@ -33,15 +35,15 @@ namespace WebForm.View.Admin.Salones
         }
         private void cargarProfesores()
         {
-            BindingList<profesor> profesores = new BindingList<profesor>(serviciodao.listarProfesores().ToList());
+            var list = serviciodao.listarProfesores().ToList();
+            BindingList<profesor> profesores = list != null ? new BindingList<profesor>(list) : new BindingList<profesor>();
             DDTutor.DataSource = profesores;
-            DDTutor.DataValueField = "codigoProfesor";
+            DDTutor.DataValueField = "dni";
             DDTutor.DataTextField = "nombres";
             DDTutor.DataBind();
         }
         private void cargarTabla()
         {
-            salones = new BindingList<salon>(serviciodao.listarSalones());
             GridSalones.DataSource = salones;
             GridSalones.DataBind();
         }
@@ -60,15 +62,23 @@ namespace WebForm.View.Admin.Salones
 
             Button btn = (Button)sender;
             string code = btn.CommandArgument; // recibo el id
-
+            salones = new BindingList<salon>(serviciodao.listarSalones());
             salon salonActual = salones.ToList().Find(x => x.id == Int32.Parse(code));
             // Busco y recupero los datos del profe
             TxtCode.Text = salonActual.id.ToString();
+            DDAnioEscolar.DataSource = serviciodao.listarAnioEscolarVigente();
+            DDAnioEscolar.DataTextField = "nombre";
+            DDAnioEscolar.DataValueField = "id";
+            DDAnioEscolar.DataBind();
             DDAnioEscolar.SelectedValue = salonActual.idAnioEscolar.ToString();
             SLGrado.SelectedValue = salonActual.gradoSalon.ToString();
             TxtCapMaxima.Text = salonActual.capacidadMaxima.ToString();
             TxtCapMinima.Text = salonActual.capacidadMinima.ToString();
-            DDTutor.SelectedValue = salonActual.tutor.codigoProfesor.ToString();
+            DDTutor.DataSource = serviciodao.listarProfesores();
+            DDTutor.DataTextField = "nombres";
+            DDTutor.DataValueField = "dni";
+            DDTutor.DataBind();
+            DDTutor.SelectedValue = salonActual.tutor.dni;
             CallJavascript("showModalFormSalon()");   
         }
         protected void BtnVer_Click(object sender, EventArgs e)
@@ -104,7 +114,8 @@ namespace WebForm.View.Admin.Salones
                 op.capacidadMaxima = int.Parse(TxtCapMaxima.Text);
                 op.capacidadMinima = int.Parse(TxtCapMinima.Text);
                 op.idAnioEscolar = int.Parse(DDAnioEscolar.Text);
-                //op.tutor.dni = DDTutor.Text; //CORREGIR
+                op.tutor = new profesor();
+                op.tutor.dni = DDTutor.SelectedValue;
                 op.gradoSalonSpecified = true;
                 if(Enum.TryParse(SLGrado.Text, true, out grado grado))
                 {
@@ -114,10 +125,12 @@ namespace WebForm.View.Admin.Salones
             }
             else //actualizar
             {
+                op.id = int.Parse(TxtCode.Text);
                 op.capacidadMaxima = int.Parse(TxtCapMaxima.Text);
                 op.capacidadMinima = int.Parse(TxtCapMinima.Text);
                 op.idAnioEscolar = int.Parse(DDAnioEscolar.Text);
-                //op.tutor.dni = DDTutor.Text;
+                op.tutor = new profesor();
+                op.tutor.dni = DDTutor.SelectedValue;
                 op.gradoSalonSpecified = true;
                 if (Enum.TryParse(SLGrado.Text, true, out grado grado))
                 {
