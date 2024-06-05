@@ -189,7 +189,18 @@ namespace WebForm.View.AsistenciaProfesor
 
         protected void AsistenciasAlumnoBtn_Click(object sender, EventArgs e)
         {
-            //genera el pdf
+            string dniAlumno = AlumnosDrpDown.Text;
+            List<asistencia> asistencias = daoServicio.listarAsitencias(dniAlumno).ToList();
+            alumno alumno = daoServicio.listarAlumnosFiltro(dniAlumno).ToList().FirstOrDefault();
+            AsistenciaAlumnoLbl.Text += " "+alumno.nombres + " " + alumno.apellidoPaterno;
+            AsistenciaAlumnoGrid.DataSource = asistencias;
+            AsistenciaAlumnoGrid.DataBind();
+            CallJavascript("showModal('AsistenciaAlumnoModalCenter')");
+        }
+
+        protected void CerrarModalIncidenciaBtn_Click(object sender, EventArgs e)
+        {
+
         }
     }
 }

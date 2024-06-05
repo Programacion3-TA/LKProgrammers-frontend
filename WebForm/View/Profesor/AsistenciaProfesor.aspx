@@ -91,7 +91,32 @@
         </div>
     </div>
 
+    <div class="modal fade" id="AsistenciaAlumnoModalCenter" tabindex="-1" role="dialog" aria-labelledby="AsistenciaAlumnoModalCenterTitle" aria-hidden="true">
+      <div class="modal-dialog modal-dialog-centered" role="document">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title" id="AsistenciaAlumnoModalLongTitle">
+                <asp:Label ID="AsistenciaAlumnoLbl" runat="server" Text="Reporte de asistencias de"></asp:Label>
+            </h5>
+          </div>
+          <div class="modal-body d-flex  flex-column gap-4" >
+              <asp:GridView ID="AsistenciaAlumnoGrid" runat="server" AutoGenerateColumns="false"
+                    AllowPaging ="true" CssClass="table table-hover table-responsive table-striped">
+                  <Columns>
+                      <asp:BoundField DataField="fechaFormato" HeaderText="Fecha y Hora registrada" ItemStyle-HorizontalAlign="Center"  ItemStyle-VerticalAlign="Middle"/>
+                       <asp:BoundField DataField="estado" HeaderText="Estado de Asistencia" ItemStyle-HorizontalAlign="Center"  ItemStyle-VerticalAlign="Middle"/>
+                  </Columns>
+                  <HeaderStyle HorizontalAlign="Center"/>
+              </asp:GridView>
 
+          </div>
+          <div class="modal-footer">
+              <asp:Button ID="CerrarModalIncidenciaBtn" runat="server" Text="Cerrar" CssClass="btn btn-primary" OnClick="CerrarModalIncidenciaBtn_Click"/>
+            <!--  <asp:Button ID="GenerarPdfBtn" runat="server" Text="Enviar y registrar" CssClass="btn btn-primary" />-->
+          </div>
+        </div>
+      </div>
+    </div>
     <!--<div id="guardar--modal" class="modal" tabindex="-1">
         <div class="modal-dialog modal-dialog-centered">
             <div  class="modal-content">
