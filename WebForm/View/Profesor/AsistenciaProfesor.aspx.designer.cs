@@ -24,22 +24,31 @@ namespace WebForm.View.AsistenciaProfesor
         protected global::WebForm.Components.Path MyCustomControl1;
 
         /// <summary>
-        /// Control TxtBuscarDias.
+        /// Control FiltroLbl.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox TxtBuscarDias;
+        protected global::System.Web.UI.WebControls.Label FiltroLbl;
 
         /// <summary>
-        /// Control BtnBuscarDias.
+        /// Control MesesDropDown.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Button BtnBuscarDias;
+        protected global::System.Web.UI.WebControls.DropDownList MesesDropDown;
+
+        /// <summary>
+        /// Control FiltrarMesBtn.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Button FiltrarMesBtn;
 
         /// <summary>
         /// Control BtnRegistrarAsistencia.
@@ -49,6 +58,24 @@ namespace WebForm.View.AsistenciaProfesor
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
         protected global::System.Web.UI.WebControls.LinkButton BtnRegistrarAsistencia;
+
+        /// <summary>
+        /// Control AlumnosDrpDown.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.DropDownList AlumnosDrpDown;
+
+        /// <summary>
+        /// Control AsistenciasAlumnoBtn.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Button AsistenciasAlumnoBtn;
 
         /// <summary>
         /// Control GridAsistenciasFechas.
@@ -67,5 +94,41 @@ namespace WebForm.View.AsistenciaProfesor
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
         protected global::System.Web.UI.WebControls.LinkButton BtnCerrarModal;
+
+        /// <summary>
+        /// Control AsistenciaAlumnoLbl.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label AsistenciaAlumnoLbl;
+
+        /// <summary>
+        /// Control AsistenciaAlumnoGrid.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.GridView AsistenciaAlumnoGrid;
+
+        /// <summary>
+        /// Control CerrarModalIncidenciaBtn.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Button CerrarModalIncidenciaBtn;
+
+        /// <summary>
+        /// Control GenerarPdfBtn.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Button GenerarPdfBtn;
     }
 }

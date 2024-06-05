@@ -53,7 +53,6 @@ namespace WebForm.View.Admin.Estudiantes
             TxtDireccion.Text = alumn.direccion;
             TxtUsuario.Text = alumn.usuario1;
             TxtContrasenia.Text = alumn.contrasenia;
-
             TxtFechaNac.Text = alumn.fechaNac.ToString("yyyy-MM-dd");
             CallJavascript("showModalFormAgregarEstudiante()");
 
