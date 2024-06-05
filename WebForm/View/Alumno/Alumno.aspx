@@ -8,7 +8,7 @@
 </asp:Content>
 
 <asp:Content ID="Content4" ContentPlaceHolderID="Script" runat="server">
-    <script src="./Alumno.js"></script>
+    <!--<script src="./Alumno.js"></script>-->
 </asp:Content>
 <asp:Content ID="Content5" ContentPlaceHolderID="Navusuarios" runat="server">
    <!-- <uc:Path ID="MyCustomControl1" runat="server" TiposURL=""/>        -->
@@ -17,6 +17,6 @@
   
     <div id="cursosContainer" class=" flex-grow-1 d-flex flex-wrap justify-content-md-start align-items-start
         justify-content-center">
-        <!--Todo en JS-->
+       <asp:Literal ID="CursosContainer" runat="server"></asp:Literal> 
     </div>
 </asp:Content>
