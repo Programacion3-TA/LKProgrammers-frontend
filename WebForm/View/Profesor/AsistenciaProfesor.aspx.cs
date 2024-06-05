@@ -192,7 +192,7 @@ namespace WebForm.View.AsistenciaProfesor
             string dniAlumno = AlumnosDrpDown.Text;
             List<asistencia> asistencias = daoServicio.listarAsitencias(dniAlumno).ToList();
             alumno alumno = daoServicio.listarAlumnosFiltro(dniAlumno).ToList().FirstOrDefault();
-            AsistenciaAlumnoLbl.Text += " "+alumno.nombres + " " + alumno.apellidoPaterno;
+            AsistenciaAlumnoLbl.Text = "Reporte de asistencias de " + alumno.nombres + " " + alumno.apellidoPaterno;
             AsistenciaAlumnoGrid.DataSource = asistencias;
             AsistenciaAlumnoGrid.DataBind();
             CallJavascript("showModal('AsistenciaAlumnoModalCenter')");

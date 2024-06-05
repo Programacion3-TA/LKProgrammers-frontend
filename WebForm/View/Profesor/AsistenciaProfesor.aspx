@@ -96,7 +96,7 @@
         <div class="modal-content">
           <div class="modal-header">
             <h5 class="modal-title" id="AsistenciaAlumnoModalLongTitle">
-                <asp:Label ID="AsistenciaAlumnoLbl" runat="server" Text="Reporte de asistencias de"></asp:Label>
+                <asp:Label ID="AsistenciaAlumnoLbl" runat="server" Text=""></asp:Label>
             </h5>
           </div>
           <div class="modal-body d-flex  flex-column gap-4" >
