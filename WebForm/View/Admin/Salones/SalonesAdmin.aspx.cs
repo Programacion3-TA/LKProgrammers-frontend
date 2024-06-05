@@ -26,8 +26,10 @@ namespace WebForm.View.Admin.Salones
         }
         private void cargarAnisoEscolares()
         {
+
             var list = serviciodao.listarAnioEscolarVigente().ToList();
             BindingList<anioEscolar> anios = list != null ? new BindingList<anioEscolar>(list) : new BindingList<anioEscolar>();
+
             DDAnioEscolar.DataSource = anios;
             DDAnioEscolar.DataValueField = "id";
             DDAnioEscolar.DataTextField = "nombre";
@@ -35,8 +37,10 @@ namespace WebForm.View.Admin.Salones
         }
         private void cargarProfesores()
         {
+
             var list = serviciodao.listarProfesores().ToList();
             BindingList<profesor> profesores = list != null ? new BindingList<profesor>(list) : new BindingList<profesor>();
+
             DDTutor.DataSource = profesores;
             DDTutor.DataValueField = "dni";
             DDTutor.DataTextField = "nombres";
@@ -44,6 +48,13 @@ namespace WebForm.View.Admin.Salones
         }
         private void cargarTabla()
         {
+
+            var f = serviciodao.listarSalones();
+            salones = new BindingList<salon>();
+            if(f != null)
+            {
+                salones = new BindingList<salon>(f);
+            }
             GridSalones.DataSource = salones;
             GridSalones.DataBind();
         }

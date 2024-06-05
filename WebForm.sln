@@ -5,6 +5,8 @@ VisualStudioVersion = 17.9.34728.123
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WebForm", "WebForm\WebForm.csproj", "{D50C7226-3494-498D-B7C1-AFE115483964}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GenerarReportes", "GenerarReportes\GenerarReportes.csproj", "{7514EA3F-4000-4491-9085-33CEAD613E22}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -15,6 +17,10 @@ Global
 		{D50C7226-3494-498D-B7C1-AFE115483964}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{D50C7226-3494-498D-B7C1-AFE115483964}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{D50C7226-3494-498D-B7C1-AFE115483964}.Release|Any CPU.Build.0 = Release|Any CPU
+		{7514EA3F-4000-4491-9085-33CEAD613E22}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{7514EA3F-4000-4491-9085-33CEAD613E22}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{7514EA3F-4000-4491-9085-33CEAD613E22}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{7514EA3F-4000-4491-9085-33CEAD613E22}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

@@ -1,18 +1,31 @@
 ﻿using System;
+using System.Collections;
 using System.Collections.Generic;
+using System.ComponentModel;
 using System.Linq;
 using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
+using WebForm.ServicioWS;
 
 namespace WebForm.View.AsistenciaAlumno
 {
     public partial class AsistenciaAlumno : System.Web.UI.Page
     {
-       // public static List<Asistencia> lista; // Lista de asistencias por alumno
+        // public static List<Asistencia> lista; // Lista de asistencias por alumno
+        private BindingList<asistencia> asistencias;
+        private ServicioWS.LKServicioWebClient serviciodao;
 
         protected void Page_Load(object sender, EventArgs e)
         {
+            serviciodao = new ServicioWS.LKServicioWebClient();
+            asistencia[] asist = serviciodao.listarAsistenciasPorAlumno(((alumno)Session["Usuario"]).dni);
+            if (asist == null) return;
+            asistencias = new BindingList<asistencia>(asist.ToList());
+
+            GriAsistenciasAlumnos.DataSource = asistencias;
+            GriAsistenciasAlumnos.DataBind();
+
             if (!IsPostBack) // Verificar si es la primera carga de la página
             {
                 InicializarAsistencias(); // Inicializar la lista de asistencias solo en la primera carga

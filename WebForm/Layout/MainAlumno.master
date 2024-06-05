@@ -14,7 +14,7 @@
     </li>
 
     <li class="nav-item mb-1">
-        <a href="/View/CalendarioAlumno/CalendarioAlumno.aspx">
+        <a href="/View/Alumno/CalendarioAlumno.aspx">
             <i class="fa-solid fa-calendar-days me-1"></i>
             Calendario
         </a>
@@ -28,7 +28,7 @@
     </li>
 
     <li class="nav-item mb-1">
-        <a href="/View/AsistenciaAlumno/AsistenciaAlumno.aspx">
+        <a href="/View/Alumno/AsistenciaAlumno.aspx">
             <i class="fa-solid fa-user-clock me-1"></i>
             Asistencias
         </a>
