@@ -13,6 +13,7 @@
     <div id="cursosContainer" class=" flex-grow-1 d-flex flex-wrap justify-content-md-start align-items-start
         justify-content-center">
         <!--Todo en JS-->
+        <asp:Literal ID="cursosProfesorContainer" runat="server"></asp:Literal>
     </div>
 </asp:Content>
 <asp:Content ID="Content5" ContentPlaceHolderID="Script" runat="server">
