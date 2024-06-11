@@ -25,6 +25,7 @@ namespace WebForm.View.AsistenciaProfesor
             if (!IsPostBack) {
                 //if (!((string)(Session["Tipo"])).Equals("Profesor")) ; evita que ingresen cuentasn que no son tipo Profesor
                 int idsalon = (int)Session["idsalon"] ;
+                Session["errorFechas"] = false;
                 profesor profesor = (profesor)Session["Usuario"];
                 //cuando cargue, ya se verifico si es tutor 
 
@@ -57,6 +58,10 @@ namespace WebForm.View.AsistenciaProfesor
                 }*/
 
             }
+            /*if ((bool)Session["errorFechas"])
+            {
+                CallJavascript("showModal('fechasReporteModal')");
+            }*/
                
         }
 
@@ -189,18 +194,63 @@ namespace WebForm.View.AsistenciaProfesor
 
         protected void AsistenciasAlumnoBtn_Click(object sender, EventArgs e)
         {
-            string dniAlumno = AlumnosDrpDown.Text;
-            List<asistencia> asistencias = daoServicio.listarAsitencias(dniAlumno).ToList();
-            alumno alumno = daoServicio.listarAlumnosFiltro(dniAlumno).ToList().FirstOrDefault();
-            AsistenciaAlumnoLbl.Text = "Reporte de asistencias de " + alumno.nombres + " " + alumno.apellidoPaterno;
-            AsistenciaAlumnoGrid.DataSource = asistencias;
-            AsistenciaAlumnoGrid.DataBind();
-            CallJavascript("showModal('AsistenciaAlumnoModalCenter')");
+
+            if (!string.IsNullOrEmpty(FechaFinalTxt.Text) && !string.IsNullOrEmpty(FechaIniTxt.Text))
+            {
+                DateTime fechaFinal = DateTime.Parse(FechaFinalTxt.Text);
+                DateTime fechaInical = DateTime.Parse(FechaIniTxt.Text);
+
+
+                string dniAlumno = AlumnosDrpDown.Text;
+                List<asistencia> asistencias = daoServicio.listarAsitencias(dniAlumno).ToList();
+                alumno alumno = daoServicio.listarAlumnosFiltro(dniAlumno).ToList().FirstOrDefault();
+                profesor profesor = (profesor)Session["Usuario"];
+
+                NombeAlumnoTxtRep.Text = alumno.nombres + " " + alumno.apellidoPaterno + " " + alumno.apellidoMaterno;
+                DniAlumnoTxtRep.Text = dniAlumno;
+                GradoAlumnoTxtRep.Text = alumno.grado.ToString();
+                TelefonoAlumnoTxtRep.Text = alumno.telefono;
+                SalonAlumnoTxtRep.Text = ((int)Session["idsalon"]).ToString(); //debe ser el nombre del salon
+                FechaActualTxtRep.Text = DateTime.Now.ToString().Split(' ')[0];
+                NombreTutorTxtRep.Text = profesor.nombres + " " + profesor.apellidoPaterno + " " + profesor.apellidoMaterno;
+                AsistenciaAlumnoGrid.DataSource = asistencias;
+                AsistenciaAlumnoGrid.DataBind();
+                CallJavascript("showModal('AsistenciaAlumnoModalCenter')");
+
+            }
         }
 
         protected void CerrarModalIncidenciaBtn_Click(object sender, EventArgs e)
         {
 
+        }
+
+        protected void AsignarFechasBtn_Click(object sender, EventArgs e)
+        {
+            msgErrorFechas.Visible = false;
+            CallJavascript("showModal('fechasReporteModal')");
+          //  string script = "mostrarErrorFechas()";
+           // ClientScript.RegisterStartupScript(this.GetType(), "MostrarErrorFechas", script,true);
+        }
+
+        protected void SelectFechasBtn_Click(object sender, EventArgs e)
+        {
+           
+            if(fechaFinCalen.SelectedDate <= fechaIniCalen.SelectedDate)
+            {
+                msgErrorFechas.Visible = true;
+                CallJavascript("showModal('fechasReporteModal')");
+            }
+            else
+            {
+                FechaFinalTxt.Text = fechaFinCalen.SelectedDate.Date.ToString().Split(' ')[0];
+                FechaIniTxt.Text = fechaIniCalen.SelectedDate.Date.ToString().Split(' ')[0];
+            }
+
+        }
+
+        protected void SalirFechasBtn_Click(object sender, EventArgs e)
+        {
         }
     }
 }

@@ -6,6 +6,7 @@
 <head runat="server">
     <script src="https://kit.fontawesome.com/7237f750bf.js" crossorigin="anonymous"></script>
     <link href="/Public/css/bootstrap/bootstrap.css" rel="stylesheet" />
+    <link rel="icon" href="/Public/img/logoColegio.png" type="image/png" />
     <script src="/Public/js/bootstrap/bootstrap.js" type="text/javascript"></script>
     <script src="/Public/js/bootstrap/bootstrap.bundle.js" type="text/javascript"></script>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
@@ -45,10 +46,10 @@
             <div class="col-md-4">
                 <div class="card">
                     <div class="card-header text-center">
-                        <h4>San Pedro Nolasco</h4>
+                        <h4>Bienvenido/a a </h4>
                         <img src="/Public/img/logoColegio.png" width="120" />
                         <hr/>
-                        <h5>Bienvenido/a</h5>
+                        <h5>San Pedro Nolasco</h5>
                     </div>
                     <div class="card-body d-flex flex-column gap-3">
                             <div class="form-group">
@@ -59,7 +60,7 @@
                                 <asp:Label ID="LblContrasenia" runat="server" Text="Constraseña" CssClass="form-label"></asp:Label>
                                 <asp:TextBox ID="TxtContrasenia" runat="server" CssClass="form-control" TextMode="Password" placeholder="Ingrese su contraseña..."></asp:TextBox>
                             </div>
-                          <asp:Button ID="BtnIngresar" runat="server" Text="Iniciar sesión" CssClass="btn btn-black btn-block"
+                          <asp:Button ID="BtnIngresar" runat="server" Text="Iniciar sesión" CssClass="btn btn-success"
                            OnClick="BtnIngresar_Click"  />
                     </div>
                 </div>

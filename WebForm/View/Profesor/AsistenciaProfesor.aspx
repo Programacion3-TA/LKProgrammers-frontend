@@ -4,6 +4,14 @@
     Asistencias del salon
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="Styles" runat="server">
+    <style>
+        .erroMsg{
+            background-color:#c90606ce;
+            height:40px;
+            color:aliceblue;
+            font-weight:bold
+        }
+    </style>
 </asp:Content>
 <asp:Content ID="Content3" ContentPlaceHolderID="Navusuarios" runat="server">
    <!-- <uc:Path ID="MyCustomControl1" runat="server" TiposURL="Asistencia"/>-->
@@ -13,7 +21,36 @@
     <h1>Asistencias del salon</h1>
     <div class="container">
         <div class="container row pb-2 pt-2">
-            <div class="col">
+            <div class="col mb-4">
+                    <h2>Asistencias por alumno</h2>
+                    <div class="d-flex gap-3 border-2 flex-column">
+                        <div class="d-flex gap-3 w-75" >
+                            <div>
+                              <asp:Label ID="FechaIniSelecLbl" runat="server" Text="Label" CssClass="form-check-label">Fecha Inicial:</asp:Label>
+                              <asp:TextBox ID="FechaIniTxt" runat="server" CssClass="form-control"></asp:TextBox>
+
+                            </div>
+                            <div>
+                            <asp:Label ID="FechFinSelectLbl" runat="server" Text="Label" CssClass="form-check-label">Fecha Final:</asp:Label>
+                            <asp:TextBox ID="FechaFinalTxt" runat="server" CssClass="form-control"></asp:TextBox>
+
+                            </div>
+                            <asp:Button ID="AsignarFechasBtn" runat="server" Text="Seleccionar Fechas" CssClass="btn btn-warning h-50 align-self-end" OnClick="AsignarFechasBtn_Click" />
+                        </div>
+                        <div class="d-flex gap-4">
+                            <asp:DropDownList ID="AlumnosDrpDown" runat="server" CssClass="form-select" DataTextField="nombres" DataValueField="dni">
+                            </asp:DropDownList>
+                            <asp:Button ID="AsistenciasAlumnoBtn" runat="server" Text="Obtener Asistencias" CssClass="btn btn-success" OnClick="AsistenciasAlumnoBtn_Click"/>
+                        </div>
+                        
+                    </div>
+            </div>
+            <hr />
+            <div>
+                <div class="text-end p-3 d-flex flex-row-reverse justify-content-between">
+                   <asp:LinkButton ID="BtnRegistrarAsistencia" runat="server" CssClass="btn btn-dark d-flex gap-2 end-0 align-items-center h-75"
+                       Text="<i class='fa-solid fa-clipboard-user'> </i> Agregar" OnClick="BtnRegistrarAsistencia_Click">
+                   </asp:LinkButton>
                     <div class="input-group mb-3 w-50 d-flex gap-3 align-items-center fw-bolder">
                         <asp:Label ID="FiltroLbl" runat="server" Text="Filtrar por mes: "></asp:Label>
                         <asp:DropDownList ID="MesesDropDown" runat="server" CssClass="form-select">
@@ -35,17 +72,6 @@
                            <asp:Button ID="FiltrarMesBtn" runat="server" Text="Filtrar" CssClass="btn btn-outline-secondary"
                                OnClick="FiltrarMesBtn_Click"/>
                         </div>
-                    </div>
-            </div>
-            <div>
-                <div class="text-end p-3 d-flex flex-row-reverse justify-content-between">
-                   <asp:LinkButton ID="BtnRegistrarAsistencia" runat="server" CssClass="btn btn-dark d-flex gap-2 end-0 align-items-center"
-                       Text="<i class='fa-solid fa-clipboard-user'> </i> Agregar" OnClick="BtnRegistrarAsistencia_Click">
-                   </asp:LinkButton>
-                    <div class="d-flex gap-3">
-                        <asp:DropDownList ID="AlumnosDrpDown" runat="server" CssClass="form-select" DataTextField="nombres" DataValueField="dni">
-                        </asp:DropDownList>
-                        <asp:Button ID="AsistenciasAlumnoBtn" runat="server" Text="Obtener Asistencias" CssClass="btn btn-success" OnClick="AsistenciasAlumnoBtn_Click"/>
                     </div>
                 </div>
             </div>
@@ -91,15 +117,52 @@
         </div>
     </div>
 
+    <!--Modal para el reporte de un Alumno-->
     <div class="modal fade" id="AsistenciaAlumnoModalCenter" tabindex="-1" role="dialog" aria-labelledby="AsistenciaAlumnoModalCenterTitle" aria-hidden="true">
       <div class="modal-dialog modal-dialog-centered" role="document">
         <div class="modal-content">
           <div class="modal-header">
             <h5 class="modal-title" id="AsistenciaAlumnoModalLongTitle">
-                <asp:Label ID="AsistenciaAlumnoLbl" runat="server" Text=""></asp:Label>
+                <asp:Label ID="AsistenciaAlumnoLbl" runat="server" Text="Reporte de Asistencias del Alumno"></asp:Label>
             </h5>
           </div>
           <div class="modal-body d-flex  flex-column gap-4" >
+              <div class="container">
+                  <div class="d-flex">
+
+                  <div class="col-md-12 mb-3">
+                      <asp:Label ID="NombreAlumnoLblRep" runat="server" Text="Nombre del Alumno:" CssClass="form-label"></asp:Label>
+                      <asp:TextBox ID="NombeAlumnoTxtRep" runat="server" Enabled="false"></asp:TextBox>
+                  </div>
+                  <div class="col-md-12 mb-3">
+                      <asp:Label ID="DniAlumnoLblRep" runat="server" Text="Dni del Alumno:" CssClass="form-label"></asp:Label>
+                      <asp:TextBox ID="DniAlumnoTxtRep" runat="server" Enabled="false"></asp:TextBox>
+                  </div>
+                  </div>
+                  <div>
+
+                  <div class="col-md-12 mb-3">
+                      <asp:Label ID="GradoAlumnoLblRep" runat="server" Text="Grado:" CssClass="form-label"></asp:Label>
+                      <asp:TextBox ID="GradoAlumnoTxtRep" runat="server" Enabled="false"></asp:TextBox>
+                  </div>
+                  <div class="col-md-12 mb-3">
+                      <asp:Label ID="TelefonoAlumnoLblRep" runat="server" Text="Teléfono de contacto:" CssClass="form-label"></asp:Label>
+                      <asp:TextBox ID="TelefonoAlumnoTxtRep" runat="server" Enabled="false"></asp:TextBox>
+                  </div>
+                  </div>
+                  <div class="col-md-12 mb-3">
+                      <asp:Label ID="NombreTutorLblRep" runat="server" Text="Nombre del Tutor:" CssClass="form-label"></asp:Label>
+                      <asp:TextBox ID="NombreTutorTxtRep" runat="server" Enabled="false"></asp:TextBox>
+                  </div>
+                  <div class="col-md-12 mb-3">
+                      <asp:Label ID="SalonAlumnoLblRep" runat="server" Text="Salón:" CssClass="form-label"></asp:Label>
+                      <asp:TextBox ID="SalonAlumnoTxtRep" runat="server" Enabled="false"></asp:TextBox>
+                  </div>
+                  <div class="col-md-12 mb-3">
+                      <asp:Label ID="FechaActualLblRep" runat="server" Text="Fecha Actual: " CssClass="form-label"></asp:Label>
+                      <asp:TextBox ID="FechaActualTxtRep" runat="server" Enabled="false"></asp:TextBox>
+                  </div>
+              </div>
               <asp:GridView ID="AsistenciaAlumnoGrid" runat="server" AutoGenerateColumns="false"
                     AllowPaging ="true" CssClass="table table-hover table-responsive table-striped">
                   <Columns>
@@ -117,36 +180,46 @@
         </div>
       </div>
     </div>
-    <!--<div id="guardar--modal" class="modal" tabindex="-1">
-        <div class="modal-dialog modal-dialog-centered">
-            <div  class="modal-content">
-                <div class="modal-header">
-                    <h5 class="modal-title">Guardar cambios</h5>
-                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+
+    <!--Modal para el ingreso de fechas-->
+    <div class="modal fade" id="fechasReporteModal" tabindex="-1" role="dialog" aria-labelledby="fechasReporteModalLabel" aria-hidden="true"
+        >
+        <asp:ScriptManager ID="ScriptManager1" runat="server"></asp:ScriptManager>
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header" style="background:#333">
+                    <h5 class="modal-title" id="fechasReporteModalLabel" style="color:#fff">Seleccione las fechas</h5>
+                       
+                </div>
+                <asp:Label ID="msgErrorFechas" runat="server" Text="Label" CssClass="erroMsg">¡Las fecha inicial es posterior a la fecha final!</asp:Label>
+                <div class="modal-body d-flex gap-5" id="modalBody" style="overflow-x:scroll">
+                      <div class="d-flex flex-column gap-1">
+                          <asp:Label ID="fechaIniLbl" runat="server" Text="Label" Font-Bold="true">Seleccione la fecha inicial:</asp:Label>
+                          <asp:UpdatePanel ID="UpdatePanel1" runat="server">
+                              <ContentTemplate>
+                                <asp:Calendar ID="fechaIniCalen" runat="server"></asp:Calendar>
+                              </ContentTemplate>
+                          </asp:UpdatePanel>
+                      </div>
+                      <div class="d-flex flex-column gap-1">
+                          <asp:Label ID="fechaFinLbl" runat="server" Text="Label" Font-Bold="true">Selecione la fecha final:</asp:Label>
+                          <asp:UpdatePanel ID="UpdatePanel2" runat="server">
+                              <ContentTemplate>
+                                <asp:Calendar ID="fechaFinCalen" runat="server"></asp:Calendar>
+                              </ContentTemplate>
+                          </asp:UpdatePanel>
+                      </div>
                 </div>
                 <div class="modal-footer">
-                    <button type="submit" class="btn btn-secondary" data-bs-dismiss="modal">Cancelar</button>
-                    <button type="submit" class="btn btn-primary">Sí, aceptar</button>
+                    <asp:Button ID="SalirFechasBtn" runat="server" Text="Salir" CssClass="btn btn-secondary" OnClick="SalirFechasBtn_Click"/>
+
+                        <asp:Button ID="SelectFechasBtn" runat="server" Text="Seleccionar Fechas" CssClass="btn btn-success" OnClick="SelectFechasBtn_Click"/>
                 </div>
             </div>
         </div>
     </div>
 
-    
-    <div id="eliminar--modal" class="modal" tabindex="-1">
-        <div class="modal-dialog modal-dialog-centered">
-            <div class="modal-content">
-                <div class="modal-header">
-                    <h5 class="modal-title">¿Está seguro que quiere eliminar "${elemento}"?</h5>
-                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                </div>
-                <div class="modal-footer">
-                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancelar</button>
-                    <button type="submit" class="btn btn-primary">Eliminar</button>
-                </div>
-            </div>
-        </div>
-    </div>-->
+
 </asp:Content>
 <asp:Content ID="Content5" ContentPlaceHolderID="Script" runat="server">
     <script src="asistenciasProfesor.js"></script>

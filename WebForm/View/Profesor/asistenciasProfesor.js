@@ -27,3 +27,12 @@ function showInsertModal(idmodal) {
 
     showModal(idmodal);
 }    
+function mostrarErrorFechas() {
+    const divError = document.getElementById('msgErrorFechas');
+    if (divError.style.display === "none") {
+        divError.style.display = "block";
+    }
+    else {
+        divError.style.display = "none";
+    }
+}
