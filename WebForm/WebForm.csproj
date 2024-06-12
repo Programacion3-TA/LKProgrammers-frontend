@@ -137,6 +137,7 @@
     <Content Include="View\Profesor\Profesor.js" />
     <Content Include="View\Profesor\ProfesorVista.aspx" />
     <Content Include="View\Profesor\RegistroAsistencia.aspx" />
+    <Content Include="View\Profesor\ReporteAsistenciaAlumno.aspx" />
     <Content Include="Web.config" />
   </ItemGroup>
   <ItemGroup>
@@ -327,6 +328,13 @@
     </Compile>
     <Compile Include="View\Profesor\RegistroAsistencia.aspx.designer.cs">
       <DependentUpon>RegistroAsistencia.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="View\Profesor\ReporteAsistenciaAlumno.aspx.cs">
+      <DependentUpon>ReporteAsistenciaAlumno.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="View\Profesor\ReporteAsistenciaAlumno.aspx.designer.cs">
+      <DependentUpon>ReporteAsistenciaAlumno.aspx</DependentUpon>
     </Compile>
   </ItemGroup>
   <ItemGroup>

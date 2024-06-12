@@ -197,27 +197,9 @@ namespace WebForm.View.AsistenciaProfesor
 
             if (!string.IsNullOrEmpty(FechaFinalTxt.Text) && !string.IsNullOrEmpty(FechaIniTxt.Text))
             {
-                DateTime fechaFinal = DateTime.Parse(FechaFinalTxt.Text);
-                DateTime fechaInical = DateTime.Parse(FechaIniTxt.Text);
-
-
-                string dniAlumno = AlumnosDrpDown.Text;
-                List<asistencia> asistencias = daoServicio.listarAsitencias(dniAlumno).ToList();
-                alumno alumno = daoServicio.listarAlumnosFiltro(dniAlumno).ToList().FirstOrDefault();
-                profesor profesor = (profesor)Session["Usuario"];
-
-                NombeAlumnoTxtRep.Text = alumno.nombres + " " + alumno.apellidoPaterno + " " + alumno.apellidoMaterno;
-                DniAlumnoTxtRep.Text = dniAlumno;
-                GradoAlumnoTxtRep.Text = alumno.grado.ToString();
-                TelefonoAlumnoTxtRep.Text = alumno.telefono;
-                SalonAlumnoTxtRep.Text = ((int)Session["idsalon"]).ToString(); //debe ser el nombre del salon
-                FechaActualTxtRep.Text = DateTime.Now.ToString().Split(' ')[0];
-                NombreTutorTxtRep.Text = profesor.nombres + " " + profesor.apellidoPaterno + " " + profesor.apellidoMaterno;
-                AsistenciaAlumnoGrid.DataSource = asistencias;
-                AsistenciaAlumnoGrid.DataBind();
-                CallJavascript("showModal('AsistenciaAlumnoModalCenter')");
-
+                Response.Redirect("/View/Profesor/ReporteAsistenciaAlumno.aspx?dniAlu="+AlumnosDrpDown.Text+"&fechaIni="+FechaIniTxt.Text+"&fechaFin="+FechaFinalTxt.Text);
             }
+            
         }
 
         protected void CerrarModalIncidenciaBtn_Click(object sender, EventArgs e)

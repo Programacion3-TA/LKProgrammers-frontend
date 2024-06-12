@@ -1,4 +1,5 @@
-﻿const cursoContainer = document.getElementById("cursosContainer");
+﻿
+/*const cursoContainer = document.getElementById("cursosContainer");
 
 const dataCurso = {
     curso: "Nombre curso",
@@ -36,4 +37,9 @@ window.addEventListener("load", e => {
             </a>`;
     }).join('');
 
-});
+});*/
+
+function showModal(idmodal) {
+    var modalForm = new bootstrap.Modal(document.getElementById(idmodal));
+    modalForm.show();
+}  

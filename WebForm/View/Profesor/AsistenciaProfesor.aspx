@@ -21,19 +21,19 @@
     <h1>Asistencias del salon</h1>
     <div class="container">
         <div class="container row pb-2 pt-2">
-            <div class="col mb-4">
-                    <h2>Asistencias por alumno</h2>
-                    <div class="d-flex gap-3 border-2 flex-column">
+            <div class="card mb-4">
+                
+                    <h2 class="card-header">Asistencias por alumno</h2>
+                    <div class="d-flex gap-3 border-2 flex-column card-body">
                         <div class="d-flex gap-3 w-75" >
                             <div>
                               <asp:Label ID="FechaIniSelecLbl" runat="server" Text="Label" CssClass="form-check-label">Fecha Inicial:</asp:Label>
-                              <asp:TextBox ID="FechaIniTxt" runat="server" CssClass="form-control"></asp:TextBox>
+                              <asp:TextBox ID="FechaIniTxt" runat="server" CssClass="form-control" Enabled="false"></asp:TextBox>
 
                             </div>
                             <div>
-                            <asp:Label ID="FechFinSelectLbl" runat="server" Text="Label" CssClass="form-check-label">Fecha Final:</asp:Label>
-                            <asp:TextBox ID="FechaFinalTxt" runat="server" CssClass="form-control"></asp:TextBox>
-
+                                <asp:Label ID="FechFinSelectLbl" runat="server" Text="Label" CssClass="form-check-label">Fecha Final:</asp:Label>
+                                <asp:TextBox ID="FechaFinalTxt" runat="server" CssClass="form-control" Enabled="false"></asp:TextBox>
                             </div>
                             <asp:Button ID="AsignarFechasBtn" runat="server" Text="Seleccionar Fechas" CssClass="btn btn-warning h-50 align-self-end" OnClick="AsignarFechasBtn_Click" />
                         </div>
@@ -49,7 +49,7 @@
             <div>
                 <div class="text-end p-3 d-flex flex-row-reverse justify-content-between">
                    <asp:LinkButton ID="BtnRegistrarAsistencia" runat="server" CssClass="btn btn-dark d-flex gap-2 end-0 align-items-center h-75"
-                       Text="<i class='fa-solid fa-clipboard-user'> </i> Agregar" OnClick="BtnRegistrarAsistencia_Click">
+                       Text="<i class='fa-solid fa-clipboard-user'> </i> Agregar Asistencia " OnClick="BtnRegistrarAsistencia_Click">
                    </asp:LinkButton>
                     <div class="input-group mb-3 w-50 d-flex gap-3 align-items-center fw-bolder">
                         <asp:Label ID="FiltroLbl" runat="server" Text="Filtrar por mes: "></asp:Label>
@@ -117,69 +117,6 @@
         </div>
     </div>
 
-    <!--Modal para el reporte de un Alumno-->
-    <div class="modal fade" id="AsistenciaAlumnoModalCenter" tabindex="-1" role="dialog" aria-labelledby="AsistenciaAlumnoModalCenterTitle" aria-hidden="true">
-      <div class="modal-dialog modal-dialog-centered" role="document">
-        <div class="modal-content">
-          <div class="modal-header">
-            <h5 class="modal-title" id="AsistenciaAlumnoModalLongTitle">
-                <asp:Label ID="AsistenciaAlumnoLbl" runat="server" Text="Reporte de Asistencias del Alumno"></asp:Label>
-            </h5>
-          </div>
-          <div class="modal-body d-flex  flex-column gap-4" >
-              <div class="container">
-                  <div class="d-flex">
-
-                  <div class="col-md-12 mb-3">
-                      <asp:Label ID="NombreAlumnoLblRep" runat="server" Text="Nombre del Alumno:" CssClass="form-label"></asp:Label>
-                      <asp:TextBox ID="NombeAlumnoTxtRep" runat="server" Enabled="false"></asp:TextBox>
-                  </div>
-                  <div class="col-md-12 mb-3">
-                      <asp:Label ID="DniAlumnoLblRep" runat="server" Text="Dni del Alumno:" CssClass="form-label"></asp:Label>
-                      <asp:TextBox ID="DniAlumnoTxtRep" runat="server" Enabled="false"></asp:TextBox>
-                  </div>
-                  </div>
-                  <div>
-
-                  <div class="col-md-12 mb-3">
-                      <asp:Label ID="GradoAlumnoLblRep" runat="server" Text="Grado:" CssClass="form-label"></asp:Label>
-                      <asp:TextBox ID="GradoAlumnoTxtRep" runat="server" Enabled="false"></asp:TextBox>
-                  </div>
-                  <div class="col-md-12 mb-3">
-                      <asp:Label ID="TelefonoAlumnoLblRep" runat="server" Text="Teléfono de contacto:" CssClass="form-label"></asp:Label>
-                      <asp:TextBox ID="TelefonoAlumnoTxtRep" runat="server" Enabled="false"></asp:TextBox>
-                  </div>
-                  </div>
-                  <div class="col-md-12 mb-3">
-                      <asp:Label ID="NombreTutorLblRep" runat="server" Text="Nombre del Tutor:" CssClass="form-label"></asp:Label>
-                      <asp:TextBox ID="NombreTutorTxtRep" runat="server" Enabled="false"></asp:TextBox>
-                  </div>
-                  <div class="col-md-12 mb-3">
-                      <asp:Label ID="SalonAlumnoLblRep" runat="server" Text="Salón:" CssClass="form-label"></asp:Label>
-                      <asp:TextBox ID="SalonAlumnoTxtRep" runat="server" Enabled="false"></asp:TextBox>
-                  </div>
-                  <div class="col-md-12 mb-3">
-                      <asp:Label ID="FechaActualLblRep" runat="server" Text="Fecha Actual: " CssClass="form-label"></asp:Label>
-                      <asp:TextBox ID="FechaActualTxtRep" runat="server" Enabled="false"></asp:TextBox>
-                  </div>
-              </div>
-              <asp:GridView ID="AsistenciaAlumnoGrid" runat="server" AutoGenerateColumns="false"
-                    AllowPaging ="true" CssClass="table table-hover table-responsive table-striped">
-                  <Columns>
-                      <asp:BoundField DataField="fechaFormato" HeaderText="Fecha y Hora registrada" ItemStyle-HorizontalAlign="Center"  ItemStyle-VerticalAlign="Middle"/>
-                       <asp:BoundField DataField="estado" HeaderText="Estado de Asistencia" ItemStyle-HorizontalAlign="Center"  ItemStyle-VerticalAlign="Middle"/>
-                  </Columns>
-                  <HeaderStyle HorizontalAlign="Center"/>
-              </asp:GridView>
-
-          </div>
-          <div class="modal-footer">
-              <asp:Button ID="CerrarModalIncidenciaBtn" runat="server" Text="Cerrar" CssClass="btn btn-primary" OnClick="CerrarModalIncidenciaBtn_Click"/>
-            <!--  <asp:Button ID="GenerarPdfBtn" runat="server" Text="Enviar y registrar" CssClass="btn btn-primary" />-->
-          </div>
-        </div>
-      </div>
-    </div>
 
     <!--Modal para el ingreso de fechas-->
     <div class="modal fade" id="fechasReporteModal" tabindex="-1" role="dialog" aria-labelledby="fechasReporteModalLabel" aria-hidden="true"
