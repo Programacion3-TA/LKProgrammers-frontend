@@ -4,6 +4,7 @@ using System.Linq;
 using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
+using WebForm.ServicioWS;
 
 namespace WebForm.Layout
 {
@@ -11,7 +12,11 @@ namespace WebForm.Layout
     {
         protected void Page_Load(object sender, EventArgs e)
         {
-
+            if (Session["Tipo"] as string != "Administrador")
+            {
+                Response.Redirect("/View/Login/Login.aspx");
+            }
+            
         }
     }
 }
