@@ -17,6 +17,8 @@
   
     <div id="cursosContainer" class=" flex-grow-1 d-flex flex-wrap justify-content-md-start align-items-start
         justify-content-center">
-       <asp:Literal ID="CursosContainer" runat="server"></asp:Literal> 
+       <asp:Literal ID="CursosContainer" runat="server"></asp:Literal>
     </div>
+
+    <asp:Literal ID="Confetti" runat="server"></asp:Literal>
 </asp:Content>
