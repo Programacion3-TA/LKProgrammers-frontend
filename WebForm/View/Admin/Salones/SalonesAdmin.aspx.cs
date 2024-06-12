@@ -81,7 +81,16 @@ namespace WebForm.View.Admin.Salones
             DDAnioEscolar.DataTextField = "nombre";
             DDAnioEscolar.DataValueField = "id";
             DDAnioEscolar.DataBind();
-            DDAnioEscolar.SelectedValue = salonActual.idAnioEscolar.ToString();
+            string valorSeleccionado = salonActual.idAnioEscolar.ToString();
+            ListItem item = DDAnioEscolar.Items.FindByValue(valorSeleccionado);
+            if(item != null)
+            {
+                DDAnioEscolar.SelectedValue = valorSeleccionado;
+            }
+            else
+            {
+                DDAnioEscolar.SelectedValue = null;
+            }
             SLGrado.SelectedValue = salonActual.gradoSalon.ToString();
             TxtCapMaxima.Text = salonActual.capacidadMaxima.ToString();
             TxtCapMinima.Text = salonActual.capacidadMinima.ToString();
