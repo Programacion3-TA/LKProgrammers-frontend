@@ -82,7 +82,8 @@
         <div class="card">
             <div class="card-body">
                 <asp:GridView ID="GridAsistenciasFechas" runat="server" AutoGenerateColumns="false"
-                    AllowPaging ="true" CssClass="table table-hover table-responsive table-striped">
+                    AllowPaging ="true" CssClass="table table-hover table-responsive table-striped" OnPageIndexChanging="GridAsistenciasFechas_PageIndexChanging"
+                    PageSize="5">
                     <Columns>
                         <asp:BoundField DataField="FechaFormato" HeaderText ="Fecha de asistencias" ItemStyle-HorizontalAlign="Center"  ItemStyle-VerticalAlign="Middle"/>
                         <asp:TemplateField HeaderText="Actualización de asistencias">

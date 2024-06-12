@@ -14,7 +14,6 @@
         justify-content-center">
         <!--Todo en JS-->
         <asp:PlaceHolder ID="CursosProfesorPHl" runat="server"></asp:PlaceHolder>
-        <asp:LinkButton ID="LinkButton1" runat="server">LinkButton</asp:LinkButton>
     </div>
 
 </asp:Content>

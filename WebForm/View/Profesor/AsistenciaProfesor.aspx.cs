@@ -22,9 +22,9 @@ namespace WebForm.View.AsistenciaProfesor
         {
             daoServicio = new LKServicioWebClient();
 
+            int idsalon = (int)Session["idsalon"] ;
             if (!IsPostBack) {
                 //if (!((string)(Session["Tipo"])).Equals("Profesor")) ; evita que ingresen cuentasn que no son tipo Profesor
-                int idsalon = (int)Session["idsalon"] ;
                 Session["errorFechas"] = false;
                 profesor profesor = (profesor)Session["Usuario"];
                 //cuando cargue, ya se verifico si es tutor 
@@ -58,11 +58,12 @@ namespace WebForm.View.AsistenciaProfesor
                 }*/
 
             }
+            CargarFechas(idsalon);
             /*if ((bool)Session["errorFechas"])
             {
                 CallJavascript("showModal('fechasReporteModal')");
             }*/
-               
+
         }
 
         protected void CargarAlumnosDropDown()
@@ -181,6 +182,7 @@ namespace WebForm.View.AsistenciaProfesor
                         fechasconFormato.Add(key);
                     }
                 }
+                Session["fechasconFormato"] = fechasconFormato;
             }
             else
             {
@@ -233,6 +235,14 @@ namespace WebForm.View.AsistenciaProfesor
 
         protected void SalirFechasBtn_Click(object sender, EventArgs e)
         {
+        }
+
+        protected void GridAsistenciasFechas_PageIndexChanging(object sender, GridViewPageEventArgs e)
+        {
+            List<object> fechaFormato = (List<object>)Session["fechasconFormato"];
+            GridAsistenciasFechas.DataSource = fechaFormato;    
+            GridAsistenciasFechas.PageIndex = e.NewPageIndex;
+            GridAsistenciasFechas.DataBind();
         }
     }
 }
