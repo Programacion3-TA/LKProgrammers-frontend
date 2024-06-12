@@ -1,6 +1,4 @@
-﻿using iTextSharp.tool.xml.html.head;
-using Org.BouncyCastle.Asn1.Cms;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Drawing;
 using System.Linq;

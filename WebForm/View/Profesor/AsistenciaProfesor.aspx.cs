@@ -9,9 +9,6 @@ using System.Web.UI.WebControls;
 using WebForm.ServicioWS;
 
 
-using iTextSharp.text;
-using iTextSharp.text.pdf;
-using iTextSharp.tool.xml;
 using System.IO;
 namespace WebForm.View.AsistenciaProfesor
 {
