@@ -17,34 +17,6 @@ namespace WebForm.View
         private ServicioWS.LKServicioWebClient serviciodao;
         protected void Page_Load(object sender, EventArgs e)
         {
-            //string[] PruebasColores = {
-            //    "#6691FF",
-            //    "#C6FF4E",
-            //    "#FFDD66",
-            //    "#FF6666"
-            //};
-            //Random rand = new Random();
-            //StringBuilder sb = new StringBuilder();
-
-            //for(int i = 0; i < 10; i++)
-            //{
-            //    String nombreCurso = "Hola PUCP, aquí disfrutando";
-            //    String nombreProfesor = "Heider";
-            //    int codigoCurso = 34501;
-            //    sb.Append("" +
-            //        $"<a href=\"/View/CursoAlumno/CursoAlumno.aspx\" class=\"d-flex flex-column cursoCaja\" style=\"text-decoration:none;\">" +
-            //        $"   <div class=\"h-50\" style=\"background-color:" + PruebasColores[rand.Next(0,PruebasColores.Length)] +"\"></div>" +
-            //        $"   <div class=\"p-2 infoCaja\">" +
-            //        $"       <p>{nombreCurso}</p>" +
-            //        $"       <div class=\"line\"></div>" +
-            //        $"       <p>Profesor: {nombreProfesor}</p>" +
-            //        $"       <p>Código curso: {codigoCurso}</p>" +
-            //        $"   </div>" +
-            //        $"</a>");
-            //}
-
-            //CursosContainer.Text = sb.ToString();
-
             string[] PruebasColores = {
                 "#6691FF",
                 "#C6FF4E",
@@ -67,7 +39,7 @@ namespace WebForm.View
                 // Falta modificar esto
                 String nombreProfesor = "Heider";
                 sb.Append("" +
-                    $"<a href=\"/View/CursoAlumno/CursoAlumno.aspx\" class=\"d-flex flex-column cursoCaja\" style=\"text-decoration:none;\">" +
+                    $"<a href=\"/View/Alumno/CursoAlumno.aspx\" class=\"d-flex flex-column cursoCaja\" style=\"text-decoration:none;\">" +
                     $"   <div class=\"h-50\" style=\"background-color:" + PruebasColores[rand.Next(0, PruebasColores.Length)] + "\"></div>" +
                     $"   <div class=\"p-2 infoCaja\">" +
                     $"       <p>{cur.nombre}</p>" +
@@ -75,10 +47,26 @@ namespace WebForm.View
                     $"       <p>Profesor: {nombreProfesor}</p>" +
                     $"       <p>Código curso: {cur.id}</p>" +
                     $"   </div>" +
-                    $"</a>");
+                    $"</a>"
+                    );
+
+                //+
+                //$"<div class=\"card\" style=\"width: 18rem;\">" +
+                //$"   <div class=\"h-50\" style=\"background-color:" + PruebasColores[rand.Next(0, PruebasColores.Length)] + "\"></div>" +
+                //$"  <div class=\"card-body\">" +
+                //$"      <h5 class=\"card-title\">{cur.nombre} - {cur.id}</h5>" +
+                //$"      <p class=\"card-text\">Profesor: {nombreProfesor}</p>" +
+                //$"      <a href = \"#\" class=\"btn btn-primary\">Go somewhere</a>" +
+                //$"  </div>" +
+                //$"</div>"
             }
 
             CursosContainer.Text = sb.ToString();
+            if ((bool)Session["Confetti"])
+            {
+                Confetti.Text = "<script>(new JSConfetti()).addConfetti()</script>";
+                Session["Confetti"] = false;
+            }
         }
     }
 }

@@ -84,9 +84,6 @@ namespace WebForm.View.Admin.Estudiantes
             TxtFechaNac.Text = "";
             SLGrado.SelectedValue = "";
             CallJavascript("showModalFormAgregarEstudiante()");
-            
-            // Implementar agregacion en bd
-
         }
         protected void BntGuardar_Click(object sender, EventArgs e)
         {
@@ -99,7 +96,7 @@ namespace WebForm.View.Admin.Estudiantes
             }
             else
             {
-                al = daoservicio.listarAlumnos().ToList().Find(alu => alu.codigoAlumno == int.Parse(TxtCode.Text));
+                al = daoservicio.listarAlumnos().ToList().Find(alu => alu.codigoAlumno == Int32.Parse(TxtCode.Text));
             }
             al.dni = TxtDNI.Text;//1
             al.nombres = TxtNombre.Text;//2
