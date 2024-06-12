@@ -42,12 +42,6 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="itextsharp, Version=5.5.13.0, Culture=neutral, PublicKeyToken=8354ae6d2174ddca, processorArchitecture=MSIL">
-      <HintPath>..\packages\iTextSharp.5.5.13\lib\itextsharp.dll</HintPath>
-    </Reference>
-    <Reference Include="itextsharp.xmlworker, Version=5.5.13.0, Culture=neutral, PublicKeyToken=8354ae6d2174ddca, processorArchitecture=MSIL">
-      <HintPath>..\packages\itextsharp.xmlworker.5.5.13\lib\itextsharp.xmlworker.dll</HintPath>
-    </Reference>
     <Reference Include="Microsoft.CodeDom.Providers.DotNetCompilerPlatform, Version=4.1.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
       <HintPath>..\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.4.1.0\lib\net472\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.dll</HintPath>
     </Reference>
@@ -136,6 +130,7 @@
     <Content Include="View\Profesor\Profesor.js" />
     <Content Include="View\Profesor\ProfesorVista.aspx" />
     <Content Include="View\Profesor\RegistroAsistencia.aspx" />
+    <Content Include="View\Profesor\ReporteAsistenciaAlumno.aspx" />
     <Content Include="Web.config" />
   </ItemGroup>
   <ItemGroup>
@@ -328,6 +323,13 @@
     <Compile Include="View\Profesor\RegistroAsistencia.aspx.designer.cs">
       <DependentUpon>RegistroAsistencia.aspx</DependentUpon>
     </Compile>
+    <Compile Include="View\Profesor\ReporteAsistenciaAlumno.aspx.cs">
+      <DependentUpon>ReporteAsistenciaAlumno.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="View\Profesor\ReporteAsistenciaAlumno.aspx.designer.cs">
+      <DependentUpon>ReporteAsistenciaAlumno.aspx</DependentUpon>
+    </Compile>
   </ItemGroup>
   <ItemGroup>
     <Content Include="Layout\Main.Master" />
@@ -351,6 +353,7 @@
     <Content Include="Layout\MainAlumno.master" />
     <Content Include="Layout\MainProfesor.master" />
     <Content Include="Layout\MainAdministrador.master" />
+
     <None Include="Connected Services\ServicioWS\LKServicioWeb.wsdl" />
     <None Include="Connected Services\ServicioWS\LKServicioWeb.xsd">
       <SubType>Designer</SubType>

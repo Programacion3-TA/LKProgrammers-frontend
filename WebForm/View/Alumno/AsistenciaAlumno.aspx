@@ -1,7 +1,8 @@
-﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Layout/MainAlumno.Master" AutoEventWireup="true" CodeBehind="AsistenciaAlumno.aspx.cs" Inherits="WebForm.View.AsistenciaAlumno.AsistenciaAlumno" %>
+﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Layout/MainAlumno.Master" AutoEventWireup="true" CodeBehind="AsistenciaAlumno.aspx.cs" Inherits="WebForm.View.AsistenciaAlumno.AsistenciaAlumno" 
+    EnableEventValidation="false"%>
 <%@ Register Src="~/Components/Path.ascx" TagName="Path" TagPrefix="uc"%>
 <asp:Content ID="Content1" ContentPlaceHolderID="Title" runat="server">
-    Asistencias
+    Mis Asistencias
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="Styles" runat="server">
     <style>
@@ -34,13 +35,14 @@
         PageSize="30" CssClass="table table-hover table-responsive table-striped "
             HeaderStyle-HorizontalAlign="Center">
         <Columns>
-            <asp:BoundField DataField="fechaHora" HeaderText="Fecha Asistencia" ItemStyle-CssClass="col-1" ItemStyle-HorizontalAlign="Center"/>
+            <asp:BoundField DataField="fechaFormato" HeaderText="Fecha Asistencia" ItemStyle-CssClass="col-1" ItemStyle-HorizontalAlign="Center"/>
             <asp:BoundField DataField="estado" HeaderText="Asistencia" ItemStyle-CssClass="col-1"/>
             <asp:TemplateField HeaderText="Acciones" ItemStyle-CssClass="col-1 " ItemStyle-HorizontalAlign="Center">
                 <ItemTemplate>
-                    <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#justificar--modal">
-                        Justificar tardanza
-                    </button>
+                    <asp:Button ID="JustificarBtn" runat="server" Text="Justificar la asistencia"
+                        Enabled='<%# Eval("estado").ToString() != "Presente" %>'
+                        CssClass="btn btn-primary" OnClick="JustificarBtn_Click"
+                        CommandArgument='<%#Eval("fechaHora")%>'/>
                 </ItemTemplate>
                 <ItemStyle HorizontalAlign="Center"  />
             </asp:TemplateField>
@@ -51,27 +53,25 @@
     </div>
 
     <!--Modal-->
-    <div id="justificar--modal" class="modal" tabindex="-1">
-        <div class="modal-dialog modal-dialog-centered">
-            <form action="" method="post" class="modal-content">
-                <div class="modal-header">
-                    <h5 class="modal-title">Justificar tardanza</h5>
-                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                </div>
-                <div class="modal-body">
-                    <div class="mb-3">
-                        <label for="justificar--textarea" class="form-label">Descripción:</label>
-                        <textarea class="form-control" id="justificar--textarea" name="descripcion_tardanza" rows="3"
-                            placeholder="Ingrese la descripción aquí..."></textarea>
-                    </div>
-                </div>
-                <div class="modal-footer">
-                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancelar</button>
-                    <button type="submit" class="btn btn-primary">Guardar cambios</button>
-                </div>
-            </form>
-        </div>
+
+   <div class="modal fade" id="JustificarAsistenciaModal" tabindex="-1" role="dialog" aria-labelledby="JustificarAsistenciaModalLabel" aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="JustificarAsistenciaModalLabel">Justificar la asistencia</h5>
+      </div>
+      <div class="modal-body">
+          <asp:Label ID="" runat="server" Text="Introdusca el motivo: " CssClass="form-label"></asp:Label>
+          <asp:TextBox ID="TextBox1" runat="server" TextMode="MultiLine" Columns="30" Rows="5" CssClass="form-control"></asp:TextBox>
+      </div>
+      <div class="modal-footer">
+          <asp:Button ID="CerrarModalBtn" runat="server" Text="Cerrar" CssClass="btn btn-secondary"/>
+          <asp:Button ID="EnviarJustifiBtn" runat="server" Text="Enviar Justificación" CssClass="btn btn-primary" OnClick="EnviarJustifiBtn_Click"/>
+      </div>
     </div>
+  </div>
+</div>
 </asp:Content>
 <asp:Content ID="Content5" ContentPlaceHolderID="Script" runat="server">
+    <script src="Alumno.js"></script>
 </asp:Content>

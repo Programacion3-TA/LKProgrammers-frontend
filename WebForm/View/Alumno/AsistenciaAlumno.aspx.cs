@@ -19,10 +19,10 @@ namespace WebForm.View.AsistenciaAlumno
         protected void Page_Load(object sender, EventArgs e)
         {
             serviciodao = new ServicioWS.LKServicioWebClient();
-            asistencia[] asist = serviciodao.listarAsistenciasPorAlumno(((alumno)Session["Usuario"]).dni);
+            asistencia[] asist = serviciodao.listarAsitencias(((alumno)Session["Usuario"]).dni);
             if (asist == null) return;
             asistencias = new BindingList<asistencia>(asist.ToList());
-
+            
             GriAsistenciasAlumnos.DataSource = asistencias;
             GriAsistenciasAlumnos.DataBind();
 
@@ -55,6 +55,27 @@ namespace WebForm.View.AsistenciaAlumno
             /*
             GriAsistenciasAlumnos.DataSource = lista;
             GriAsistenciasAlumnos.DataBind();*/
+        }
+
+        protected void JustificarBtn_Click(object sender, EventArgs e)
+        {
+            Button bt = (Button)sender;
+            string fecha = bt.CommandArgument;
+            Session["fechaJustifica"] = fecha;
+            CallJavascript("showModal('JustificarAsistenciaModal')");
+        }
+
+        protected void EnviarJustifiBtn_Click(object sender, EventArgs e)
+        {
+            alumno alumno = (alumno)Session["Usuario"];
+            DateTime fecha = DateTime.Parse(((string)Session["fechaJustificada"]));
+            string dniAlumno = alumno.dni;
+
+        }
+        private void CallJavascript(string function)
+        {
+            string script = "window.onload = function() {" + function + "; };";
+            ClientScript.RegisterStartupScript(GetType(), "", script, true);
         }
     }
 }

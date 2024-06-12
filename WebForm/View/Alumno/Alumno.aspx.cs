@@ -35,6 +35,7 @@ namespace WebForm.View
 
             foreach (curso cur in curList)
             {
+
                 // Falta modificar esto
                 String nombreProfesor = "Heider";
                 sb.Append("" +

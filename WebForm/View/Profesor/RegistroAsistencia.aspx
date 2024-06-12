@@ -1,4 +1,4 @@
-﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Layout/MainProfesor.master" AutoEventWireup="true" CodeBehind="RegistroAsistencia.aspx.cs" Inherits="WebForm.View.Profesor.RegistroAsistencia" EnableEventValidation="false" MaintainScrollPositionOnPostback="true"%>
+﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Layout/MainProfesor.master" AutoEventWireup="true" CodeBehind="RegistroAsistencia.aspx.cs" Inherits="WebForm.View.Profesor.RegistroAsistencia" EnableEventValidation="false"%>
 <asp:Content ID="Content1" ContentPlaceHolderID="Title" runat="server">
     Registro de Asistencia
 </asp:Content>
@@ -14,6 +14,7 @@
 </asp:Content>
 <asp:Content ID="Content5" ContentPlaceHolderID="MainContent" runat="server">
     <div class="container">
+        <asp:ScriptManager ID="ScriptManager1" runat="server"></asp:ScriptManager>
         <div class="card">
             <div class="card-header">
                 <h1>Registro de Asistencia</h1>
@@ -26,12 +27,18 @@
                         <asp:BoundField DataField="nombres" HeaderText="Nombre Completo del alumno"  ItemStyle-HorizontalAlign="Center"  ItemStyle-VerticalAlign="Middle"/>
                         <asp:TemplateField HeaderText="Marcar Asistencia">
                             <ItemTemplate>
-                                <asp:RadioButtonList ID="RadAsistencia" runat="server" RepeatDirection="Horizontal" CellPadding="10"
-                                    CssClass=" d-flex justify-content-center " OnSelectedIndexChanged="RadAsistencia_SelectedIndexChanged" AutoPostBack="true">
-                                    <asp:ListItem Value="P" Text="Presente" Selected="True" />
+                                <asp:UpdatePanel ID="UpdatePanel1" runat="server">
+                                    <ContentTemplate>
+                                    <asp:RadioButtonList ID="RadAsistencia" runat="server" RepeatDirection="Horizontal" CellPadding="10"
+                                        CssClass=" d-flex justify-content-center " OnSelectedIndexChanged="RadAsistencia_SelectedIndexChanged" AutoPostBack="true">
+                                     <asp:ListItem Value="P" Text="Presente" Selected="True" />
                                     <asp:ListItem Value="T" Text="Tardanza"/>
                                     <asp:ListItem Value="A" Text="Ausente" />
-                                </asp:RadioButtonList>
+                                  </asp:RadioButtonList>
+
+                                    </ContentTemplate>
+                                </asp:UpdatePanel>
+
                                 <asp:HiddenField ID="HiddenDniAlumno" runat="server" Value='<%#Eval("dni") %>'/>
                             </ItemTemplate>
                             <ItemStyle HorizontalAlign="Center" Width="250px" />

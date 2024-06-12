@@ -22,9 +22,10 @@ namespace WebForm.View.AsistenciaProfesor
         {
             daoServicio = new LKServicioWebClient();
 
+            int idsalon = (int)Session["idsalon"] ;
             if (!IsPostBack) {
                 //if (!((string)(Session["Tipo"])).Equals("Profesor")) ; evita que ingresen cuentasn que no son tipo Profesor
-                int idsalon = (int)Session["idsalon"] ;
+                Session["errorFechas"] = false;
                 profesor profesor = (profesor)Session["Usuario"];
                 //cuando cargue, ya se verifico si es tutor 
 
@@ -57,7 +58,12 @@ namespace WebForm.View.AsistenciaProfesor
                 }*/
 
             }
-               
+            CargarFechas(idsalon);
+            /*if ((bool)Session["errorFechas"])
+            {
+                CallJavascript("showModal('fechasReporteModal')");
+            }*/
+
         }
 
         protected void CargarAlumnosDropDown()
@@ -176,6 +182,7 @@ namespace WebForm.View.AsistenciaProfesor
                         fechasconFormato.Add(key);
                     }
                 }
+                Session["fechasconFormato"] = fechasconFormato;
             }
             else
             {
@@ -189,18 +196,53 @@ namespace WebForm.View.AsistenciaProfesor
 
         protected void AsistenciasAlumnoBtn_Click(object sender, EventArgs e)
         {
-            string dniAlumno = AlumnosDrpDown.Text;
-            List<asistencia> asistencias = daoServicio.listarAsitencias(dniAlumno).ToList();
-            alumno alumno = daoServicio.listarAlumnosFiltro(dniAlumno).ToList().FirstOrDefault();
-            AsistenciaAlumnoLbl.Text = "Reporte de asistencias de " + alumno.nombres + " " + alumno.apellidoPaterno;
-            AsistenciaAlumnoGrid.DataSource = asistencias;
-            AsistenciaAlumnoGrid.DataBind();
-            CallJavascript("showModal('AsistenciaAlumnoModalCenter')");
+
+            if (!string.IsNullOrEmpty(FechaFinalTxt.Text) && !string.IsNullOrEmpty(FechaIniTxt.Text))
+            {
+                Response.Redirect("/View/Profesor/ReporteAsistenciaAlumno.aspx?dniAlu="+AlumnosDrpDown.Text+"&fechaIni="+FechaIniTxt.Text+"&fechaFin="+FechaFinalTxt.Text);
+            }
+            
         }
 
         protected void CerrarModalIncidenciaBtn_Click(object sender, EventArgs e)
         {
 
+        }
+
+        protected void AsignarFechasBtn_Click(object sender, EventArgs e)
+        {
+            msgErrorFechas.Visible = false;
+            CallJavascript("showModal('fechasReporteModal')");
+          //  string script = "mostrarErrorFechas()";
+           // ClientScript.RegisterStartupScript(this.GetType(), "MostrarErrorFechas", script,true);
+        }
+
+        protected void SelectFechasBtn_Click(object sender, EventArgs e)
+        {
+           
+            if(fechaFinCalen.SelectedDate <= fechaIniCalen.SelectedDate)
+            {
+                msgErrorFechas.Visible = true;
+                CallJavascript("showModal('fechasReporteModal')");
+            }
+            else
+            {
+                FechaFinalTxt.Text = fechaFinCalen.SelectedDate.Date.ToString().Split(' ')[0];
+                FechaIniTxt.Text = fechaIniCalen.SelectedDate.Date.ToString().Split(' ')[0];
+            }
+
+        }
+
+        protected void SalirFechasBtn_Click(object sender, EventArgs e)
+        {
+        }
+
+        protected void GridAsistenciasFechas_PageIndexChanging(object sender, GridViewPageEventArgs e)
+        {
+            List<object> fechaFormato = (List<object>)Session["fechasconFormato"];
+            GridAsistenciasFechas.DataSource = fechaFormato;    
+            GridAsistenciasFechas.PageIndex = e.NewPageIndex;
+            GridAsistenciasFechas.DataBind();
         }
     }
 }
