@@ -38,6 +38,7 @@ namespace WebForm.View.Login
                 Response.Redirect("/View/Login/Login.aspx");
             }
             Session["Usuario"] = user;
+            Session["Confetti"] = true;
             if (user is profesor) //ES EL PROFESOR
             {
                 Session["Tipo"] = "Profesor";
