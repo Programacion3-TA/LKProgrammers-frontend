@@ -32,7 +32,8 @@
             <div class="container row">
                 <asp:GridView ID="GridAlumnos" runat="server" AutoGenerateColumns="false"
                     AllowPaging="true" PageSize="5"
-                    CssClass="table table-hover table-responsive table-striped">
+                    CssClass="table table-hover table-responsive table-striped"
+                    OnPageIndexChanging="GridAlumnos_PageIndexChanging">
                     <Columns>
                         <asp:BoundField DataField="codigoAlumno" HeaderText="Codigo"/>
                         <asp:BoundField DataField="dni" HeaderText="Dni" />
@@ -167,16 +168,3 @@
 <asp:Content ID="Content6" ContentPlaceHolderID="Navusuarios" runat="server">
   <script src="EstudianteAgregar.js"></script>
 </asp:Content>
-
-
-
-
-
-
-
-
-
-
-
-
-
