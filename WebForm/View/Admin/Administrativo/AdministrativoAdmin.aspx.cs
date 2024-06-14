@@ -78,13 +78,25 @@ namespace WebForm.View.Admin.Administrativo
 
             if (user_actual.dni != daoservicio.obtenerDniDeCodigoAdmin(codigoBusca) ) // Si no es el usuario actual
             {
-                int resultado = daoservicio.eliminarAdministrativo(codigoBusca);
+                 // Preguntar si se quiere eliminar de verdad
                 var elementoAEliminar = personal.FirstOrDefault(p => p.codigoPersonal == codigoBusca);
-                if (elementoAEliminar != null && resultado != 0)
-                {
-                    personal.Remove(elementoAEliminar);
-                    CargarTabla();
-                }
+                if (elementoAEliminar == null) return;
+                personalAdministrativo per = elementoAEliminar as personalAdministrativo;
+                Session["personalAEliminar"] = per;
+                LblWarning.Text = "¡Cuidado!";
+                LblMensaje.Text = "¿Está seguro de que quiere eliminar al administrador " + per.nombres + " " + per.apellidoPaterno +
+                    " con código " + per.codigoPersonal + " y DNI " + per.dni + "?";
+                BtnAceptarEliminar.Visible = true;
+                CallJavascript("showModalFormWarning()");                
+            }
+            else
+            {
+                // Indicar que se trata del usuario actual
+                LblWarning.Text = "¡Atención!";
+                LblMensaje.Text = "No se puede eliminar el usuario de la sesión actual.";
+                BtnAceptarEliminar.Visible = false;
+
+                CallJavascript("showModalFormWarning()");
             }
 
         }
@@ -122,7 +134,7 @@ namespace WebForm.View.Admin.Administrativo
                     personalNuevo.fechaNac = DateTime.Parse(TxtFechaNac.Text);
                     personalNuevo.fechaNacSpecified = true;
                 }
-                catch (Exception)
+                catch (System.Exception)
                 {
                     System.Diagnostics.Debug.WriteLine("Error en el parse");
                 }
@@ -141,6 +153,15 @@ namespace WebForm.View.Admin.Administrativo
                     // se logró insertar
                     personal = new BindingList<personalAdministrativo>(daoservicio.listarAdministradores().ToList());
                     CargarTabla();                    
+                }
+                else
+                {
+                    // No se logró insertar. Puede deverse al UNIQUE constraint
+                    LblWarning.Text = "¡Atención!";
+                    LblMensaje.Text = "No se puede crear un administrador cuyo DNI o correo electrónico ya haya sido registrado o cuyo nombre de usuario de intranet ya exista.";
+                    BtnAceptarEliminar.Visible = false;
+
+                    CallJavascript("showModalFormWarning()");
                 }
             }
             else
@@ -170,6 +191,60 @@ namespace WebForm.View.Admin.Administrativo
         {
             string script = "window.onload = function() {" + function + "; };";
             ClientScript.RegisterStartupScript(GetType(), "", script, true);
+        }
+
+        protected void BtnAceptarEliminar_Click(object sender, EventArgs e)
+        {
+            personalAdministrativo personalAEliminar = Session["personalAEliminar"] as personalAdministrativo;
+            int resultado = daoservicio.eliminarAdministrativo(personalAEliminar.codigoPersonal);
+            personal = new BindingList<personalAdministrativo>(daoservicio.listarAdministradores().ToList());
+            CargarTabla();
+        }
+
+        protected void LkBtnBuscar_Click(object sender, EventArgs e)
+        {
+            // Se buscan administradores por nombres, apellidos, dni o código
+            if (!string.IsNullOrEmpty(TxtCriterioBusqueda.Text))
+            {
+                var resultado = daoservicio.buscarAdminPorTodosCriterios(TxtCriterioBusqueda.Text);
+                
+                if (resultado != null)
+                {
+                    // Se ha encontrado personal
+                    BindingList<personalAdministrativo> personalRecuperado = new BindingList<personalAdministrativo>(resultado.ToList());
+                    personal = personalRecuperado;
+                    CargarTabla();
+                }
+                else
+                {
+                    // No se ha encontrado personal
+                    LblWarning.Text = "¡Atención!";
+                    LblMensaje.Text = "No se han encontrado administradores con los criterios de búsqueda ingresados.";
+                    BtnAceptarEliminar.Visible = false;
+
+                    CallJavascript("showModalFormWarning()");
+                }
+            }
+            else
+            {
+                // No se ha ingresado un criterio de búsqueda
+                LblWarning.Text = "¡Atención!";
+                LblMensaje.Text = "Es necesario ingresar un criterio de búsqueda.";
+                BtnAceptarEliminar.Visible = false;
+
+                CallJavascript("showModalFormWarning()");
+            }
+            
+
+            BtnRestaurar.Visible = true;
+        }
+
+        protected void BtnRestaurar_Click(object sender, EventArgs e)
+        {
+            // Se muestran todos los administradores
+            personal = new BindingList<personalAdministrativo>(daoservicio.listarAdministradores().ToList());
+
+            CargarTabla();
         }
     }
 }
