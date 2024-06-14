@@ -112,7 +112,8 @@ namespace WebForm.View.Admin.Administrativo
                 
                 if (!string.IsNullOrEmpty(TxtFechaNac.Text))
                 {
-                    try
+                    /*
+                   try
                     {
                         personalNuevo.fechaNac = DateTime.Parse(TxtFechaNac.Text);
                         personalNuevo.fechaNacSpecified = true;
@@ -120,7 +121,7 @@ namespace WebForm.View.Admin.Administrativo
                     catch (Exception)
                     {
                         System.Diagnostics.Debug.WriteLine("Error en el parse");
-                    }
+                    }*/
                 }
                 System.Diagnostics.Debug.WriteLine(personalNuevo.fechaNac);
                 if (!string.IsNullOrEmpty(TxtPuesto.Text))
