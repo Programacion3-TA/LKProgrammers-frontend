@@ -27,7 +27,7 @@
 
             <div class="container row">
                 <asp:GridView ID="GridAdministrativo" runat="server" AutoGenerateColumns="false"
-                    AllowPaging="true" PageSize="5"
+                    AllowPaging="true" PageSize="5" OnPageIndexChanging="GridAdministrativo_PageIndexChanging"
                     CssClass="table table-hover table-responsive table-striped">
                     <Columns>
                         <asp:BoundField DataField="codigoPersonal" HeaderText="Código" />                        
@@ -48,7 +48,7 @@
             </div>
         </div>
     </div>
-    <!-- Modal Personal Administrativo -->
+    <!-- Modal Personal Administrativo (Editar, Ver, Agregar)-->
     <div id="modalAdministrativo" class="modal" tabindex="-1">
         <div class="modal-dialog">
             <div class="modal-content">
@@ -133,6 +133,97 @@
                 <div class="modal-footer">
                     <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancelar</button>
                     <asp:Button ID="BtnGuardar" runat="server" Text="Guardar" CssClass="btn btn-primary"
+                        OnClick="BtnGuardar_Click" />
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- Modal Personal Administrativo (Avisos) -->
+    <div id="modalWarning" class="modal" tabindex="-1">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title">
+                        <asp:Label ID="LblWarning" runat="server" CssClass="form-label"></asp:Label>
+                    </h5>                    
+                </div>
+                <div class="modal-body">
+                    <div class="container p-3 ">
+                        <div class="col-md-12  mb-3">
+                            <h6>Información Personal</h6>
+                        </div>
+
+                        <div class="col-md-12  mb-3">
+                            <asp:Label ID="Label1" runat="server" Text="Código" CssClass="form-label"></asp:Label>
+                            <asp:TextBox ID="TextBox1" runat="server" CssClass="form-control" Enabled="false"></asp:TextBox>
+                        </div>
+                        <div class="col-md-12  mb-3">
+                            <asp:Label ID="Label2" runat="server" Text="DNI" CssClass="form-label"></asp:Label>
+                            <asp:TextBox ID="TextBox2" runat="server" CssClass="form-control" Enabled="true"></asp:TextBox>
+                        </div>
+                        <div class="col-md-12 mb-3">
+                            <asp:Label ID="Label3" runat="server" Text="Nombre" CssClass="form-label"></asp:Label>
+                            <asp:TextBox ID="TextBox3" runat="server" CssClass="form-control"></asp:TextBox>
+                        </div>
+                        <div class="col-md-12 mb-3">
+                            <asp:Label ID="Label4" runat="server" Text="Apellido paterno" CssClass="form-label"></asp:Label>
+                            <asp:TextBox ID="TextBox4" runat="server" CssClass="form-control"></asp:TextBox>
+                        </div>
+                        <div class="col-md-12 mb-3">
+                            <asp:Label ID="Label5" runat="server" Text="Apellido materno" CssClass="form-label"></asp:Label>
+                            <asp:TextBox ID="TextBox5" runat="server" CssClass="form-control"></asp:TextBox>
+                        </div>
+                        <div class="col-md-12 mb-3">
+                            <asp:Label ID="Label6" runat="server" Text="Genero" CssClass="form-label"></asp:Label>
+                            <asp:DropDownList ID="DropDownList1" runat="server" CssClass="form-select">
+                                <asp:ListItem Value="F">Femenino</asp:ListItem>
+                                <asp:ListItem Value="M">Masculino</asp:ListItem>
+                            </asp:DropDownList>
+                        </div>
+
+                        <div class="col-md-12  mb-3">
+                            <asp:Label ID="Label7" runat="server" Text="Dirección" CssClass="form-label"></asp:Label>
+                            <asp:TextBox ID="TextBox6" runat="server" CssClass="form-control"></asp:TextBox>
+                        </div>
+
+                        <div class="col-md-12  mb-3">
+                            <asp:Label ID="Label8" runat="server" Text="Correo electrónico" CssClass="form-label"></asp:Label>
+                            <asp:TextBox ID="TextBox7" runat="server" CssClass="form-control" TextMode="Email"></asp:TextBox>
+
+                        </div>
+
+                        <div class="col-md-12  mb-3">
+                            <asp:Label ID="Label9" runat="server" Text="Usuario de Intranet" CssClass="form-label"></asp:Label>
+                            <asp:TextBox ID="TextBox8" runat="server" CssClass="form-control"></asp:TextBox>
+                        </div>
+
+                        <div class="col-md-12  mb-3">
+                            <asp:Label ID="Label10" runat="server" Text="Contraseña" CssClass="form-label"></asp:Label>
+                            <asp:TextBox ID="TextBox9" runat="server" CssClass="form-control"  TextMode="Password"></asp:TextBox>
+                        </div>
+
+                        <div class="col-md-12  mb-3">
+                            <asp:Label ID="Label11" runat="server" Text="Telefono" CssClass="form-label"></asp:Label>
+                            <asp:TextBox ID="TextBox10" runat="server" CssClass="form-control"></asp:TextBox>
+                        </div>
+
+                        <div class="col-md-12  mb-3">
+                            <asp:Label ID="Label12" runat="server" Text="Fecha de nacimiento" CssClass="form-label"></asp:Label>
+                            <asp:TextBox ID="TextBox11" runat="server" CssClass="form-control" TextMode="Date"></asp:TextBox>
+                        </div>
+                        <div class="col-md-12  mb-3">
+                            <h6>Información Profesional</h6>
+                        </div>
+
+                        <div>
+                           <asp:Label ID="Label13" runat="server" Text="Puesto de Trabajo" CssClass="form-label"></asp:Label>
+                            <asp:TextBox ID="TextBox12" runat="server" CssClass="form-control"></asp:TextBox>
+                        </div>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancelar</button>
+                    <asp:Button ID="Button1" runat="server" Text="Guardar" CssClass="btn btn-primary"
                         OnClick="BtnGuardar_Click" />
                 </div>
             </div>

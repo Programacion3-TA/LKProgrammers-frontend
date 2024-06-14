@@ -74,11 +74,17 @@ namespace WebForm.View.Admin.Administrativo
             LinkButton btn = (LinkButton)sender;
             int codigoBusca = int.Parse(btn.CommandArgument); // Recibe el codigo del trabajador
 
-            daoservicio.eliminarAdministrativo(codigoBusca);
-            var elementoAEliminar = personal.FirstOrDefault(p => p.codigoPersonal == codigoBusca);
-            if (elementoAEliminar != null)
+            usuario user_actual = Session["Usuario"] as usuario;
+
+            if (user_actual.dni != daoservicio.obtenerDniDeCodigoAdmin(codigoBusca) ) // Si no es el usuario actual
             {
-                personal.Remove(elementoAEliminar);
+                int resultado = daoservicio.eliminarAdministrativo(codigoBusca);
+                var elementoAEliminar = personal.FirstOrDefault(p => p.codigoPersonal == codigoBusca);
+                if (elementoAEliminar != null && resultado != 0)
+                {
+                    personal.Remove(elementoAEliminar);
+                    CargarTabla();
+                }
             }
 
         }
@@ -87,64 +93,77 @@ namespace WebForm.View.Admin.Administrativo
         {
             personalAdministrativo personalNuevo = new personalAdministrativo();
 
+
+            if (!string.IsNullOrEmpty(TxtDNI.Text))
+                personalNuevo.dni = TxtDNI.Text;
+            if (!string.IsNullOrEmpty(TxtNombre.Text))
+                personalNuevo.nombres = TxtNombre.Text;
+            if (!string.IsNullOrEmpty(TxtApellidoPat.Text))
+                personalNuevo.apellidoPaterno = TxtApellidoPat.Text;
+            if (!string.IsNullOrEmpty(TxtApellidoMat.Text))
+                personalNuevo.apellidoMaterno = TxtApellidoMat.Text;
+            if (!string.IsNullOrEmpty(DDGenero.SelectedValue))
+                personalNuevo.genero = DDGenero.SelectedValue[0];
+            if (!string.IsNullOrEmpty(TxtDireccion.Text))
+                personalNuevo.direccion = TxtDireccion.Text;
+            if (!string.IsNullOrEmpty(TxtCorreo.Text))
+                personalNuevo.correoElectronico = TxtCorreo.Text;
+            if (!string.IsNullOrEmpty(TxtUsuario.Text))
+                personalNuevo.usuario1 = TxtUsuario.Text;
+            if (!string.IsNullOrEmpty(TxtContrasenia.Text))
+                personalNuevo.contrasenia = TxtContrasenia.Text;
+            if (!string.IsNullOrEmpty(TxtTelefono.Text))
+                personalNuevo.telefono = TxtTelefono.Text;
+
+            if (!string.IsNullOrEmpty(TxtFechaNac.Text))
+            {
+                try
+                {
+                    personalNuevo.fechaNac = DateTime.Parse(TxtFechaNac.Text);
+                    personalNuevo.fechaNacSpecified = true;
+                }
+                catch (Exception)
+                {
+                    System.Diagnostics.Debug.WriteLine("Error en el parse");
+                }
+            }
+            System.Diagnostics.Debug.WriteLine(personalNuevo.fechaNac);
+            if (!string.IsNullOrEmpty(TxtPuesto.Text))
+                personalNuevo.puestoEjecutivo = TxtPuesto.Text;
+
             if (string.IsNullOrEmpty(TxtCode.Text)) // Si no hay codigo, creamos uno
             {
-                if (!string.IsNullOrEmpty(TxtDNI.Text))
-                    personalNuevo.dni = TxtDNI.Text;
-                if (!string.IsNullOrEmpty(TxtNombre.Text))
-                    personalNuevo.nombres = TxtNombre.Text;
-                if (!string.IsNullOrEmpty(TxtApellidoPat.Text))
-                    personalNuevo.apellidoPaterno = TxtApellidoPat.Text;
-                if (!string.IsNullOrEmpty(TxtApellidoMat.Text))
-                    personalNuevo.apellidoMaterno = TxtApellidoMat.Text;
-                if (!string.IsNullOrEmpty(DDGenero.SelectedValue))
-                    personalNuevo.genero = DDGenero.SelectedValue[0];
-                if (!string.IsNullOrEmpty(TxtDireccion.Text))
-                    personalNuevo.direccion = TxtDireccion.Text;
-                if (!string.IsNullOrEmpty(TxtCorreo.Text))
-                    personalNuevo.correoElectronico = TxtCorreo.Text;
-                if (!string.IsNullOrEmpty(TxtUsuario.Text))
-                    personalNuevo.usuario1 = TxtUsuario.Text;
-                if (!string.IsNullOrEmpty(TxtContrasenia.Text))
-                    personalNuevo.contrasenia = TxtContrasenia.Text;
-                if (!string.IsNullOrEmpty(TxtTelefono.Text))
-                    personalNuevo.telefono = TxtTelefono.Text;
-                
-                if (!string.IsNullOrEmpty(TxtFechaNac.Text))
-                {
-                    try
-                    {
-                        personalNuevo.fechaNac = DateTime.Parse(TxtFechaNac.Text);
-                        personalNuevo.fechaNacSpecified = true;
-                    }
-                    catch (Exception)
-                    {
-                        System.Diagnostics.Debug.WriteLine("Error en el parse");
-                    }
-                }
-                System.Diagnostics.Debug.WriteLine(personalNuevo.fechaNac);
-                if (!string.IsNullOrEmpty(TxtPuesto.Text))
-                    personalNuevo.puestoEjecutivo = TxtPuesto.Text;
-
                 int result = daoservicio.insertarAdministrativo(personalNuevo);
 
                 System.Diagnostics.Debug.WriteLine("result= " + result);
                 if (result != 0)
                 {
                     // se logró insertar
-                    personal.Add(personalNuevo); 
+                    personal = new BindingList<personalAdministrativo>(daoservicio.listarAdministradores().ToList());
                     CargarTabla();                    
                 }
             }
             else
             {
                 // Modificamos
-
+                int result = daoservicio.modificarAdministrativo(personalNuevo);
+                System.Diagnostics.Debug.WriteLine("result= " + result);
+                if (result != 0)
+                {
+                    // se logró modificar
+                    personal = new BindingList<personalAdministrativo>(daoservicio.listarAdministradores().ToList());
+                    CargarTabla();
+                }
 
             }
-
-
             
+        }
+
+        // Evento de cambio de página
+        protected void GridAdministrativo_PageIndexChanging(object sender, GridViewPageEventArgs e)
+        {
+            GridAdministrativo.PageIndex = e.NewPageIndex;
+            GridAdministrativo.DataBind();
         }
 
         private void CallJavascript(string function)
