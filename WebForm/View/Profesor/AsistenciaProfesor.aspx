@@ -27,15 +27,16 @@
                     <div class="d-flex gap-3 border-2 flex-column card-body">
                         <div class="d-flex gap-3 w-75" >
                             <div>
-                              <asp:Label ID="FechaIniSelecLbl" runat="server" Text="Label" CssClass="form-check-label">Fecha Inicial:</asp:Label>
-                              <asp:TextBox ID="FechaIniTxt" runat="server" CssClass="form-control" Enabled="false"></asp:TextBox>
+                                <!--Falta agregar advertencias de no ingresar correcto las fechas-->
+                              <asp:Label ID="FechaIniSelecLbl" runat="server" Text="Label" CssClass="form-check-label" Font-Bold="true">Fecha Inicial:</asp:Label>
+                              <asp:TextBox ID="FechaIniTxt" runat="server" CssClass="form-control" TextMode="Date"></asp:TextBox>
 
                             </div>
                             <div>
-                                <asp:Label ID="FechFinSelectLbl" runat="server" Text="Label" CssClass="form-check-label">Fecha Final:</asp:Label>
-                                <asp:TextBox ID="FechaFinalTxt" runat="server" CssClass="form-control" Enabled="false"></asp:TextBox>
+                                <asp:Label ID="FechFinSelectLbl" runat="server" Text="Label" CssClass="form-check-label" Font-Bold="true">Fecha Final:</asp:Label>
+                                <asp:TextBox ID="FechaFinalTxt" runat="server" CssClass="form-control" TextMode="Date"></asp:TextBox>
                             </div>
-                            <asp:Button ID="AsignarFechasBtn" runat="server" Text="Seleccionar Fechas" CssClass="btn btn-warning h-50 align-self-end" OnClick="AsignarFechasBtn_Click" />
+                            <asp:Button ID="AsignarFechasBtn" runat="server" Text="Seleccionar Fechas" CssClass="btn btn-warning h-50 align-self-center" OnClick="AsignarFechasBtn_Click" />
                         </div>
                         <div class="d-flex gap-4">
                             <asp:DropDownList ID="AlumnosDrpDown" runat="server" CssClass="form-select" DataTextField="nombres" DataValueField="dni">

@@ -56,7 +56,10 @@
                         <asp:Label ID="FechaFinReporteLbl" runat="server" Text="Fecha fin de consulta: " CssClass="form-label"></asp:Label>
                         <asp:TextBox ID="FechaFinReporteTxt" runat="server" Enabled="false" CssClass="form-control"></asp:TextBox>
                      </div>
+                     <asp:Button runat="server" ID="MostrarReporteBtn" Text="Generar Reporte PDF" CssClass="btn btn-secondary"
+                         OnClick="MostrarReporteBtn_Click"/>
                  </div>
+
              </div>
              <asp:GridView ID="AsistenciaAlumnoGrid" runat="server" AutoGenerateColumns="false"
                    AllowPaging ="true" CssClass="table table-hover table-responsive table-striped">
