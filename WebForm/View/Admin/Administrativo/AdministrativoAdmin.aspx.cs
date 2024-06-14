@@ -74,11 +74,29 @@ namespace WebForm.View.Admin.Administrativo
             LinkButton btn = (LinkButton)sender;
             int codigoBusca = int.Parse(btn.CommandArgument); // Recibe el codigo del trabajador
 
-            daoservicio.eliminarAdministrativo(codigoBusca);
-            var elementoAEliminar = personal.FirstOrDefault(p => p.codigoPersonal == codigoBusca);
-            if (elementoAEliminar != null)
+            usuario user_actual = Session["Usuario"] as usuario;
+
+            if (user_actual.dni != daoservicio.obtenerDniDeCodigoAdmin(codigoBusca) ) // Si no es el usuario actual
             {
-                personal.Remove(elementoAEliminar);
+                 // Preguntar si se quiere eliminar de verdad
+                var elementoAEliminar = personal.FirstOrDefault(p => p.codigoPersonal == codigoBusca);
+                if (elementoAEliminar == null) return;
+                personalAdministrativo per = elementoAEliminar as personalAdministrativo;
+                Session["personalAEliminar"] = per;
+                LblWarning.Text = "¡Cuidado!";
+                LblMensaje.Text = "¿Está seguro de que quiere eliminar al administrador " + per.nombres + " " + per.apellidoPaterno +
+                    " con código " + per.codigoPersonal + " y DNI " + per.dni + "?";
+                BtnAceptarEliminar.Visible = true;
+                CallJavascript("showModalFormWarning()");                
+            }
+            else
+            {
+                // Indicar que se trata del usuario actual
+                LblWarning.Text = "¡Atención!";
+                LblMensaje.Text = "No se puede eliminar el usuario de la sesión actual.";
+                BtnAceptarEliminar.Visible = false;
+
+                CallJavascript("showModalFormWarning()");
             }
 
         }
@@ -87,71 +105,146 @@ namespace WebForm.View.Admin.Administrativo
         {
             personalAdministrativo personalNuevo = new personalAdministrativo();
 
+
+            if (!string.IsNullOrEmpty(TxtDNI.Text))
+                personalNuevo.dni = TxtDNI.Text;
+            if (!string.IsNullOrEmpty(TxtNombre.Text))
+                personalNuevo.nombres = TxtNombre.Text;
+            if (!string.IsNullOrEmpty(TxtApellidoPat.Text))
+                personalNuevo.apellidoPaterno = TxtApellidoPat.Text;
+            if (!string.IsNullOrEmpty(TxtApellidoMat.Text))
+                personalNuevo.apellidoMaterno = TxtApellidoMat.Text;
+            if (!string.IsNullOrEmpty(DDGenero.SelectedValue))
+                personalNuevo.genero = DDGenero.SelectedValue[0];
+            if (!string.IsNullOrEmpty(TxtDireccion.Text))
+                personalNuevo.direccion = TxtDireccion.Text;
+            if (!string.IsNullOrEmpty(TxtCorreo.Text))
+                personalNuevo.correoElectronico = TxtCorreo.Text;
+            if (!string.IsNullOrEmpty(TxtUsuario.Text))
+                personalNuevo.usuario1 = TxtUsuario.Text;
+            if (!string.IsNullOrEmpty(TxtContrasenia.Text))
+                personalNuevo.contrasenia = TxtContrasenia.Text;
+            if (!string.IsNullOrEmpty(TxtTelefono.Text))
+                personalNuevo.telefono = TxtTelefono.Text;
+
+            if (!string.IsNullOrEmpty(TxtFechaNac.Text))
+            {
+                try
+                {
+                    personalNuevo.fechaNac = DateTime.Parse(TxtFechaNac.Text);
+                    personalNuevo.fechaNacSpecified = true;
+                }
+                catch (System.Exception)
+                {
+                    System.Diagnostics.Debug.WriteLine("Error en el parse");
+                }
+            }
+            System.Diagnostics.Debug.WriteLine(personalNuevo.fechaNac);
+            if (!string.IsNullOrEmpty(TxtPuesto.Text))
+                personalNuevo.puestoEjecutivo = TxtPuesto.Text;
+
             if (string.IsNullOrEmpty(TxtCode.Text)) // Si no hay codigo, creamos uno
             {
-                if (!string.IsNullOrEmpty(TxtDNI.Text))
-                    personalNuevo.dni = TxtDNI.Text;
-                if (!string.IsNullOrEmpty(TxtNombre.Text))
-                    personalNuevo.nombres = TxtNombre.Text;
-                if (!string.IsNullOrEmpty(TxtApellidoPat.Text))
-                    personalNuevo.apellidoPaterno = TxtApellidoPat.Text;
-                if (!string.IsNullOrEmpty(TxtApellidoMat.Text))
-                    personalNuevo.apellidoMaterno = TxtApellidoMat.Text;
-                if (!string.IsNullOrEmpty(DDGenero.SelectedValue))
-                    personalNuevo.genero = DDGenero.SelectedValue[0];
-                if (!string.IsNullOrEmpty(TxtDireccion.Text))
-                    personalNuevo.direccion = TxtDireccion.Text;
-                if (!string.IsNullOrEmpty(TxtCorreo.Text))
-                    personalNuevo.correoElectronico = TxtCorreo.Text;
-                if (!string.IsNullOrEmpty(TxtUsuario.Text))
-                    personalNuevo.usuario1 = TxtUsuario.Text;
-                if (!string.IsNullOrEmpty(TxtContrasenia.Text))
-                    personalNuevo.contrasenia = TxtContrasenia.Text;
-                if (!string.IsNullOrEmpty(TxtTelefono.Text))
-                    personalNuevo.telefono = TxtTelefono.Text;
-                
-                if (!string.IsNullOrEmpty(TxtFechaNac.Text))
-                {
-                    /*
-                   try
-                    {
-                        personalNuevo.fechaNac = DateTime.Parse(TxtFechaNac.Text);
-                        personalNuevo.fechaNacSpecified = true;
-                    }
-                    catch (Exception)
-                    {
-                        System.Diagnostics.Debug.WriteLine("Error en el parse");
-                    }*/
-                }
-                System.Diagnostics.Debug.WriteLine(personalNuevo.fechaNac);
-                if (!string.IsNullOrEmpty(TxtPuesto.Text))
-                    personalNuevo.puestoEjecutivo = TxtPuesto.Text;
-
                 int result = daoservicio.insertarAdministrativo(personalNuevo);
 
                 System.Diagnostics.Debug.WriteLine("result= " + result);
                 if (result != 0)
                 {
                     // se logró insertar
-                    personal.Add(personalNuevo); 
+                    personal = new BindingList<personalAdministrativo>(daoservicio.listarAdministradores().ToList());
                     CargarTabla();                    
+                }
+                else
+                {
+                    // No se logró insertar. Puede deverse al UNIQUE constraint
+                    LblWarning.Text = "¡Atención!";
+                    LblMensaje.Text = "No se puede crear un administrador cuyo DNI o correo electrónico ya haya sido registrado o cuyo nombre de usuario de intranet ya exista.";
+                    BtnAceptarEliminar.Visible = false;
+
+                    CallJavascript("showModalFormWarning()");
                 }
             }
             else
             {
                 // Modificamos
-
+                int result = daoservicio.modificarAdministrativo(personalNuevo);
+                System.Diagnostics.Debug.WriteLine("result= " + result);
+                if (result != 0)
+                {
+                    // se logró modificar
+                    personal = new BindingList<personalAdministrativo>(daoservicio.listarAdministradores().ToList());
+                    CargarTabla();
+                }
 
             }
-
-
             
+        }
+
+        // Evento de cambio de página
+        protected void GridAdministrativo_PageIndexChanging(object sender, GridViewPageEventArgs e)
+        {
+            GridAdministrativo.PageIndex = e.NewPageIndex;
+            GridAdministrativo.DataBind();
         }
 
         private void CallJavascript(string function)
         {
             string script = "window.onload = function() {" + function + "; };";
             ClientScript.RegisterStartupScript(GetType(), "", script, true);
+        }
+
+        protected void BtnAceptarEliminar_Click(object sender, EventArgs e)
+        {
+            personalAdministrativo personalAEliminar = Session["personalAEliminar"] as personalAdministrativo;
+            int resultado = daoservicio.eliminarAdministrativo(personalAEliminar.codigoPersonal);
+            personal = new BindingList<personalAdministrativo>(daoservicio.listarAdministradores().ToList());
+            CargarTabla();
+        }
+
+        protected void LkBtnBuscar_Click(object sender, EventArgs e)
+        {
+            // Se buscan administradores por nombres, apellidos, dni o código
+            if (!string.IsNullOrEmpty(TxtCriterioBusqueda.Text))
+            {
+                var resultado = daoservicio.buscarAdminPorTodosCriterios(TxtCriterioBusqueda.Text);
+                
+                if (resultado != null)
+                {
+                    // Se ha encontrado personal
+                    BindingList<personalAdministrativo> personalRecuperado = new BindingList<personalAdministrativo>(resultado.ToList());
+                    personal = personalRecuperado;
+                    CargarTabla();
+                }
+                else
+                {
+                    // No se ha encontrado personal
+                    LblWarning.Text = "¡Atención!";
+                    LblMensaje.Text = "No se han encontrado administradores con los criterios de búsqueda ingresados.";
+                    BtnAceptarEliminar.Visible = false;
+
+                    CallJavascript("showModalFormWarning()");
+                }
+            }
+            else
+            {
+                // No se ha ingresado un criterio de búsqueda
+                LblWarning.Text = "¡Atención!";
+                LblMensaje.Text = "Es necesario ingresar un criterio de búsqueda.";
+                BtnAceptarEliminar.Visible = false;
+
+                CallJavascript("showModalFormWarning()");
+            }
+            
+
+            BtnRestaurar.Visible = true;
+        }
+
+        protected void BtnRestaurar_Click(object sender, EventArgs e)
+        {
+            // Se muestran todos los administradores
+            personal = new BindingList<personalAdministrativo>(daoservicio.listarAdministradores().ToList());
+
+            CargarTabla();
         }
     }
 }

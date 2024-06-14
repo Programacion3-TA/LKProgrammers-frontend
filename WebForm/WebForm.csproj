@@ -67,6 +67,12 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="Components\Path.ascx" />
+    <None Include="Connected Services\ServicioWS\configuration91.svcinfo" />
+    <None Include="Connected Services\ServicioWS\configuration.svcinfo" />
+    <None Include="Connected Services\ServicioWS\Reference.svcmap">
+      <Generator>WCF Proxy Generator</Generator>
+      <LastGenOutput>Reference.cs</LastGenOutput>
+    </None>
     <Content Include="Public\css\bootstrap\bootstrap-grid.css" />
     <Content Include="Public\css\bootstrap\bootstrap-grid.min.css" />
     <Content Include="Public\css\bootstrap\bootstrap-grid.rtl.css" />
@@ -136,6 +142,11 @@
     </Compile>
     <Compile Include="Components\Path.ascx.designer.cs">
       <DependentUpon>Path.ascx</DependentUpon>
+    </Compile>
+    <Compile Include="Connected Services\ServicioWS\Reference.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Reference.svcmap</DependentUpon>
     </Compile>
     <Compile Include="Layout\Main.Master.cs">
       <DependentUpon>Main.Master</DependentUpon>
@@ -351,7 +362,6 @@
     <Content Include="Layout\MainAlumno.master" />
     <Content Include="Layout\MainProfesor.master" />
     <Content Include="Layout\MainAdministrador.master" />
-
     <None Include="Connected Services\ServicioWS\LKServicioWeb.wsdl" />
     <None Include="Connected Services\ServicioWS\LKServicioWeb.xsd">
       <SubType>Designer</SubType>
@@ -536,6 +546,9 @@
     <Content Include="Connected Services\ServicioWS\WebForm.ServicioWS.modificar_salonResponse.datasource">
       <DependentUpon>Reference.svcmap</DependentUpon>
     </Content>
+    <Content Include="Connected Services\ServicioWS\WebForm.ServicioWS.obtenerDniDeCodigoAdminResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Content>
     <Content Include="Connected Services\ServicioWS\WebForm.ServicioWS.obtenerPaginaCursoResponse.datasource">
       <DependentUpon>Reference.svcmap</DependentUpon>
     </Content>
@@ -551,6 +564,9 @@
     <Content Include="Connected Services\ServicioWS\WebForm.ServicioWS.profesor.datasource">
       <DependentUpon>Reference.svcmap</DependentUpon>
     </Content>
+    <Content Include="Connected Services\ServicioWS\WebForm.ServicioWS.reportePDFAsistenciasResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Content>
     <Content Include="Connected Services\ServicioWS\WebForm.ServicioWS.Reporte_general_notas_de_alumnoResponse.datasource">
       <DependentUpon>Reference.svcmap</DependentUpon>
     </Content>
@@ -563,7 +579,9 @@
     <Content Include="Connected Services\ServicioWS\WebForm.ServicioWS.verificarUsuarioResponse.datasource">
       <DependentUpon>Reference.svcmap</DependentUpon>
     </Content>
-
+    <Content Include="Connected Services\ServicioWS\WebForm.ServicioWS.buscarAdminPorTodosCriteriosResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Content>
     <None Include="packages.config" />
     <Content Include="Public\js\bootstrap\bootstrap.min.js.map" />
     <Content Include="Public\js\bootstrap\bootstrap.js.map" />
@@ -584,6 +602,9 @@
   </ItemGroup>
   <ItemGroup>
     <WCFMetadata Include="Connected Services\" />
+  </ItemGroup>
+  <ItemGroup>
+    <WCFMetadataStorage Include="Connected Services\ServicioWS\" />
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>

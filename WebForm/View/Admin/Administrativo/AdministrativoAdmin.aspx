@@ -18,16 +18,42 @@
         <div class="mx-auto d-flex flex-column justify-content-center">
             <h2 class="px-2">Personal Administrativo</h2>
             <hr />
+
             <div class="container row">
-                <div class="text-end p-3 mx-auto">
+                <div class="col-md-3">
+                    <!-- Columna -->
+                    <asp:Label ID="LblBuscar" runat="server" Text="Buscar administrador: " CssClass="form-label" style="font-size: 20px;"></asp:Label>
+                </div>
+                <div class="col-md-6">
+                    <!-- Columna -->                    
+                    <asp:TextBox ID="TxtCriterioBusqueda" runat="server" CssClass="form-control" Enabled="true" Placeholder="Ingresar nombres, apellidos, DNI o código de administrador..."></asp:TextBox>
+                    
+                </div>
+                <div class="col-md-2">
+                    <!-- Columna -->                    
+                        <asp:LinkButton ID="LkBtnBuscar" runat="server" Text=" Buscar"
+                            CssClass="btn btn-primary" OnClick="LkBtnBuscar_Click" />
+                </div>
+            </div>
+            <hr />
+
+            <div class="container row">
+
+                <div class="p-3 mx-auto col-md-6">
+                    <!-- Columna -->
+                    <asp:LinkButton ID="BtnRestaurar" runat="server" Text="Mostrar todos"
+                        CssClass="btn btn-outline-success" OnClick="BtnRestaurar_Click" Visible="false"/>                                
+                </div>
+
+                <div class="text-end p-3 mx-auto col-md-6">
                     <asp:LinkButton ID="BtnNuevo" runat="server" Text="<i class='fas fa-plus pe-2'> </i> Agregar Nuevo Personal"
-                        CssClass="btn btn-success" OnClick="BtnNuevo_Click" />
+                        CssClass="btn btn-success" OnClick="BtnNuevo_Click"  />
                 </div>
             </div>
 
             <div class="container row">
                 <asp:GridView ID="GridAdministrativo" runat="server" AutoGenerateColumns="false"
-                    AllowPaging="true" PageSize="5"
+                    AllowPaging="true" PageSize="5" OnPageIndexChanging="GridAdministrativo_PageIndexChanging"
                     CssClass="table table-hover table-responsive table-striped">
                     <Columns>
                         <asp:BoundField DataField="codigoPersonal" HeaderText="Código" />                        
@@ -48,7 +74,9 @@
             </div>
         </div>
     </div>
-    <!-- Modal Personal Administrativo -->
+         
+
+    <!-- Modal Personal Administrativo (Editar, Ver, Agregar)-->
     <div id="modalAdministrativo" class="modal" tabindex="-1">
         <div class="modal-dialog">
             <div class="modal-content">
@@ -124,8 +152,8 @@
                             <h6>Información Profesional</h6>
                         </div>
 
-                        <div>
-                           <asp:Label ID="LblPuesto" runat="server" Text="Puesto de Trabajo" CssClass="form-label"></asp:Label>
+                        <div>                           
+                            <asp:Label ID="LblPuesto" runat="server" Text="Puesto de Trabajo" CssClass="form-label"></asp:Label>
                             <asp:TextBox ID="TxtPuesto" runat="server" CssClass="form-control"></asp:TextBox>
                         </div>
                     </div>
@@ -134,6 +162,30 @@
                     <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancelar</button>
                     <asp:Button ID="BtnGuardar" runat="server" Text="Guardar" CssClass="btn btn-primary"
                         OnClick="BtnGuardar_Click" />
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- Modal Personal Administrativo (Avisos) -->
+    <div id="modalWarning" class="modal" tabindex="-1">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title">
+                        <asp:Label ID="LblWarning" runat="server" CssClass="form-label"></asp:Label>
+                    </h5>                    
+                </div>
+                <div class="modal-body">
+                    <div class="container p-3 ">
+                        <div class="col-md-12  mb-3">
+                            <asp:Label ID="LblMensaje" runat="server" CssClass="form-label"></asp:Label>
+                        </div>
+                     </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cerrar</button>
+                    <asp:Button ID="BtnAceptarEliminar" runat="server" Text="Eliminar" CssClass="btn btn-primary"
+                        OnClick="BtnAceptarEliminar_Click" />
                 </div>
             </div>
         </div>
