@@ -17,7 +17,7 @@ namespace WebForm.View.CalendarioAlumno
         protected void Page_Load(object sender, EventArgs e)
         {
             daoServicio = new LKServicioWebClient();
-            cursoHorario[] Horarios = daoServicio.listarCursosHorarioAlumnos("87654321");
+            cursoHorario[] Horarios = daoServicio.listarCursosHorarioAlumnos( ( (alumno)Session["Usuario"]).dni );
             RenderizarCalendario(Horarios);
 
             // Pruebas estaticas
