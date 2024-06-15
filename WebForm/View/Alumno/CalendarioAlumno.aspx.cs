@@ -112,8 +112,8 @@ namespace WebForm.View.CalendarioAlumno
                 foreach(KeyValuePair<diaSemana, string> parDiaCurso in parHoraDatos.Value)
                 {
                     html += (parDiaCurso.Value.CompareTo("-") == 0)?
-                        MyReact.createComponent("td", $"class=\"text-center\"", "-") :
-                        MyReact.createComponent("td", $"class=\"text-center\" style=\"color:{fontCursos[parDiaCurso.Value]}; background-color:{bgCursos[parDiaCurso.Value]}\"", parDiaCurso.Value);
+                        MyReact.CreateComponent("td", $"class=\"text-center\"", "-") :
+                        MyReact.CreateComponent("td", $"class=\"text-center\" style=\"color:{fontCursos[parDiaCurso.Value]}; background-color:{bgCursos[parDiaCurso.Value]}\"", parDiaCurso.Value);
                 }
                 html += "</tr>";
             }
