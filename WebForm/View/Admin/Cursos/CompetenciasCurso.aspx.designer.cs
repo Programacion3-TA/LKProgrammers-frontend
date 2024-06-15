@@ -11,26 +11,44 @@ namespace WebForm.View.Admin.Cursos
 {
 
 
-    public partial class CursosAdmin
+    public partial class CompetenciasCurso
     {
 
         /// <summary>
-        /// BtnNuevo control.
+        /// LtCurso control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.LinkButton BtnNuevo;
+        protected global::System.Web.UI.WebControls.Literal LtCurso;
 
         /// <summary>
-        /// GridCursos control.
+        /// BtnAgregarCompetencia control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.GridView GridCursos;
+        protected global::System.Web.UI.WebControls.LinkButton BtnAgregarCompetencia;
+
+        /// <summary>
+        /// GridTutor control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.GridView GridTutor;
+
+        /// <summary>
+        /// GridCompetenciasCurso control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.GridView GridCompetenciasCurso;
 
         /// <summary>
         /// LblCode control.
@@ -42,57 +60,57 @@ namespace WebForm.View.Admin.Cursos
         protected global::System.Web.UI.WebControls.Label LblCode;
 
         /// <summary>
-        /// TxtCode control.
+        /// TxtID control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox TxtCode;
+        protected global::System.Web.UI.WebControls.TextBox TxtID;
 
         /// <summary>
-        /// LblNombre control.
+        /// LblDesc control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Label LblNombre;
+        protected global::System.Web.UI.WebControls.Label LblDesc;
 
         /// <summary>
-        /// TxtNombre control.
+        /// TxtDescripcion control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox TxtNombre;
+        protected global::System.Web.UI.WebControls.TextBox TxtDescripcion;
 
         /// <summary>
-        /// LblDescripcion control.
+        /// LlbPeso control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Label LblDescripcion;
+        protected global::System.Web.UI.WebControls.Label LlbPeso;
 
         /// <summary>
-        /// TxtDescripción control.
+        /// TxtPeso control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox TxtDescripción;
+        protected global::System.Web.UI.WebControls.TextBox TxtPeso;
 
         /// <summary>
-        /// BtnGuardar control.
+        /// BtnGuardarCompetencia control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Button BtnGuardar;
+        protected global::System.Web.UI.WebControls.Button BtnGuardarCompetencia;
     }
 }
