@@ -13,6 +13,7 @@ namespace WebForm.View.Admin.Estudiantes
     public partial class Estudiantes : System.Web.UI.Page
     {
         private ServicioWS.LKServicioWebClient daoservicio;
+
         protected void Page_Load(object sender, EventArgs e)
         {
             // Comprobamos que se trata de un admin
@@ -23,20 +24,31 @@ namespace WebForm.View.Admin.Estudiantes
             else
             {
                 daoservicio = new ServicioWS.LKServicioWebClient();
-                string tipo = Session["Tipo"] as string; 
+                string tipo = Session["Tipo"] as string;
                 if (tipo != "Administrador") Response.Redirect("/View/Login/Login.aspx");
                 usuario usuario_actual = Session["Usuario"] as usuario;
             }
-            CargarTabla();
+            if (!IsPostBack)
+            {
+                CargarTabla(0);
+            }
         }
-        protected void CargarTabla()
+
+        protected void CargarTabla(int pageIndex)
         {
-            GridAlumnos.DataSource = new BindingList<alumno>(daoservicio.listarAlumnos()); 
+            var alumnos = new BindingList<alumno>(daoservicio.listarAlumnos());
+            GridAlumnos.PageIndex = pageIndex;
+            GridAlumnos.DataSource = alumnos;
             GridAlumnos.DataBind();
         }
+
+        protected void GridAlumnos_PageIndexChanging(object sender, GridViewPageEventArgs e)
+        {
+            CargarTabla(e.NewPageIndex);
+        }
+
         protected void EditRow_Click(object sender, EventArgs e)
         {
-            
             LinkButton btn = (LinkButton)sender;
             int codigoBusca = int.Parse(btn.CommandArgument); // Recibe el codigo del alumno
 
@@ -58,15 +70,15 @@ namespace WebForm.View.Admin.Estudiantes
 
             // Implementarla edicion en bd
         }
+
         protected void DelRow_Click(object sender, EventArgs e)
         {
-            
-            LinkButton btn = ( LinkButton )sender;
+            LinkButton btn = (LinkButton)sender;
             int codigo = int.Parse(btn.CommandArgument);
             daoservicio.eliminarAlumno(codigo);
-            CargarTabla();
-
+            CargarTabla(GridAlumnos.PageIndex);
         }
+
         protected void BtnNuevo_Click(object sender, EventArgs e)
         {
             // Agregar alumno
@@ -85,9 +97,9 @@ namespace WebForm.View.Admin.Estudiantes
             SLGrado.SelectedValue = "";
             CallJavascript("showModalFormAgregarEstudiante()");
         }
+
         protected void BntGuardar_Click(object sender, EventArgs e)
         {
-            
             alumno al = new alumno();
             bool actualizaOcrea = string.IsNullOrEmpty(TxtCode.Text);
             if (actualizaOcrea)
@@ -98,18 +110,18 @@ namespace WebForm.View.Admin.Estudiantes
             {
                 al = daoservicio.listarAlumnos().ToList().Find(alu => alu.codigoAlumno == Int32.Parse(TxtCode.Text));
             }
-            al.dni = TxtDNI.Text;//1
-            al.nombres = TxtNombre.Text;//2
-            al.apellidoPaterno = TxtApellidoPat.Text;//3
-            al.apellidoMaterno = TxtApellidoMat.Text;//4
-            al.correoElectronico = TxtCorreo.Text;//5
-            al.telefono = TxtTelefono.Text;//6
-            al.direccion = TxtDireccion.Text;//7
-            al.genero = DDGenero.SelectedValue.ToString()[0];//8
+            al.dni = TxtDNI.Text; //1
+            al.nombres = TxtNombre.Text; //2
+            al.apellidoPaterno = TxtApellidoPat.Text; //3
+            al.apellidoMaterno = TxtApellidoMat.Text; //4
+            al.correoElectronico = TxtCorreo.Text; //5
+            al.telefono = TxtTelefono.Text; //6
+            al.direccion = TxtDireccion.Text; //7
+            al.genero = DDGenero.SelectedValue.ToString()[0]; //8
             al.gradoSpecified = true;
             al.fechaNacSpecified = true;
-            al.fechaNac = DateTime.Parse(TxtFechaNac.Text);//9
-            al.grado = (grado)Enum.Parse(typeof(grado), SLGrado.Text);//10
+            al.fechaNac = DateTime.Parse(TxtFechaNac.Text); //9
+            al.grado = (grado)Enum.Parse(typeof(grado), SLGrado.Text); //10
             al.usuario1 = TxtUsuario.Text;
             al.contrasenia = TxtContrasenia.Text;
             if (actualizaOcrea)
@@ -120,8 +132,9 @@ namespace WebForm.View.Admin.Estudiantes
             {
                 daoservicio.editarAlumno(al);
             }
-            CargarTabla() ;
+            CargarTabla(GridAlumnos.PageIndex);
         }
+
         private void CallJavascript(string function)
         {
             string script = "window.onload = function() {" + function + "; };";

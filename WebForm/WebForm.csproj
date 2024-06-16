@@ -67,12 +67,6 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="Components\Path.ascx" />
-    <None Include="Connected Services\ServicioWS\configuration91.svcinfo" />
-    <None Include="Connected Services\ServicioWS\configuration.svcinfo" />
-    <None Include="Connected Services\ServicioWS\Reference.svcmap">
-      <Generator>WCF Proxy Generator</Generator>
-      <LastGenOutput>Reference.cs</LastGenOutput>
-    </None>
     <Content Include="Public\css\bootstrap\bootstrap-grid.css" />
     <Content Include="Public\css\bootstrap\bootstrap-grid.min.css" />
     <Content Include="Public\css\bootstrap\bootstrap-grid.rtl.css" />
@@ -101,6 +95,8 @@
     <Content Include="Public\js\bootstrap\bootstrap.esm.min.js" />
     <Content Include="Public\js\bootstrap\bootstrap.js" />
     <Content Include="Public\js\bootstrap\bootstrap.min.js" />
+    <Content Include="View\Admin\Administrativo\Administrativo.js" />
+    <Content Include="View\Admin\Administrativo\AdministrativoAdmin.aspx" />
     <Content Include="View\Admin\AnioAcademico\AniosAcademicos.aspx" />
     <Content Include="View\Admin\AnioAcademico\AnioAcademico.js" />
     <Content Include="View\Admin\Cursos\Curso.js" />
@@ -141,11 +137,6 @@
     <Compile Include="Components\Path.ascx.designer.cs">
       <DependentUpon>Path.ascx</DependentUpon>
     </Compile>
-    <Compile Include="Connected Services\ServicioWS\Reference.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>Reference.svcmap</DependentUpon>
-    </Compile>
     <Compile Include="Layout\Main.Master.cs">
       <DependentUpon>Main.Master</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -183,6 +174,13 @@
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Utils\MyReact.cs" />
+    <Compile Include="View\Admin\Administrativo\AdministrativoAdmin.aspx.cs">
+      <DependentUpon>AdministrativoAdmin.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="View\Admin\Administrativo\AdministrativoAdmin.aspx.designer.cs">
+      <DependentUpon>AdministrativoAdmin.aspx</DependentUpon>
+    </Compile>
     <Compile Include="View\Admin\AnioAcademico\AniosAcademicos.aspx.cs">
       <DependentUpon>AniosAcademicos.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -578,9 +576,6 @@
   </ItemGroup>
   <ItemGroup>
     <WCFMetadata Include="Connected Services\" />
-  </ItemGroup>
-  <ItemGroup>
-    <WCFMetadataStorage Include="Connected Services\ServicioWS\" />
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>

@@ -194,11 +194,21 @@ namespace WebForm.View.AsistenciaProfesor
         protected void AsistenciasAlumnoBtn_Click(object sender, EventArgs e)
         {
 
-            if (!string.IsNullOrEmpty(FechaFinalTxt.Text) && !string.IsNullOrEmpty(FechaIniTxt.Text))
+
+
+            if (!string.IsNullOrEmpty(FechaFinalTxt.Text) && !string.IsNullOrEmpty(FechaIniTxt.Text) )
             {
-                Response.Redirect("/View/Profesor/ReporteAsistenciaAlumno.aspx?dniAlu="+AlumnosDrpDown.Text+"&fechaIni="+FechaIniTxt.Text+"&fechaFin="+FechaFinalTxt.Text);
+                DateTime fechaInicialDate = DateTime.Parse(FechaIniTxt.Text).Date;
+                DateTime fechaFinalDate = DateTime.Parse(FechaFinalTxt.Text).Date;
+
+                if(VerificarFechas(fechaInicialDate,fechaFinalDate))
+                Response.Redirect("/View/Profesor/ReporteAsistenciaAlumno.aspx?dniAlu="+AlumnosDrpDown.Text+"&fechaIni="+fechaInicialDate.ToString()+"&fechaFin="+fechaFinalDate.ToString());
             }
             
+        }
+        protected bool VerificarFechas(DateTime fechaIni,DateTime fechaFin)
+        {
+            return fechaIni < fechaFin;
         }
 
         protected void CerrarModalIncidenciaBtn_Click(object sender, EventArgs e)
@@ -208,15 +218,18 @@ namespace WebForm.View.AsistenciaProfesor
 
         protected void AsignarFechasBtn_Click(object sender, EventArgs e)
         {
-            msgErrorFechas.Visible = false;
-            CallJavascript("showModal('fechasReporteModal')");
+            
+            //msgErrorFechas.Visible = false;
+            //CallJavascript("showModal('fechasReporteModal')");
+
+
           //  string script = "mostrarErrorFechas()";
            // ClientScript.RegisterStartupScript(this.GetType(), "MostrarErrorFechas", script,true);
         }
 
         protected void SelectFechasBtn_Click(object sender, EventArgs e)
         {
-           
+           /*
             if(fechaFinCalen.SelectedDate <= fechaIniCalen.SelectedDate)
             {
                 msgErrorFechas.Visible = true;
@@ -227,7 +240,7 @@ namespace WebForm.View.AsistenciaProfesor
                 FechaFinalTxt.Text = fechaFinCalen.SelectedDate.Date.ToString().Split(' ')[0];
                 FechaIniTxt.Text = fechaIniCalen.SelectedDate.Date.ToString().Split(' ')[0];
             }
-
+            */
         }
 
         protected void SalirFechasBtn_Click(object sender, EventArgs e)
