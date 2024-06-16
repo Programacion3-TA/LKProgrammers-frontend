@@ -216,33 +216,7 @@ namespace WebForm.View.AsistenciaProfesor
 
         }
 
-        protected void AsignarFechasBtn_Click(object sender, EventArgs e)
-        {
-            
-            //msgErrorFechas.Visible = false;
-            //CallJavascript("showModal('fechasReporteModal')");
-
-
-          //  string script = "mostrarErrorFechas()";
-           // ClientScript.RegisterStartupScript(this.GetType(), "MostrarErrorFechas", script,true);
-        }
-
-        protected void SelectFechasBtn_Click(object sender, EventArgs e)
-        {
-           /*
-            if(fechaFinCalen.SelectedDate <= fechaIniCalen.SelectedDate)
-            {
-                msgErrorFechas.Visible = true;
-                CallJavascript("showModal('fechasReporteModal')");
-            }
-            else
-            {
-                FechaFinalTxt.Text = fechaFinCalen.SelectedDate.Date.ToString().Split(' ')[0];
-                FechaIniTxt.Text = fechaIniCalen.SelectedDate.Date.ToString().Split(' ')[0];
-            }
-            */
-        }
-
+      
         protected void SalirFechasBtn_Click(object sender, EventArgs e)
         {
         }

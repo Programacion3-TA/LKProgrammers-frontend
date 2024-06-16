@@ -177,15 +177,6 @@ namespace WebForm.View.Profesor
         protected global::System.Web.UI.WebControls.TextBox FechaFinReporteTxt;
 
         /// <summary>
-        /// Control MostrarReporteBtn.
-        /// </summary>
-        /// <remarks>
-        /// Campo generado automáticamente.
-        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Button MostrarReporteBtn;
-
-        /// <summary>
         /// Control AsistenciaAlumnoGrid.
         /// </summary>
         /// <remarks>
@@ -202,5 +193,14 @@ namespace WebForm.View.Profesor
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
         protected global::System.Web.UI.WebControls.Button RegresarAsistenciasBtn;
+
+        /// <summary>
+        /// Control MostrarReporteBtn.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Button MostrarReporteBtn;
     }
 }
