@@ -54,7 +54,7 @@ namespace WebForm.View.CursoAlumno
 
             foreach (String competencia in badgesData)
             {
-                badgesComp += MyReact.createComponent("span", new Dictionary<string, string> { { "class", "badge rounded-pill text-bg-primary p-2 text-truncate" }, { "style", "max-width: 60%;" } }, competencia);
+                badgesComp += MyReact.CreateComponent("span", new Dictionary<string, string> { { "class", "badge rounded-pill text-bg-primary p-2 text-truncate" }, { "style", "max-width: 60%;" } }, competencia);
             }
             BadgesContainer.Text = badgesComp;
             renderizarSecciones(pag);
@@ -66,15 +66,15 @@ namespace WebForm.View.CursoAlumno
             foreach (seccion secc in pag.secciones)
             {
                 String seccHtmlId = $"secc{secc.id}";
-                seccComp += MyReact.createComponent(
+                seccComp += MyReact.CreateComponent(
                     "div", "class=\"accordion-item\"",
-                        MyReact.createComponent("h2", "class=\"accordion-header\"",
-                            MyReact.createComponent("button", $"class=\"accordion-button collapsed\" type=\"button\" data-bs-toggle=\"collapse\" data-bs-target=\"#{seccHtmlId}\" aria-expanded=\"false\" aria-controls=\"{seccHtmlId}\"", secc.titulo)
+                        MyReact.CreateComponent("h2", "class=\"accordion-header\"",
+                            MyReact.CreateComponent("button", $"class=\"accordion-button collapsed\" type=\"button\" data-bs-toggle=\"collapse\" data-bs-target=\"#{seccHtmlId}\" aria-expanded=\"false\" aria-controls=\"{seccHtmlId}\"", secc.titulo)
                         ) +
-                        MyReact.createComponent("div", $"id=\"{seccHtmlId}\" class=\"accordion-collapse collapse\" data-bs-parent=\"#accordionFlushExample\"",
-                            MyReact.createComponent("div", "class=\"accordion-body\"", secc.elementos == null? "" : secc.elementos.Aggregate("",
+                        MyReact.CreateComponent("div", $"id=\"{seccHtmlId}\" class=\"accordion-collapse collapse\" data-bs-parent=\"#accordionFlushExample\"",
+                            MyReact.CreateComponent("div", "class=\"accordion-body\"", secc.elementos == null? "" : secc.elementos.Aggregate("",
                                 (concatenacion, elem) => concatenacion +
-                                    MyReact.createComponentByType(elem, "", elem.contenido)
+                                    MyReact.CreateComponentByType(elem, "", elem.contenido)
                                 )
                             )
                         )
