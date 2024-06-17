@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.ComponentModel;
+using System.Data;
 using System.Linq;
 using System.Web;
 using System.Web.UI;
@@ -21,10 +22,9 @@ namespace WebForm.View.Admin.Salones
             salonId = Convert.ToInt32(Request.QueryString["salonId"]);
             if (!IsPostBack)
             {
-
                 cargarTabla();
+                LoadCursos();
                 LitSalonId.Text = salonId.ToString();
-
             }
         }
 
@@ -72,6 +72,41 @@ namespace WebForm.View.Admin.Salones
         {
             string script = "window.onload = function() {" + function + "; };";
             ClientScript.RegisterStartupScript(GetType(), "", script, true);
+        }
+        private void LoadCursos()
+        {
+            //salonId
+            var C = serviciodao.listar_curso_salon(salonId);
+            List<curso> j = new List<curso>();
+            DataTable dtCursos = new DataTable();
+            // Simulamos la carga de datos desde una base de datos
+            dtCursos.Columns.Add("idCurso");
+            dtCursos.Columns.Add("nombreCurso");
+            if (C != null)
+            {
+                j = C.ToList();
+                // Añadir filas de ejemplo
+                foreach (curso cur_ingresado in j) { dtCursos.Rows.Add(cur_ingresado.id, cur_ingresado.nombre); }
+            }
+            GridCursos.DataSource = dtCursos;
+            GridCursos.DataBind();
+        }
+
+        protected void BtnAgregarCurso_Click(object sender, EventArgs e)
+        {
+            // Aquí se maneja la lógica para agregar un nuevo curso.
+            // Ejemplo: Mostrar un formulario modal para ingresar los detalles del curso.
+
+            // Después de agregar, recargar la lista de cursos
+            LoadCursos();
+        }
+
+        protected void BtnEliminarCurso_Click(object sender, EventArgs e)
+        {
+            LinkButton btn = (LinkButton)sender;
+            int idCurso = int.Parse(btn.CommandArgument);
+            serviciodao.eliminar_curso_salon(salonId,idCurso);
+            LoadCursos();
         }
     }
 }

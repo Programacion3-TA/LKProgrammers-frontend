@@ -48,7 +48,6 @@
                 </div>
             </div>
             <div class="container row">
-
                 <asp:GridView ID="GridAlumnosSalon" runat="server" AutoGenerateColumns="false"
                     AllowPaging="true" PageSize="5"
                     CssClass="table table-hover table-responsive table-striped">
@@ -66,7 +65,6 @@
                                     <asp:LinkButton ID="BtnDelete" runat="server" Text="Quitar" CssClass="btn btn-danger"
                                         CommandArgument='<%#Eval("dni") %>' OnClick="BtnQuitar_Click" />
                                 </div>
-
                             </ItemTemplate>
                             <ItemStyle HorizontalAlign="Center" Width="200px" />
                         </asp:TemplateField>
@@ -75,6 +73,34 @@
             </div>
         </div>
     </div>
+    <!-- Sección de Cursos -->
+    <div class="container">
+        <div class="container row">
+            <h2>Cursos</h2>
+            <div class="text-end p-3 mx-auto">
+                <asp:LinkButton ID="BtnAgregarCurso" runat="server" Text="<i class='fas fa-plus pe-2'></i> Agregar Curso"
+                    CssClass="btn btn-success" OnClick="BtnAgregarCurso_Click" />
+            </div>
+            <asp:GridView ID="GridCursos" runat="server" AutoGenerateColumns="false"
+                AllowPaging="true" PageSize="5"
+                CssClass="table table-hover table-responsive table-striped">
+                <Columns>
+                    <asp:BoundField DataField="idCurso" HeaderText="ID" />
+                    <asp:BoundField DataField="nombreCurso" HeaderText="Nombre" />
+                    <asp:TemplateField HeaderText="Acciones">
+                        <ItemTemplate>
+                            <div style="display: flex; gap: 0.6em">
+                                <asp:LinkButton ID="BtnEliminarCurso" runat="server" Text="Eliminar" CssClass="btn btn-danger"
+                                    CommandArgument='<%#Eval("idCurso") %>' OnClick="BtnEliminarCurso_Click" />
+                            </div>
+                        </ItemTemplate>
+                        <ItemStyle HorizontalAlign="Center" Width="200px" />
+                    </asp:TemplateField>
+                </Columns>
+            </asp:GridView>
+        </div>
+    </div>
+    <!-- Fin de la Sección de Cursos -->
     <div id="modalSalonDetalle" class="modal" tabindex="-1">
         <div class="modal-dialog">
             <div class="modal-content">
@@ -110,7 +136,6 @@
                 </div>
             </div>
         </div>
-        
     </div>
 </asp:Content>
 <asp:Content ID="Content6" ContentPlaceHolderID="Script" runat="server">
