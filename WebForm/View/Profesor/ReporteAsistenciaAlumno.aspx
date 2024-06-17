@@ -14,7 +14,7 @@
         </div>
          <div class=" d-flex  flex-column gap-4" >
              <div class="container card-body">
-                 <div class="d-flex gap-5 mb-3">
+                 <div class="d-flex gap-5 mb-3 flex-wrap">
                      <div>
                          <asp:Label ID="NombreAlumnoLblRep" runat="server" Text="Nombre del alumno:" CssClass="form-label"></asp:Label>
                          <asp:TextBox ID="NombeAlumnoTxtRep" runat="server" Enabled="false" CssClass="form-control"></asp:TextBox>
@@ -43,21 +43,23 @@
                          <asp:TextBox ID="SalonAlumnoTxtRep" runat="server" Enabled="false" CssClass="form-control"></asp:TextBox>
                      </div>
                  </div>
-                 <div class="d-flex gap-5 mb-3">
-                 <div>
-                     <asp:Label ID="FechaActualLblRep" runat="server" Text="Fecha Actual: " CssClass="form-label"></asp:Label>
-                     <asp:TextBox ID="FechaActualTxtRep" runat="server" Enabled="false" CssClass="form-control"></asp:TextBox>
-                 </div>
-                     <div>
-                        <asp:Label ID="FechaIniReporteLbl" runat="server" Text="Fecha inicio de consulta: " CssClass="form-label"></asp:Label>
-                        <asp:TextBox ID="FechaIniReporteTxt" runat="server" Enabled="false" CssClass="form-control"></asp:TextBox>
+                 <div class="d-flex gap-5 mb-3 justify-content-between">
+                     <div class="d-flex gap-5">
+                        <div>
+                            <asp:Label ID="FechaActualLblRep" runat="server" Text="Fecha Actual: " CssClass="form-label"></asp:Label>
+                            <asp:TextBox ID="FechaActualTxtRep" runat="server" Enabled="false" CssClass="form-control"></asp:TextBox>
+                        </div>
+                         <div>
+                            <asp:Label ID="FechaIniReporteLbl" runat="server" Text="Fecha inicio de consulta: " CssClass="form-label"></asp:Label>
+                            <asp:TextBox ID="FechaIniReporteTxt" runat="server" Enabled="false" CssClass="form-control"></asp:TextBox>
+                         </div>
+                         <div>
+                            <asp:Label ID="FechaFinReporteLbl" runat="server" Text="Fecha fin de consulta: " CssClass="form-label"></asp:Label>
+                            <asp:TextBox ID="FechaFinReporteTxt" runat="server" Enabled="false" CssClass="form-control"></asp:TextBox>
+                         </div>
                      </div>
-                     <div>
-                        <asp:Label ID="FechaFinReporteLbl" runat="server" Text="Fecha fin de consulta: " CssClass="form-label"></asp:Label>
-                        <asp:TextBox ID="FechaFinReporteTxt" runat="server" Enabled="false" CssClass="form-control"></asp:TextBox>
+                     <div class="align-self-end">
                      </div>
-                     <asp:Button runat="server" ID="MostrarReporteBtn" Text="Generar Reporte PDF" CssClass="btn btn-secondary"
-                         OnClick="MostrarReporteBtn_Click"/>
                  </div>
 
              </div>
@@ -71,8 +73,10 @@
                  <HeaderStyle HorizontalAlign="Center"/>
              </asp:GridView>
          </div>
-         <div class="card-footer">
+         <div class="card-footer d-flex justify-content-between">
             <asp:Button ID="RegresarAsistenciasBtn" runat="server" Text="Regresar" CssClass="btn btn-primary" OnClick="RegresarAsistenciasBtn_Click" />
+            <asp:Button runat="server" ID="MostrarReporteBtn" Text="Generar reporte PDF" CssClass="btn btn-secondary"
+                         OnClick="MostrarReporteBtn_Click" />
          </div>
     </div>
          

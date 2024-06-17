@@ -516,6 +516,9 @@
     <Content Include="Connected Services\ServicioWS\WebForm.ServicioWS.listarCompetenciasResponse.datasource">
       <DependentUpon>Reference.svcmap</DependentUpon>
     </Content>
+    <Content Include="Connected Services\ServicioWS\WebForm.ServicioWS.listarCursosHorarioAlumnosResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Content>
     <Content Include="Connected Services\ServicioWS\WebForm.ServicioWS.listarCursosPorAlumnoResponse.datasource">
       <DependentUpon>Reference.svcmap</DependentUpon>
     </Content>

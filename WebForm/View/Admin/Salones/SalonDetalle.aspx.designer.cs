@@ -51,6 +51,24 @@ namespace WebForm.View.Admin.Salones
         protected global::System.Web.UI.WebControls.GridView GridAlumnosSalon;
 
         /// <summary>
+        /// Control BtnAgregarCurso.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.LinkButton BtnAgregarCurso;
+
+        /// <summary>
+        /// Control GridCursos.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.GridView GridCursos;
+
+        /// <summary>
         /// Control TxtFiltroAlumno.
         /// </summary>
         /// <remarks>

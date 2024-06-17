@@ -19,13 +19,12 @@ namespace WebForm.View.Admin.Administrativo
         protected void Page_Load(object sender, EventArgs e)
         {
             daoservicio = new ServicioWS.LKServicioWebClient();
-            personal = new BindingList<personalAdministrativo>(daoservicio.listarAdministradores().ToList());
-
             CargarTabla();
         }
 
         protected void CargarTabla()
         {
+            personal = new BindingList<personalAdministrativo>(daoservicio.listarAdministradores().ToList());
             GridAdministrativo.DataSource = personal;
             GridAdministrativo.DataBind();
         }

@@ -23,7 +23,7 @@ namespace WebForm.Utils
             { tipoElemento.Enlace, new htmlElementStandar { tag ="a", props= "href={}" } },
             { tipoElemento.Imagen, new htmlElementStandar { tag ="img", props= "src={}" } }
         };
-        public static String createComponent(String tag, Dictionary<String, String> props, String children)
+        public static String CreateComponent(String tag, Dictionary<String, String> props, String children)
         {
             String html = $"<{tag}";
 
@@ -40,7 +40,7 @@ namespace WebForm.Utils
             return html;
         }
 
-        public static String createComponent(String tag, String props, String children)
+        public static String CreateComponent(String tag, String props, String children)
         {
             String html = $"<{tag} {props}";
             html += ">";
@@ -49,23 +49,23 @@ namespace WebForm.Utils
             return html;
         }
 
-        public static String createComponentByType(elemento elem, String props, String children)
+        public static String CreateComponentByType(elemento elem, String props, String children)
         {
             String html = "";
 
             switch (elem.tipoElemento)
             {
                 case tipoElemento.Heading:
-                    html = createComponent($"h{((heading)elem).nivel}", props, children);
+                    html = CreateComponent($"h{((heading)elem).nivel}", props, children);
                     break;
                 case tipoElemento.Parrafo:
-                    html = createComponent($"p", props, children);
+                    html = CreateComponent($"p", props, children);
                     break;
                 case tipoElemento.Enlace:
-                    html = createComponent($"a", $"{props} href=\"{( (enlace)elem ).href}\"", children);
+                    html = CreateComponent($"a", $"{props} href=\"{( (enlace)elem ).href}\"", children);
                     break;
                 case tipoElemento.Imagen:
-                    html = createComponent($"img", $"{props} src=\"{((imagen)elem).source}\"", children);
+                    html = CreateComponent($"img", $"{props} src=\"{((imagen)elem).source}\"", children);
                     break;
             }
 
