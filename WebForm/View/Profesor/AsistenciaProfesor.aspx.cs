@@ -29,7 +29,9 @@ namespace WebForm.View.AsistenciaProfesor
                 if (idsalon != -1)
                 {
                     CargarFechas(idsalon);
-                    List<alumno> alumnos = daoServicio.listarAlumnosxsalon(idsalon).ToList();
+                    List<alumno> alumnos = new List<alumno>();
+                    var f = daoServicio.listarAlumnosxsalon(idsalon);
+                    if(f != null)alumnos = f.ToList();
                     Session["alumnosAsistencia"] = alumnos;
                     Session["RealizoAsistenica"] = VerificarRegistroAsistenciaActual();
                     CargarAlumnosDropDown();
@@ -82,25 +84,29 @@ namespace WebForm.View.AsistenciaProfesor
 
         protected void CargarFechas(int _idsalon)
         {
-            List<DateTime> fechas = daoServicio.listarFechasAsistenciaSalon(_idsalon).ToList();
-            List<string> fechasFormato = TransformarFechas(fechas);
+            List<DateTime> fechas = new List<DateTime>();
+            var f = daoServicio.listarFechasAsistenciaSalon(_idsalon);
+            List<string> fechasFormato = new List<string>();
             List<object> fechasconFormato = new List<object>();
-
-            //llenamos la lista de objetos
-            foreach(DateTime fecha in fechas)
+            if (f != null)
             {
-                object key = new { Fecha = fecha.Date, FechaFormato = fechasFormato[fechas.IndexOf(fecha)] };
-                fechasconFormato.Add(key);
-            }
+                fechas = f.ToList();
+                fechasFormato = TransformarFechas(fechas);
+                fechasconFormato = new List<object>();
+                //llenamos la lista de objetos
+                foreach (DateTime fecha in fechas)
+                {
+                    object key = new { Fecha = fecha.Date, FechaFormato = fechasFormato[fechas.IndexOf(fecha)] };
+                    fechasconFormato.Add(key);
+                }
 
-            Session["fechas"] = fechas;
-            //se impleemnto para que funcione el filtrado -> mejorar
-            Session["fechasFormato"] = fechasFormato;
-            Session["fechasconFormato"] = fechasconFormato;
+                Session["fechas"] = fechas;
+                //se impleemnto para que funcione el filtrado -> mejorar
+                Session["fechasFormato"] = fechasFormato;
+                Session["fechasconFormato"] = fechasconFormato;
+            }
             GridAsistenciasFechas.DataSource = fechasconFormato; //verificar el Datafield
             GridAsistenciasFechas.DataBind();
-
-
         }
         protected List<string> TransformarFechas(List<DateTime> fechas)
         {
@@ -216,33 +222,7 @@ namespace WebForm.View.AsistenciaProfesor
 
         }
 
-        protected void AsignarFechasBtn_Click(object sender, EventArgs e)
-        {
-            
-            //msgErrorFechas.Visible = false;
-            //CallJavascript("showModal('fechasReporteModal')");
-
-
-          //  string script = "mostrarErrorFechas()";
-           // ClientScript.RegisterStartupScript(this.GetType(), "MostrarErrorFechas", script,true);
-        }
-
-        protected void SelectFechasBtn_Click(object sender, EventArgs e)
-        {
-           /*
-            if(fechaFinCalen.SelectedDate <= fechaIniCalen.SelectedDate)
-            {
-                msgErrorFechas.Visible = true;
-                CallJavascript("showModal('fechasReporteModal')");
-            }
-            else
-            {
-                FechaFinalTxt.Text = fechaFinCalen.SelectedDate.Date.ToString().Split(' ')[0];
-                FechaIniTxt.Text = fechaIniCalen.SelectedDate.Date.ToString().Split(' ')[0];
-            }
-            */
-        }
-
+      
         protected void SalirFechasBtn_Click(object sender, EventArgs e)
         {
         }

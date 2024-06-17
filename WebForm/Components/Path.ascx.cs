@@ -20,12 +20,13 @@ namespace WebForm.Components
         {
             List<string> Tipos = TiposURL.Split('/').ToList();
 
-            Dictionary<string, string> mapaTipoClase = new Dictionary<string, string>();
-            mapaTipoClase.Add("Curso", "fa-book");
-            mapaTipoClase.Add("Nota", "fa-star");
-            mapaTipoClase.Add("Asistencia", "fa-user");
-            mapaTipoClase.Add("Calendario", "fa-calendar");
-            mapaTipoClase.Add("Competencia", "fa-newspaper");
+            Dictionary<string, string> mapaTipoClase = new Dictionary<string, string> {
+                {"Curso", "fa-book" },
+                {"Nota", "fa-star" },
+                {"Asistencia", "fa-user"},
+                { "Calendario", "fa-calendar"},
+                { "Competencia", "fa-newspaper"}
+            };
 
             writer.RenderBeginTag(HtmlTextWriterTag.Span);
             writer.AddAttribute(HtmlTextWriterAttribute.Class, "fa-solid fa-house fa-5xs me-2");
