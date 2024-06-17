@@ -29,7 +29,9 @@ namespace WebForm.View.AsistenciaProfesor
                 if (idsalon != -1)
                 {
                     CargarFechas(idsalon);
-                    List<alumno> alumnos = daoServicio.listarAlumnosxsalon(idsalon).ToList();
+                    List<alumno> alumnos = new List<alumno>();
+                    var f = daoServicio.listarAlumnosxsalon(idsalon);
+                    if(f != null)alumnos = f.ToList();
                     Session["alumnosAsistencia"] = alumnos;
                     Session["RealizoAsistenica"] = VerificarRegistroAsistenciaActual();
                     CargarAlumnosDropDown();
@@ -82,25 +84,29 @@ namespace WebForm.View.AsistenciaProfesor
 
         protected void CargarFechas(int _idsalon)
         {
-            List<DateTime> fechas = daoServicio.listarFechasAsistenciaSalon(_idsalon).ToList();
-            List<string> fechasFormato = TransformarFechas(fechas);
+            List<DateTime> fechas = new List<DateTime>();
+            var f = daoServicio.listarFechasAsistenciaSalon(_idsalon);
+            List<string> fechasFormato = new List<string>();
             List<object> fechasconFormato = new List<object>();
-
-            //llenamos la lista de objetos
-            foreach(DateTime fecha in fechas)
+            if (f != null)
             {
-                object key = new { Fecha = fecha.Date, FechaFormato = fechasFormato[fechas.IndexOf(fecha)] };
-                fechasconFormato.Add(key);
-            }
+                fechas = f.ToList();
+                fechasFormato = TransformarFechas(fechas);
+                fechasconFormato = new List<object>();
+                //llenamos la lista de objetos
+                foreach (DateTime fecha in fechas)
+                {
+                    object key = new { Fecha = fecha.Date, FechaFormato = fechasFormato[fechas.IndexOf(fecha)] };
+                    fechasconFormato.Add(key);
+                }
 
-            Session["fechas"] = fechas;
-            //se impleemnto para que funcione el filtrado -> mejorar
-            Session["fechasFormato"] = fechasFormato;
-            Session["fechasconFormato"] = fechasconFormato;
+                Session["fechas"] = fechas;
+                //se impleemnto para que funcione el filtrado -> mejorar
+                Session["fechasFormato"] = fechasFormato;
+                Session["fechasconFormato"] = fechasconFormato;
+            }
             GridAsistenciasFechas.DataSource = fechasconFormato; //verificar el Datafield
             GridAsistenciasFechas.DataBind();
-
-
         }
         protected List<string> TransformarFechas(List<DateTime> fechas)
         {

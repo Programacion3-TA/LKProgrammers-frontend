@@ -85,13 +85,13 @@ namespace WebForm.View.Profesor
             switch (grado)
             {
                 case "INI2":
-                    return "Segundo de Inicial";
+                    return "2 años";
                 case "INI3":
-                    return "Tercero de Inicial";
+                    return "3 años";
                 case "INI4":
-                    return "Cuarto de Inicial";
+                    return "4 años";
                 case "INI5":
-                    return "Quinto de Inicial";
+                    return "5 años";
                 case "PRIM1":
                     return "Primero de Primaria";
                 case "PRIM2":
@@ -110,3 +110,5 @@ namespace WebForm.View.Profesor
         }
     }
 }
+//juangabriel
+//password123
