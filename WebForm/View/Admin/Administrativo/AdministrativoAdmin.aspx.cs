@@ -33,6 +33,7 @@ namespace WebForm.View.Admin.Administrativo
         {
             TxtCode.Text = "";
             TxtDNI.Text = "";
+            TxtDNI.Enabled = true;
             TxtNombre.Text = "";
             TxtTelefono.Text = "";
             TxtApellidoPat.Text = "";
@@ -54,6 +55,7 @@ namespace WebForm.View.Admin.Administrativo
             personalAdministrativo trabajador = personal.ToList().Find(p => p.codigoPersonal == codigoBusca);
             TxtCode.Text = trabajador.codigoPersonal.ToString();
             TxtDNI.Text = trabajador.dni.ToString();
+            TxtDNI.Enabled = false;
             TxtNombre.Text = trabajador.nombres;
             TxtTelefono.Text = trabajador.telefono;
             TxtApellidoPat.Text = trabajador.apellidoPaterno;
@@ -104,28 +106,38 @@ namespace WebForm.View.Admin.Administrativo
         {
             personalAdministrativo personalNuevo = new personalAdministrativo();
 
+            bool campoVacio = false;
 
             if (!string.IsNullOrEmpty(TxtDNI.Text))
                 personalNuevo.dni = TxtDNI.Text;
+            else campoVacio = true;
             if (!string.IsNullOrEmpty(TxtNombre.Text))
                 personalNuevo.nombres = TxtNombre.Text;
+            else campoVacio = true;
             if (!string.IsNullOrEmpty(TxtApellidoPat.Text))
                 personalNuevo.apellidoPaterno = TxtApellidoPat.Text;
+            else campoVacio = true;
             if (!string.IsNullOrEmpty(TxtApellidoMat.Text))
                 personalNuevo.apellidoMaterno = TxtApellidoMat.Text;
+            else campoVacio = true;
             if (!string.IsNullOrEmpty(DDGenero.SelectedValue))
                 personalNuevo.genero = DDGenero.SelectedValue[0];
+            else campoVacio = true;
             if (!string.IsNullOrEmpty(TxtDireccion.Text))
                 personalNuevo.direccion = TxtDireccion.Text;
+            else campoVacio = true;
             if (!string.IsNullOrEmpty(TxtCorreo.Text))
                 personalNuevo.correoElectronico = TxtCorreo.Text;
+            else campoVacio = true;
             if (!string.IsNullOrEmpty(TxtUsuario.Text))
                 personalNuevo.usuario1 = TxtUsuario.Text;
+            else campoVacio = true;
             if (!string.IsNullOrEmpty(TxtContrasenia.Text))
                 personalNuevo.contrasenia = TxtContrasenia.Text;
+            else campoVacio = true;
             if (!string.IsNullOrEmpty(TxtTelefono.Text))
                 personalNuevo.telefono = TxtTelefono.Text;
-
+            else campoVacio = true;
             if (!string.IsNullOrEmpty(TxtFechaNac.Text))
             {
                 try
@@ -138,30 +150,42 @@ namespace WebForm.View.Admin.Administrativo
                     System.Diagnostics.Debug.WriteLine("Error en el parse");
                 }
             }
+            else campoVacio = true;
             System.Diagnostics.Debug.WriteLine(personalNuevo.fechaNac);
             if (!string.IsNullOrEmpty(TxtPuesto.Text))
                 personalNuevo.puestoEjecutivo = TxtPuesto.Text;
-
+            else campoVacio = true;
             if (string.IsNullOrEmpty(TxtCode.Text)) // Si no hay codigo, creamos uno
             {
-                int result = daoservicio.insertarAdministrativo(personalNuevo);
-
-                System.Diagnostics.Debug.WriteLine("result= " + result);
-                if (result != 0)
+                if (campoVacio)
                 {
-                    // se logró insertar
-                    personal = new BindingList<personalAdministrativo>(daoservicio.listarAdministradores().ToList());
-                    CargarTabla();                    
-                }
-                else
-                {
-                    // No se logró insertar. Puede deverse al UNIQUE constraint
                     LblWarning.Text = "¡Atención!";
-                    LblMensaje.Text = "No se puede crear un administrador cuyo DNI o correo electrónico ya haya sido registrado o cuyo nombre de usuario de intranet ya exista.";
+                    LblMensaje.Text = "Se deben ingresar todos los datos del administrador.";
                     BtnAceptarEliminar.Visible = false;
 
                     CallJavascript("showModalFormWarning()");
                 }
+                else
+                {
+                    int result = daoservicio.insertarAdministrativo(personalNuevo);
+
+                    if (result != 0)
+                    {
+                        // se logró insertar
+                        personal = new BindingList<personalAdministrativo>(daoservicio.listarAdministradores().ToList());
+                        CargarTabla();
+                    }
+                    else
+                    {
+                        // No se logró insertar. Debe deberse al UNIQUE constraint
+                        LblWarning.Text = "¡Atención!";
+                        LblMensaje.Text = "No se puede crear un administrador cuyo DNI o correo electrónico ya haya sido registrado o cuyo nombre de usuario de intranet ya exista.";
+                        BtnAceptarEliminar.Visible = false;
+
+                        CallJavascript("showModalFormWarning()");
+                    }
+                }
+                
             }
             else
             {
@@ -233,7 +257,6 @@ namespace WebForm.View.Admin.Administrativo
 
                 CallJavascript("showModalFormWarning()");
             }
-            
 
             BtnRestaurar.Visible = true;
         }
