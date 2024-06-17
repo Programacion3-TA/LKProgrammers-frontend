@@ -232,7 +232,7 @@ namespace WebForm.View.Admin.Estudiantes
             int resultado1 = daoservicio.eliminarAlumno(alumnoAEliminar.codigoAlumno);
 
             var resultado2 = daoservicio.listarAlumnos();
-            if (resultado2 != null && resultado1!=0)
+            if (resultado2 != null)
             {
                 alumnos = new BindingList<alumno>(resultado2.ToList());
                 CargarTabla();
@@ -242,11 +242,19 @@ namespace WebForm.View.Admin.Estudiantes
 
         protected void BtnRestaurar_Click(object sender, EventArgs e)
         {
-            LblWarning.Text = "¡Atención!";
-            LblMensaje.Text = "No se puede crear un alumno cuyo DNI o correo electrónico ya haya sido registrado o cuyo nombre de usuario de intranet ya exista.";
-            BtnAceptarEliminar.Visible = false;
+            var resultado = daoservicio.listarAlumnos();
+            if (resultado != null)
+            {
+                // Existen alumnos
+                alumnos = new BindingList<alumno>(resultado.ToList());
+                CargarTabla();
 
-            CallJavascript("showModalFormWarning()");
+            }
+        }
+
+        protected void LkBtnBuscar_Click(object sender, EventArgs e)
+        {
+            // Buscar
         }
     }
 }

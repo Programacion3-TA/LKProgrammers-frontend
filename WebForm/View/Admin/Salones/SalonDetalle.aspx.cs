@@ -98,7 +98,9 @@ namespace WebForm.View.Admin.Salones
             // Ejemplo: Mostrar un formulario modal para ingresar los detalles del curso.
 
             // Después de agregar, recargar la lista de cursos
-            LoadCursos();
+
+            CallJavascript("showModalAgregarCurso()");
+            //LoadCursos();
         }
 
         protected void BtnEliminarCurso_Click(object sender, EventArgs e)

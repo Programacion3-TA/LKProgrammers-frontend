@@ -33,7 +33,7 @@
             <div class="col-md-2">
                 <!-- Columna -->                    
                     <asp:LinkButton ID="LkBtnBuscar" runat="server" Text=" Buscar"
-                        CssClass="btn btn-primary"/>
+                        CssClass="btn btn-primary" OnClick="LkBtnBuscar_Click"/>
             </div>
         </div>
         <hr />
@@ -45,7 +45,7 @@
                 <div class="p-3 mx-auto col-md-6">
                     <!-- Columna -->
                     <asp:LinkButton ID="BtnRestaurar" runat="server" Text="Mostrar todos"
-                        CssClass="btn btn-outline-success" Visible="true" OnClick="BtnRestaurar_Click"/>                                
+                        CssClass="btn btn-outline-success" Visible="false" OnClick="BtnRestaurar_Click"/>                                
                 </div>
 
                 <div class="text-end p-3 mx-auto col-md-6">
