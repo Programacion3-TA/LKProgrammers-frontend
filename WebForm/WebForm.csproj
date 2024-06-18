@@ -105,6 +105,7 @@
     <Content Include="View\Admin\Administrativo\AdministrativoAdmin.aspx" />
     <Content Include="View\Admin\AnioAcademico\AniosAcademicos.aspx" />
     <Content Include="View\Admin\AnioAcademico\AnioAcademico.js" />
+    <Content Include="View\Admin\Cursos\CompetenciasCurso.aspx" />
     <Content Include="View\Admin\Cursos\Curso.js" />
     <Content Include="View\Admin\Cursos\CursosAdmin.aspx" />
     <Content Include="View\Admin\Estudiantes\Estudiantes.aspx" />
@@ -198,6 +199,13 @@
     </Compile>
     <Compile Include="View\Admin\AnioAcademico\AniosAcademicos.aspx.designer.cs">
       <DependentUpon>AniosAcademicos.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="View\Admin\Cursos\CompetenciasCurso.aspx.cs">
+      <DependentUpon>CompetenciasCurso.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="View\Admin\Cursos\CompetenciasCurso.aspx.designer.cs">
+      <DependentUpon>CompetenciasCurso.aspx</DependentUpon>
     </Compile>
     <Compile Include="View\Admin\Cursos\CursosAdmin.aspx.cs">
       <DependentUpon>CursosAdmin.aspx</DependentUpon>
@@ -378,6 +386,9 @@
     <Content Include="Connected Services\ServicioWS\WebForm.ServicioWS.anioEscolar.datasource">
       <DependentUpon>Reference.svcmap</DependentUpon>
     </Content>
+    <Content Include="Connected Services\ServicioWS\WebForm.ServicioWS.asignar_profesor_cursResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Content>
     <Content Include="Connected Services\ServicioWS\WebForm.ServicioWS.asistencia.datasource">
       <DependentUpon>Reference.svcmap</DependentUpon>
     </Content>
@@ -412,6 +423,9 @@
       <DependentUpon>Reference.svcmap</DependentUpon>
     </Content>
     <Content Include="Connected Services\ServicioWS\WebForm.ServicioWS.eliminarAlumnoResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Content>
+    <Content Include="Connected Services\ServicioWS\WebForm.ServicioWS.eliminarCompetenciaResponse.datasource">
       <DependentUpon>Reference.svcmap</DependentUpon>
     </Content>
     <Content Include="Connected Services\ServicioWS\WebForm.ServicioWS.eliminarIncidenciaResponse.datasource">
@@ -469,6 +483,9 @@
       <DependentUpon>Reference.svcmap</DependentUpon>
     </Content>
     <Content Include="Connected Services\ServicioWS\WebForm.ServicioWS.insertarAsistenciasResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Content>
+    <Content Include="Connected Services\ServicioWS\WebForm.ServicioWS.insertarCompetenciaResponse.datasource">
       <DependentUpon>Reference.svcmap</DependentUpon>
     </Content>
     <Content Include="Connected Services\ServicioWS\WebForm.ServicioWS.insertarIncidenciaResponse.datasource">
@@ -556,6 +573,9 @@
       <DependentUpon>Reference.svcmap</DependentUpon>
     </Content>
     <Content Include="Connected Services\ServicioWS\WebForm.ServicioWS.modificarAsistenciaResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Content>
+    <Content Include="Connected Services\ServicioWS\WebForm.ServicioWS.modificarCompetenciaResponse.datasource">
       <DependentUpon>Reference.svcmap</DependentUpon>
     </Content>
     <Content Include="Connected Services\ServicioWS\WebForm.ServicioWS.modificar_salonResponse.datasource">
