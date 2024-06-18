@@ -17,7 +17,7 @@ namespace WebForm.Layout
             usuario profesor = (usuario)Session["Usuario"];
             int idSalon = -1;
             //verificamos si es tutor o no  lo es
-            if (!IsPostBack)
+            if (!IsPostBack && Session["idsalon"] == null)
             {
                 idSalon = daoServicio.esTutorAsignado(profesor.dni);
                 Session["idsalon"] = idSalon;

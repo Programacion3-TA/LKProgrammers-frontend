@@ -67,12 +67,6 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="Components\Path.ascx" />
-    <None Include="Connected Services\ServicioWS\configuration91.svcinfo" />
-    <None Include="Connected Services\ServicioWS\configuration.svcinfo" />
-    <None Include="Connected Services\ServicioWS\Reference.svcmap">
-      <Generator>WCF Proxy Generator</Generator>
-      <LastGenOutput>Reference.cs</LastGenOutput>
-    </None>
     <Content Include="Public\css\bootstrap\bootstrap-grid.css" />
     <Content Include="Public\css\bootstrap\bootstrap-grid.min.css" />
     <Content Include="Public\css\bootstrap\bootstrap-grid.rtl.css" />
@@ -91,6 +85,7 @@
     <Content Include="Public\css\bootstrap\bootstrap.rtl.min.css" />
     <Content Include="Public\css\estilos_cursos_cajas.css" />
     <Content Include="Public\css\main.css" />
+    <Content Include="Public\css\MyNotification.css" />
     <Content Include="Public\img\images %281%29.png" />
     <Content Include="Public\img\logoColegio.jpeg" />
     <Content Include="Public\img\logoColegio.png" />
@@ -101,10 +96,12 @@
     <Content Include="Public\js\bootstrap\bootstrap.esm.min.js" />
     <Content Include="Public\js\bootstrap\bootstrap.js" />
     <Content Include="Public\js\bootstrap\bootstrap.min.js" />
+    <Content Include="Public\js\MyNotification.js" />
     <Content Include="View\Admin\Administrativo\Administrativo.js" />
     <Content Include="View\Admin\Administrativo\AdministrativoAdmin.aspx" />
     <Content Include="View\Admin\AnioAcademico\AniosAcademicos.aspx" />
     <Content Include="View\Admin\AnioAcademico\AnioAcademico.js" />
+    <Content Include="View\Admin\Cursos\CompetenciasCurso.aspx" />
     <Content Include="View\Admin\Cursos\Curso.js" />
     <Content Include="View\Admin\Cursos\CursosAdmin.aspx" />
     <Content Include="View\Admin\Estudiantes\Estudiantes.aspx" />
@@ -117,9 +114,11 @@
     <Content Include="View\Admin\Salones\SalonDetalle.aspx" />
     <Content Include="View\Alumno\Alumno.aspx" />
     <Content Include="View\Alumno\AsistenciaAlumno.aspx" />
+    <Content Include="Public\js\modalHandler.js" />
     <Content Include="View\Profesor\AsistenciaProfesor.aspx" />
     <Content Include="View\Alumno\CalendarioAlumno.aspx" />
     <Content Include="View\Profesor\asistenciasProfesor.js" />
+    <Content Include="View\Profesor\CalificarProfesor.aspx" />
     <Content Include="View\Profesor\CompetenciaProfesor.aspx" />
     <Content Include="View\Alumno\CursoAlumno.aspx" />
     <Content Include="View\Profesor\CursoProfesor.aspx" />
@@ -132,6 +131,7 @@
     <Content Include="View\Profesor\Profesor.js" />
     <Content Include="View\Profesor\ProfesorVista.aspx" />
     <Content Include="View\Profesor\RegistroAsistencia.aspx" />
+    <Content Include="View\Profesor\RegistroNotas.aspx" />
     <Content Include="View\Profesor\ReporteAsistenciaAlumno.aspx" />
     <Content Include="Web.config" />
   </ItemGroup>
@@ -142,11 +142,6 @@
     </Compile>
     <Compile Include="Components\Path.ascx.designer.cs">
       <DependentUpon>Path.ascx</DependentUpon>
-    </Compile>
-    <Compile Include="Connected Services\ServicioWS\Reference.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>Reference.svcmap</DependentUpon>
     </Compile>
     <Compile Include="Layout\Main.Master.cs">
       <DependentUpon>Main.Master</DependentUpon>
@@ -198,6 +193,13 @@
     </Compile>
     <Compile Include="View\Admin\AnioAcademico\AniosAcademicos.aspx.designer.cs">
       <DependentUpon>AniosAcademicos.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="View\Admin\Cursos\CompetenciasCurso.aspx.cs">
+      <DependentUpon>CompetenciasCurso.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="View\Admin\Cursos\CompetenciasCurso.aspx.designer.cs">
+      <DependentUpon>CompetenciasCurso.aspx</DependentUpon>
     </Compile>
     <Compile Include="View\Admin\Cursos\CursosAdmin.aspx.cs">
       <DependentUpon>CursosAdmin.aspx</DependentUpon>
@@ -261,6 +263,13 @@
     </Compile>
     <Compile Include="View\Alumno\CalendarioAlumno.aspx.designer.cs">
       <DependentUpon>CalendarioAlumno.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="View\Profesor\CalificarProfesor.aspx.cs">
+      <DependentUpon>CalificarProfesor.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="View\Profesor\CalificarProfesor.aspx.designer.cs">
+      <DependentUpon>CalificarProfesor.aspx</DependentUpon>
     </Compile>
     <Compile Include="View\Profesor\CompetenciaProfesor.aspx.cs">
       <DependentUpon>CompetenciaProfesor.aspx</DependentUpon>
@@ -332,6 +341,13 @@
     <Compile Include="View\Profesor\RegistroAsistencia.aspx.designer.cs">
       <DependentUpon>RegistroAsistencia.aspx</DependentUpon>
     </Compile>
+    <Compile Include="View\Profesor\RegistroNotas.aspx.cs">
+      <DependentUpon>RegistroNotas.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="View\Profesor\RegistroNotas.aspx.designer.cs">
+      <DependentUpon>RegistroNotas.aspx</DependentUpon>
+    </Compile>
     <Compile Include="View\Profesor\ReporteAsistenciaAlumno.aspx.cs">
       <DependentUpon>ReporteAsistenciaAlumno.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -342,6 +358,10 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="Layout\Main.Master" />
+    <Content Include="Layout\MainAdmin.Master" />
+    <Content Include="Layout\MainAlumno.master" />
+    <Content Include="Layout\MainProfesor.master" />
+    <Content Include="Layout\MainAdministrador.master" />
     <Content Include="Public\css\bootstrap\bootstrap.rtl.min.css.map" />
     <Content Include="Public\css\bootstrap\bootstrap.rtl.css.map" />
     <Content Include="Public\css\bootstrap\bootstrap.min.css.map" />
@@ -358,6 +378,8 @@
     <Content Include="Public\css\bootstrap\bootstrap-grid.rtl.css.map" />
     <Content Include="Public\css\bootstrap\bootstrap-grid.min.css.map" />
     <Content Include="Public\css\bootstrap\bootstrap-grid.css.map" />
+
+
     <Content Include="Layout\MainAdmin.Master" />
     <Content Include="Layout\MainAlumno.master" />
     <Content Include="Layout\MainProfesor.master" />
@@ -417,6 +439,9 @@
     <Content Include="Connected Services\ServicioWS\WebForm.ServicioWS.eliminarAlumnoResponse.datasource">
       <DependentUpon>Reference.svcmap</DependentUpon>
     </Content>
+    <Content Include="Connected Services\ServicioWS\WebForm.ServicioWS.eliminarCompetenciaResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Content>
     <Content Include="Connected Services\ServicioWS\WebForm.ServicioWS.eliminarIncidenciaResponse.datasource">
       <DependentUpon>Reference.svcmap</DependentUpon>
     </Content>
@@ -472,6 +497,9 @@
       <DependentUpon>Reference.svcmap</DependentUpon>
     </Content>
     <Content Include="Connected Services\ServicioWS\WebForm.ServicioWS.insertarAsistenciasResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Content>
+    <Content Include="Connected Services\ServicioWS\WebForm.ServicioWS.insertarCompetenciaResponse.datasource">
       <DependentUpon>Reference.svcmap</DependentUpon>
     </Content>
     <Content Include="Connected Services\ServicioWS\WebForm.ServicioWS.insertarIncidenciaResponse.datasource">
@@ -561,6 +589,9 @@
     <Content Include="Connected Services\ServicioWS\WebForm.ServicioWS.modificarAsistenciaResponse.datasource">
       <DependentUpon>Reference.svcmap</DependentUpon>
     </Content>
+    <Content Include="Connected Services\ServicioWS\WebForm.ServicioWS.modificarCompetenciaResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Content>
     <Content Include="Connected Services\ServicioWS\WebForm.ServicioWS.modificar_salonResponse.datasource">
       <DependentUpon>Reference.svcmap</DependentUpon>
     </Content>
@@ -621,6 +652,51 @@
     <Content Include="Connected Services\ServicioWS\WebForm.ServicioWS.obtenerNotaResponse.datasource">
       <DependentUpon>Reference.svcmap</DependentUpon>
     </Content>
+    <Content Include="Connected Services\ServicioWS\WebForm.ServicioWS.listarCursosHorarioAlumnosResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Content>
+    <Content Include="Connected Services\ServicioWS\WebForm.ServicioWS.buscarAdminPorTodosCriteriosResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Content>
+    <Content Include="Connected Services\ServicioWS\WebForm.ServicioWS.eliminarAdministrativoResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Content>
+    <Content Include="Connected Services\ServicioWS\WebForm.ServicioWS.generarJustificacionAlumnoResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Content>
+    <Content Include="Connected Services\ServicioWS\WebForm.ServicioWS.insertarAdministrativoResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Content>
+    <Content Include="Connected Services\ServicioWS\WebForm.ServicioWS.modificarAdministrativoResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Content>
+    <Content Include="Connected Services\ServicioWS\WebForm.ServicioWS.obtenerDniDeCodigoAdminResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Content>
+    <Content Include="Connected Services\ServicioWS\WebForm.ServicioWS.reportePDFAsistenciasResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Content>
+    <Content Include="Connected Services\ServicioWS\WebForm.ServicioWS.asignar_profesor_cursResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Content>
+    <Content Include="Connected Services\ServicioWS\WebForm.ServicioWS.eliminarCompetenciaResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Content>
+    <Content Include="Connected Services\ServicioWS\WebForm.ServicioWS.eliminar_curso_salonResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Content>
+    <Content Include="Connected Services\ServicioWS\WebForm.ServicioWS.insertarCompetenciaResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Content>
+    <Content Include="Connected Services\ServicioWS\WebForm.ServicioWS.insertar_curso_salonResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Content>
+    <Content Include="Connected Services\ServicioWS\WebForm.ServicioWS.listar_curso_salonResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Content>
+    <Content Include="Connected Services\ServicioWS\WebForm.ServicioWS.modificarCompetenciaResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Content>
     <None Include="packages.config" />
     <Content Include="Public\js\bootstrap\bootstrap.min.js.map" />
     <Content Include="Public\js\bootstrap\bootstrap.js.map" />
@@ -637,13 +713,9 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Public\multimedia\" />
-    <Folder Include="Scripts\" />
   </ItemGroup>
   <ItemGroup>
     <WCFMetadata Include="Connected Services\" />
-  </ItemGroup>
-  <ItemGroup>
-    <WCFMetadataStorage Include="Connected Services\ServicioWS\" />
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>

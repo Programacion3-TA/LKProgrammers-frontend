@@ -11,6 +11,9 @@ function closeModal(idModal) {
     modalForm.hide();
 }
 
+
+
+
 function showUpdateModal(idmodal) {
 
     titleModal.textContent = "Asistencias actualizadas";
@@ -23,8 +26,6 @@ function showInsertModal(idmodal) {
 
     titleModal.textContent = "Asistencias registrada";
     contentModal.textContent = "Se registraron exitosamente las asistencias para el dia de hoy!.";
-
-
     showModal(idmodal);
 }    
 function mostrarErrorFechas() {
@@ -36,3 +37,4 @@ function mostrarErrorFechas() {
         divError.style.display = "none";
     }
 }
+

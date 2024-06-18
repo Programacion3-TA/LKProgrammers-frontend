@@ -31,7 +31,7 @@ namespace WebForm.View.Profesor
             Button btn = (Button)sender;
             string dniAlumno = btn.CommandArgument;
 
-            alumno alumno = daoServicio.listarAlumnosFiltro(dniAlumno).ToList().FirstOrDefault();
+            alumno alumno = (daoServicio.listarAlumnosFiltro(dniAlumno) ?? new alumno[] { }).ToList().FirstOrDefault();
 
             NombreProfesorTxt.Text = profesor.nombres + " " + profesor.apellidoPaterno + " " + profesor.apellidoMaterno;
             NombreAlumnoTxt.Text = alumno.nombres + " " + alumno.apellidoPaterno + " " + profesor.apellidoMaterno;
@@ -50,12 +50,7 @@ namespace WebForm.View.Profesor
         private void CargarAlumnosSalon(int salon)
         {
             //cargamos
-            List<alumno> alumnos = new List<alumno>();
-            var f = daoServicio.listarAlumnosxsalon(salon);
-            if (f != null)
-            {
-                alumnos = f.ToList();
-            }
+            List<alumno> alumnos = (daoServicio.listarAlumnosxsalon(salon) ?? new alumno[] { }).ToList();
             TransformaNombre(alumnos);
             CargarAlumnos(alumnos);
         }
@@ -68,7 +63,7 @@ namespace WebForm.View.Profesor
         protected void FiltrarAlumnosBtn_Click(object sender, EventArgs e)
         {
             string filtro = FiltrarAlumnosTxt.Text;
-            List<alumno> alumnos = daoServicio.listarAlumnosFiltro(filtro).ToList();
+            List<alumno> alumnos = (daoServicio.listarAlumnosFiltro(filtro) ?? new alumno[]{ }).ToList();
             TransformaNombre(alumnos);
             CargarAlumnos(alumnos);
         }
@@ -114,7 +109,7 @@ namespace WebForm.View.Profesor
             else
             {
                 daoServicio.actualizaIncidencia(incidenciaAlumno);
-                List<incidencia> incidencias = daoServicio.listarIncidencias(DniAlumnoTxt.Text).ToList();
+                List<incidencia> incidencias = (daoServicio.listarIncidencias(DniAlumnoTxt.Text) ?? new incidencia[] { }).ToList();
                 Session["incidencias"] = incidencias;
                 IncidenciasAlumnoGrid.DataSource = incidencias;
                 IncidenciasAlumnoGrid.DataBind();

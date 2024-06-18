@@ -10,11 +10,10 @@
     <div class="card">
         <div class="card-header">
          <h1>Reporte del Alumno</h1>
-
         </div>
          <div class=" d-flex  flex-column gap-4" >
              <div class="container card-body">
-                 <div class="d-flex gap-5 mb-3 flex-wrap">
+                 <div class="d-flex gap-2 gap-md-5 mb-md-3 mb-1 flex-wrap flex-md-nowrap justify-content-center justify-content-md-start">
                      <div>
                          <asp:Label ID="NombreAlumnoLblRep" runat="server" Text="Nombre del alumno:" CssClass="form-label"></asp:Label>
                          <asp:TextBox ID="NombeAlumnoTxtRep" runat="server" Enabled="false" CssClass="form-control"></asp:TextBox>
@@ -27,9 +26,12 @@
                          <asp:Label ID="GradoAlumnoLblRep" runat="server" Text="Grado:" CssClass="form-label"></asp:Label>
                          <asp:TextBox ID="GradoAlumnoTxtRep" runat="server" Enabled="false" CssClass="form-control"></asp:TextBox>
                      </div>
+                     <div>
+
+                     </div>
                  </div>
 
-                 <div class="d-flex gap-5 mb-3">
+                 <div class="d-flex gap-2 gap-md-5 mb-md-3 mb-1 flex-wrap flex-md-nowrap justify-content-center justify-content-md-start">
                      <div>
                          <asp:Label ID="TelefonoAlumnoLblRep" runat="server" Text="Teléfono de contacto:" CssClass="form-label"></asp:Label>
                          <asp:TextBox ID="TelefonoAlumnoTxtRep" runat="server" Enabled="false" CssClass="form-control"></asp:TextBox>
@@ -43,8 +45,8 @@
                          <asp:TextBox ID="SalonAlumnoTxtRep" runat="server" Enabled="false" CssClass="form-control"></asp:TextBox>
                      </div>
                  </div>
-                 <div class="d-flex gap-5 mb-3 justify-content-between">
-                     <div class="d-flex gap-5">
+                 <div class="d-flex gap-2 gap-md-5 mb-md-3 mb-1 flex-wrap flex-md-nowrap justify-content-center justify-content-md-start">
+                 
                         <div>
                             <asp:Label ID="FechaActualLblRep" runat="server" Text="Fecha Actual: " CssClass="form-label"></asp:Label>
                             <asp:TextBox ID="FechaActualTxtRep" runat="server" Enabled="false" CssClass="form-control"></asp:TextBox>
@@ -57,9 +59,8 @@
                             <asp:Label ID="FechaFinReporteLbl" runat="server" Text="Fecha fin de consulta: " CssClass="form-label"></asp:Label>
                             <asp:TextBox ID="FechaFinReporteTxt" runat="server" Enabled="false" CssClass="form-control"></asp:TextBox>
                          </div>
-                     </div>
-                     <div class="align-self-end">
-                     </div>
+                     
+                    
                  </div>
 
              </div>
@@ -73,6 +74,7 @@
                  <HeaderStyle HorizontalAlign="Center"/>
              </asp:GridView>
          </div>
+
          <div class="card-footer d-flex justify-content-between">
             <asp:Button ID="RegresarAsistenciasBtn" runat="server" Text="Regresar" CssClass="btn btn-primary" OnClick="RegresarAsistenciasBtn_Click" />
             <asp:Button runat="server" ID="MostrarReporteBtn" Text="Generar reporte PDF" CssClass="btn btn-secondary"

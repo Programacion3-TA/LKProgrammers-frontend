@@ -7,74 +7,65 @@
 // </generado automáticamente>
 //------------------------------------------------------------------------------
 
-namespace WebForm.View.Login
+namespace WebForm.View.Profesor
 {
 
 
-    public partial class Login
+    public partial class RegistroNotas
     {
 
         /// <summary>
-        /// Control form1.
+        /// Control PanelError.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.HtmlControls.HtmlForm form1;
+        protected global::System.Web.UI.WebControls.Panel PanelError;
 
         /// <summary>
-        /// Control LblUsuario.
+        /// Control GridAlumnos.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Label LblUsuario;
+        protected global::System.Web.UI.WebControls.GridView GridAlumnos;
 
         /// <summary>
-        /// Control TxtUsuario.
+        /// Control CancelaRegistroBtn.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox TxtUsuario;
+        protected global::System.Web.UI.WebControls.Button CancelaRegistroBtn;
 
         /// <summary>
-        /// Control LblContrasenia.
+        /// Control GuardarNotasBtn.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Label LblContrasenia;
+        protected global::System.Web.UI.WebControls.Button GuardarNotasBtn;
 
         /// <summary>
-        /// Control TxtContrasenia.
+        /// Control BtnRegresarAsistencias.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox TxtContrasenia;
+        protected global::System.Web.UI.WebControls.LinkButton BtnRegresarAsistencias;
 
         /// <summary>
-        /// Control BtnIngresar.
+        /// Control LinkButton1.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Button BtnIngresar;
-
-        /// <summary>
-        /// Control ErrorAlert.
-        /// </summary>
-        /// <remarks>
-        /// Campo generado automáticamente.
-        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Label ErrorAlert;
+        protected global::System.Web.UI.WebControls.LinkButton LinkButton1;
     }
 }
