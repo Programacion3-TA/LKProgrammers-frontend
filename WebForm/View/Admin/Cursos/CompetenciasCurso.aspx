@@ -47,7 +47,7 @@
                         <asp:TemplateField HeaderText="Acciones">
                             <ItemTemplate>
                                 <asp:LinkButton ID="BtnEdit" runat="server" Text="Editar" CssClass="btn btn-warning" OnClick="BtnEditar_Click" CommandArgument='<%#Eval("id") %>'/>
-                                <asp:LinkButton ID="BtnDelete" runat="server" Text="Quitar" CssClass="btn btn-danger" OnClick="BtnQuitar_Click" OnClientClick="return confirm('¿Desea eliminar?')" />
+                                <asp:LinkButton ID="BtnDelete" runat="server" Text="Quitar" CssClass="btn btn-danger" OnClick="BtnQuitar_Click" CommandArgument='<%#Eval("id") %>' OnClientClick="return confirm('¿Desea eliminar?')" />
                             </ItemTemplate>
                             <ItemStyle HorizontalAlign="Center" Width="200px" />
                         </asp:TemplateField>

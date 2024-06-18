@@ -39,14 +39,20 @@ namespace WebForm.View.Admin.Cursos
         protected void BtnEditar_Click(object sender, EventArgs e)
         {
             TxtID.Text = ((LinkButton)sender).CommandArgument;
+            competencia comp = new competencia();
+            comp = competenciasCurso.ToList().Find(c => c.id == Int32.Parse(TxtID.Text));
+            TxtDescripcion.Text = comp.descripcion;
+            TxtPeso.Text = comp.peso.ToString();
             CallJavascript("showModalFormCompetencia()");
+            cargarTabla();
         }
 
         protected void BtnQuitar_Click(object sender, EventArgs e)
         {
             string competenciaId = ((LinkButton)sender).CommandArgument;
-            //servicioDAO.eliminarCompetencia(Int32.Parse(competenciaId));
-            cargarTabla();
+            servicioDAO.eliminarCompetencia(Int32.Parse(competenciaId));
+            Response.Redirect(Request.Url.AbsoluteUri);
+
         }
 
         protected void BtnGuardarCompetencia_Click(object sender, EventArgs e)
@@ -55,8 +61,17 @@ namespace WebForm.View.Admin.Cursos
             competencia competencia = new competencia();
             competencia.descripcion = TxtDescripcion.Text;
             competencia.peso = float.Parse(TxtPeso.Text);
-            //competencia.anioEscolarId = anioEscolarId;
-            //servicioDAO.insertarCompentencia(cursoId, competencia);
+            string competenciaId = TxtID.Text;
+            if (competenciaId=="")
+            {
+                servicioDAO.insertarCompetencia(competencia, cursoId, anioEscolarId);
+            }
+            else
+            {
+                competencia.id = Int32.Parse(competenciaId);
+                servicioDAO.modificarCompetencia(competencia, cursoId, anioEscolarId);
+            }
+            
             Response.Redirect(Request.Url.AbsoluteUri);
         }
 
