@@ -70,6 +70,7 @@ namespace WebForm.View.Profesor
             string CursoId = Resultados[1];
 
             competencia[] competencias = daoServicio.listarCompetencias(int.Parse(CursoId));
+
             if(competencias != null)
             {
                 CargarCompetencias(competencias);

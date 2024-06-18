@@ -53,8 +53,8 @@
              </asp:GridView>
          </div>
          <div class="card-footer d-flex justify-content-between">
-             <asp:Button ID="CancelaRegistroBtn" runat="server" Text="Cancelar" OnClick="CancelaRegistroBtn_Click"/>
-             <asp:Button ID="GuardarNotasBtn" runat="server" Text="Guardar notas" OnClick="GuardarNotasBtn_Click"/>
+             <asp:Button ID="CancelaRegistroBtn" runat="server" Text="Cancelar" OnClick="CancelaRegistroBtn_Click" CssClass="btn btn-primary"/>
+             <asp:Button ID="GuardarNotasBtn" runat="server" Text="Guardar notas" OnClick="GuardarNotasBtn_Click" CssClass="btn btn-secondary"/>
          </div>
      </div>
  </div>

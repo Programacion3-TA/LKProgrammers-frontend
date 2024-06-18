@@ -60,7 +60,7 @@ namespace WebForm.View.Profesor
                     nota notaAlumno;
                     if(notasAlumno != null)
                     {
-                        Session["notasnuevas"] = false; //si encontramos notas, significa que es nuevo el registro de notas
+                        Session["notanuevas"] = false; //si encontramos notas, significa que es nuevo el registro de notas
                         notaAlumno = notasAlumno.FirstOrDefault();
                     }
                     else
@@ -73,7 +73,7 @@ namespace WebForm.View.Profesor
                     notas.Add(notaAlumno);
                 }
             }
-            Session["notasnuevas"] = notas.All(nota => nota.calificacion == -1); //si todas las calificaciones fueron -1 porque no existian entonces son notaas nuevas
+            Session["notanuevas"] = notas.All(nota => nota.calificacion == -1); //si todas las calificaciones fueron -1 porque no existian entonces son notaas nuevas
 
             Session["notasCargadas"] = notas;
 
@@ -83,7 +83,7 @@ namespace WebForm.View.Profesor
         protected void CargarNotas()
         {
             //solo se carga cuando las notas no son nuevas
-            if (!(bool)Session["notasnuevas"]) {
+            if (!(bool)Session["notanuevas"]) {
 
                 foreach (GridViewRow fila in GridAlumnos.Rows)
                 {
@@ -153,10 +153,15 @@ namespace WebForm.View.Profesor
                     }
                 }
             }
-            foreach(nota notaAlu in notas)
-            {   
-                daoServicio.insertarNota(notaAlu);
-            }
+
+            if ((bool)Session["notanuevas"])
+                foreach (nota notaAlu in notas)
+                    daoServicio.insertarNota(notaAlu);
+            else
+                foreach (nota notaAlu in notas) 
+                    daoServicio.modificarNota(notaAlu);
+                
+
             CallJavascript("showModal('NotasRegistradasModal')");
         }
         private void CallJavascript(string function)

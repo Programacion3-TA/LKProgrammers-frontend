@@ -3,6 +3,9 @@
     Calificar cursos
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="Styles" runat="server">
+    <style>
+
+    </style>
 </asp:Content>
 <asp:Content ID="Content3" ContentPlaceHolderID="Navusuarios" runat="server">
 </asp:Content>
@@ -36,7 +39,7 @@
                                     />
                                 
                             </ItemTemplate>
-                            <ItemStyle HorizontalAlign="Center" Width="450px" />
+                            <ItemStyle HorizontalAlign="Center" Width="150px" />
                         </asp:TemplateField>
                     </Columns>
                         <HeaderStyle HorizontalAlign="Center"/>
