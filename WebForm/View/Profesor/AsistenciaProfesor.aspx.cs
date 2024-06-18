@@ -85,23 +85,16 @@ namespace WebForm.View.AsistenciaProfesor
             List<DateTime> fechas = (daoServicio.listarFechasAsistenciaSalon(_idsalon) ?? new DateTime[]{ }).ToList();
             List<string> fechasFormato = TransformarFechas(fechas);
             List<object> fechasconFormato = new List<object>();
-            if (f != null)
+            foreach (DateTime fecha in fechas)
             {
-                fechas = f.ToList();
-                fechasFormato = TransformarFechas(fechas);
-                fechasconFormato = new List<object>();
-                //llenamos la lista de objetos
-                foreach (DateTime fecha in fechas)
-                {
-                    object key = new { Fecha = fecha.Date, FechaFormato = fechasFormato[fechas.IndexOf(fecha)] };
-                    fechasconFormato.Add(key);
-                }
-
-                Session["fechas"] = fechas;
-                //se impleemnto para que funcione el filtrado -> mejorar
-                Session["fechasFormato"] = fechasFormato;
-                Session["fechasconFormato"] = fechasconFormato;
+                object key = new { Fecha = fecha.Date, FechaFormato = fechasFormato[fechas.IndexOf(fecha)] };
+                fechasconFormato.Add(key);
             }
+
+            Session["fechas"] = fechas;
+            //se impleemnto para que funcione el filtrado -> mejorar
+            Session["fechasFormato"] = fechasFormato;
+            Session["fechasconFormato"] = fechasconFormato;
             GridAsistenciasFechas.DataSource = fechasconFormato; //verificar el Datafield
             GridAsistenciasFechas.DataBind();
         }
