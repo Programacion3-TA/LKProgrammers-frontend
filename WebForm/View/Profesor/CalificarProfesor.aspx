@@ -31,7 +31,9 @@
                             <ItemTemplate>
                                 <asp:Button runat="server" ID="AsignarNotaBtn" CssClass="btn btn-primary"
                                     Text="Asignar nota"
-                                    OnClick="AsignarNotaBtn_Click"/>
+                                    OnClick="AsignarNotaBtn_Click"
+                                    CommandArgument='<%#Eval("id") %>'
+                                    />
                                 
                             </ItemTemplate>
                             <ItemStyle HorizontalAlign="Center" Width="450px" />
@@ -40,12 +42,11 @@
                         <HeaderStyle HorizontalAlign="Center"/>
                 </asp:GridView>
 
-                <asp:Panel ID="Panel1" runat="server" Visible="true">
-
-                </asp:Panel>
             </div>
         </div>
     </div>
+
+    
 
 </asp:Content>
 <asp:Content ID="Content5" ContentPlaceHolderID="Script" runat="server">

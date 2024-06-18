@@ -55,9 +55,11 @@ namespace WebForm.View.Profesor
 
         protected void AsignarNotaBtn_Click(object sender, EventArgs e)
         {
+            Button button = (Button)sender;
+            string idCompetencia = button.CommandArgument;
             string[] Resultados = CursoDictadoDrpL.SelectedValue.Split('|');
             string salonId = Resultados[0];
-            Response.Redirect("/View/Profesor/RegistroNotas.aspx?idsalon="+salonId);
+            Response.Redirect("/View/Profesor/RegistroNotas.aspx?idsalon="+salonId+"&idcompetencia="+idCompetencia);
 
 
         }

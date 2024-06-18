@@ -358,22 +358,6 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="Layout\Main.Master" />
-    <Content Include="Public\css\bootstrap\bootstrap.rtl.min.css.map" />
-    <Content Include="Public\css\bootstrap\bootstrap.rtl.css.map" />
-    <Content Include="Public\css\bootstrap\bootstrap.min.css.map" />
-    <Content Include="Public\css\bootstrap\bootstrap.css.map" />
-    <Content Include="Public\css\bootstrap\bootstrap-utilities.rtl.min.css.map" />
-    <Content Include="Public\css\bootstrap\bootstrap-utilities.rtl.css.map" />
-    <Content Include="Public\css\bootstrap\bootstrap-utilities.min.css.map" />
-    <Content Include="Public\css\bootstrap\bootstrap-utilities.css.map" />
-    <Content Include="Public\css\bootstrap\bootstrap-reboot.rtl.min.css.map" />
-    <Content Include="Public\css\bootstrap\bootstrap-reboot.rtl.css.map" />
-    <Content Include="Public\css\bootstrap\bootstrap-reboot.min.css.map" />
-    <Content Include="Public\css\bootstrap\bootstrap-reboot.css.map" />
-    <Content Include="Public\css\bootstrap\bootstrap-grid.rtl.min.css.map" />
-    <Content Include="Public\css\bootstrap\bootstrap-grid.rtl.css.map" />
-    <Content Include="Public\css\bootstrap\bootstrap-grid.min.css.map" />
-    <Content Include="Public\css\bootstrap\bootstrap-grid.css.map" />
     <Content Include="Layout\MainAdmin.Master" />
     <Content Include="Layout\MainAlumno.master" />
     <Content Include="Layout\MainProfesor.master" />
@@ -392,6 +376,9 @@
       <DependentUpon>Reference.svcmap</DependentUpon>
     </Content>
     <Content Include="Connected Services\ServicioWS\WebForm.ServicioWS.anioEscolar.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Content>
+    <Content Include="Connected Services\ServicioWS\WebForm.ServicioWS.asignar_profesor_cursResponse.datasource">
       <DependentUpon>Reference.svcmap</DependentUpon>
     </Content>
     <Content Include="Connected Services\ServicioWS\WebForm.ServicioWS.asistencia.datasource">
@@ -428,6 +415,9 @@
       <DependentUpon>Reference.svcmap</DependentUpon>
     </Content>
     <Content Include="Connected Services\ServicioWS\WebForm.ServicioWS.eliminarAlumnoResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Content>
+    <Content Include="Connected Services\ServicioWS\WebForm.ServicioWS.eliminarCompetenciaResponse.datasource">
       <DependentUpon>Reference.svcmap</DependentUpon>
     </Content>
     <Content Include="Connected Services\ServicioWS\WebForm.ServicioWS.eliminarIncidenciaResponse.datasource">
@@ -485,6 +475,9 @@
       <DependentUpon>Reference.svcmap</DependentUpon>
     </Content>
     <Content Include="Connected Services\ServicioWS\WebForm.ServicioWS.insertarAsistenciasResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Content>
+    <Content Include="Connected Services\ServicioWS\WebForm.ServicioWS.insertarCompetenciaResponse.datasource">
       <DependentUpon>Reference.svcmap</DependentUpon>
     </Content>
     <Content Include="Connected Services\ServicioWS\WebForm.ServicioWS.insertarIncidenciaResponse.datasource">
@@ -574,6 +567,9 @@
     <Content Include="Connected Services\ServicioWS\WebForm.ServicioWS.modificarAsistenciaResponse.datasource">
       <DependentUpon>Reference.svcmap</DependentUpon>
     </Content>
+    <Content Include="Connected Services\ServicioWS\WebForm.ServicioWS.modificarCompetenciaResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Content>
     <Content Include="Connected Services\ServicioWS\WebForm.ServicioWS.modificar_salonResponse.datasource">
       <DependentUpon>Reference.svcmap</DependentUpon>
     </Content>
@@ -608,6 +604,37 @@
       <DependentUpon>Reference.svcmap</DependentUpon>
     </Content>
     <Content Include="Connected Services\ServicioWS\WebForm.ServicioWS.verificarUsuarioResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Content>
+    <Content Include="Connected Services\ServicioWS\WebForm.ServicioWS.generarJustificacionAlumnoResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Content>
+    <Content Include="Connected Services\ServicioWS\WebForm.ServicioWS.insertarNotaResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Content>
+    <Content Include="Public\css\bootstrap\bootstrap.rtl.min.css.map" />
+    <Content Include="Public\css\bootstrap\bootstrap.rtl.css.map" />
+    <Content Include="Public\css\bootstrap\bootstrap.min.css.map" />
+    <Content Include="Public\css\bootstrap\bootstrap.css.map" />
+    <Content Include="Public\css\bootstrap\bootstrap-utilities.rtl.min.css.map" />
+    <Content Include="Public\css\bootstrap\bootstrap-utilities.rtl.css.map" />
+    <Content Include="Public\css\bootstrap\bootstrap-utilities.min.css.map" />
+    <Content Include="Public\css\bootstrap\bootstrap-utilities.css.map" />
+    <Content Include="Public\css\bootstrap\bootstrap-reboot.rtl.min.css.map" />
+    <Content Include="Public\css\bootstrap\bootstrap-reboot.rtl.css.map" />
+    <Content Include="Public\css\bootstrap\bootstrap-reboot.min.css.map" />
+    <Content Include="Public\css\bootstrap\bootstrap-reboot.css.map" />
+    <Content Include="Public\css\bootstrap\bootstrap-grid.rtl.min.css.map" />
+    <Content Include="Public\css\bootstrap\bootstrap-grid.rtl.css.map" />
+    <Content Include="Public\css\bootstrap\bootstrap-grid.min.css.map" />
+    <Content Include="Public\css\bootstrap\bootstrap-grid.css.map" />
+    <Content Include="Connected Services\ServicioWS\WebForm.ServicioWS.CURSOS_LIBRES_DEL_ANIOResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Content>
+    <Content Include="Connected Services\ServicioWS\WebForm.ServicioWS.nota.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Content>
+    <Content Include="Connected Services\ServicioWS\WebForm.ServicioWS.obtenerNotaResponse.datasource">
       <DependentUpon>Reference.svcmap</DependentUpon>
     </Content>
     <None Include="packages.config" />
