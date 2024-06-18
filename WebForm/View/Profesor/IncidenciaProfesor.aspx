@@ -36,6 +36,7 @@
                                     CommandArgument='<%#Eval("dni")%>'/>
                                 <asp:Button ID="MostrarInsidenciasBtn" runat="server" Text="Desplegar incidencias"  CssClass =" btn btn-success"
                                     CommandArgument='<%#Eval("dni") + "|"+Eval("nombres") %>' OnClick="MostrarInsidenciasBtn_Click"/>
+                                
                             </ItemTemplate>
                             <ItemStyle HorizontalAlign="Center" Width="450px" />
                         </asp:TemplateField>
