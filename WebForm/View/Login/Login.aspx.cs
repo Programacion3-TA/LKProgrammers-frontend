@@ -5,6 +5,7 @@ using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
 using WebForm.ServicioWS;
+using WebForm.Utils;
 
 namespace WebForm.View.Login
 {
@@ -14,13 +15,31 @@ namespace WebForm.View.Login
         protected void Page_Load(object sender, EventArgs e)
         {
             daoServicio = new LKServicioWebClient();
-            if (Session["Usuario"] != null && Session["Tipo"] != null)
+
+            if (Session["Error"] != null)
             {
-               if (Session["Tipo"] as string == "Administrador")
-                {
+                ErrorAlert.Text =
+                    "<div class=\"alert alert-danger\" role=\"alert\">" +
+                    "   <i class=\"fa fa-exclamation-triangle\" aria-hidden=\"true\"></i>" +
+                    $"  {Session["Error"] as string}" +
+                    "</div>";
+                Session["Error"] = null;
+            }
+
+            if (Session["Usuario"] == null || Session["Tipo"] == null)
+                return;
+
+            switch (Session["Tipo"] as string)
+            {
+                case "Administrador":
                     Response.Redirect("/View/Admin/AnioAcademico/AniosAcademicos.aspx");
-                }
-                Response.Redirect("/View/" + Session["Tipo"] + "/" + Session["Tipo"] + ".aspx");
+                    break;
+                case "Profesor":
+                    Response.Redirect("/View/Profesor/ProfesorVista.aspx");
+                    break;
+                case "Alumno":
+                    Response.Redirect("/View/Alumno/Alumno.aspx");
+                    break;
             }
         }
         protected void BtnIngresar_Click(object sender, EventArgs e)
@@ -31,14 +50,14 @@ namespace WebForm.View.Login
             //redireccionamiento de paginas dependiendo del usuario
             if (user == null) //NO ES NADIE ASI QUE EMITE UN ERROR
             {
-                //implementar estilos de errores con JS
-                
                 TxtUsuario.Text = "";
                 TxtContrasenia.Text = "";
+                Session["Error"] = "El nombre de usuario y/o la contraseña fueron introducidos incorrectamente, o el usuario no existe";
                 Response.Redirect("/View/Login/Login.aspx");
             }
             Session["Usuario"] = user;
             Session["Confetti"] = true;
+            
             if (user is profesor) //ES EL PROFESOR
             {
                 Session["Tipo"] = "Profesor";

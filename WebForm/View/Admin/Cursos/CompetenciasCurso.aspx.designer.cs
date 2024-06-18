@@ -7,92 +7,110 @@
 // </generado automáticamente>
 //------------------------------------------------------------------------------
 
-namespace WebForm.View.AsistenciaAlumno
+namespace WebForm.View.Admin.Cursos
 {
 
 
-    public partial class AsistenciaAlumno
+    public partial class CompetenciasCurso
     {
 
         /// <summary>
-        /// Control MyCustomControl1.
+        /// Control LtCurso.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::WebForm.Components.Path MyCustomControl1;
+        protected global::System.Web.UI.WebControls.Literal LtCurso;
 
         /// <summary>
-        /// Control Cuack.
+        /// Control BtnAgregarCompetencia.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Literal Cuack;
+        protected global::System.Web.UI.WebControls.LinkButton BtnAgregarCompetencia;
 
         /// <summary>
-        /// Control GriAsistenciasAlumnos.
+        /// Control GridTutor.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.GridView GriAsistenciasAlumnos;
+        protected global::System.Web.UI.WebControls.GridView GridTutor;
 
         /// <summary>
-        /// Control InputCalendario.
+        /// Control GridCompetenciasCurso.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Calendar InputCalendario;
+        protected global::System.Web.UI.WebControls.GridView GridCompetenciasCurso;
 
         /// <summary>
-        /// Control InputJustificacionLbl.
+        /// Control LblCode.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Label InputJustificacionLbl;
+        protected global::System.Web.UI.WebControls.Label LblCode;
 
         /// <summary>
-        /// Control InputJustificacion.
+        /// Control TxtID.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox InputJustificacion;
+        protected global::System.Web.UI.WebControls.TextBox TxtID;
 
         /// <summary>
-        /// Control CerrarModalBtn.
+        /// Control LblDesc.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Button CerrarModalBtn;
+        protected global::System.Web.UI.WebControls.Label LblDesc;
 
         /// <summary>
-        /// Control EnviarJustifiBtn.
+        /// Control TxtDescripcion.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Button EnviarJustifiBtn;
+        protected global::System.Web.UI.WebControls.TextBox TxtDescripcion;
 
         /// <summary>
-        /// Control Algo.
+        /// Control LlbPeso.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Label Algo;
+        protected global::System.Web.UI.WebControls.Label LlbPeso;
+
+        /// <summary>
+        /// Control TxtPeso.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.TextBox TxtPeso;
+
+        /// <summary>
+        /// Control BtnGuardarCompetencia.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Button BtnGuardarCompetencia;
     }
 }

@@ -163,7 +163,9 @@ namespace WebForm.View.Profesor
                     RadioButtonList rdlAsistencias = (RadioButtonList)e.Row.FindControl("RadAsistencia"); //control de radiobutton de cada fila
 
                     string dni = DataBinder.Eval(e.Row.DataItem, "dni").ToString();  //accedo  a su valor id guardado
-                    asistencia asistencia=daoServicio.listarAsistenciaFecha(dni, DateTime.Parse(fecha)).ToList().FirstOrDefault();
+                    asistencia asistencia=(daoServicio.listarAsistenciaFecha(dni, DateTime.Parse(fecha)) ?? new asistencia[] { })
+                        .ToList()
+                        .FirstOrDefault();
 
                     List<asistencia> asistencias = (List<asistencia>)Session["asistencias"];
                     asistencias.Add(asistencia);
