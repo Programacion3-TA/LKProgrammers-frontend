@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
 using System.Linq;
+using System.Text.RegularExpressions;
 using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
@@ -91,16 +92,89 @@ namespace WebForm.View.Admin.Salones
             GridCursos.DataSource = dtCursos;
             GridCursos.DataBind();
         }
-
         protected void BtnAgregarCurso_Click(object sender, EventArgs e)
         {
-            // Aquí se maneja la lógica para agregar un nuevo curso.
-            // Ejemplo: Mostrar un formulario modal para ingresar los detalles del curso.
-
-            // Después de agregar, recargar la lista de cursos
-
             CallJavascript("showModalAgregarCurso()");
-            //LoadCursos();
+        }
+        protected void BtnBuscarCurso_Click(object sender, EventArgs e)
+        {
+            string criterioBusqueda = TxtCriterioBusquedaCurso.Text; //Nombre
+            // Lógica para8 buscar cursos por el criterio ingresado
+            DataTable cursos = BuscarCursos(criterioBusqueda);
+            if (cursos != null && cursos.Rows.Count > 0)
+            {
+                GVCursos.DataSource = cursos;
+                GVCursos.DataBind();
+            }
+        }
+        public static string NormalizarTexto(string texto)
+        {
+            string textoNormalizado = texto.ToLower();
+            textoNormalizado = Regex.Replace(textoNormalizado, @"\s+", ""); // Eliminar espacios en blanco
+            textoNormalizado = Regex.Replace(textoNormalizado, @"[áàäâ]", "a");
+            textoNormalizado = Regex.Replace(textoNormalizado, @"[éèëê]", "e");
+            textoNormalizado = Regex.Replace(textoNormalizado, @"[íìïî]", "i");
+            textoNormalizado = Regex.Replace(textoNormalizado, @"[óòöô]", "o");
+            textoNormalizado = Regex.Replace(textoNormalizado, @"[úùüû]", "u");
+            textoNormalizado = Regex.Replace(textoNormalizado, @"[ñ]", "n");
+            return textoNormalizado;
+        }
+        // Método para buscar cursos en la base de datos
+        private DataTable BuscarCursos(string criterio)
+        {
+            // Aquí debes implementar la lógica para buscar cursos en la base de datos
+            // y devolver un DataTable con los resultados.
+            var F = serviciodao.CURSOS_LIBRES_DEL_ANIO();
+            string cs = NormalizarTexto(criterio);
+            List<curso> cursos_list = new List<curso>();
+            DataTable dt = new DataTable();
+            if (F!= null)
+            {
+                cursos_list = F.ToList().FindAll(S => NormalizarTexto(S.nombre).Contains(cs)); //uso de contains para hacer una mejor busqueda
+                dt.Columns.Add("idCurso");
+                dt.Columns.Add("nombreCurso");
+                dt.Columns.Add("descripcion");
+                foreach (curso j in cursos_list){dt.Rows.Add(j.id,j.nombre,j.descripcion);}
+            }
+            return dt;
+        }
+        
+        protected void BtnBuscarHorario_Click(object sender, EventArgs e)
+        {
+            string dia = DDDía.SelectedValue;
+            int horasAReservar = int.Parse(TxtHoras.Text);
+
+            // Lógica para buscar horarios disponibles según el día y las horas a reservar
+            DataTable horariosDisponibles = BuscarHorarios(dia, horasAReservar);
+
+            if (horariosDisponibles != null && horariosDisponibles.Rows.Count > 0)
+            {
+                DDHorariosDisponibles.DataSource = horariosDisponibles;
+                DDHorariosDisponibles.DataTextField = "Horario"; // Campo a mostrar
+                DDHorariosDisponibles.DataValueField = "HorarioId"; // Campo de valor
+                DDHorariosDisponibles.DataBind();
+
+                LblHoariosDisp.Visible = true;
+                DDHorariosDisponibles.Visible = true;
+            }
+        }
+
+        // Método para buscar horarios disponibles en la base de datos
+        private DataTable BuscarHorarios(string dia, int horas)
+        {
+            DataTable dt = new DataTable();
+            return dt;
+        }
+        protected void BtnGuardar_Click(object sender, EventArgs e)
+        {
+            int cursoId = int.Parse(TxtCursoID.Text);
+            string dia = DDDía.SelectedValue;
+            int horarioId = int.Parse(DDHorariosDisponibles.SelectedValue);
+
+            // Lógica para guardar la asignación del curso con el horario seleccionado
+
+            serviciodao.insertar_curso_salon(salonId, horarioId, cursoId);
+            LoadCursos();
         }
 
         protected void BtnEliminarCurso_Click(object sender, EventArgs e)

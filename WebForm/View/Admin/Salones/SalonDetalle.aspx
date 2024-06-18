@@ -84,7 +84,7 @@
             <asp:GridView ID="GridCursos" runat="server" AutoGenerateColumns="false"
                 AllowPaging="true" PageSize="5"
                 CssClass="table table-hover table-responsive table-striped">
-                <Columns>
+                <Columns> 
                     <asp:BoundField DataField="idCurso" HeaderText="ID" />
                     <asp:BoundField DataField="nombreCurso" HeaderText="Nombre" />
                     <asp:TemplateField HeaderText="Acciones">
@@ -155,20 +155,20 @@
 
                         <div class="col-md-12  mb-3">
                             <asp:Label ID="LblBuscarCurso" runat="server" Text="Buscar curso" CssClass="form-label"></asp:Label>
-                            <asp:TextBox ID="TxtCriterioBusquedaCurso" runat="server" CssClass="form-control" Enabled="true" Placeholder="Ingresar nombre o código del curso..."></asp:TextBox>
+                            <asp:TextBox ID="TxtCriterioBusquedaCurso" runat="server" CssClass="form-control" Enabled="true" Placeholder="Ingresar nombre del curso..."></asp:TextBox>
                             <br />
-                            <asp:Button ID="BtnBuscarCurso" runat="server" Text="Buscar Curso" CssClass="btn btn-primary"/>
+                            <asp:Button ID="BtnBuscarCurso" runat="server" Text="Buscar Curso" CssClass="btn btn-primary" OnClick="BtnBuscarCurso_Click"/>
                         </div>
 
                         
                         <div class="col-md-12  mb-3">
                             <asp:GridView ID="GVCursos" runat="server" AllowPaging="true" PageSize="5" AutoGenerateColumns="false" CssClass="table table-hover table-responsive table-striped">
-                                <Columns>
-                                    <asp:BoundField DataField="cursoid" HeaderText="ID" />
-                                    <asp:BoundField DataField="nombre" HeaderText="Nombre" />                                    
+                                <Columns>  
+                                    <asp:BoundField DataField="idCurso" HeaderText="ID" />
+                                    <asp:BoundField DataField="nombreCurso" HeaderText="Nombre" />                                    
                                     <asp:TemplateField>
                                         <ItemTemplate>
-                                            <asp:LinkButton CssClass="btn btn-success" runat="server" Text="<i class='fa-solid fa-check'></i> Seleccionar" CommandArgument='<%# Eval("cursoid") %>'/>
+                                            <asp:LinkButton CssClass="btn btn-success" runat="server" Text="<i class='fa-solid fa-check'></i> Seleccionar" CommandArgument='<%# Eval("idCurso") %>'/>
                                         </ItemTemplate>
                                     </asp:TemplateField>
                                 </Columns>

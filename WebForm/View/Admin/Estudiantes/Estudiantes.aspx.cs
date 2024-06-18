@@ -17,7 +17,7 @@ namespace WebForm.View.Admin.Estudiantes
 
         protected void Page_Load(object sender, EventArgs e)
         {
-            daoservicio = new ServicioWS.LKServicioWebClient();
+            daoservicio = new LKServicioWebClient();
             
             var resultado = daoservicio.listarAlumnos();
             if (resultado != null)
