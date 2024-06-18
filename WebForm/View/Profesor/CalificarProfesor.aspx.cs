@@ -5,6 +5,7 @@ using System.Security.Cryptography.X509Certificates;
 using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
+using System.Text.RegularExpressions;
 using WebForm.ServicioWS;
 
 namespace WebForm.View.Profesor
@@ -56,26 +57,10 @@ namespace WebForm.View.Profesor
         {
             string[] Resultados = CursoDictadoDrpL.SelectedValue.Split('|');
             string salonId = Resultados[0];
-
-            alumno[] alumnos = daoServicio.listarAlumnosxsalon(int.Parse(salonId));
-            if(alumnos != null)
-            {
-                foreach (alumno alumno in alumnos)
-                {
-                    alumno.nombres += " " + alumno.apellidoPaterno + " " + alumno.apellidoMaterno;
-                }
-                CargarAlumnos(alumnos);
-                CallJavascript("showModal('listarAlumnosModal')");
-            }
+            Response.Redirect("/View/Profesor/RegistroNotas.aspx?idsalon="+salonId);
 
 
         }
-        protected void CargarAlumnos(alumno[] alumnos)
-        {
-            List<alumno> alumnosList = alumnos.ToList();
-            GridAlumnos.DataSource= alumnosList;
-            GridAlumnos.DataBind();
-        } 
 
         protected void CursoDictadoDrpL_SelectedIndexChanged(object sender, EventArgs e)
         {
@@ -103,7 +88,68 @@ namespace WebForm.View.Profesor
         private void CallJavascript(string function)
         {
             string script = "window.onload = function() {" + function + "; };";
+            
             ClientScript.RegisterStartupScript(GetType(), "", script, true);
         }
+
+       
+        /*
+
+        protected void CerrarModalBtn_Click(object sender, EventArgs e)
+        {
+            ScriptManager.RegisterStartupScript(this, GetType(), "closeModalScript", "closeModal('listarAlumnosModal');", true);
+        }
+
+        protected void RegistrarNotasBtn_Click(object sender, EventArgs e)
+        {
+
+            List<string> listaNotas = new List<string>();
+
+            foreach(GridViewRow fila in GridAlumnos.Rows)
+            {
+                //evaluamos las filas de datos
+                if(fila.RowType == DataControlRowType.DataRow)
+                {
+                    TextBox notaTxt = (TextBox)fila.FindControl("NotaAlumno");
+                    if(notaTxt != null)
+                    {
+                        try
+                        {
+                            int nota = int.Parse(notaTxt.Text);
+                        }catch(System.Exception exce)
+                        {
+
+                        }
+                         
+                        
+                    }
+                }
+            }
+        }
+
+
+        //arreglar esto de añadir notas
+      /*  protected void NotaAlumno_TextChanged(object sender, EventArgs e)
+        {
+            string regex = @"[\.\-\+e]";
+            TextBox notaAlumno = (TextBox)sender;
+            string nota = notaAlumno.Text;
+            GridViewRow fila = (GridViewRow)notaAlumno.NamingContainer;
+            Label msgErrorFila = (Label)fila.FindControl("msgErrorLabel");
+
+            if (Regex.IsMatch(nota, regex, RegexOptions.IgnoreCase))
+            {
+                msgErrorFila.Visible = false;
+                //le quitamos un etilo
+            }
+            else
+            {
+                msgErrorFila.Visible = true;
+                //le aplicamos un estilo
+
+            }
+
+
+        }*/
     }
 }

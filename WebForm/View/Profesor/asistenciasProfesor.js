@@ -36,3 +36,4 @@ function mostrarErrorFechas() {
         divError.style.display = "none";
     }
 }
+

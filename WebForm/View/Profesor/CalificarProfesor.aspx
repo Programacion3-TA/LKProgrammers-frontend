@@ -39,37 +39,16 @@
                     </Columns>
                         <HeaderStyle HorizontalAlign="Center"/>
                 </asp:GridView>
+
+                <asp:Panel ID="Panel1" runat="server" Visible="true">
+
+                </asp:Panel>
             </div>
         </div>
     </div>
 
-    <div class="modal fade bd-example-modal-lg" id="listarAlumnosModal" tabindex="-1" role="dialog" aria-labelledby="listarAlumnosModalLabel" aria-hidden="true">
-      <div class="modal-dialog modal-lg">
-        <div class="modal-content">
-            <div class="modal-header">
-             Listado de Alumnos
-            </div> 
-            <div class="modal-body">
-
-                <asp:GridView ID="GridAlumnos" runat="server" AutoGenerateColumns="false"
-                    AllowPaging="true" CssClass="table table-hover table-responsive table-striped">
-                    <Columns>
-                        <asp:BoundField DataField="dni" HeaderText="Código del alumno" ItemStyle-HorizontalAlign="Center"  ItemStyle-VerticalAlign="Middle"/>
-                        <asp:BoundField DataField="nombres" HeaderText="Nombre Completo del alumno"  ItemStyle-HorizontalAlign="Center"  ItemStyle-VerticalAlign="Middle"/>
-                        <asp:TemplateField HeaderText="Asignar Nota">
-                            <ItemTemplate>
-                                <asp:TextBox ID="NotaAlumno" runat="server" TextMode="Number" CssClass="form-control"></asp:TextBox>
-                            </ItemTemplate>
-                            <ItemStyle HorizontalAlign="Center" Width="150px" />
-                        </asp:TemplateField>
-                    </Columns>
-                    <HeaderStyle HorizontalAlign="Center"/>
-                </asp:GridView>
-            </div>
-        </div>
-      </div>
-    </div>
 </asp:Content>
 <asp:Content ID="Content5" ContentPlaceHolderID="Script" runat="server">
     <script src="asistenciasProfesor.js"></script>
 </asp:Content>
+ 

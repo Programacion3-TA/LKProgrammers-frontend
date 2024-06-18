@@ -11,34 +11,34 @@ namespace WebForm.View.Profesor
 {
 
 
-    public partial class CalificarProfesor
+    public partial class RegistroNotas
     {
 
         /// <summary>
-        /// Control CursoDictadoDrpL.
+        /// Control GridAlumnos.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.DropDownList CursoDictadoDrpL;
+        protected global::System.Web.UI.WebControls.GridView GridAlumnos;
 
         /// <summary>
-        /// Control CompetenciaCursosGrid.
+        /// Control CancelaRegistroBtn.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.GridView CompetenciaCursosGrid;
+        protected global::System.Web.UI.WebControls.Button CancelaRegistroBtn;
 
         /// <summary>
-        /// Control Panel1.
+        /// Control GuardarNotasBtn.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Panel Panel1;
+        protected global::System.Web.UI.WebControls.Button GuardarNotasBtn;
     }
 }
