@@ -24,6 +24,15 @@ namespace WebForm.View.AsistenciaAlumno
         protected global::WebForm.Components.Path MyCustomControl1;
 
         /// <summary>
+        /// Control Cuack.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Literal Cuack;
+
+        /// <summary>
         /// Control GriAsistenciasAlumnos.
         /// </summary>
         /// <remarks>
@@ -33,13 +42,31 @@ namespace WebForm.View.AsistenciaAlumno
         protected global::System.Web.UI.WebControls.GridView GriAsistenciasAlumnos;
 
         /// <summary>
-        /// Control TextBox1.
+        /// Control InputCalendario.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox TextBox1;
+        protected global::System.Web.UI.WebControls.Calendar InputCalendario;
+
+        /// <summary>
+        /// Control InputJustificacionLbl.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label InputJustificacionLbl;
+
+        /// <summary>
+        /// Control InputJustificacion.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.TextBox InputJustificacion;
 
         /// <summary>
         /// Control CerrarModalBtn.
@@ -58,5 +85,14 @@ namespace WebForm.View.AsistenciaAlumno
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
         protected global::System.Web.UI.WebControls.Button EnviarJustifiBtn;
+
+        /// <summary>
+        /// Control Algo.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label Algo;
     }
 }

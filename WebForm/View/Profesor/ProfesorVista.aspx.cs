@@ -18,7 +18,7 @@ namespace WebForm.View.ProfesorVista
             if (!IsPostBack)
             {
                 
-                cursoHorario[] cursosHorarios = daoServicio.listarCursosPorProfesor(((profesor)Session["Usuario"]).dni);
+                cursoHorario[] cursosHorarios = daoServicio.listarCursosPorProfesor(((profesor)Session["Usuario"]).dni) ?? new cursoHorario[]{ };
                 MostrarCursos(cursosHorarios);
             }
         }

@@ -60,7 +60,7 @@ namespace WebForm.View.CalendarioAlumno
             Dictionary<string, string> bgCursos = new Dictionary<string, string> { };
             Dictionary<string, string> fontCursos = new Dictionary<string, string> { };
             // Datos generales de la tabla
-            const int BloqueMinutos = 30;
+            const int BloqueMinutos = 15;
             tiempo horaInicioJornadaEscolar = new tiempo { hora = 8 };
             tiempo horaFinJornadaEscolar = new tiempo { hora = 12, minuto=30 };
             tiempo horaReceso = new tiempo { hora = 10 };
@@ -99,7 +99,7 @@ namespace WebForm.View.CalendarioAlumno
                 }
             }
 
-            Func<int, string> horasAFormato = (int tiempoEnMinutos) => $"{tiempoEnMinutos / 60:D2}:{tiempoEnMinutos % 60:D2} - {(tiempoEnMinutos + 30) / 60:D2}:{(tiempoEnMinutos + 30) % 60:D2}";
+            Func<int, string> horasAFormato = (int tiempoEnMinutos) => $"{tiempoEnMinutos / 60:D2}:{tiempoEnMinutos % 60:D2} - {(tiempoEnMinutos + BloqueMinutos) / 60:D2}:{(tiempoEnMinutos + BloqueMinutos) % 60:D2}";
             string html = "";
             foreach(KeyValuePair<int, Dictionary<diaSemana, string>> parHoraDatos in datosCalendario)
             {
