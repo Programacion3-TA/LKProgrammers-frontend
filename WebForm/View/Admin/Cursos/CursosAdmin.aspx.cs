@@ -90,6 +90,13 @@ namespace WebForm.View.Admin.Cursos
 
         }
 
+        protected void BtnCompetencias_Click(object sender, EventArgs e)
+        {
+            Button btn = (Button)sender;
+            int id = int.Parse(btn.CommandArgument);
+            Response.Redirect("CompetenciasCurso.aspx?curso=" + id);
+        }
+
         private void CallJavascript(string function)
         {
             string script = "window.onload = function() {" + function + "; };";

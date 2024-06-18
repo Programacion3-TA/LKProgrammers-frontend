@@ -7,11 +7,11 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace WebForm.View.Admin.Estudiantes
+namespace WebForm.View.Admin.Administrativo
 {
 
 
-    public partial class Estudiantes
+    public partial class AdministrativoAdmin
     {
 
         /// <summary>
@@ -51,31 +51,22 @@ namespace WebForm.View.Admin.Estudiantes
         protected global::System.Web.UI.WebControls.LinkButton BtnRestaurar;
 
         /// <summary>
-        /// LinkButton1 control.
+        /// BtnNuevo control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.LinkButton LinkButton1;
+        protected global::System.Web.UI.WebControls.LinkButton BtnNuevo;
 
         /// <summary>
-        /// GridAlumnos control.
+        /// GridAdministrativo control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.GridView GridAlumnos;
-
-        /// <summary>
-        /// LblNoAlumnos control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Label LblNoAlumnos;
+        protected global::System.Web.UI.WebControls.GridView GridAdministrativo;
 
         /// <summary>
         /// LblCode control.
@@ -294,31 +285,31 @@ namespace WebForm.View.Admin.Estudiantes
         protected global::System.Web.UI.WebControls.TextBox TxtFechaNac;
 
         /// <summary>
-        /// LblGrado control.
+        /// LblPuesto control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Label LblGrado;
+        protected global::System.Web.UI.WebControls.Label LblPuesto;
 
         /// <summary>
-        /// SLGrado control.
+        /// TxtPuesto control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.DropDownList SLGrado;
+        protected global::System.Web.UI.WebControls.TextBox TxtPuesto;
 
         /// <summary>
-        /// Button1 control.
+        /// BtnGuardar control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Button Button1;
+        protected global::System.Web.UI.WebControls.Button BtnGuardar;
 
         /// <summary>
         /// LblWarning control.

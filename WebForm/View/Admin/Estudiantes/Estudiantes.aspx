@@ -1,4 +1,4 @@
-﻿<%@ Page EnableEventValidation="true" Title="" Language="C#" MasterPageFile="~/Layout/MainAdministrador.Master" AutoEventWireup="true" CodeBehind="Estudiantes.aspx.cs" Inherits="WebForm.View.Admin.Estudiantes.Estudiantes" %>
+﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Layout/MainAdministrador.Master" AutoEventWireup="true" CodeBehind="Estudiantes.aspx.cs" Inherits="WebForm.View.Admin.Estudiantes.Estudiantes" EnableEventValidation="false"%>
 <asp:Content ID="Content1" ContentPlaceHolderID="Title" runat="server">
     Registro de Estudiantes
 </asp:Content>
@@ -18,10 +18,37 @@
     <div class="mx-auto d-flex flex-column justify-content-center">
         <h2 class="px-2">Estudiantes</h2>
 
+        <hr />
+
+        <div class="container row">
+            <div class="col-md-3">
+                <!-- Columna -->
+                <asp:Label ID="LblBuscar" runat="server" Text="Buscar estudiante: " CssClass="form-label" style="font-size: 20px;"></asp:Label>
+            </div>
+            <div class="col-md-6">
+                <!-- Columna -->                    
+                <asp:TextBox ID="TxtCriterioBusqueda" runat="server" CssClass="form-control" Enabled="true" Placeholder="Ingresar nombres, apellidos, DNI o código de estudiante..."></asp:TextBox>
+        
+            </div>
+            <div class="col-md-2">
+                <!-- Columna -->                    
+                    <asp:LinkButton ID="LkBtnBuscar" runat="server" Text=" Buscar"
+                        CssClass="btn btn-primary" OnClick="LkBtnBuscar_Click"/>
+            </div>
+        </div>
+        <hr />
+
         <div class="container">
-            <!--Boton de agregar un alumno al colegio-->
+            
             <div class="container row">
-                <div class="text-end p-3 mx-auto">
+
+                <div class="p-3 mx-auto col-md-6">
+                    <!-- Columna -->
+                    <asp:LinkButton ID="BtnRestaurar" runat="server" Text="Mostrar todos"
+                        CssClass="btn btn-outline-success" Visible="false" OnClick="BtnRestaurar_Click"/>                                
+                </div>
+
+                <div class="text-end p-3 mx-auto col-md-6">
                     <asp:LinkButton ID="LinkButton1" runat="server" Text="<i class='fas fa-plus pe-2'> </i> Agregar Nuevo Estudiante"
                         CssClass="btn btn-success"
                         OnClick="BtnNuevo_Click"
@@ -32,7 +59,8 @@
             <div class="container row">
                 <asp:GridView ID="GridAlumnos" runat="server" AutoGenerateColumns="false"
                     AllowPaging="true" PageSize="5"
-                    CssClass="table table-hover table-responsive table-striped">
+                    CssClass="table table-hover table-responsive table-striped"
+                    OnPageIndexChanging="GridAlumnos_PageIndexChanging">
                     <Columns>
                         <asp:BoundField DataField="codigoAlumno" HeaderText="Codigo"/>
                         <asp:BoundField DataField="dni" HeaderText="Dni" />
@@ -51,10 +79,11 @@
                         </asp:TemplateField>
                     </Columns>
                 </asp:GridView>
+                <asp:Label ID="LblNoAlumnos" runat="server" Text="No se han encontrado alumnos." CssClass="form-label" style="font-size: 20px;" Visible= "false"></asp:Label>
             </div>
         </div>
 
-        <!--Modal Alumno: Agregar-->
+        <!--Modal Alumno: Agregar, edita, ver -->
         <div id="modalAgregarEstudiante" class="modal" tabindex="-1">
             <div class="modal-dialog">
                 <div class="modal-content">
@@ -157,26 +186,35 @@
         </div>
     </div>
 
+
+    <!-- Modal (Avisos) -->
+    <div id="modalWarning" class="modal" tabindex="-1">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title">
+                        <asp:Label ID="LblWarning" runat="server" CssClass="form-label"></asp:Label>
+                    </h5>                    
+                </div>
+                <div class="modal-body">
+                    <div class="container p-3 ">
+                        <div class="col-md-12  mb-3">
+                            <asp:Label ID="LblMensaje" runat="server" CssClass="form-label"></asp:Label>
+                        </div>
+                     </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cerrar</button>
+                    <asp:Button ID="BtnAceptarEliminar" runat="server" Text="Eliminar" CssClass="btn btn-primary"
+                        OnClick="BtnAceptarEliminar_Click"/>
+                </div>
+            </div>
+        </div>
+    </div>
     
 </asp:Content>
 
 <asp:Content ID="Content5" ContentPlaceHolderID="Script" runat="server">
    <script src="EstudianteAgregar.js"></script>
 </asp:Content>
-
-<asp:Content ID="Content6" ContentPlaceHolderID="Navusuarios" runat="server">
-  <script src="EstudianteAgregar.js"></script>
-</asp:Content>
-
-
-
-
-
-
-
-
-
-
-
-
 

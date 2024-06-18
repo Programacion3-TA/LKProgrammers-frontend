@@ -103,8 +103,11 @@
     <Content Include="Public\js\bootstrap\bootstrap.js" />
     <Content Include="Public\js\bootstrap\bootstrap.min.js" />
     <Content Include="Public\js\MyNotification.js" />
+    <Content Include="View\Admin\Administrativo\Administrativo.js" />
+    <Content Include="View\Admin\Administrativo\AdministrativoAdmin.aspx" />
     <Content Include="View\Admin\AnioAcademico\AniosAcademicos.aspx" />
     <Content Include="View\Admin\AnioAcademico\AnioAcademico.js" />
+    <Content Include="View\Admin\Cursos\CompetenciasCurso.aspx" />
     <Content Include="View\Admin\Cursos\Curso.js" />
     <Content Include="View\Admin\Cursos\CursosAdmin.aspx" />
     <Content Include="View\Admin\Estudiantes\Estudiantes.aspx" />
@@ -186,12 +189,26 @@
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Utils\MyReact.cs" />
+    <Compile Include="View\Admin\Administrativo\AdministrativoAdmin.aspx.cs">
+      <DependentUpon>AdministrativoAdmin.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="View\Admin\Administrativo\AdministrativoAdmin.aspx.designer.cs">
+      <DependentUpon>AdministrativoAdmin.aspx</DependentUpon>
+    </Compile>
     <Compile Include="View\Admin\AnioAcademico\AniosAcademicos.aspx.cs">
       <DependentUpon>AniosAcademicos.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
     <Compile Include="View\Admin\AnioAcademico\AniosAcademicos.aspx.designer.cs">
       <DependentUpon>AniosAcademicos.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="View\Admin\Cursos\CompetenciasCurso.aspx.cs">
+      <DependentUpon>CompetenciasCurso.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="View\Admin\Cursos\CompetenciasCurso.aspx.designer.cs">
+      <DependentUpon>CompetenciasCurso.aspx</DependentUpon>
     </Compile>
     <Compile Include="View\Admin\Cursos\CursosAdmin.aspx.cs">
       <DependentUpon>CursosAdmin.aspx</DependentUpon>
@@ -372,7 +389,13 @@
     <Content Include="Connected Services\ServicioWS\WebForm.ServicioWS.anioEscolar.datasource">
       <DependentUpon>Reference.svcmap</DependentUpon>
     </Content>
+    <Content Include="Connected Services\ServicioWS\WebForm.ServicioWS.asignar_profesor_cursResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Content>
     <Content Include="Connected Services\ServicioWS\WebForm.ServicioWS.asistencia.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Content>
+    <Content Include="Connected Services\ServicioWS\WebForm.ServicioWS.buscarAdminPorTodosCriteriosResponse.datasource">
       <DependentUpon>Reference.svcmap</DependentUpon>
     </Content>
     <Content Include="Connected Services\ServicioWS\WebForm.ServicioWS.competencia.datasource">
@@ -399,7 +422,13 @@
     <Content Include="Connected Services\ServicioWS\WebForm.ServicioWS.elimar_anio_escolarResponse.datasource">
       <DependentUpon>Reference.svcmap</DependentUpon>
     </Content>
+    <Content Include="Connected Services\ServicioWS\WebForm.ServicioWS.eliminarAdministrativoResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Content>
     <Content Include="Connected Services\ServicioWS\WebForm.ServicioWS.eliminarAlumnoResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Content>
+    <Content Include="Connected Services\ServicioWS\WebForm.ServicioWS.eliminarCompetenciaResponse.datasource">
       <DependentUpon>Reference.svcmap</DependentUpon>
     </Content>
     <Content Include="Connected Services\ServicioWS\WebForm.ServicioWS.eliminarIncidenciaResponse.datasource">
@@ -412,6 +441,9 @@
       <DependentUpon>Reference.svcmap</DependentUpon>
     </Content>
     <Content Include="Connected Services\ServicioWS\WebForm.ServicioWS.eliminar_cursosResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Content>
+    <Content Include="Connected Services\ServicioWS\WebForm.ServicioWS.eliminar_curso_salonResponse.datasource">
       <DependentUpon>Reference.svcmap</DependentUpon>
     </Content>
     <Content Include="Connected Services\ServicioWS\WebForm.ServicioWS.eliminar_salonResponse.datasource">
@@ -444,6 +476,9 @@
     <Content Include="Connected Services\ServicioWS\WebForm.ServicioWS.incidencia.datasource">
       <DependentUpon>Reference.svcmap</DependentUpon>
     </Content>
+    <Content Include="Connected Services\ServicioWS\WebForm.ServicioWS.insertarAdministrativoResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Content>
     <Content Include="Connected Services\ServicioWS\WebForm.ServicioWS.insertarAlumnoResponse.datasource">
       <DependentUpon>Reference.svcmap</DependentUpon>
     </Content>
@@ -451,6 +486,9 @@
       <DependentUpon>Reference.svcmap</DependentUpon>
     </Content>
     <Content Include="Connected Services\ServicioWS\WebForm.ServicioWS.insertarAsistenciasResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Content>
+    <Content Include="Connected Services\ServicioWS\WebForm.ServicioWS.insertarCompetenciaResponse.datasource">
       <DependentUpon>Reference.svcmap</DependentUpon>
     </Content>
     <Content Include="Connected Services\ServicioWS\WebForm.ServicioWS.insertarIncidenciaResponse.datasource">
@@ -463,6 +501,9 @@
       <DependentUpon>Reference.svcmap</DependentUpon>
     </Content>
     <Content Include="Connected Services\ServicioWS\WebForm.ServicioWS.insertar_cursosResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Content>
+    <Content Include="Connected Services\ServicioWS\WebForm.ServicioWS.insertar_curso_salonResponse.datasource">
       <DependentUpon>Reference.svcmap</DependentUpon>
     </Content>
     <Content Include="Connected Services\ServicioWS\WebForm.ServicioWS.insertar_new_ageResponse.datasource">
@@ -501,6 +542,9 @@
     <Content Include="Connected Services\ServicioWS\WebForm.ServicioWS.listarCompetenciasResponse.datasource">
       <DependentUpon>Reference.svcmap</DependentUpon>
     </Content>
+    <Content Include="Connected Services\ServicioWS\WebForm.ServicioWS.listarCursosHorarioAlumnosResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Content>
     <Content Include="Connected Services\ServicioWS\WebForm.ServicioWS.listarCursosPorAlumnoResponse.datasource">
       <DependentUpon>Reference.svcmap</DependentUpon>
     </Content>
@@ -525,10 +569,22 @@
     <Content Include="Connected Services\ServicioWS\WebForm.ServicioWS.listarUsuariosResponse.datasource">
       <DependentUpon>Reference.svcmap</DependentUpon>
     </Content>
+    <Content Include="Connected Services\ServicioWS\WebForm.ServicioWS.listar_curso_salonResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Content>
+    <Content Include="Connected Services\ServicioWS\WebForm.ServicioWS.modificarAdministrativoResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Content>
     <Content Include="Connected Services\ServicioWS\WebForm.ServicioWS.modificarAsistenciaResponse.datasource">
       <DependentUpon>Reference.svcmap</DependentUpon>
     </Content>
+    <Content Include="Connected Services\ServicioWS\WebForm.ServicioWS.modificarCompetenciaResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Content>
     <Content Include="Connected Services\ServicioWS\WebForm.ServicioWS.modificar_salonResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Content>
+    <Content Include="Connected Services\ServicioWS\WebForm.ServicioWS.obtenerDniDeCodigoAdminResponse.datasource">
       <DependentUpon>Reference.svcmap</DependentUpon>
     </Content>
     <Content Include="Connected Services\ServicioWS\WebForm.ServicioWS.obtenerPaginaCursoResponse.datasource">
@@ -544,6 +600,9 @@
       <DependentUpon>Reference.svcmap</DependentUpon>
     </Content>
     <Content Include="Connected Services\ServicioWS\WebForm.ServicioWS.profesor.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Content>
+    <Content Include="Connected Services\ServicioWS\WebForm.ServicioWS.reportePDFAsistenciasResponse.datasource">
       <DependentUpon>Reference.svcmap</DependentUpon>
     </Content>
     <Content Include="Connected Services\ServicioWS\WebForm.ServicioWS.Reporte_general_notas_de_alumnoResponse.datasource">

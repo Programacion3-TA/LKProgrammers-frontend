@@ -27,15 +27,14 @@
                     <div class="d-flex gap-3 border-2 flex-column card-body">
                         <div class="d-flex gap-3 w-75" >
                             <div>
-                              <asp:Label ID="FechaIniSelecLbl" runat="server" Text="Label" CssClass="form-check-label">Fecha Inicial:</asp:Label>
-                              <asp:TextBox ID="FechaIniTxt" runat="server" CssClass="form-control" Enabled="false"></asp:TextBox>
-
+                                <!--Falta agregar advertencias de no ingresar correcto las fechas-->
+                              <asp:Label ID="FechaIniSelecLbl" runat="server" Text="Label" CssClass="form-check-label" Font-Bold="true">Fecha Inicial:</asp:Label>
+                              <asp:TextBox ID="FechaIniTxt" runat="server" CssClass="form-control" TextMode="Date"></asp:TextBox>
                             </div>
                             <div>
-                                <asp:Label ID="FechFinSelectLbl" runat="server" Text="Label" CssClass="form-check-label">Fecha Final:</asp:Label>
-                                <asp:TextBox ID="FechaFinalTxt" runat="server" CssClass="form-control" Enabled="false"></asp:TextBox>
+                                <asp:Label ID="FechFinSelectLbl" runat="server" Text="Label" CssClass="form-check-label" Font-Bold="true">Fecha Final:</asp:Label>
+                                <asp:TextBox ID="FechaFinalTxt" runat="server" CssClass="form-control" TextMode="Date"></asp:TextBox>
                             </div>
-                            <asp:Button ID="AsignarFechasBtn" runat="server" Text="Seleccionar Fechas" CssClass="btn btn-warning h-50 align-self-end" OnClick="AsignarFechasBtn_Click" />
                         </div>
                         <div class="d-flex gap-4">
                             <asp:DropDownList ID="AlumnosDrpDown" runat="server" CssClass="form-select" DataTextField="nombres" DataValueField="dni">
@@ -120,42 +119,7 @@
 
 
     <!--Modal para el ingreso de fechas-->
-    <div class="modal fade" id="fechasReporteModal" tabindex="-1" role="dialog" aria-labelledby="fechasReporteModalLabel" aria-hidden="true"
-        >
-        <asp:ScriptManager ID="ScriptManager1" runat="server"></asp:ScriptManager>
-        <div class="modal-dialog" role="document">
-            <div class="modal-content">
-                <div class="modal-header" style="background:#333">
-                    <h5 class="modal-title" id="fechasReporteModalLabel" style="color:#fff">Seleccione las fechas</h5>
-                       
-                </div>
-                <asp:Label ID="msgErrorFechas" runat="server" Text="Label" CssClass="erroMsg">¡Las fecha inicial es posterior a la fecha final!</asp:Label>
-                <div class="modal-body d-flex gap-5" id="modalBody" style="overflow-x:scroll">
-                      <div class="d-flex flex-column gap-1">
-                          <asp:Label ID="fechaIniLbl" runat="server" Text="Label" Font-Bold="true">Seleccione la fecha inicial:</asp:Label>
-                          <asp:UpdatePanel ID="UpdatePanel1" runat="server">
-                              <ContentTemplate>
-                                <asp:Calendar ID="fechaIniCalen" runat="server"></asp:Calendar>
-                              </ContentTemplate>
-                          </asp:UpdatePanel>
-                      </div>
-                      <div class="d-flex flex-column gap-1">
-                          <asp:Label ID="fechaFinLbl" runat="server" Text="Label" Font-Bold="true">Selecione la fecha final:</asp:Label>
-                          <asp:UpdatePanel ID="UpdatePanel2" runat="server">
-                              <ContentTemplate>
-                                <asp:Calendar ID="fechaFinCalen" runat="server"></asp:Calendar>
-                              </ContentTemplate>
-                          </asp:UpdatePanel>
-                      </div>
-                </div>
-                <div class="modal-footer">
-                    <asp:Button ID="SalirFechasBtn" runat="server" Text="Salir" CssClass="btn btn-secondary" OnClick="SalirFechasBtn_Click"/>
-
-                        <asp:Button ID="SelectFechasBtn" runat="server" Text="Seleccionar Fechas" CssClass="btn btn-success" OnClick="SelectFechasBtn_Click"/>
-                </div>
-            </div>
-        </div>
-    </div>
+  
 
 
 </asp:Content>

@@ -87,7 +87,6 @@
                     <div class="ms-3">
                         <asp:Label ID="nombreUsuarioLbl" runat="server" Text="" CssClass="user_styles" ForeColor="White"></asp:Label>
                         <asp:ContentPlaceHolder ID="NombreUsuario" runat="server">
-
                         </asp:ContentPlaceHolder>
                     </div>
                 </div>

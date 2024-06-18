@@ -1,7 +1,7 @@
-﻿function showModalFormAgregarEstudiante() {
-    var modalForm = new bootstrap.Modal(document.getElementById('modalAgregarEstudiante'));
+﻿function showModalFormAdministrativo() {
+    var modalForm = new bootstrap.Modal(document.getElementById('modalAdministrativo'));
     modalForm.show();
-}     
+}
 
 function showModalFormWarning() {
     var modalForm = new bootstrap.Modal(document.getElementById('modalWarning'));

@@ -8,6 +8,8 @@
 </asp:Content>
 <asp:Content ID="Content3" ContentPlaceHolderID="Navegacion" runat="server">
     <!--bar de navegacion para administradores-->
+     <b class="text-white">Académico</b>
+    <hr />
     <li class="nav-item mb-1">
         <a href="/View/Admin/AnioAcademico/AniosAcademicos.aspx">
             <i class=" fa-solid fas fa-calendar-alt"></i>
@@ -29,6 +31,10 @@
         </a>
     </li>
 
+    <hr />
+    <b class="text-white">Usuario</b>
+    <hr />
+
     <li class="nav-item mb-1">
         <a href="/View/Admin/Profesores/Profesores.aspx">
             <i class="fa-solid fa-person-chalkboard"></i>
@@ -42,10 +48,20 @@
             Estudiantes
         </a>
     </li>    
+
+    <li class="nav-item mb-1">
+    <a href="/View/Admin/Administrativo/AdministrativoAdmin.aspx">
+        <i class="fa-solid fa-user-cog"></i>
+        Personal Administrativo
+    </a>
+    </li>   
+    <hr />
 </asp:Content>
 
 <asp:Content ID="Content4" ContentPlaceHolderID="ImagenPerfil" runat="server">
-    <asp:ContentPlaceHolder ID="ImagenPerfil" runat="server"></asp:ContentPlaceHolder> 
+    <asp:ContentPlaceHolder ID="ImagenPerfil" runat="server">
+        <i class="fas fa-user text-white"></i>
+    </asp:ContentPlaceHolder> 
 </asp:Content>
 
 <asp:Content ID="Content5" ContentPlaceHolderID="Navusuarios" runat="server">
@@ -58,3 +74,11 @@
 <asp:Content ID="Content7" ContentPlaceHolderID="Script" runat="server">
 <asp:ContentPlaceHolder ID="Script" runat="server"></asp:ContentPlaceHolder>
 </asp:Content>
+
+<asp:Content ID="Content8" ContentPlaceHolderID="NombreUsuario" runat="server">
+    <!-- Nombre del usuario -->
+     <asp:Label ID="LblNombreUsuario" runat="server" CssClass="form-title-text text-white">
+    </asp:Label>
+
+</asp:Content>
+

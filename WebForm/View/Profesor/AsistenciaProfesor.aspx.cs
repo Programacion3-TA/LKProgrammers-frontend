@@ -85,22 +85,25 @@ namespace WebForm.View.AsistenciaProfesor
             List<DateTime> fechas = (daoServicio.listarFechasAsistenciaSalon(_idsalon) ?? new DateTime[]{ }).ToList();
             List<string> fechasFormato = TransformarFechas(fechas);
             List<object> fechasconFormato = new List<object>();
-
-            //llenamos la lista de objetos
-            foreach(DateTime fecha in fechas)
+            if (f != null)
             {
-                object key = new { Fecha = fecha.Date, FechaFormato = fechasFormato[fechas.IndexOf(fecha)] };
-                fechasconFormato.Add(key);
-            }
+                fechas = f.ToList();
+                fechasFormato = TransformarFechas(fechas);
+                fechasconFormato = new List<object>();
+                //llenamos la lista de objetos
+                foreach (DateTime fecha in fechas)
+                {
+                    object key = new { Fecha = fecha.Date, FechaFormato = fechasFormato[fechas.IndexOf(fecha)] };
+                    fechasconFormato.Add(key);
+                }
 
-            Session["fechas"] = fechas;
-            //se impleemnto para que funcione el filtrado -> mejorar
-            Session["fechasFormato"] = fechasFormato;
-            Session["fechasconFormato"] = fechasconFormato;
+                Session["fechas"] = fechas;
+                //se impleemnto para que funcione el filtrado -> mejorar
+                Session["fechasFormato"] = fechasFormato;
+                Session["fechasconFormato"] = fechasconFormato;
+            }
             GridAsistenciasFechas.DataSource = fechasconFormato; //verificar el Datafield
             GridAsistenciasFechas.DataBind();
-
-
         }
         protected List<string> TransformarFechas(List<DateTime> fechas)
         {
@@ -194,11 +197,21 @@ namespace WebForm.View.AsistenciaProfesor
         protected void AsistenciasAlumnoBtn_Click(object sender, EventArgs e)
         {
 
-            if (!string.IsNullOrEmpty(FechaFinalTxt.Text) && !string.IsNullOrEmpty(FechaIniTxt.Text))
+
+
+            if (!string.IsNullOrEmpty(FechaFinalTxt.Text) && !string.IsNullOrEmpty(FechaIniTxt.Text) )
             {
-                Response.Redirect("/View/Profesor/ReporteAsistenciaAlumno.aspx?dniAlu="+AlumnosDrpDown.Text+"&fechaIni="+FechaIniTxt.Text+"&fechaFin="+FechaFinalTxt.Text);
+                DateTime fechaInicialDate = DateTime.Parse(FechaIniTxt.Text).Date;
+                DateTime fechaFinalDate = DateTime.Parse(FechaFinalTxt.Text).Date;
+
+                if(VerificarFechas(fechaInicialDate,fechaFinalDate))
+                Response.Redirect("/View/Profesor/ReporteAsistenciaAlumno.aspx?dniAlu="+AlumnosDrpDown.Text+"&fechaIni="+fechaInicialDate.ToString()+"&fechaFin="+fechaFinalDate.ToString());
             }
             
+        }
+        protected bool VerificarFechas(DateTime fechaIni,DateTime fechaFin)
+        {
+            return fechaIni < fechaFin;
         }
 
         protected void CerrarModalIncidenciaBtn_Click(object sender, EventArgs e)
@@ -206,30 +219,7 @@ namespace WebForm.View.AsistenciaProfesor
 
         }
 
-        protected void AsignarFechasBtn_Click(object sender, EventArgs e)
-        {
-            msgErrorFechas.Visible = false;
-            CallJavascript("showModal('fechasReporteModal')");
-          //  string script = "mostrarErrorFechas()";
-           // ClientScript.RegisterStartupScript(this.GetType(), "MostrarErrorFechas", script,true);
-        }
-
-        protected void SelectFechasBtn_Click(object sender, EventArgs e)
-        {
-           
-            if(fechaFinCalen.SelectedDate <= fechaIniCalen.SelectedDate)
-            {
-                msgErrorFechas.Visible = true;
-                CallJavascript("showModal('fechasReporteModal')");
-            }
-            else
-            {
-                FechaFinalTxt.Text = fechaFinCalen.SelectedDate.Date.ToString().Split(' ')[0];
-                FechaIniTxt.Text = fechaIniCalen.SelectedDate.Date.ToString().Split(' ')[0];
-            }
-
-        }
-
+      
         protected void SalirFechasBtn_Click(object sender, EventArgs e)
         {
         }

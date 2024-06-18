@@ -14,19 +14,22 @@ namespace WebForm.View.Admin.Salones
 {
     public partial class SalonesAdmin : System.Web.UI.Page
     {
-        private ServicioWS.LKServicioWebClient serviciodao;
+        private LKServicioWebClient serviciodao;
         private BindingList<salon> salones;
+
         protected void Page_Load(object sender, EventArgs e)
         {
-            serviciodao = new ServicioWS.LKServicioWebClient();
-            salones = new BindingList<salon>(serviciodao.listarSalones());
-            cargarTabla();
-            cargarProfesores();
-            cargarAnisoEscolares();
+            serviciodao = new LKServicioWebClient();
+            if (!IsPostBack)
+            {
+                cargarTabla();
+                cargarProfesores();
+                cargarAnisoEscolares();
+            }
         }
+
         private void cargarAnisoEscolares()
         {
-
             var list = serviciodao.listarAnioEscolarVigente().ToList();
             BindingList<anioEscolar> anios = list != null ? new BindingList<anioEscolar>(list) : new BindingList<anioEscolar>();
 
@@ -35,9 +38,9 @@ namespace WebForm.View.Admin.Salones
             DDAnioEscolar.DataTextField = "nombre";
             DDAnioEscolar.DataBind();
         }
+
         private void cargarProfesores()
         {
-
             var list = serviciodao.listarProfesores().ToList();
             BindingList<profesor> profesores = list != null ? new BindingList<profesor>(list) : new BindingList<profesor>();
 
@@ -46,12 +49,12 @@ namespace WebForm.View.Admin.Salones
             DDTutor.DataTextField = "nombres";
             DDTutor.DataBind();
         }
+
         private void cargarTabla()
         {
-
             var f = serviciodao.listarSalones();
             salones = new BindingList<salon>();
-            if(f != null)
+            if (f != null)
             {
                 salones = new BindingList<salon>(f);
             }
@@ -59,48 +62,32 @@ namespace WebForm.View.Admin.Salones
             GridSalones.DataBind();
         }
 
-
         protected void BtnAgregar_Click(object sender, EventArgs e)
         {
             TxtCode.Text = "";
             TxtCapMaxima.Text = "0";
             TxtCapMinima.Text = "0";
+            DDTutor.SelectedIndex = 0;  // Ensure default tutor is selected
             CallJavascript("showModalFormSalon()");
         }
 
         protected void BtnEditar_Click(object sender, EventArgs e)
         {
-
             Button btn = (Button)sender;
-            string code = btn.CommandArgument; // recibo el id
-            salones = new BindingList<salon>(serviciodao.listarSalones());
-            salon salonActual = salones.ToList().Find(x => x.id == Int32.Parse(code));
-            // Busco y recupero los datos del profe
+            string code = btn.CommandArgument;
+            BindingList<salon> d = new BindingList<salon>(serviciodao.listarSalones());
+            salon salonActual = d.ToList().Find(x => x.id == Int32.Parse(code));
+
             TxtCode.Text = salonActual.id.ToString();
-            DDAnioEscolar.DataSource = serviciodao.listarAnioEscolarVigente();
-            DDAnioEscolar.DataTextField = "nombre";
-            DDAnioEscolar.DataValueField = "id";
-            DDAnioEscolar.DataBind();
-            string valorSeleccionado = salonActual.idAnioEscolar.ToString();
-            ListItem item = DDAnioEscolar.Items.FindByValue(valorSeleccionado);
-            if(item != null)
-            {
-                DDAnioEscolar.SelectedValue = valorSeleccionado;
-            }
-            else
-            {
-                DDAnioEscolar.SelectedValue = null;
-            }
+            DDAnioEscolar.SelectedValue = salonActual.idAnioEscolar.ToString();
             SLGrado.SelectedValue = salonActual.gradoSalon.ToString();
             TxtCapMaxima.Text = salonActual.capacidadMaxima.ToString();
             TxtCapMinima.Text = salonActual.capacidadMinima.ToString();
-            DDTutor.DataSource = serviciodao.listarProfesores();
-            DDTutor.DataTextField = "nombres";
-            DDTutor.DataValueField = "dni";
-            DDTutor.DataBind();
             DDTutor.SelectedValue = salonActual.tutor.dni;
-            CallJavascript("showModalFormSalon()");   
+
+            CallJavascript("showModalFormSalon()");
         }
+
         protected void BtnVer_Click(object sender, EventArgs e)
         {
             Button btn = (Button)sender;
@@ -108,7 +95,6 @@ namespace WebForm.View.Admin.Salones
             Response.Redirect($"SalonDetalle.aspx?salonId={salonId}");
         }
 
-        
         protected void BtnEliminar_Click(object sender, EventArgs e)
         {
             Button btn = (Button)sender;
@@ -118,6 +104,7 @@ namespace WebForm.View.Admin.Salones
             cargarProfesores();
             cargarAnisoEscolares();
         }
+
         private void CallJavascript(string function)
         {
             string script = "window.onload = function() {" + function + "; };";
@@ -127,38 +114,34 @@ namespace WebForm.View.Admin.Salones
         protected void BtnGuardar_Click(object sender, EventArgs e)
         {
             salon op = new salon();
-            salones = new BindingList<salon>(serviciodao.listarSalones());
             if (string.IsNullOrEmpty(TxtCode.Text)) // crear
             {
-                op.id = salones.Count() + 1;
-                op.capacidadMaxima = int.Parse(TxtCapMaxima.Text);
-                op.capacidadMinima = int.Parse(TxtCapMinima.Text);
-                op.idAnioEscolar = int.Parse(DDAnioEscolar.Text);
-                op.tutor = new profesor();
-                op.tutor.dni = DDTutor.SelectedValue;
-                op.gradoSalonSpecified = true;
-                if(Enum.TryParse(SLGrado.Text, true, out grado grado))
-                {
-                    op.gradoSalon = grado;
-                }
-                serviciodao.insertar_salon(op);
+                op.id = serviciodao.listarSalones().Max(s => s.id) + 1;
             }
-            else //actualizar
+            else // actualizar
             {
                 op.id = int.Parse(TxtCode.Text);
-                op.capacidadMaxima = int.Parse(TxtCapMaxima.Text);
-                op.capacidadMinima = int.Parse(TxtCapMinima.Text);
-                op.idAnioEscolar = int.Parse(DDAnioEscolar.Text);
-                op.tutor = new profesor();
-                op.tutor.dni = DDTutor.SelectedValue;
-                op.gradoSalonSpecified = true;
-                if (Enum.TryParse(SLGrado.Text, true, out grado grado))
-                {
-                    op.gradoSalon = grado;
-                }
-                serviciodao.modificar_salon(op);
-                
             }
+
+            op.capacidadMaxima = int.Parse(TxtCapMaxima.Text);
+            op.capacidadMinima = int.Parse(TxtCapMinima.Text);
+            op.idAnioEscolar = int.Parse(DDAnioEscolar.SelectedValue);
+            op.tutor = new profesor { dni = DDTutor.SelectedValue };
+            op.gradoSalonSpecified = true;
+            if (Enum.TryParse(SLGrado.SelectedValue, true, out grado grado))
+            {
+                op.gradoSalon = grado;
+            }
+
+            if (string.IsNullOrEmpty(TxtCode.Text)) // crear
+            {
+                serviciodao.insertar_salon(op);
+            }
+            else // actualizar
+            {
+                serviciodao.modificar_salon(op);
+            }
+
             cargarTabla();
             cargarProfesores();
             cargarAnisoEscolares();
