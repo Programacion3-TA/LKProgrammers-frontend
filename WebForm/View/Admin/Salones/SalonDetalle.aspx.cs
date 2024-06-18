@@ -31,16 +31,17 @@ namespace WebForm.View.Admin.Salones
 
         private void cargarTabla()
         {
-            var list = serviciodao.listarAlumnosxsalon(salonId);
-            profesor tutor = serviciodao.listarSalones().ToList().Find(s => s.id == salonId).tutor;
-            if (list != null)
-            {
-                alumnosSalon = new BindingList<alumno>(list);
-            }
-            GridTutor.DataSource = new List<profesor> { tutor };
+            alumno[] alumnos= serviciodao.listarAlumnosxsalon(salonId) ?? new alumno[] { };
+            alumnosSalon = new BindingList<alumno>(alumnos);
+            profesor tutor = (serviciodao.listarSalones() ?? new salon[] { })
+                .ToList()
+                .Find(s => s.id == salonId)
+                ?.tutor
+                ?? new profesor { }; // Rayita futuro inge de software
+            GridTutor.DataSource = new BindingList<profesor> { tutor };
+            GridTutor.DataBind();
             GridAlumnosSalon.DataSource = alumnosSalon;
             GridAlumnosSalon.DataBind();
-            GridTutor.DataBind();
         }
 
         protected void BtnAgregar_Click(object sender, EventArgs e)
@@ -59,7 +60,7 @@ namespace WebForm.View.Admin.Salones
             string alumnoId = ((LinkButton)sender).CommandArgument;
             serviciodao.insertarSalonAlumno(salonId, alumnoId);
             cargarTabla();
-            ScriptManager.RegisterStartupScript(this, GetType(), "", "__doPostBack('','');", true);
+            ScriptManager.RegisterStartupScript(this, GetType(), "", $"__doPostBack('{BtnAgregar.ClientID}','');", true);
         }
         protected void lbBuscarAlumno_Click(object sender, EventArgs e)
         {
@@ -77,17 +78,15 @@ namespace WebForm.View.Admin.Salones
         private void LoadCursos()
         {
             //salonId
-            var C = serviciodao.listar_curso_salon(salonId);
-            List<curso> j = new List<curso>();
+            curso[] cursos = serviciodao.listar_curso_salon(salonId) ?? new curso[] { };
+            List<curso> listaCursos = cursos.ToList();
             DataTable dtCursos = new DataTable();
             // Simulamos la carga de datos desde una base de datos
             dtCursos.Columns.Add("idCurso");
             dtCursos.Columns.Add("nombreCurso");
-            if (C != null)
-            {
-                j = C.ToList();
-                // Añadir filas de ejemplo
-                foreach (curso cur_ingresado in j) { dtCursos.Rows.Add(cur_ingresado.id, cur_ingresado.nombre); }
+            
+            foreach (curso cur_ingresado in listaCursos) {
+                dtCursos.Rows.Add(cur_ingresado.id, cur_ingresado.nombre);
             }
             GridCursos.DataSource = dtCursos;
             GridCursos.DataBind();
@@ -124,18 +123,18 @@ namespace WebForm.View.Admin.Salones
         {
             // Aquí debes implementar la lógica para buscar cursos en la base de datos
             // y devolver un DataTable con los resultados.
-            var F = serviciodao.CURSOS_LIBRES_DEL_ANIO();
+            curso[] cursos = serviciodao.CURSOS_LIBRES_DEL_ANIO() ?? new curso[] { };
             string cs = NormalizarTexto(criterio);
-            List<curso> cursos_list = new List<curso>();
+            List<curso> cursos_list = cursos.ToList();
             DataTable dt = new DataTable();
-            if (F!= null)
-            {
-                cursos_list = F.ToList().FindAll(S => NormalizarTexto(S.nombre).Contains(cs)); //uso de contains para hacer una mejor busqueda
-                dt.Columns.Add("idCurso");
-                dt.Columns.Add("nombreCurso");
-                dt.Columns.Add("descripcion");
-                foreach (curso j in cursos_list){dt.Rows.Add(j.id,j.nombre,j.descripcion);}
-            }
+
+            cursos_list = cursos_list
+                .FindAll(S => NormalizarTexto(S.nombre).Contains(cs)); //uso de contains para hacer una mejor busqueda
+            dt.Columns.Add("idCurso");
+            dt.Columns.Add("nombreCurso");
+            dt.Columns.Add("descripcion");
+            foreach (curso j in cursos_list){dt.Rows.Add(j.id,j.nombre,j.descripcion);}
+
             return dt;
         }
         
