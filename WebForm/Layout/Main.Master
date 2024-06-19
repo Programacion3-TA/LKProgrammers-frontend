@@ -98,7 +98,7 @@
                     <nav style="--bs-breadcrumb-divider: '>';" class="w-100" aria-label="breadcrumb">
                       <ol class="breadcrumb d-flex w-100">
                         <%--<li class="breadcrumb-item"><a href="#">Home</a></li>--%>
-                        <asp:Label ID="PathUsuarios" runat="server"></asp:Label>
+                        <asp:Literal ID="PathUsuariosLit" runat="server"></asp:Literal>
                       </ol>
                     </nav>
                     <asp:ContentPlaceHolder ID="Navusuarios" runat="server"></asp:ContentPlaceHolder>

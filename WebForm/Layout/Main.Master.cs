@@ -78,14 +78,14 @@ namespace WebForm
             string[] Atribs = Ruta.Split('/');
             Atribs[Atribs.Length - 1] = Atribs[Atribs.Length - 1].Split('.')[0];
             string html = MyReact.CreateComponent("li", "class=\"breadcrumb-item\" style=\"color: #000;\"",
-                MyReact.CreateComponent("a", "href=\"#\"", "<i class=\"fa-solid fa-house fa-5xs me-2\"></i> Colegio"));
+                MyReact.CreateComponent("a", "href=\"#\" style=\"color: #000;\"", "<i style=\"color: #000;\" class=\"fa-solid fa-house fa-5xs me-2\"></i> Colegio"));
             foreach(string rut in Atribs)
             {
                 string icono = (Relaciones.ContainsKey(rut)) ? Relaciones[rut] : "";
                 html += MyReact.CreateComponent("li", "class=\"breadcrumb-item\" style=\"color: #000;\"",
-                    MyReact.CreateComponent("a", "href=\"#\" style=\"color: #000;", $"{icono}{rut}")); ;
+                    MyReact.CreateComponent("a", "href=\"#\" style=\"color: #000;\"", $"{icono} {rut}")); ;
             }
-            PathUsuarios.Text = html;
+            PathUsuariosLit.Text = html;
             // <li class="breadcrumb-item"><a href="#">Home</a></li>
         }
     }
