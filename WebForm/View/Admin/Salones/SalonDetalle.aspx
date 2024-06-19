@@ -185,37 +185,34 @@
                                     OnClick="BtnBuscarCurso_Click"
                                     UseSubmitBehavior="false"/>
                             </div>
-                            <div class="col-md-12  mb-3">
+                            <div class="col-md-12 mb-3">
                                 <asp:GridView ID="GVCursos" runat="server" AllowPaging="true" PageSize="5" AutoGenerateColumns="false" CssClass="table table-hover table-responsive table-striped">
-                                    <Columns>  
+                                    <Columns>
                                         <asp:BoundField DataField="idCurso" HeaderText="ID" />
-                                        <asp:BoundField DataField="nombreCurso" HeaderText="Nombre" />                                    
+                                        <asp:BoundField DataField="nombreCurso" HeaderText="Nombre" />
                                         <asp:TemplateField>
                                             <ItemTemplate>
-                                                <asp:LinkButton
-                                                    CssClass="btn btn-success"
+                                                <asp:LinkButton CssClass="btn btn-success" 
                                                     runat="server"
-                                                    Text="<i class='fa-solid fa-check'></i> Seleccionar"
-                                                    CommandArgument='<%# Eval("idCurso") %>'
-                                                    /> <!-- falta el onclick aqui -->
+                                                    Text="<i class='fa-solid fa-check'></i> Seleccionar" 
+                                                    CommandArgument='<%# Eval("idCurso") %>' 
+                                                    OnClick="SeleccionarCurso_OnClick" />
                                             </ItemTemplate>
                                         </asp:TemplateField>
                                     </Columns>
                                 </asp:GridView>
                             </div>
-                             <div class="col-md-12  mb-3">
-                                 <asp:Label ID="LblCursoID" runat="server" Text="Curso" CssClass="form-label" Visible="false"></asp:Label>
-                                 <asp:TextBox ID="TxtCursoID" runat="server" CssClass="form-control" Enabled="false" Visible="false" ></asp:TextBox>
-                                 <asp:Label ID="LblNombreCurso" runat="server" Text="Nombre" CssClass="form-label" Visible="false"></asp:Label>
+                            <div class="col-md-12  mb-3">
+                                <asp:Label ID="LblCursoID" runat="server" Text="Curso" CssClass="form-label" Visible="false"></asp:Label>
+                                <asp:TextBox ID="TxtCursoID" runat="server" CssClass="form-control" Enabled="false" Visible="false" ></asp:TextBox>
+                                <asp:Label ID="LblNombreCurso" runat="server" Text="Nombre" CssClass="form-label" Visible="false"></asp:Label>
                                 <asp:TextBox ID="TxtNombreCurso" runat="server" CssClass="form-control" Enabled="false" Visible="false" ></asp:TextBox>
-                             </div>
+                            </div>
                         </ContentTemplate>
                     </asp:UpdatePanel>
-
                     <div class="col-md-12  mb-3">
                         <h6>Seleccionar horario</h6>
                     </div>
-
                     <div class="col-md-12  mb-3">
                     </div>
                     <asp:UpdatePanel runat="server">
@@ -228,32 +225,40 @@
                                 <asp:ListItem Value="Jueves">Jueves</asp:ListItem>
                                 <asp:ListItem Value="Viernes">Viernes</asp:ListItem>                            
                             </asp:DropDownList>
-
                              <div class="col-md-12  mb-3">
-                            <asp:Button ID="BtnBuscarHorario" runat="server" Text="Buscar Horarios" CssClass="btn btn-primary"/>
+                            <asp:Button ID="BtnBuscarHorario" runat="server" Text="Buscar Horarios" CssClass="btn btn-primary" OnClick="BtnBuscarHorario_Click1"/>
                             </div>
-                            <asp:Label ID="LblHoariosDisp" runat="server" Text="Horarios Disponibles" CssClass="form-label" Visible="false"></asp:Label>
-                            <asp:DropDownList ID="DDHorariosDisponibles" runat="server" CssClass="form-select" Visible="false"></asp:DropDownList>
-                            <asp:Label ID="LblInicio" runat="server" Text="Hora Inicio" CssClass="form-label" Visible="false"></asp:Label>
-                            <asp:TextBox ID="TxtHoraInicio" runat="server" CssClass="form-control" Enabled="false" Visible="false"></asp:TextBox>
-                            <asp:Label ID="LblFin" runat="server" Text="Hora Fin" CssClass="form-label" Visible="false"></asp:Label>
-                            <asp:TextBox ID="TxtHoraFin" runat="server" CssClass="form-control" Enabled="false" Visible="false"></asp:TextBox>
-
-                        </ContentTemplate>
-                    </asp:UpdatePanel>
-
-                </div>
+                            <div class="col-md-12  mb-3">
+                                <asp:GridView ID="GridHorario" runat="server" AllowPaging="true" AutoGenerateColumns="false" CssClass="table table-hover table-responsive table-striped">
+                                    <Columns>
+                                        <asp:BoundField DataField="id" HeaderText ="ID" />
+                                        <asp:BoundField DataField="dia" HeaderText ="Día" />
+                                        <asp:BoundField DataField="horaInicio" HeaderText ="Hora Inicio" />
+                                        <asp:BoundField DataField="horaFin" HeaderText ="Hora Fin" />
+                                        <asp:TemplateField>
+                                            <ItemTemplate>
+                                                <asp:CheckBox ID="horario_selected" runat="server"/>
+                                            </ItemTemplate>
+                                        </asp:TemplateField>
+                                    </Columns>
+                                </asp:GridView>
+                            </div>
+                                         <!--<asp:Label ID="LblHoariosDisp" runat="server" Text="Horarios Disponibles" CssClass="form-label" Visible="false"></asp:Label>
+                                         <asp:DropDownList ID="DDHorariosDisponibles" runat="server" CssClass="form-select" Visible="false"></asp:DropDownList>
+                                         <asp:Label ID="LblInicio" runat="server" Text="Hora Inicio" CssClass="form-label" Visible="false"></asp:Label>
+                                         <asp:TextBox ID="TxtHoraInicio" runat="server" CssClass="form-control" Enabled="false" Visible="false"></asp:TextBox>
+                                         <asp:Label ID="LblFin" runat="server" Text="Hora Fin" CssClass="form-label" Visible="false"></asp:Label>
+                                         <asp:TextBox ID="TxtHoraFin" runat="server" CssClass="form-control" Enabled="false" Visible="false"></asp:TextBox>!-->
+                                    </ContentTemplate>
+                                </asp:UpdatePanel>
+                         </div>
                 <div class="modal-footer">
                     <asp:Button ID="BtnGuardar" runat="server" Text="Guardar" CssClass="btn btn-primary"/>
                     <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cerrar</button>
-
                 </div>
             </div>
         </div>
     </div>
-
-
-
 </asp:Content>
 <asp:Content ID="Content6" ContentPlaceHolderID="Script" runat="server">
     <script src="SalonDetalle.js"></script>
