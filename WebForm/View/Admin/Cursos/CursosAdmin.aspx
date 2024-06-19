@@ -48,7 +48,7 @@
                                     <asp:Button runat="server" Text="Editar/Ver" CssClass="btn btn-warning"
                                         CommandArgument='<%# Eval("id") %>' OnClick="EditRow_Click" />
                                     <asp:Button runat="server" Text="Eliminar" CssClass="btn btn-danger"
-                                        CommandArgument='<%# Eval("id") %>' OnClick="DelRow_Click" />
+                                        CommandArgument='<%# Eval("id") %>' OnClick="DelRow_Click" OnClientClick="return confirm('¿Está seguro de eliminar este curso?');" />
                                     <asp:Button ID="BtnVerCompetencias" runat="server" Text="Editar competencias" CssClass="btn btn-success"
                                         CommandArgument='<%#Eval("id") %>' OnClick="BtnCompetencias_Click" />
                                 </div>

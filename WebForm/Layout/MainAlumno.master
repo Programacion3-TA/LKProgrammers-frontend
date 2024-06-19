@@ -35,7 +35,7 @@
     </li>
 </asp:Content>
 <asp:Content ID="Content2_5" ContentPlaceHolderID="ImagenPerfil" runat="server">
-    <img src="/Public/img/pedro.gif" />
+    <%--<img src="https://cdn5.vectorstock.com/i/1000x1000/52/54/male-student-graduation-avatar-profile-vector-12055254.jpg" />--%>
 </asp:Content>
 <asp:Content ID="Content4" ContentPlaceHolderID="Navusuarios" runat="server">
     <asp:ContentPlaceHolder ID="Navusuarios" runat="server"></asp:ContentPlaceHolder>

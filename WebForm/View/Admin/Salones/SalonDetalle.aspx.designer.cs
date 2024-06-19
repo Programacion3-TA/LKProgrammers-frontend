@@ -132,20 +132,13 @@ namespace WebForm.View.Admin.Salones
         protected global::System.Web.UI.WebControls.GridView GVCursos;
 
         /// <summary>
-        /// LblNoCursos control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Label LblNoCursos;
-
-        /// <summary>
         /// LblCursoID control.
+
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
+
         /// </remarks>
         protected global::System.Web.UI.WebControls.Label LblCursoID;
 
@@ -213,7 +206,62 @@ namespace WebForm.View.Admin.Salones
         protected global::System.Web.UI.WebControls.GridView GridHorario;
 
         /// <summary>
-        /// BtnGuardarHorarioCurso control.
+        /// LblHoariosDisp control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label LblHoariosDisp;
+
+        /// <summary>
+        /// DDHorariosDisponibles control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.DropDownList DDHorariosDisponibles;
+
+        /// <summary>
+        /// LblInicio control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label LblInicio;
+
+        /// <summary>
+        /// TxtHoraInicio control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.TextBox TxtHoraInicio;
+
+        /// <summary>
+        /// LblFin control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label LblFin;
+
+        /// <summary>
+        /// TxtHoraFin control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.TextBox TxtHoraFin;
+
+        /// <summary>
+        /// BtnGuardar control.
+
         /// </summary>
         /// <remarks>
         /// Auto-generated field.

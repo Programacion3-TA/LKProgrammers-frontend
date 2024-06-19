@@ -13,13 +13,27 @@
     <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
     <script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
     
-    <h1>Calificar cursos</h1>
+    <h1>Calificar notas de cursos</h1>
     <div class="card">
         <div class="card-header">
-            <label>Seleccione un curso dictado:</label>
-            <asp:DropDownList ID="CursoDictadoDrpL" runat="server" AutoPostBack="true"
-                CssClass="form-select" DataTextField="cursoDescrip" DataValueField="cursoIdent"
+            <div class="col">
+                <h2>Ver notas de alumno del curso</h2>
+                <div>
+                    <label>Seleccione alumno:</label>
+                    <asp:DropDownList ID="AlumnosDelCursoDrpl" runat="server" AutoPostBack="true"
+                       CssClass="form-select w-50" DataTextField="nombres" DataValueField="dni">
+                    </asp:DropDownList>
+                </div>
+                <asp:Button ID="ReporteNotasAlumnoBtn" runat="server" Text="Obtener notas actuales" CssClass="btn btn-primary"  
+                    OnClick="ReporteNotasAlumnoBtn_Click" OnClientClick="openinNewTab()"/>
+            </div>
+            <hr />
+            <div class="col">
+                <label>Seleccione un curso dictado:</label>
+                <asp:DropDownList ID="CursoDictadoDrpL" runat="server" AutoPostBack="true"
+                CssClass="form-select w-50" DataTextField="cursoDescrip" DataValueField="cursoIdent"
                 OnSelectedIndexChanged="CursoDictadoDrpL_SelectedIndexChanged" OnLoad="CursoDictadoDrpL_SelectedIndexChanged"></asp:DropDownList>
+            </div>
         </div>
         <div class="card-body">
             <div>
@@ -51,7 +65,7 @@
             </div>
         </div>
 
-        <asp:Label ID="FormulaPesos" runat="server" Text="Hubo un error al mostrar la formula"></asp:Label>
+        <!--<asp:Label ID="FormulaPesos" runat="server" Text="Hubo un error al mostrar la formula"></asp:Label>-->
     </div>
 
     
@@ -59,5 +73,13 @@
 </asp:Content>
 <asp:Content ID="Content5" ContentPlaceHolderID="Script" runat="server">
     <script src="asistenciasProfesor.js"></script>
+    <script>
+        function openinNewTab() {
+            window.document.forms[0].target = '_blank';
+            setTimeout(function () {
+                window.document.forms[0].target= '';
+            }, 0);
+        }
+    </script>
 </asp:Content>
  

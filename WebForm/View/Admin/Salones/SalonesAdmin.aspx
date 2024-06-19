@@ -49,7 +49,7 @@
                                 <asp:Button ID="BtnEditar" runat="server" Text="Editar" CssClass="btn btn-warning"
                                     CommandArgument='<%#Eval("id") %>' OnClick="BtnEditar_Click" />
                                 <asp:Button ID="BtnEliminar" runat="server" Text="Eliminar" CssClass="btn btn-danger"
-                                    CommandArgument='<%#Eval("id") %>' OnClick="BtnEliminar_Click" />
+                                    CommandArgument='<%#Eval("id") %>' OnClick="BtnEliminar_Click"  OnClientClick="return confirm('¿Desea eliminar?')" />
                                 </div>
                                 
                             </ItemTemplate>

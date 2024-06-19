@@ -25,7 +25,14 @@ namespace WebForm.View.ProfesorVista
 
         private void MostrarCursos(cursoHorario[] cursoHorarios)
         {
-            
+            string[] PruebasColores = {
+                "#6691FF",
+                "#C6FF4E",
+                "#FFDD66",
+                "#FF6666"
+            };
+            Random rand = new Random();
+
             StringBuilder strBuild = new StringBuilder();
             string nombres = ((profesor)Session["Usuario"]).nombres + " "+((profesor)Session["Usuario"]).apellidoPaterno;
             LinkButton linkButton = new LinkButton();
@@ -37,7 +44,7 @@ namespace WebForm.View.ProfesorVista
                     linkButton.ID = $"CursoProfesorBtn-{cursoHor.curso.id}";
                     linkButton.CssClass = "d-flex flex-column cursoCaja";
                     linkButton.CommandArgument = $"{cursoHor.idsalon}|{cursoHor.curso.id}"; // se manda como argumento
-                    linkButton.Controls.Add(new LiteralControl($"<div class=\"h-50\" style=\"background-color:black\"></div>"));
+                    linkButton.Controls.Add(new LiteralControl($"<div class=\"h-50\" style=\"background-color:" + PruebasColores[rand.Next(0, PruebasColores.Length)] + "\"></div>"));
                     linkButton.Controls.Add(new LiteralControl($"<div class=\"p-2 infoCaja\">"));
                     linkButton.Controls.Add(new LiteralControl($"<p>{cursoHor.curso.nombre}</p>"));
                     linkButton.Controls.Add(new LiteralControl("<div class=\"line\"></div>"));
@@ -53,8 +60,6 @@ namespace WebForm.View.ProfesorVista
         {
             LinkButton btn = (LinkButton)sender;
             string[]args = btn.CommandArgument.Split('|');
-
-
         }
     }
 }

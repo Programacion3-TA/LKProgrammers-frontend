@@ -10,6 +10,7 @@
     <script src="/Public/js/bootstrap/bootstrap.js" type="text/javascript"></script>
     <script src="/Public/js/bootstrap/bootstrap.bundle.js" type="text/javascript"></script>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <meta content="width=device-width, initial-scale=1" name="viewport" />
     <title>Inicio de Sesión | Platataforma institucional</title>
     <style>
         body{
