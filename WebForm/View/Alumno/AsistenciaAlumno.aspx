@@ -30,6 +30,28 @@
 
     <div class="container-fluid mt-2 ms-4 me-4 ">
       <h2 class="mb-4 text-center text-md-start ">Asistencias por día</h2>
+        
+         <div class="card mb-4">
+               <h2 class="card-header">Asistencias por alumno</h2>
+                    <div class="d-flex gap-3 border-2 flex-column card-body">
+                        <div class="d-flex gap-3 w-75" >
+                            <div>
+                                <!--Falta agregar advertencias de no ingresar correcto las fechas-->
+                              <asp:Label ID="FechaIniSelecLbl" runat="server" Text="Label" CssClass="form-check-label" Font-Bold="true">Fecha Inicial:</asp:Label>
+                              <asp:TextBox ID="FechaIniTxt" runat="server" CssClass="form-control" TextMode="Date"></asp:TextBox>
+                            </div>
+                            <div>
+                                <asp:Label ID="FechFinSelectLbl" runat="server" Text="Label" CssClass="form-check-label" Font-Bold="true">Fecha Final:</asp:Label>
+                                <asp:TextBox ID="FechaFinalTxt" runat="server" CssClass="form-control" TextMode="Date"></asp:TextBox>
+                            </div>
+                        </div>
+                        <div class="d-flex gap-4">
+                            <asp:Button ID="AsistenciasAlumnoBtn" runat="server" Text="Obtener Asistencias" CssClass="btn btn-success" OnClick="AsistenciasAlumnoBtn_Click1"
+                                OnClientClick="openinNewTab()"/>
+                        </div>
+                        
+                    </div>
+            </div>
         <asp:Literal ID="Cuack" runat="server"></asp:Literal>
         <asp:GridView
             ID="GriAsistenciasAlumnos"
@@ -89,4 +111,12 @@
 </asp:Content>
 <asp:Content ID="Content5" ContentPlaceHolderID="Script" runat="server">
     <script src="/Public/js/modalHandler.js"></script>
+    <script>
+        function openinNewTab() {
+            window.document.forms[0].target = '_blank';
+            setTimeout(function () {
+                window.document.forms[0].target = '';
+            }, 0);
+        }
+    </script>
 </asp:Content>

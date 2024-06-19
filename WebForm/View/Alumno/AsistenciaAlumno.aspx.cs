@@ -125,5 +125,74 @@ namespace WebForm.View.AsistenciaAlumno
             if (est == estadoAsistencia.Justificada || acep) return "Justificado";
             return "Justificación";
         }
+
+     
+
+        protected void AsistenciasAlumnoBtn_Click1(object sender, EventArgs e)
+        {
+            if (string.IsNullOrEmpty(FechaFinalTxt.Text) || string.IsNullOrEmpty(FechaIniTxt.Text))
+            {
+                CallJavascript("showNotification('Bad','Debe de elegir el rango de fechas')");
+                return;
+            }
+            DateTime fechaInicialDate = DateTime.Parse(FechaIniTxt.Text).Date;
+            DateTime fechaFinalDate = DateTime.Parse(FechaFinalTxt.Text).Date;
+
+            if (fechaInicialDate >= fechaFinalDate)
+            {
+                CallJavascript("showNotification('Bad','Las fecha inicial debe ser anterior a la fecha posterior)");
+                return;
+            }
+
+            salon salon = (salon)Session["salonAlumno"];
+            alumno alumno = (alumno)Session["Usuario"];
+            string nombre = alumno.nombres;
+            nombre += " " + alumno.apellidoPaterno + " " + alumno.apellidoMaterno;
+            string idsalon = salon.id.ToString();
+            string fechaIni = FechaIniTxt.Text;
+            string fechaFin = FechaFinalTxt.Text;
+            string FechaIniFormato = DateTime.Parse(fechaIni).ToString("dd/MM/yyyy");
+            string FechaFinFormato = DateTime.Parse(fechaFin).ToString("dd/MM/yyyy");
+            string grado = TransformarGrado(alumno.grado.ToString());
+            string nombreProfesor = salon.tutor.nombres + " " + salon.tutor.apellidoPaterno + " " + salon.tutor.apellidoMaterno;
+
+            Byte[] FileBuffer = serviciodao.reportePDFAsistencias(alumno.dni, nombre, grado,alumno.telefono,nombreProfesor , idsalon, FechaIniFormato,FechaFinFormato);
+            if (FileBuffer != null)
+            {
+                Response.Clear();
+                Response.ContentType = "application/pdf";
+                Response.AddHeader("content-length", FileBuffer.Length.ToString());
+                Response.BinaryWrite(FileBuffer);
+            }
+
+        }
+        protected string TransformarGrado(string grado)
+        {
+            switch (grado)
+            {
+                case "INI2":
+                    return "2 años";
+                case "INI3":
+                    return "3 años";
+                case "INI4":
+                    return "4 años";
+                case "INI5":
+                    return "5 años";
+                case "PRIM1":
+                    return "Primero de Primaria";
+                case "PRIM2":
+                    return "Segundo de Primaria";
+                case "PRIM3":
+                    return "Tercero de Primaria";
+                case "PRIM4":
+                    return "Cuarto de Primaria";
+                case "PRIM5":
+                    return "Quinto de Primaria";
+                case "PRIM6":
+                    return "Sexto de Primaria";
+                default:
+                    return "Fallo en el grado";
+            }
+        }
     }
 }

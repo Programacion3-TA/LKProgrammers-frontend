@@ -18,7 +18,14 @@ namespace WebForm.View
             serviciodao = new LKServicioWebClient();
 
             RenderizarCursos();
-            
+            if (!IsPostBack && Session["salonAlumno"] == null)
+            {
+                alumno alu = (alumno)Session["Usuario"];
+                salon salonAlumno = serviciodao.obtenerSalonxAlumno(alu.dni);
+                Session["salonAlumno"] = salonAlumno;
+            }
+
+
             if ((bool)Session["Confetti"])
             {
                 Confetti.Text = "<script>(new JSConfetti()).addConfetti()</script>";

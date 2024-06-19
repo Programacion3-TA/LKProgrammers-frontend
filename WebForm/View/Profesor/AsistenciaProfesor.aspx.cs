@@ -147,7 +147,7 @@ namespace WebForm.View.AsistenciaProfesor
         protected void AsistenciasAlumnoBtn_Click(object sender, EventArgs e)
         {
             if(string.IsNullOrEmpty(FechaFinalTxt.Text) || string.IsNullOrEmpty(FechaIniTxt.Text)) {
-                CallJavascript("showNotification('Bad', mensaje='Debe de elegir el rango de fechas')");
+                CallJavascript("showNotification('Bad','Debe de elegir el rango de fechas')");
                 return;
             } 
             
@@ -157,7 +157,7 @@ namespace WebForm.View.AsistenciaProfesor
             if(VerificarFechas(fechaInicialDate,fechaFinalDate))
                 Response.Redirect("/View/Profesor/ReporteAsistenciaAlumno.aspx?dniAlu="+AlumnosDrpDown.Text+"&fechaIni="+fechaInicialDate.ToString()+"&fechaFin="+fechaFinalDate.ToString());
             else
-                CallJavascript("showNotification('Bad', mensaje='Las fecha inicial debe ser anterior a la fecha posterior)");
+                CallJavascript("showNotification('Bad','Las fecha inicial debe ser anterior a la fecha posterior)");
         }
         protected bool VerificarFechas(DateTime fechaIni,DateTime fechaFin)
         {

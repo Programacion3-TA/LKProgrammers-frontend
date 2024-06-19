@@ -9,7 +9,8 @@
     <asp:ScriptManager runat="server"></asp:ScriptManager>
     <div class="container-fluid mt-2 ms-4 me-4 ">
         <h2>Notas</h2>
-        <asp:Button Text="Generar PDF" runat="server" CssClass="btn btn-primary" OnClick="BtnGenerarPdf__Click"/>
+        <asp:Button Text="Generar PDF" runat="server" CssClass="btn btn-primary" OnClick="BtnGenerarPdf__Click"
+            OnClientClick="openinNewTab()"/>
         <asp:GridView
             ID="GridCursosNotas"
             runat="server"
@@ -120,6 +121,12 @@
                        responsive: true
                     }
                 });
+            }
+            function openinNewTab() {
+                window.document.forms[0].target = '_blank';
+                setTimeout(function () {
+                    window.document.forms[0].target = '';
+                }, 0);
             }
         </script>
 </asp:Content>
