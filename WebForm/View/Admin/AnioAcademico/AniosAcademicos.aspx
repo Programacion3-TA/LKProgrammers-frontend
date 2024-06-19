@@ -43,7 +43,7 @@
                              <asp:Button runat="server" Text="Editar" CssClass="btn btn-warning"
                                  CommandArgument='<%# Eval("id") %>' OnClick="EditRowClick" />
                              <asp:Button runat="server" Text="Eliminar" CssClass="btn btn-danger"
-                                 CommandArgument='<%# Eval("id") %>' OnClick="DelRow_Click" />
+                                 CommandArgument='<%# Eval("id") %>' OnClick="DelRow_Click" Enabled="false" />
                          </ItemTemplate>
                      </asp:TemplateField>
                  </Columns>
@@ -82,7 +82,7 @@
                                 <asp:Button runat="server" Text="Editar" CssClass="btn btn-warning"
                                     CommandArgument='<%# Eval("id") %>' OnClick="EditRowClick" />
                                 <asp:Button runat="server" Text="Eliminar" CssClass="btn btn-danger"
-                                    CommandArgument='<%# Eval("id") %>' OnClick="DelRow_Click" />
+                                    CommandArgument='<%# Eval("id") %>' OnClick="DelRow_Click"  OnClientClick="return confirm('¿Desea eliminar?')" />
                             </ItemTemplate>
                         </asp:TemplateField>
                     </Columns>
