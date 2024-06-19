@@ -20,5 +20,6 @@
        <asp:Literal ID="CursosContainer" runat="server"></asp:Literal>
     </div>
 
+    <asp:Literal ID="Algo" runat="server"></asp:Literal>
     <asp:Literal ID="Confetti" runat="server"></asp:Literal>
 </asp:Content>
