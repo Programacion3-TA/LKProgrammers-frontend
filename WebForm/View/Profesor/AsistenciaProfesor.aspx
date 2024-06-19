@@ -17,7 +17,8 @@
    <!-- <uc:Path ID="MyCustomControl1" runat="server" TiposURL="Asistencia"/>-->
 </asp:Content>
 <asp:Content ID="Content4" ContentPlaceHolderID="MainContent" runat="server">
-
+    <asp:ScriptManager runat="server"></asp:ScriptManager>
+    <asp:Label ID="Pruebas" runat="server"></asp:Label>
     <h1>Asistencias del salon</h1>
     <div class="container">
         <div class="container row pb-2 pt-2">
@@ -37,6 +38,7 @@
                             </div>
                         </div>
                         <div class="d-flex gap-4">
+                            <asp:Label ID="AlumnoLbl" runat="server" Text="Label" CssClass="form-check-label" Font-Bold="true">Alumno:</asp:Label>
                             <asp:DropDownList ID="AlumnosDrpDown" runat="server" CssClass="form-select" DataTextField="nombres" DataValueField="dni">
                             </asp:DropDownList>
                             <asp:Button ID="AsistenciasAlumnoBtn" runat="server" Text="Obtener Asistencias" CssClass="btn btn-success" OnClick="AsistenciasAlumnoBtn_Click"/>
@@ -47,25 +49,26 @@
             <hr />
             <div>
                 <div class="text-end p-3 d-flex flex-row-reverse justify-content-between">
-                   <asp:LinkButton ID="BtnRegistrarAsistencia" runat="server" CssClass="btn btn-dark d-flex gap-2 end-0 align-items-center h-75"
-                       Text="<i class='fa-solid fa-clipboard-user'> </i> Agregar Asistencia " OnClick="BtnRegistrarAsistencia_Click">
-                   </asp:LinkButton>
+                    <asp:LinkButton ID="BtnRegistrarAsistencia" runat="server" CssClass="btn btn-dark d-flex gap-2 end-0 align-items-center h-75"
+                        Text="<i class='fa-solid fa-clipboard-user'> </i> Agregar Asistencia " OnClick="BtnRegistrarAsistencia_Click">
+                    </asp:LinkButton>
+                    
                     <div class="input-group mb-3 w-50 d-flex gap-3 align-items-center fw-bolder">
                         <asp:Label ID="FiltroLbl" runat="server" Text="Filtrar por mes: "></asp:Label>
                         <asp:DropDownList ID="MesesDropDown" runat="server" CssClass="form-select">
                             <asp:ListItem Value="">Seleccione un mes</asp:ListItem>
-                            <asp:ListItem Value="enero"  >Enero</asp:ListItem>
-                            <asp:ListItem Value="febrero">Febrero</asp:ListItem>
-                            <asp:ListItem Value="marzo">Marzo</asp:ListItem>
-                            <asp:ListItem Value="abril">Abril</asp:ListItem>
-                            <asp:ListItem Value="mayo">Mayo</asp:ListItem>
-                            <asp:ListItem Value="junio">Junio</asp:ListItem>
-                            <asp:ListItem Value="julio">Julio</asp:ListItem>
-                            <asp:ListItem Value="agosto">Agosto</asp:ListItem>
-                            <asp:ListItem Value="septiembre">Septiembre</asp:ListItem>
-                            <asp:ListItem Value="octubre">Octubre</asp:ListItem>
-                            <asp:ListItem Value="noviembre">Noviembre</asp:ListItem>
-                            <asp:ListItem Value="diciembre">Diciembre</asp:ListItem>
+                            <asp:ListItem Value="1"  >Enero</asp:ListItem>
+                            <asp:ListItem Value="2">Febrero</asp:ListItem>
+                            <asp:ListItem Value="3">Marzo</asp:ListItem>
+                            <asp:ListItem Value="4">Abril</asp:ListItem>
+                            <asp:ListItem Value="5">Mayo</asp:ListItem>
+                            <asp:ListItem Value="6">Junio</asp:ListItem>
+                            <asp:ListItem Value="7">Julio</asp:ListItem>
+                            <asp:ListItem Value="8">Agosto</asp:ListItem>
+                            <asp:ListItem Value="9">Septiembre</asp:ListItem>
+                            <asp:ListItem Value="10">Octubre</asp:ListItem>
+                            <asp:ListItem Value="11">Noviembre</asp:ListItem>
+                            <asp:ListItem Value="12">Diciembre</asp:ListItem>
                         </asp:DropDownList>
                         <div class="input-group-append">
                            <asp:Button ID="FiltrarMesBtn" runat="server" Text="Filtrar" CssClass="btn btn-outline-secondary"
@@ -84,11 +87,16 @@
                     AllowPaging ="true" CssClass="table table-hover table-responsive table-striped" OnPageIndexChanging="GridAsistenciasFechas_PageIndexChanging"
                     PageSize="5">
                     <Columns>
-                        <asp:BoundField DataField="FechaFormato" HeaderText ="Fecha de asistencias" ItemStyle-HorizontalAlign="Center"  ItemStyle-VerticalAlign="Middle"/>
+                        <%--<asp:BoundField DataField="FechaFormato" HeaderText ="Fecha de asistencias" ItemStyle-HorizontalAlign="Center"  ItemStyle-VerticalAlign="Middle"/>--%>
+                        <asp:TemplateField HeaderText ="Fecha de asistencias" ItemStyle-HorizontalAlign="Center"  ItemStyle-VerticalAlign="Middle">
+                            <ItemTemplate>
+                                <asp:Label runat="server" Text='<%# ParsearFecha((DateTime)Eval("Date")) %>'></asp:Label>
+                            </ItemTemplate>
+                        </asp:TemplateField>
                         <asp:TemplateField HeaderText="Actualización de asistencias">
                             <ItemTemplate>
                                 <asp:Button runat="server" CssClass="btn btn-primary" Text="Editar" ID="editarAsistencia"
-                                    CommandArgument='<%#Eval("Fecha") %>' OnClick="editarAsistencia_Click"/>
+                                    CommandArgument='<%#Eval("Date") %>' OnClick="editarAsistencia_Click"/>
                             </ItemTemplate>
                             <ItemStyle HorizontalAlign="Center" Width="300px" />
                         </asp:TemplateField>

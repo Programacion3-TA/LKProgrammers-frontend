@@ -1,0 +1,47 @@
+﻿.my__notification {
+    opacity: 0;
+    animation-name: fade_mi_notification;
+    animation-duration: 6s;
+    animation-timing-function: ease-in-out;
+    top: -100vh;
+    left: 50vw;
+    transform: translate(-50%, 0);
+}
+
+#my_notification_modal {
+    opacity: 0;
+    top: -100vh;
+    left: 50vw;
+    transform: translate(-50%, 0);
+}
+
+#my_notification_modal.activo {
+    animation-name: fade_mi_notification;
+    animation-duration: 6s;
+}
+
+#my_notification_modal.noFade{
+    opacity: 100%;
+    top: 10px;
+}
+
+@keyframes fade_mi_notification {
+    0%{
+        opacity: 0;
+        top: -100vh;
+    }
+
+    10% {
+        opacity: 100%;
+        top: 10px;
+    }
+
+    70%{
+        opacity: 100%;
+    }
+
+    100%{
+        opacity: 0%;
+        top: 10px;
+    }
+}

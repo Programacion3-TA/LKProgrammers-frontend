@@ -5,6 +5,7 @@ using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
 using WebForm.ServicioWS;
+using WebForm.Utils;
 namespace WebForm.View.Profesor
 {
     public partial class RegistroAsistencia : System.Web.UI.Page
@@ -130,7 +131,9 @@ namespace WebForm.View.Profesor
                     //aveces no guarda todo : Comunications link failure
                     asisHechas += daoServicio.insertarAsistencia(asistencia_);
                 }
-                CallJavascript("showInsertModal('asistenRegistradasModal')");
+                //CallJavascript("showInsertModal('asistenRegistradasModal')");
+                Session["MyNotification"] = new MyNotification { Tipo="Ok", Mensaje="Se registraron correctamente las asistencias" };
+                Response.Redirect("/View/Profesor/AsistenciaProfesor.aspx");
             }
             else
             {
@@ -138,7 +141,9 @@ namespace WebForm.View.Profesor
                 {
                     asisHechas += daoServicio.modificarAsistencia(asistencia_);
                 }
-                CallJavascript("showUpdateModal('asistenRegistradasModal')");
+                // CallJavascript("showUpdateModal('asistenRegistradasModal')");
+                Session["MyNotification"] = new MyNotification { Tipo = "Ok", Mensaje = "Se actualizaron correctamente las asistencias" };
+                Response.Redirect("/View/Profesor/AsistenciaProfesor.aspx");
             }
 
 
@@ -163,7 +168,9 @@ namespace WebForm.View.Profesor
                     RadioButtonList rdlAsistencias = (RadioButtonList)e.Row.FindControl("RadAsistencia"); //control de radiobutton de cada fila
 
                     string dni = DataBinder.Eval(e.Row.DataItem, "dni").ToString();  //accedo  a su valor id guardado
-                    asistencia asistencia=daoServicio.listarAsistenciaFecha(dni, DateTime.Parse(fecha)).ToList().FirstOrDefault();
+                    asistencia asistencia=(daoServicio.listarAsistenciaFecha(dni, DateTime.Parse(fecha)) ?? new asistencia[] { })
+                        .ToList()
+                        .FirstOrDefault();
 
                     List<asistencia> asistencias = (List<asistencia>)Session["asistencias"];
                     asistencias.Add(asistencia);

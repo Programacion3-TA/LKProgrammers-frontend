@@ -7,146 +7,110 @@
 // </generado automáticamente>
 //------------------------------------------------------------------------------
 
-namespace WebForm.View.AsistenciaProfesor
+namespace WebForm.View.Admin.Cursos
 {
 
 
-    public partial class AsistenciaProfesor
+    public partial class CompetenciasCurso
     {
 
         /// <summary>
-        /// Control MyCustomControl1.
+        /// Control LtCurso.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::WebForm.Components.Path MyCustomControl1;
+        protected global::System.Web.UI.WebControls.Literal LtCurso;
 
         /// <summary>
-        /// Control Pruebas.
+        /// Control BtnAgregarCompetencia.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Label Pruebas;
+        protected global::System.Web.UI.WebControls.LinkButton BtnAgregarCompetencia;
 
         /// <summary>
-        /// Control FechaIniSelecLbl.
+        /// Control GridTutor.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Label FechaIniSelecLbl;
+        protected global::System.Web.UI.WebControls.GridView GridTutor;
 
         /// <summary>
-        /// Control FechaIniTxt.
+        /// Control GridCompetenciasCurso.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox FechaIniTxt;
+        protected global::System.Web.UI.WebControls.GridView GridCompetenciasCurso;
 
         /// <summary>
-        /// Control FechFinSelectLbl.
+        /// Control LblCode.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Label FechFinSelectLbl;
+        protected global::System.Web.UI.WebControls.Label LblCode;
 
         /// <summary>
-        /// Control FechaFinalTxt.
+        /// Control TxtID.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox FechaFinalTxt;
+        protected global::System.Web.UI.WebControls.TextBox TxtID;
 
         /// <summary>
-        /// Control AlumnoLbl.
+        /// Control LblDesc.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Label AlumnoLbl;
+        protected global::System.Web.UI.WebControls.Label LblDesc;
 
         /// <summary>
-        /// Control AlumnosDrpDown.
+        /// Control TxtDescripcion.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.DropDownList AlumnosDrpDown;
+        protected global::System.Web.UI.WebControls.TextBox TxtDescripcion;
 
         /// <summary>
-        /// Control AsistenciasAlumnoBtn.
+        /// Control LlbPeso.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Button AsistenciasAlumnoBtn;
+        protected global::System.Web.UI.WebControls.Label LlbPeso;
 
         /// <summary>
-        /// Control BtnRegistrarAsistencia.
+        /// Control TxtPeso.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.LinkButton BtnRegistrarAsistencia;
+        protected global::System.Web.UI.WebControls.TextBox TxtPeso;
 
         /// <summary>
-        /// Control FiltroLbl.
+        /// Control BtnGuardarCompetencia.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Label FiltroLbl;
-
-        /// <summary>
-        /// Control MesesDropDown.
-        /// </summary>
-        /// <remarks>
-        /// Campo generado automáticamente.
-        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.DropDownList MesesDropDown;
-
-        /// <summary>
-        /// Control FiltrarMesBtn.
-        /// </summary>
-        /// <remarks>
-        /// Campo generado automáticamente.
-        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Button FiltrarMesBtn;
-
-        /// <summary>
-        /// Control GridAsistenciasFechas.
-        /// </summary>
-        /// <remarks>
-        /// Campo generado automáticamente.
-        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.GridView GridAsistenciasFechas;
-
-        /// <summary>
-        /// Control BtnCerrarModal.
-        /// </summary>
-        /// <remarks>
-        /// Campo generado automáticamente.
-        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.LinkButton BtnCerrarModal;
+        protected global::System.Web.UI.WebControls.Button BtnGuardarCompetencia;
     }
 }

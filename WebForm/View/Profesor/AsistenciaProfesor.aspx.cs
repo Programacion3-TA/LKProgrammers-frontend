@@ -10,58 +10,38 @@ using WebForm.ServicioWS;
 
 
 using System.IO;
+using WebForm.Utils;
+using System.ComponentModel;
 namespace WebForm.View.AsistenciaProfesor
 {
     public partial class AsistenciaProfesor : System.Web.UI.Page
     {
+        private List<DateTime> listaFechasEntero;
+        private List<DateTime> listaFechasFiltrado;
         private LKServicioWebClient daoServicio;
         protected void Page_Load(object sender, EventArgs e)
         {
             daoServicio = new LKServicioWebClient();
+            listaFechasEntero = new List<DateTime>();
+            listaFechasFiltrado = new List<DateTime>();
+            // MesesDropDown.DataSource;
 
             int idsalon = (int)Session["idsalon"] ;
             if (!IsPostBack) {
                 //if (!((string)(Session["Tipo"])).Equals("Profesor")) ; evita que ingresen cuentasn que no son tipo Profesor
                 Session["errorFechas"] = false;
-                profesor profesor = (profesor)Session["Usuario"];
+                // profesor profesor = (profesor)Session["Usuario"];
                 //cuando cargue, ya se verifico si es tutor 
 
-                if (idsalon != -1)
-                {
-                    CargarFechas(idsalon);
-                    List<alumno> alumnos = new List<alumno>();
-                    var f = daoServicio.listarAlumnosxsalon(idsalon);
-                    if(f != null)alumnos = f.ToList();
-                    Session["alumnosAsistencia"] = alumnos;
-                    Session["RealizoAsistenica"] = VerificarRegistroAsistenciaActual();
-                    CargarAlumnosDropDown();
-                }
-                else
-                {
-                    Response.Redirect("/View/Profesor/ErroNoTutor.aspx");
-                }
-
-                /*
-                if (Session["idsalon"] == null)
-                {
-                    idsalon = daoServicio.esTutorAsignado(profesor.dni);
-                    if (idsalon == -1) Response.Redirect("/View/Profesor/ErroNoTutor.aspx");
-                    Session["idsalon"] = idsalon;
-
-                }
-                if (Session["idsalon"] != null)
-                {
-                    idsalon = (int)Session["idsalon"];
-                    CargarFechas(idsalon);
-                    Session["RealizoAsistenica"]= VerificarRegistroAsistenciaActual();
-                }*/
+                if (idsalon == -1) Response.Redirect("/View/Profesor/ErroNoTutor.aspx");
+                CargarFechas(idsalon);
+                List<alumno> alumnos = (daoServicio.listarAlumnosxsalon(idsalon) ?? new alumno[] { }).ToList();
+                Session["alumnosAsistencia"] = alumnos;
+                Session["RealizoAsistenica"] = VerificarRegistroAsistenciaActual();
+                CargarAlumnosDropDown();
 
             }
             CargarFechas(idsalon);
-            /*if ((bool)Session["errorFechas"])
-            {
-                CallJavascript("showModal('fechasReporteModal')");
-            }*/
 
         }
 
@@ -70,7 +50,7 @@ namespace WebForm.View.AsistenciaProfesor
             List<alumno> alumnos = (List<alumno>)Session["alumnosAsistencia"];
             foreach(alumno alu in alumnos)
             {
-                alu.nombres += " " + alu.apellidoPaterno + " " + alu.apellidoMaterno;
+                alu.nombres += $" {alu.apellidoPaterno} {alu.apellidoMaterno}";
             }
             
             AlumnosDrpDown.DataSource = alumnos;
@@ -84,29 +64,16 @@ namespace WebForm.View.AsistenciaProfesor
 
         protected void CargarFechas(int _idsalon)
         {
-            List<DateTime> fechas = new List<DateTime>();
-            var f = daoServicio.listarFechasAsistenciaSalon(_idsalon);
-            List<string> fechasFormato = new List<string>();
-            List<object> fechasconFormato = new List<object>();
-            if (f != null)
-            {
-                fechas = f.ToList();
-                fechasFormato = TransformarFechas(fechas);
-                fechasconFormato = new List<object>();
-                //llenamos la lista de objetos
-                foreach (DateTime fecha in fechas)
-                {
-                    object key = new { Fecha = fecha.Date, FechaFormato = fechasFormato[fechas.IndexOf(fecha)] };
-                    fechasconFormato.Add(key);
-                }
-
-                Session["fechas"] = fechas;
-                //se impleemnto para que funcione el filtrado -> mejorar
-                Session["fechasFormato"] = fechasFormato;
-                Session["fechasconFormato"] = fechasconFormato;
-            }
-            GridAsistenciasFechas.DataSource = fechasconFormato; //verificar el Datafield
+            listaFechasEntero = (daoServicio.listarFechasAsistenciaSalon(_idsalon) ?? new DateTime[]{ }).ToList();
+            listaFechasFiltrado = listaFechasEntero.ToList();
+            GridAsistenciasFechas.DataSource = listaFechasFiltrado; //verificar el Datafield
             GridAsistenciasFechas.DataBind();
+        }
+
+        protected string ParsearFecha(DateTime fecha)
+        {
+            CultureInfo culture = new CultureInfo("es-ES");
+            return fecha.ToString("dddd d 'de' MMMM 'del' yyyy", culture);
         }
         protected List<string> TransformarFechas(List<DateTime> fechas)
         {
@@ -123,15 +90,18 @@ namespace WebForm.View.AsistenciaProfesor
         protected void BtnRegistrarAsistencia_Click(object sender, EventArgs e)
         {
             int idsalon = (int)Session["idsalon"];
+            Session["MyNotification"] = null;
 
             if (!((bool)Session["RealizoAsistenica"]))
             {
                 Session["fechaEdicion"] = null;
-                Response.Redirect("/View/Profesor/RegistroAsistencia.aspx?idsalon="+idsalon);
+                Response.Redirect($"/View/Profesor/RegistroAsistencia.aspx?idsalon={idsalon}");
             }
             else
             {
-                CallJavascript("showModal('bloqueoRegistroModal')");
+                // CallJavascript("showModal('bloqueoRegistroModal')");
+                Session["MyNotification"] = new MyNotification { Tipo="Info", Mensaje="Ya se realizaron los registros de los alumnos el día de hoy" };
+                Response.Redirect($"/View/Profesor/AsistenciaProfesor.aspx");
             }
         }
 
@@ -139,8 +109,9 @@ namespace WebForm.View.AsistenciaProfesor
         protected bool VerificarRegistroAsistenciaActual()
         {
             DateTime fechaHoy = DateTime.Now.Date;//comparamos fechas
-            List<DateTime> fechasReg = (List<DateTime>)Session["fechas"];
-            return fechaHoy.Equals(fechasReg[0].Date);
+            // List<DateTime> fechasReg = (List<DateTime>)Session["fechas"];
+            DateTime fechasReg = listaFechasEntero[0];
+            return fechaHoy.Equals(fechasReg);
         }
 
         protected void BtnCerrarModal_Click(object sender, EventArgs e)
@@ -160,57 +131,27 @@ namespace WebForm.View.AsistenciaProfesor
             string fecha = btn.CommandArgument;
             Session["fechaEdicion"] = fecha; //editaremos los registros de esta fecha
             Session["asistencias"] = new List<asistencia>();
-            Response.Redirect("/View/Profesor/RegistroAsistencia.aspx?idsalon=" + idsalon);
+            Response.Redirect($"/View/Profesor/RegistroAsistencia.aspx?idsalon={idsalon}");
         }
 
         protected void FiltrarMesBtn_Click(object sender, EventArgs e)
         {
             //talvez deberia estar en el backend -> PASARLO
 
-            string mes = MesesDropDown.Text;
-            List<object> fechasconFormato;
-            if(!mes.Equals(""))
-            {
-                List<DateTime> fechas = (List<DateTime>)Session["fechas"];
-                List<string> fechasFormato = (List<string>)Session["fechasFormato"];
-
-                fechasconFormato = new List<object>();
-
-                //llenamos la lista de objetos
-                foreach (DateTime fecha in fechas)
-                {
-                    if (fechasFormato[fechas.IndexOf(fecha)].Contains(mes))
-                    {
-                        object key = new { Fecha = fecha.Date, FechaFormato = fechasFormato[fechas.IndexOf(fecha)] };
-                        fechasconFormato.Add(key);
-                    }
-                }
-                Session["fechasconFormato"] = fechasconFormato;
-            }
-            else
-            {
-                fechasconFormato = (List<object>)Session["fechasconFormato"];
-            }
-            GridAsistenciasFechas.DataSource = fechasconFormato;
+            int mes = int.Parse(MesesDropDown.Text);
+            listaFechasFiltrado = listaFechasEntero.Where( d => d.Month == mes ).ToList();
+            GridAsistenciasFechas.DataSource = listaFechasFiltrado;
             GridAsistenciasFechas.DataBind();
-
-
         }
 
         protected void AsistenciasAlumnoBtn_Click(object sender, EventArgs e)
         {
+            if (string.IsNullOrEmpty(FechaFinalTxt.Text) || string.IsNullOrEmpty(FechaIniTxt.Text)) return;
+            DateTime fechaInicialDate = DateTime.Parse(FechaIniTxt.Text).Date;
+            DateTime fechaFinalDate = DateTime.Parse(FechaFinalTxt.Text).Date;
 
-
-
-            if (!string.IsNullOrEmpty(FechaFinalTxt.Text) && !string.IsNullOrEmpty(FechaIniTxt.Text) )
-            {
-                DateTime fechaInicialDate = DateTime.Parse(FechaIniTxt.Text).Date;
-                DateTime fechaFinalDate = DateTime.Parse(FechaFinalTxt.Text).Date;
-
-                if(VerificarFechas(fechaInicialDate,fechaFinalDate))
+            if(VerificarFechas(fechaInicialDate,fechaFinalDate))
                 Response.Redirect("/View/Profesor/ReporteAsistenciaAlumno.aspx?dniAlu="+AlumnosDrpDown.Text+"&fechaIni="+fechaInicialDate.ToString()+"&fechaFin="+fechaFinalDate.ToString());
-            }
-            
         }
         protected bool VerificarFechas(DateTime fechaIni,DateTime fechaFin)
         {
@@ -229,8 +170,7 @@ namespace WebForm.View.AsistenciaProfesor
 
         protected void GridAsistenciasFechas_PageIndexChanging(object sender, GridViewPageEventArgs e)
         {
-            List<object> fechaFormato = (List<object>)Session["fechasconFormato"];
-            GridAsistenciasFechas.DataSource = fechaFormato;    
+            GridAsistenciasFechas.DataSource = listaFechasFiltrado;    
             GridAsistenciasFechas.PageIndex = e.NewPageIndex;
             GridAsistenciasFechas.DataBind();
         }

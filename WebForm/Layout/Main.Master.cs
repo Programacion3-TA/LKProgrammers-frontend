@@ -1,10 +1,12 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.EnterpriseServices.CompensatingResourceManager;
 using System.Linq;
 using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
 using WebForm.ServicioWS;
+using WebForm.Utils;
 
 namespace WebForm
 {
@@ -12,21 +14,39 @@ namespace WebForm
     {
         protected void Page_Load(object sender, EventArgs e)
         {
-            //no deja entrar amenos que sea miembro
-            if (Session["Usuario"] == null && Session["Tipo"] == null) Response.Redirect("/View/Login/Login.aspx");
-            else
-            {
+            //no deja entrar a menos que sea miembro
+            if (Session["Usuario"] == null || Session["Tipo"] == null)
+                Response.Redirect("/View/Login/Login.aspx");
+            
             if (Session["AnimacionInicio"] != null)
-                {
-                    //Page.ClientScript.RegisterStartupScript(this.GetType(), "A", "<script>alert('A');</script>");
-                    //Page.ClientScript.RegisterStartupScript(this.GetType(), "A", "<script type=text/javascript> alert('Hello World!') </script>");
-                    Session["AnimacionInicio"] = null;
-                }
-
-                usuario _usuario = (usuario)Session["Usuario"];
-                nombreUsuarioLbl.Text = _usuario.nombres +" "+ _usuario.apellidoPaterno; 
-
+            {
+                //Page.ClientScript.RegisterStartupScript(this.GetType(), "A", "<script>alert('A');</script>");
+                //Page.ClientScript.RegisterStartupScript(this.GetType(), "A", "<script type=text/javascript> alert('Hello World!') </script>");
+                Session["AnimacionInicio"] = null;
             }
+
+            if (Session["MyNotification"] != null)
+            {
+                MyNotification notf = (MyNotification)Session["MyNotification"];
+                Session["MyNotification"] = null;
+                string script = "<script> showNotification(\"" + notf.Tipo + "\", \"" + notf.Mensaje+ "\", \""+notf.Titulo+"\") </script>";
+                ScriptsNotification.Text = script;
+                //Dictionary<string, string> StadoClase = new Dictionary<NotificationStates, string>
+                //{
+                //    {"Ok", "alert alert-success" },
+                //    {"Bad", "alert alert-danger" },
+                //    {"Info", "alert alert-primary" }
+                //};
+                //ErrorAlert.Text =
+                //    $"<div class=\"{StadoClase[notf.Estado]} my__notification position-fixed \" style=\"z-index:999;\" role=\"alert\">" +
+                //    "   <i class=\"fa fa-exclamation-triangle\" aria-hidden=\"true\"></i>" +
+                //    $"  {notf.Mensaje}" +
+                //    "</div>";
+            }
+
+            usuario _usuario = (usuario)Session["Usuario"];
+            string _tipo_usuario = (string)Session["Tipo"];
+            nombreUsuarioLbl.Text = $"{_usuario.nombres} {_usuario.apellidoPaterno} <span class=\"badge text-bg-primary\">{_tipo_usuario}</span>";
         }
 
         protected void CerrarSesionBtn_Click(object sender, EventArgs e)
