@@ -25,22 +25,24 @@ namespace WebForm
                 Session["AnimacionInicio"] = null;
             }
 
-            //if (Session["MyNotification"] != null)
-            //{
-            //    MyNotification notf = (MyNotification)Session["MyNotification"];
-            //    Dictionary<NotificationStates, string> StadoClase = new Dictionary<NotificationStates, string>
-            //    {
-            //        {NotificationStates.Ok, "alert alert-success" },
-            //        {NotificationStates.BadRequest, "alert alert-danger" },
-            //        {NotificationStates.Primary, "alert alert-primary" }
-            //    };
-            //    ErrorAlert.Text =
-            //        $"<div class=\"{StadoClase[notf.Estado]} my__notification position-fixed \" style=\"z-index:999;\" role=\"alert\">" +
-            //        "   <i class=\"fa fa-exclamation-triangle\" aria-hidden=\"true\"></i>" +
-            //        $"  {notf.Mensaje}" +
-            //        "</div>";
-            //    Session["MyNotification"] = null;
-            //}
+            if (Session["MyNotification"] != null)
+            {
+                MyNotification notf = (MyNotification)Session["MyNotification"];
+                Session["MyNotification"] = null;
+                string script = "<script> showNotification(\"" + notf.Tipo + "\", \"" + notf.Mensaje+ "\", \""+notf.Titulo+"\") </script>";
+                ScriptsNotification.Text = script;
+                //Dictionary<string, string> StadoClase = new Dictionary<NotificationStates, string>
+                //{
+                //    {"Ok", "alert alert-success" },
+                //    {"Bad", "alert alert-danger" },
+                //    {"Info", "alert alert-primary" }
+                //};
+                //ErrorAlert.Text =
+                //    $"<div class=\"{StadoClase[notf.Estado]} my__notification position-fixed \" style=\"z-index:999;\" role=\"alert\">" +
+                //    "   <i class=\"fa fa-exclamation-triangle\" aria-hidden=\"true\"></i>" +
+                //    $"  {notf.Mensaje}" +
+                //    "</div>";
+            }
 
             usuario _usuario = (usuario)Session["Usuario"];
             string _tipo_usuario = (string)Session["Tipo"];

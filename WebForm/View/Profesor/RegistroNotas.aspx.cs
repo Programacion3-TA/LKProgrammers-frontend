@@ -6,6 +6,7 @@ using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
 using WebForm.ServicioWS;
+using WebForm.Utils;
 
 namespace WebForm.View.Profesor
 {
@@ -123,34 +124,30 @@ namespace WebForm.View.Profesor
             foreach (GridViewRow fila in GridAlumnos.Rows)
             {
                 //evaluamos las filas de datos
-                if (fila.RowType == DataControlRowType.DataRow)
+                if (fila.RowType != DataControlRowType.DataRow) continue;
+
+                TextBox notaTxt = (TextBox)fila.FindControl("NotaAlumno");
+
+                if (notaTxt == null) continue;
+
+                try
                 {
-                    TextBox notaTxt = (TextBox)fila.FindControl("NotaAlumno");
+                    int nota = int.Parse(notaTxt.Text);
+                    if (nota < 0 || nota > 20) throw new FormatException("El valor no es valido") ;
+                    nota notaAlumno  = new nota();
+                    competencia competencia = new competencia();
+                    notaAlumno.competencia = competencia;
+                    notaAlumno.calificacion = nota;
+                    notaAlumno.competencia.id = idCompetenciaInt;
+                    notaAlumno.dniAlumno = fila.Cells[0].Text;
 
-                    if (notaTxt != null)
-                    {
-                        try
-                        {
-                            int nota = int.Parse(notaTxt.Text);
-                            if (nota < 0 || nota > 20) throw new FormatException("El valor no es valido") ;
-                            nota notaAlumno  = new nota();
-                            competencia competencia = new competencia();
-                            notaAlumno.competencia = competencia;
-                            notaAlumno.calificacion = nota;
-                            notaAlumno.competencia.id = idCompetenciaInt;
-                            notaAlumno.dniAlumno = fila.Cells[0].Text;
-
-                            notas.Add(notaAlumno);
-                        }
-                        catch (FormatException ex)
-                        {
-                            CallJavascript("showModal('NotasRegistradasErrorModal')");
-                            return;
-                            //no se realiza 
-                        }
-
-
-                    }
+                    notas.Add(notaAlumno);
+                }
+                catch (FormatException ex)
+                {
+                    CallJavascript("showNotification('Bad', mensaje='Error de formato de ingreso de notas: Las notas deben estar en el rango de 0 y 20. Además, no deben contener caracteres especiales')");
+                    return;
+                    //no se realiza 
                 }
             }
 
@@ -160,9 +157,11 @@ namespace WebForm.View.Profesor
             else
                 foreach (nota notaAlu in notas) 
                     daoServicio.modificarNota(notaAlu);
-                
 
-            CallJavascript("showModal('NotasRegistradasModal')");
+
+            //CallJavascript("showModal('NotasRegistradasModal')");
+            Session["MyNotification"] = new MyNotification { Tipo="Ok", Mensaje= "Se actualizaron las notas con éxito", Titulo= "Asistencias registrada!" };
+            Response.Redirect("/View/Profesor/CalificarProfesor.aspx");
         }
         private void CallJavascript(string function)
         {

@@ -53,45 +53,45 @@
              </asp:GridView>
          </div>
          <div class="card-footer d-flex justify-content-between">
-             <asp:Button ID="CancelaRegistroBtn" runat="server" Text="Cancelar" OnClick="CancelaRegistroBtn_Click" CssClass="btn btn-primary"/>
-             <asp:Button ID="GuardarNotasBtn" runat="server" Text="Guardar notas" OnClick="GuardarNotasBtn_Click" CssClass="btn btn-secondary"/>
+             <asp:Button ID="CancelaRegistroBtn" runat="server" Text="Cancelar" OnClick="CancelaRegistroBtn_Click" CssClass="btn btn-secondary"/>
+             <asp:Button ID="GuardarNotasBtn" runat="server" Text="Guardar notas" OnClick="GuardarNotasBtn_Click" CssClass="btn btn-primary"/>
          </div>
      </div>
  </div>
 
     <div class="modal fade" id="NotasRegistradasModal" tabindex="-1" role="dialog" aria-labelledby="NotasRegistradasModalLabel" aria-hidden="true">
-    <div class="modal-dialog" role="document">
-        <div class="modal-content successModal">
-            <div class="modal-header">
-                <h5 class="modal-title" id="NotasRegistradasModalLabel">Asistencias registrada!</h5>
-            </div>
-            <div class="modal-body" id="modalBody">
-               Usted registró las notas de los alumnos con exito.
-            </div>
-            <hr />
-            <div class="modal-footer">
-                <asp:LinkButton ID="BtnRegresarAsistencias" runat="server" CssClass="btn btn-success" OnClick="CancelaRegistroBtn_Click">Volver</asp:LinkButton>
+        <div class="modal-dialog" role="document">
+            <div class="modal-content successModal">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="NotasRegistradasModalLabel">Asistencias registrada!</h5>
+                </div>
+                <div class="modal-body" id="modalBody">
+                   Usted registró las notas de los alumnos con exito.
+                </div>
+                <hr />
+                <div class="modal-footer">
+                    <asp:LinkButton ID="BtnRegresarAsistencias" runat="server" CssClass="btn btn-success" OnClick="CancelaRegistroBtn_Click">Volver</asp:LinkButton>
+                </div>
             </div>
         </div>
-    </div>
     </div>
     
     
     <div class="modal fade" id="NotasRegistradasErrorModal" tabindex="-1" role="dialog" aria-labelledby="NotasRegistradasErrorModalLabel" aria-hidden="true">
-    <div class="modal-dialog" role="document">
-        <div class="modal-content errorBack">
-            <div class="modal-header">
-                <h5 class="modal-title" id="NotasRegistradasErrorModalLabel">Error en ingreso de notas</h5>
-            </div>
-            <div class="modal-body" id="modalBodyError">
-               Parece que algunas notas están ingresándose incorrectamente.Las notas deben estar en un rango válido, generalmente entre 0 y 20. Además, es importante que no contengan caracteres especiales
-            </div>
-            <hr />
-            <div class="modal-footer">
-                <asp:LinkButton ID="LinkButton1" runat="server" CssClass="btn btn-danger" >Entendido</asp:LinkButton>
+        <div class="modal-dialog" role="document">
+            <div class="modal-content errorBack">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="NotasRegistradasErrorModalLabel">Error en ingreso de notas</h5>
+                </div>
+                <div class="modal-body" id="modalBodyError">
+                   Parece que algunas notas están ingresándose incorrectamente.Las notas deben estar en un rango válido, generalmente entre 0 y 20. Además, es importante que no contengan caracteres especiales
+                </div>
+                <hr />
+                <div class="modal-footer">
+                    <asp:LinkButton ID="LinkButton1" runat="server" CssClass="btn btn-danger" >Entendido</asp:LinkButton>
+                </div>
             </div>
         </div>
-    </div>
     </div>
 </asp:Content>
 <asp:Content ID="Content5" ContentPlaceHolderID="Script" runat="server">

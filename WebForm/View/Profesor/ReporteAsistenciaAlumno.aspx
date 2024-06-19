@@ -76,8 +76,8 @@
          </div>
 
          <div class="card-footer d-flex justify-content-between">
-            <asp:Button ID="RegresarAsistenciasBtn" runat="server" Text="Regresar" CssClass="btn btn-primary" OnClick="RegresarAsistenciasBtn_Click" />
-            <asp:Button runat="server" ID="MostrarReporteBtn" Text="Generar reporte PDF" CssClass="btn btn-secondary"
+            <asp:Button ID="RegresarAsistenciasBtn" runat="server" Text="Regresar" CssClass="btn btn-secondary" OnClick="RegresarAsistenciasBtn_Click" />
+            <asp:Button runat="server" ID="MostrarReporteBtn" Text="Generar reporte PDF" CssClass="btn btn-primary"
                          OnClick="MostrarReporteBtn_Click" />
          </div>
     </div>

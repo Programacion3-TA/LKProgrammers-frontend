@@ -23,7 +23,7 @@
     <asp:ContentPlaceHolder ID="Styles" runat="server">
     </asp:ContentPlaceHolder>
 </head>
-<body>
+<body class="min-vh-100">
     <!-- link iconos: https://fontawesome.com/icons/house?f=classic&s=solid-->
 
     <!--container-fluid: width100%
@@ -35,7 +35,7 @@
         -->
     <form runat="server">
 
-    <div class="container-fluid d-flex p-0 h-100 divMaster">
+    <div class="container-fluid d-flex p-0 h-100 min-vh-100 divMaster">
 
         <div class="flex-shrink-0 p-4 offcanvas-md offcanvas-star" style="width:250px"></div>
 
@@ -105,9 +105,15 @@
        </div>
 
         <div id="my_notification_modal" class="alert position-fixed" style="z-index:999;" role="alert">
-            <i id="my_notification_modal--icon" class="fa" aria-hidden="true"></i>
-            <span id="my_notification_modal--span"></span>
+            <h4 id="my_notification_modal--h4" class="alert-heading"></h4>
+            <%--<p>Usted registró las notas de los alumnos con exito.</p>--%>
+            <p>
+                <i id="my_notification_modal--icon" class="fa" aria-hidden="true"></i>
+                <span id="my_notification_modal--span"></span>
+            </p>
+            <a id="my_notification_modal--ancle" class="btn btn-success">Volver</a>
         </div>
+        <asp:Label ID="ScriptsNotification" runat="server"></asp:Label>
     </form>
     <asp:ContentPlaceHolder ID="Script" runat="server">
     </asp:ContentPlaceHolder>
