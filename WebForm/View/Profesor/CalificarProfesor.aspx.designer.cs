@@ -31,5 +31,14 @@ namespace WebForm.View.Profesor
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
         protected global::System.Web.UI.WebControls.GridView CompetenciaCursosGrid;
+
+        /// <summary>
+        /// Control FormulaPesos.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label FormulaPesos;
     }
 }

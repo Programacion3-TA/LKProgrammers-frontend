@@ -10,6 +10,9 @@
 <asp:Content ID="Content3" ContentPlaceHolderID="Navusuarios" runat="server">
 </asp:Content>
 <asp:Content ID="Content4" ContentPlaceHolderID="MainContent" runat="server">
+    <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+    <script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    
     <h1>Calificar cursos</h1>
     <div class="card">
         <div class="card-header">
@@ -47,6 +50,8 @@
 
             </div>
         </div>
+
+        <asp:Label ID="FormulaPesos" runat="server" Text="Hubo un error al mostrar la formula"></asp:Label>
     </div>
 
     

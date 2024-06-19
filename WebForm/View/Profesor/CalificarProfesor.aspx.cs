@@ -22,6 +22,11 @@ namespace WebForm.View.Profesor
         protected void Page_Load(object sender, EventArgs e)
         {
             daoServicio = new LKServicioWebClient();
+            //if (Session["CalificarProfesorNoti"] != null)
+            //{
+            //    CallJavascript("showNotification('Ok', mensaje='Se actualizaron las notas con éxito', titulo = 'Asistencias registrada!')");
+            //    Session["CalificarProfesorNoti"] = null;
+            //}
             if (!IsPostBack)
             {
                 cursoHorario[] cursosHorario = daoServicio.listarCursosPorProfesor(((profesor)Session["Usuario"]).dni);
@@ -35,22 +40,21 @@ namespace WebForm.View.Profesor
         {
            
 
-            if (cursoHorarios != null)
+            if (cursoHorarios == null) return;
+
+            List<cursoHorario> cursoHorarioList = cursoHorarios.ToList();
+
+            List<CursoMostrar> mostrarCurso = new List<CursoMostrar>();
+            foreach (cursoHorario cur in cursoHorarioList)
             {
-                List<cursoHorario> cursoHorarioList = cursoHorarios.ToList();
 
-                List<CursoMostrar> mostrarCurso = new List<CursoMostrar>();
-                foreach (cursoHorario cur in cursoHorarioList)
-                {
-
-                    CursoMostrar elem = new CursoMostrar();   
-                    elem.cursoDescrip = cur.curso.nombre + " - salon:" + cur.idsalon; //lo usaremos para mostrar los nombres
-                    elem.cursoIdent = cur.idsalon + "|" + cur.curso.id; //identificar al salon y los cursos
-                    mostrarCurso.Add(elem);
-                }
-                CursoDictadoDrpL.DataSource = mostrarCurso;
-                CursoDictadoDrpL.DataBind();
+                CursoMostrar elem = new CursoMostrar();   
+                elem.cursoDescrip = cur.curso.nombre + " - salon:" + cur.idsalon; //lo usaremos para mostrar los nombres
+                elem.cursoIdent = cur.idsalon + "|" + cur.curso.id; //identificar al salon y los cursos
+                mostrarCurso.Add(elem);
             }
+            CursoDictadoDrpL.DataSource = mostrarCurso;
+            CursoDictadoDrpL.DataBind();
         }
 
         protected void AsignarNotaBtn_Click(object sender, EventArgs e)
@@ -60,8 +64,6 @@ namespace WebForm.View.Profesor
             string[] Resultados = CursoDictadoDrpL.SelectedValue.Split('|');
             string salonId = Resultados[0];
             Response.Redirect("/View/Profesor/RegistroNotas.aspx?idsalon="+salonId+"&idcompetencia="+idCompetencia);
-
-
         }
 
         protected void CursoDictadoDrpL_SelectedIndexChanged(object sender, EventArgs e)
@@ -69,18 +71,25 @@ namespace WebForm.View.Profesor
             string[] Resultados = CursoDictadoDrpL.SelectedValue.Split('|');
             string CursoId = Resultados[1];
 
-            competencia[] competencias = daoServicio.listarCompetencias(int.Parse(CursoId));
-
-            if(competencias != null)
-            {
-                CargarCompetencias(competencias);
-            }
+            competencia[] competencias = daoServicio.listarCompetencias(int.Parse(CursoId)) ?? new competencia[] { };
+            CargarCompetencias(competencias);
         }
         protected void CargarCompetencias(competencia[] competencias)
         {
             List<competencia> competenciasList= competencias.ToList();
             CompetenciaCursosGrid.DataSource = competenciasList;
             CompetenciaCursosGrid.DataBind();
+
+            int i = 1;
+            string formula = "\\[ \\text{Nota final} =  ";
+            foreach (competencia comp in competencias)
+            {
+                formula += $"{comp.peso} \\times "+"N_{"+ i +"} +";
+                i++;
+            }
+            formula = formula.Substring(0,formula.Length - 2);
+            formula += " \\]";
+            FormulaPesos.Text = formula;
         }
 
         protected void CompetenciaCursosGrid_PageIndexChanging(object sender, GridViewPageEventArgs e)
@@ -91,68 +100,7 @@ namespace WebForm.View.Profesor
         private void CallJavascript(string function)
         {
             string script = "window.onload = function() {" + function + "; };";
-            
             ClientScript.RegisterStartupScript(GetType(), "", script, true);
         }
-
-       
-        /*
-
-        protected void CerrarModalBtn_Click(object sender, EventArgs e)
-        {
-            ScriptManager.RegisterStartupScript(this, GetType(), "closeModalScript", "closeModal('listarAlumnosModal');", true);
-        }
-
-        protected void RegistrarNotasBtn_Click(object sender, EventArgs e)
-        {
-
-            List<string> listaNotas = new List<string>();
-
-            foreach(GridViewRow fila in GridAlumnos.Rows)
-            {
-                //evaluamos las filas de datos
-                if(fila.RowType == DataControlRowType.DataRow)
-                {
-                    TextBox notaTxt = (TextBox)fila.FindControl("NotaAlumno");
-                    if(notaTxt != null)
-                    {
-                        try
-                        {
-                            int nota = int.Parse(notaTxt.Text);
-                        }catch(System.Exception exce)
-                        {
-
-                        }
-                         
-                        
-                    }
-                }
-            }
-        }
-
-
-        //arreglar esto de añadir notas
-      /*  protected void NotaAlumno_TextChanged(object sender, EventArgs e)
-        {
-            string regex = @"[\.\-\+e]";
-            TextBox notaAlumno = (TextBox)sender;
-            string nota = notaAlumno.Text;
-            GridViewRow fila = (GridViewRow)notaAlumno.NamingContainer;
-            Label msgErrorFila = (Label)fila.FindControl("msgErrorLabel");
-
-            if (Regex.IsMatch(nota, regex, RegexOptions.IgnoreCase))
-            {
-                msgErrorFila.Visible = false;
-                //le quitamos un etilo
-            }
-            else
-            {
-                msgErrorFila.Visible = true;
-                //le aplicamos un estilo
-
-            }
-
-
-        }*/
     }
 }

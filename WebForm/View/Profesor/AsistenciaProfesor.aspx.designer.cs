@@ -24,6 +24,15 @@ namespace WebForm.View.AsistenciaProfesor
         protected global::WebForm.Components.Path MyCustomControl1;
 
         /// <summary>
+        /// Control Pruebas.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label Pruebas;
+
+        /// <summary>
         /// Control FechaIniSelecLbl.
         /// </summary>
         /// <remarks>
@@ -58,6 +67,15 @@ namespace WebForm.View.AsistenciaProfesor
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
         protected global::System.Web.UI.WebControls.TextBox FechaFinalTxt;
+
+        /// <summary>
+        /// Control AlumnoLbl.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label AlumnoLbl;
 
         /// <summary>
         /// Control AlumnosDrpDown.

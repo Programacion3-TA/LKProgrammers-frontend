@@ -5,6 +5,7 @@ using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
 using WebForm.ServicioWS;
+using WebForm.Utils;
 namespace WebForm.View.Profesor
 {
     public partial class RegistroAsistencia : System.Web.UI.Page
@@ -130,7 +131,9 @@ namespace WebForm.View.Profesor
                     //aveces no guarda todo : Comunications link failure
                     asisHechas += daoServicio.insertarAsistencia(asistencia_);
                 }
-                CallJavascript("showInsertModal('asistenRegistradasModal')");
+                //CallJavascript("showInsertModal('asistenRegistradasModal')");
+                Session["MyNotification"] = new MyNotification { Tipo="Ok", Mensaje="Se registraron correctamente las asistencias" };
+                Response.Redirect("/View/Profesor/AsistenciaProfesor.aspx");
             }
             else
             {
@@ -138,7 +141,9 @@ namespace WebForm.View.Profesor
                 {
                     asisHechas += daoServicio.modificarAsistencia(asistencia_);
                 }
-                CallJavascript("showUpdateModal('asistenRegistradasModal')");
+                // CallJavascript("showUpdateModal('asistenRegistradasModal')");
+                Session["MyNotification"] = new MyNotification { Tipo = "Ok", Mensaje = "Se actualizaron correctamente las asistencias" };
+                Response.Redirect("/View/Profesor/AsistenciaProfesor.aspx");
             }
 
 
