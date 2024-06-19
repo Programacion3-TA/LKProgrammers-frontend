@@ -7,38 +7,47 @@
 // </generado automáticamente>
 //------------------------------------------------------------------------------
 
-namespace WebForm.View
+namespace WebForm.View.Alumno
 {
 
 
-    public partial class Alumno
+    public partial class NotaAlumno
     {
 
         /// <summary>
-        /// Control MyCustomControl1.
+        /// Control GridCursosNotas.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::WebForm.Components.Path MyCustomControl1;
+        protected global::System.Web.UI.WebControls.GridView GridCursosNotas;
 
         /// <summary>
-        /// Control CursosContainer.
+        /// Control NombreCursoLbl.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Literal CursosContainer;
+        protected global::System.Web.UI.WebControls.Label NombreCursoLbl;
 
         /// <summary>
-        /// Control Confetti.
+        /// Control GridViewNotasAlumno.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Literal Confetti;
+        protected global::System.Web.UI.WebControls.GridView GridViewNotasAlumno;
+
+        /// <summary>
+        /// Control CerrarModalBtn.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Button CerrarModalBtn;
     }
 }
