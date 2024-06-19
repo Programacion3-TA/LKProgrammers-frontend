@@ -7,6 +7,7 @@ using System.Web.UI;
 using System.Web.UI.WebControls;
 using WebForm.ServicioWS;
 using WebForm.Utils;
+using System.Text.RegularExpressions;
 
 namespace WebForm
 {
@@ -47,8 +48,28 @@ namespace WebForm
             RenderizarPath();
 
             usuario _usuario = (usuario)Session["Usuario"];
-            string _tipo_usuario = (string)Session["Tipo"];
+            FotoPerfilAsp.ImageUrl = ObtenerFotoPerfil((string)Session["Tipo"], (char)_usuario.genero);
+            string _tipo_usuario = (( (char) _usuario.genero ) == 'M')? (string)Session["Tipo"] : Regex.Replace((string)Session["Tipo"], "o$", "") + "a";
             nombreUsuarioLbl.Text = $"{_usuario.nombres} {_usuario.apellidoPaterno} <span class=\"badge text-bg-primary\">{_tipo_usuario}</span>";
+        }
+
+        protected string ObtenerFotoPerfil(string rol, char genero)
+        {
+            string url = "/Public/img/";
+            switch (rol)
+            {
+                case "Alumno":
+                    url += (genero == 'M')? "alumno.jpg" : "alumna.jfif";
+                    break;
+                case "Profesor":
+                    url += (genero == 'M') ? "profesor.jfif" : "profesora.png";
+                    break;
+                case "Administrador":
+                    url += (genero == 'M') ? "admin.jpg" : "admin.jpg";
+                    break;
+            }
+
+            return url;
         }
 
         protected void CerrarSesionBtn_Click(object sender, EventArgs e)
@@ -78,14 +99,14 @@ namespace WebForm
             string[] Atribs = Ruta.Split('/');
             Atribs[Atribs.Length - 1] = Atribs[Atribs.Length - 1].Split('.')[0];
             string html = MyReact.CreateComponent("li", "class=\"breadcrumb-item\" style=\"color: #000;\"",
-                MyReact.CreateComponent("a", "href=\"#\"", "<i class=\"fa-solid fa-house fa-5xs me-2\"></i> Colegio"));
+                MyReact.CreateComponent("a", "href=\"#\" style=\"color: #000;\"", "<i style=\"color: #000;\" class=\"fa-solid fa-house fa-5xs me-2\"></i> Colegio"));
             foreach(string rut in Atribs)
             {
                 string icono = (Relaciones.ContainsKey(rut)) ? Relaciones[rut] : "";
                 html += MyReact.CreateComponent("li", "class=\"breadcrumb-item\" style=\"color: #000;\"",
-                    MyReact.CreateComponent("a", "href=\"#\" style=\"color: #000;", $"{icono}{rut}")); ;
+                    MyReact.CreateComponent("a", "href=\"#\" style=\"color: #000;\"", $"{icono} {rut}")); ;
             }
-            PathUsuarios.Text = html;
+            PathUsuariosLit.Text = html;
             // <li class="breadcrumb-item"><a href="#">Home</a></li>
         }
     }

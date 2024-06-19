@@ -41,7 +41,7 @@
 
 <asp:Content ID="Content4" ContentPlaceHolderID="ImagenPerfil" runat="server">
 
-    <img src="/Public/img/pedro.gif" />
+    <%--<img src="/Public/img/pedro.gif" />--%>
 
 </asp:Content>
 

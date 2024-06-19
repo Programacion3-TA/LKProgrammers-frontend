@@ -24,7 +24,7 @@
         </style>
 </asp:Content>
 <asp:Content ID="Content3" ContentPlaceHolderID="Navusuarios" runat="server">
-    <uc:Path ID="MyCustomControl1" runat="server" TiposURL="Asistencia"/>        
+    <%--<uc:Path ID="MyCustomControl1" runat="server" TiposURL="Asistencia"/>        --%>
 </asp:Content>
 <asp:Content ID="Content4" ContentPlaceHolderID="MainContent" runat="server">
 

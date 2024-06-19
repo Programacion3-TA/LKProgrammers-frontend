@@ -158,6 +158,7 @@ namespace WebForm.View.AsistenciaProfesor
                 Response.Redirect("/View/Profesor/ReporteAsistenciaAlumno.aspx?dniAlu="+AlumnosDrpDown.Text+"&fechaIni="+fechaInicialDate.ToString()+"&fechaFin="+fechaFinalDate.ToString());
             else
                 CallJavascript("showNotification('Bad','Las fecha inicial debe ser anterior a la fecha posterior)");
+
         }
         protected bool VerificarFechas(DateTime fechaIni,DateTime fechaFin)
         {

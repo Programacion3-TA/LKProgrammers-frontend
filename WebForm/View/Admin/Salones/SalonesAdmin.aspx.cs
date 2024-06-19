@@ -59,6 +59,7 @@ namespace WebForm.View.Admin.Salones
                 salones = new BindingList<salon>(f);
             }
             GridSalones.DataSource = salones;
+            Session["Salones"] = salones;
             GridSalones.DataBind();
         }
 
@@ -92,6 +93,10 @@ namespace WebForm.View.Admin.Salones
         {
             Button btn = (Button)sender;
             string salonId = btn.CommandArgument;
+            // Se ve un salón a detalle -> SalonDetalle
+            BindingList<salon> salones = Session["Salones"] as BindingList<salon>;
+            salon salonElegido = salones.ToList().Find(p => p.id == int.Parse(salonId));
+            Session["SalonElegido"] = salonElegido;
             Response.Redirect($"SalonDetalle.aspx?salonId={salonId}");
         }
 
@@ -146,6 +151,14 @@ namespace WebForm.View.Admin.Salones
             cargarProfesores();
             cargarAnisoEscolares();
             Response.Redirect(Request.Url.AbsoluteUri);
+        }
+
+        protected void GridSalones_PageIndexChanging(object sender, GridViewPageEventArgs e)
+        {
+            GridSalones.PageIndex = e.NewPageIndex;
+            salones = Session["Salones"] as BindingList<salon>;
+            GridSalones.DataSource = salones;
+            GridSalones.DataBind();
         }
     }
 }

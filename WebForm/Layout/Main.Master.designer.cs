@@ -51,6 +51,15 @@ namespace WebForm
         protected global::System.Web.UI.WebControls.LinkButton CerrarSesionBtn;
 
         /// <summary>
+        /// Control FotoPerfilAsp.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Image FotoPerfilAsp;
+
+        /// <summary>
         /// Control ImagenPerfil.
         /// </summary>
         /// <remarks>
@@ -78,13 +87,13 @@ namespace WebForm
         protected global::System.Web.UI.WebControls.ContentPlaceHolder NombreUsuario;
 
         /// <summary>
-        /// Control PathUsuarios.
+        /// Control PathUsuariosLit.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Label PathUsuarios;
+        protected global::System.Web.UI.WebControls.Literal PathUsuariosLit;
 
         /// <summary>
         /// Control Navusuarios.

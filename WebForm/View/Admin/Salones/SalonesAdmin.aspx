@@ -19,6 +19,7 @@
     </nav>
     <div class="mx-auto d-flex flex-column justify-content-center">
         <h2 class="px-2">Salones</h2>
+        <hr />
         <div class="container">
             <div class="container row">
                 <div class="text-end p-3 mx-auto">
@@ -30,7 +31,7 @@
             <div class="container row">
                 <asp:GridView ID="GridSalones" runat="server" AutoGenerateColumns="false"
                     AllowPaging="true" PageSize="5"
-                    CssClass="table table-hover table-responsive table-striped">
+                    CssClass="table table-hover table-responsive table-striped" OnPageIndexChanging="GridSalones_PageIndexChanging">
                     <Columns>
                         <asp:BoundField DataField="id" HeaderText="Código" />
                         <asp:BoundField DataField="idAnioEscolar" HeaderText="Año Académico" />
@@ -60,7 +61,7 @@
         </div>
 
             
-
+        <!-- Modal Agregar, ver, editar salón -->
         <div id="modalSalon" class="modal" tabindex="-1">
             <div class="modal-dialog">
                 <div class="modal-content">

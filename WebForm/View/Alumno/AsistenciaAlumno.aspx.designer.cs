@@ -15,6 +15,7 @@ namespace WebForm.View.AsistenciaAlumno
     {
 
         /// <summary>
+
         /// Control MyCustomControl1.
         /// </summary>
         /// <remarks>
@@ -69,6 +70,7 @@ namespace WebForm.View.AsistenciaAlumno
         protected global::System.Web.UI.WebControls.Button AsistenciasAlumnoBtn;
 
         /// <summary>
+
         /// Control Cuack.
         /// </summary>
         /// <remarks>
