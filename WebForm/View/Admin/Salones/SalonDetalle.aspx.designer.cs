@@ -186,24 +186,6 @@ namespace WebForm.View.Admin.Salones
         protected global::System.Web.UI.WebControls.DropDownList DDDía;
 
         /// <summary>
-        /// Control LblHoras.
-        /// </summary>
-        /// <remarks>
-        /// Campo generado automáticamente.
-        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Label LblHoras;
-
-        /// <summary>
-        /// Control TxtHoras.
-        /// </summary>
-        /// <remarks>
-        /// Campo generado automáticamente.
-        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox TxtHoras;
-
-        /// <summary>
         /// Control BtnBuscarHorario.
         /// </summary>
         /// <remarks>

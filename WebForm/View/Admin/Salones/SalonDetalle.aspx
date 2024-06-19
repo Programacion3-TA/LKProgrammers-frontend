@@ -230,20 +230,15 @@
                             </asp:DropDownList>
 
                              <div class="col-md-12  mb-3">
-                            <asp:Label ID="LblHoras" runat="server" Text="Horas a reservar" CssClass="form-label"></asp:Label>
-                            <asp:TextBox ID="TxtHoras" runat="server" CssClass="form-control" TextMode="Number"></asp:TextBox>
-                            <br />
                             <asp:Button ID="BtnBuscarHorario" runat="server" Text="Buscar Horarios" CssClass="btn btn-primary"/>
                             </div>
-                            <asp:Label ID="LblHoariosDisp" runat="server" Text="HorariosDisponibles" CssClass="form-label" Visible="false"></asp:Label>
-                            <asp:DropDownList ID="DDHorariosDisponibles" runat="server" CssClass="form-select" Visible="false">                                               
-                            </asp:DropDownList>
-
+                            <asp:Label ID="LblHoariosDisp" runat="server" Text="Horarios Disponibles" CssClass="form-label" Visible="false"></asp:Label>
+                            <asp:DropDownList ID="DDHorariosDisponibles" runat="server" CssClass="form-select" Visible="false"></asp:DropDownList>
                             <asp:Label ID="LblInicio" runat="server" Text="Hora Inicio" CssClass="form-label" Visible="false"></asp:Label>
                             <asp:TextBox ID="TxtHoraInicio" runat="server" CssClass="form-control" Enabled="false" Visible="false"></asp:TextBox>
-
                             <asp:Label ID="LblFin" runat="server" Text="Hora Fin" CssClass="form-label" Visible="false"></asp:Label>
                             <asp:TextBox ID="TxtHoraFin" runat="server" CssClass="form-control" Enabled="false" Visible="false"></asp:TextBox>
+
                         </ContentTemplate>
                     </asp:UpdatePanel>
 

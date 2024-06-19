@@ -105,6 +105,7 @@ namespace WebForm.View.Admin.Salones
                 GVCursos.DataSource = cursos;
                 GVCursos.DataBind();
             }
+            CallJavascript("showModalAgregarCurso()");
         }
         public static string NormalizarTexto(string texto)
         {
@@ -137,31 +138,46 @@ namespace WebForm.View.Admin.Salones
 
             return dt;
         }
-        
+
         protected void BtnBuscarHorario_Click(object sender, EventArgs e)
         {
             string dia = DDDía.SelectedValue;
-            int horasAReservar = int.Parse(TxtHoras.Text);
-
             // Lógica para buscar horarios disponibles según el día y las horas a reservar
-            DataTable horariosDisponibles = BuscarHorarios(dia, horasAReservar);
-
+            DataTable horariosDisponibles = BuscarHorarios(dia);
             if (horariosDisponibles != null && horariosDisponibles.Rows.Count > 0)
             {
+                // Vincula los datos al DropDownList de horarios disponibles
                 DDHorariosDisponibles.DataSource = horariosDisponibles;
-                DDHorariosDisponibles.DataTextField = "Horario"; // Campo a mostrar
-                DDHorariosDisponibles.DataValueField = "HorarioId"; // Campo de valor
+                DDHorariosDisponibles.DataTextField = "Hora Inicio"; // Nombre del campo para mostrar
+                DDHorariosDisponibles.DataValueField = "HorarioId"; // Valor del campo para el valor
                 DDHorariosDisponibles.DataBind();
 
+                // Mostrar el DropDownList y el texto de etiqueta correspondiente
                 LblHoariosDisp.Visible = true;
                 DDHorariosDisponibles.Visible = true;
             }
+            else
+            {
+                // En caso de no encontrar horarios disponibles, ocultar el DropDownList y el texto de etiqueta
+                LblHoariosDisp.Visible = false;
+                DDHorariosDisponibles.Visible = false;
+            }
+
+            // Mostrar el modal de agregar curso después de buscar los horarios
+            CallJavascript("showModalAgregarCurso()");
         }
 
+
+
         // Método para buscar horarios disponibles en la base de datos
-        private DataTable BuscarHorarios(string dia, int horas)
+        private DataTable BuscarHorarios(string dia)
         {
             DataTable dt = new DataTable();
+            List<horario> hor = serviciodao.Buscar_horarios_libres(dia, salonId).ToList() ?? new List<horario>();
+            dt.Columns.Add("Dia");
+            dt.Columns.Add("Hora Inicio");
+            dt.Columns.Add("Hora Fin");
+            foreach (horario j in hor) { dt.Rows.Add(j.dia,j.horaInicio,j.horaFin); }
             return dt;
         }
         protected void BtnGuardar_Click(object sender, EventArgs e)
@@ -169,9 +185,6 @@ namespace WebForm.View.Admin.Salones
             int cursoId = int.Parse(TxtCursoID.Text);
             string dia = DDDía.SelectedValue;
             int horarioId = int.Parse(DDHorariosDisponibles.SelectedValue);
-
-            // Lógica para guardar la asignación del curso con el horario seleccionado
-
             serviciodao.insertar_curso_salon(salonId, horarioId, cursoId);
             LoadCursos();
         }
