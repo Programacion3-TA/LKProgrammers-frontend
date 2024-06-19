@@ -21,11 +21,12 @@ namespace WebForm.View.Profesor
             if (!IsPostBack)
             {
                 string idsalon = Request.QueryString["idsalon"];
-                alumno[] alumnos = daoServicio.listarAlumnosxsalon(int.Parse(idsalon));
-                if (alumnos != null)
+                //alumno[] alumnos = daoServicio.listarAlumnosxsalon(int.Parse(idsalon));
+                List<alumno> aluList = (List<alumno>)Session["AlumnosCurso"];
+                if (aluList != null)
                 {
-                   List<alumno> aluList =  TransformarNombres(alumnos);
-                    Session["AlumnosCurso"] = aluList;
+                  // List<alumno> aluList =  TransformarNombres(alumnos);
+                    //Session["AlumnosCurso"] = aluList;
                     CargarAlumnos((List<alumno>)Session["AlumnosCurso"]);
                     ObtenerNotas(aluList);
                     CargarNotas();
@@ -49,8 +50,8 @@ namespace WebForm.View.Profesor
         {
             string idCompetencia = Request.QueryString["idcompetencia"];
             int idCompetenciaInt = int.Parse(idCompetencia);
-            List<nota> notas = new List<nota>();
-            Session["notanuevas"] = false;
+            List<nota> notasNuevas = new List<nota>(); //por si hay nuevas notas
+            List<nota> notasRegistradas = new List<nota>(); //por si ya fueron registrados
             foreach (GridViewRow fila in GridAlumnos.Rows)
             {
                 //evaluamos las filas de datos
@@ -61,8 +62,8 @@ namespace WebForm.View.Profesor
                     nota notaAlumno;
                     if(notasAlumno != null)
                     {
-                        Session["notanuevas"] = false; //si encontramos notas, significa que es nuevo el registro de notas
                         notaAlumno = notasAlumno.FirstOrDefault();
+                        notasRegistradas.Add(notaAlumno);
                     }
                     else
                     {
@@ -70,21 +71,26 @@ namespace WebForm.View.Profesor
                         competencia competencia = new competencia();
                         notaAlumno.dniAlumno = dniAlumno;
                         notaAlumno.calificacion = -1;
+                        notasNuevas.Add(notaAlumno);
                     }
-                    notas.Add(notaAlumno);
                 }
             }
-            Session["notanuevas"] = notas.All(nota => nota.calificacion == -1); //si todas las calificaciones fueron -1 porque no existian entonces son notaas nuevas
 
-            Session["notasCargadas"] = notas;
+            Session["haynotanuevas"] = (notasNuevas.Count != 0); //si todas las calificaciones fueron -1 porque no existian entonces son notaas nuevas
+
+            Session["notasNuevas"] = notasNuevas;
+            Session["notasRegistradas"] = notasRegistradas;
 
 
 
         }
         protected void CargarNotas()
         {
-            //solo se carga cuando las notas no son nuevas
-            if (!(bool)Session["notanuevas"]) {
+            //solo se carga cuando hay notas registradas
+            if (((List<nota>)Session["notasRegistradas"]).Count != 0) {
+
+                //junta todo
+                List<nota> todoNotas = (List<nota>)Session["notasRegistradas"];
 
                 foreach (GridViewRow fila in GridAlumnos.Rows)
                 {
@@ -93,9 +99,9 @@ namespace WebForm.View.Profesor
                     {
                         string dniAlumno = fila.Cells[0].Text;
                         TextBox notaTxt = (TextBox)fila.FindControl("NotaAlumno");
-                        nota nota = ((List<nota>)Session["notasCargadas"]).Find(x => x.dniAlumno.Equals(dniAlumno));
+                        nota nota = todoNotas.Find(x => x.dniAlumno.Equals(dniAlumno));
                         
-                        if(nota.calificacion != -1)
+                        if(nota != null)
                         {
                             notaTxt.Text = nota.calificacion.ToString();
                         }
@@ -120,7 +126,9 @@ namespace WebForm.View.Profesor
 
             string idCompetencia = Request.QueryString["idcompetencia"];
             int idCompetenciaInt = int.Parse(idCompetencia);
+
             List<nota> notas = new List<nota>();
+
             foreach (GridViewRow fila in GridAlumnos.Rows)
             {
                 //evaluamos las filas de datos
@@ -150,17 +158,29 @@ namespace WebForm.View.Profesor
                     //no se realiza 
                 }
             }
-
+            /*
             if ((bool)Session["notanuevas"])
                 foreach (nota notaAlu in notas)
                     daoServicio.insertarNota(notaAlu);
             else
                 foreach (nota notaAlu in notas) 
+                    daoServicio.modificarNota(notaAlu);*/
+            List<nota> notasRegistradas = (List<nota>)Session["notasRegistradas"];
+            foreach (nota notaAlu in notas)
+            {
+               if(notasRegistradas.Find(x => x.dniAlumno.Equals(notaAlu.dniAlumno)) != null)
+                {
+                    //si lo encuentra se actualiza
                     daoServicio.modificarNota(notaAlu);
-
+                }
+                else
+                {
+                    daoServicio.insertarNota(notaAlu);
+                }
+            }
 
             //CallJavascript("showModal('NotasRegistradasModal')");
-            Session["MyNotification"] = new MyNotification { Tipo="Ok", Mensaje= "Se actualizaron las notas con éxito", Titulo= "Asistencias registrada!" };
+            Session["MyNotification"] = new MyNotification { Tipo="Ok", Mensaje= "Se actualizaron las notas con éxito", Titulo= "Notas registrada!" };
             Response.Redirect("/View/Profesor/CalificarProfesor.aspx");
         }
         private void CallJavascript(string function)

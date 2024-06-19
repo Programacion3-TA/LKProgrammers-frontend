@@ -33,7 +33,7 @@
     <li class="nav-item mb-1">
         <a href="/View/Profesor/CalificarProfesor.aspx">
             <i class="fa-solid fa-star"></i>
-            Calificar
+            Calificar/Notas
         </a>
     </li>
 </asp:Content>
