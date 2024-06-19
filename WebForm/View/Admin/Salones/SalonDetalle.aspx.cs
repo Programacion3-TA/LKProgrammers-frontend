@@ -116,13 +116,13 @@ namespace WebForm.View.Admin.Salones
             if (cursos != null && cursos.Rows.Count > 0)
             {
                 GVCursos.Visible = true;
-                LblNoCursos.Visible = false;
+                LblNoCursos2.Visible = false;
                 GVCursos.DataSource = cursos;                
                 GVCursos.DataBind();
             }
             else{
                 // No se encontraron cursos con el criterio de búsqueda
-                LblNoCursos.Visible = true;
+                LblNoCursos2.Visible = true;
                 GVCursos.Visible = false;
 
             }

@@ -210,7 +210,7 @@
                                         </asp:TemplateField>
                                     </Columns>
                                 </asp:GridView>
-                                <asp:Label ID="LblNoCursos" runat="server" Text="No se encontraron cursos con el criterio dé búsqueda." CssClass="form-label" Visible="false"></asp:Label>
+                                <asp:Label ID="LblNoCursos2" runat="server" Text="No se encontraron cursos con el criterio dé búsqueda." CssClass="form-label" Visible="false"></asp:Label>
                             </div>
                              <div class="row">
                                 <div class="col-md-2 mb-3">
