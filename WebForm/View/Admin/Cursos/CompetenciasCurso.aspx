@@ -22,6 +22,7 @@
     <div class="mx-auto d-flex flex-column justify-content-center">
         <h2>Competencias de
             <asp:Literal ID="LtCurso" runat="server" /></h2>
+        <hr />
         <div class="container">
             <div class="container row">
                 <div class="text-end p-3 mx-auto">

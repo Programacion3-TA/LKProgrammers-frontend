@@ -39,8 +39,10 @@ namespace WebForm.View.Admin.Salones
                 ?.tutor
                 ?? new profesor { }; // Rayita futuro inge de software
             GridTutor.DataSource = new BindingList<profesor> { tutor };
+            Session["TutorSalon"] = new BindingList<profesor> { tutor };
             GridTutor.DataBind();
             GridAlumnosSalon.DataSource = alumnosSalon;
+            Session["AlumnosSalon"] = alumnosSalon;
             GridAlumnosSalon.DataBind();
         }
 
@@ -67,6 +69,7 @@ namespace WebForm.View.Admin.Salones
             string nombre = TxtFiltroAlumno.Text;
             alumnosSalon = new BindingList<alumno>(serviciodao.listarAlumnosFiltro(nombre).ToList());
             gvAlumnosResult.DataSource = alumnosSalon;
+            Session["AlumnosEncontrados"] = alumnosSalon;
             gvAlumnosResult.DataBind();
         }   
 
@@ -89,21 +92,39 @@ namespace WebForm.View.Admin.Salones
                 dtCursos.Rows.Add(cur_ingresado.id, cur_ingresado.nombre);
             }
             GridCursos.DataSource = dtCursos;
+            Session["CursosSalon"] = dtCursos;
             GridCursos.DataBind();
         }
         protected void BtnAgregarCurso_Click(object sender, EventArgs e)
         {
+            LblCursoID.Visible = false;
+            TxtCursoID.Visible = false;
+            LblNombreCurso.Visible = false;
+            TxtNombreCurso.Visible = false;
+            GVCursos.Visible = false;
             CallJavascript("showModalAgregarCurso()");
         }
         protected void BtnBuscarCurso_Click(object sender, EventArgs e)
         {
+            LblCursoID.Visible = false;
+            TxtCursoID.Visible = false;
+            LblNombreCurso.Visible = false;
+            TxtNombreCurso.Visible = false;
             string criterioBusqueda = TxtCriterioBusquedaCurso.Text; //Nombre
-            // Lógica para8 buscar cursos por el criterio ingresado
+            
             DataTable cursos = BuscarCursos(criterioBusqueda);
             if (cursos != null && cursos.Rows.Count > 0)
             {
-                GVCursos.DataSource = cursos;
+                GVCursos.Visible = true;
+                LblNoCursos.Visible = false;
+                GVCursos.DataSource = cursos;                
                 GVCursos.DataBind();
+            }
+            else{
+                // No se encontraron cursos con el criterio de búsqueda
+                LblNoCursos.Visible = true;
+                GVCursos.Visible = false;
+
             }
             CallJavascript("showModalAgregarCurso()");
         }
@@ -127,6 +148,7 @@ namespace WebForm.View.Admin.Salones
             curso[] cursos = serviciodao.CURSOS_LIBRES_DEL_ANIO() ?? new curso[] { };
             string cs = NormalizarTexto(criterio);
             List<curso> cursos_list = cursos.ToList();
+            Session["CursosDisponibles"] = cursos_list;
             DataTable dt = new DataTable();
 
             cursos_list = cursos_list
@@ -144,20 +166,20 @@ namespace WebForm.View.Admin.Salones
             LinkButton btn = (LinkButton)sender;
             int idCurso = int.Parse(btn.CommandArgument);
             curso_id_glob = idCurso;
+
+            List<curso> cursos = Session["CursosDisponibles"] as List<curso>;
+            curso cursoActual = cursos.Find(p => p.id == idCurso);
+            Session["CursoSeleccionado"] = cursoActual;
             LblCursoID.Visible = true;
+            TxtCursoID.Visible = true;
+            TxtCursoID.Text = idCurso.ToString();
+            LblNombreCurso.Visible = true;
+            TxtNombreCurso.Visible=true;
+            TxtNombreCurso.Text = cursoActual.nombre;
+            GVCursos.Visible = false;            
         }
 
-        // Método para buscar horarios disponibles en la base de datos
-        
-        protected void BtnGuardar_Click(object sender, EventArgs e)
-        {
-            int cursoId = int.Parse(TxtCursoID.Text);
-            string dia = DDDía.SelectedValue;
-            int horarioId = int.Parse(DDHorariosDisponibles.SelectedValue);
-            serviciodao.insertar_curso_salon(salonId, horarioId, cursoId);
-            LoadCursos();
-        }
-
+       
         protected void BtnEliminarCurso_Click(object sender, EventArgs e)
         {
             LinkButton btn = (LinkButton)sender;
@@ -207,5 +229,66 @@ namespace WebForm.View.Admin.Salones
             CallJavascript("showModalAgregarCurso()");
         }
 
+        protected void BtnGuardarHorarioCurso_Click(object sender, EventArgs e)
+        {
+            // Veo cuáles horarios tengo seleccionados
+            
+            List<int> IdsHorariosSeleccionados = new List<int>();
+
+            foreach (GridViewRow row in GridHorario.Rows)
+            {
+                CheckBox chkSelected = (CheckBox)row.FindControl("horario_selected");                
+                if (chkSelected != null && chkSelected.Checked)
+                {
+                    int id = Convert.ToInt32(GridHorario.DataKeys[row.RowIndex].Value);
+
+                    IdsHorariosSeleccionados.Add(id);
+                }
+            }
+
+            // Obtengo el salón y el curso seleccionados
+            curso cursoSeleccionado = Session["CursoSeleccionado"] as curso;
+            salon salonSelecccionado = Session["SalonElegido"] as salon;
+            int result;
+            // Guardo los horarios
+            foreach (int idHorario in IdsHorariosSeleccionados)
+            {
+                result = serviciodao.insertar_curso_salon(salonSelecccionado.id, idHorario, cursoSeleccionado.id);
+            }
+            
+            LoadCursos();
+        }
+
+        protected void GridTutor_PageIndexChanging(object sender, GridViewPageEventArgs e)
+        {
+            GridTutor.PageIndex = e.NewPageIndex;
+            BindingList<profesor> tutor = Session["TutorSalon"] as BindingList<profesor>;
+            GridTutor.DataSource = tutor;
+            GridTutor.DataBind();
+        }
+
+        protected void GridAlumnosSalon_PageIndexChanging(object sender, GridViewPageEventArgs e)
+        {
+            GridAlumnosSalon.PageIndex = e.NewPageIndex;
+            BindingList<alumno> alumnos = Session["AlumnosSalon"] as BindingList<alumno>;
+            GridAlumnosSalon.DataSource = alumnos;
+            GridAlumnosSalon.DataBind();
+        }
+
+        protected void GridCursos_PageIndexChanging(object sender, GridViewPageEventArgs e)
+        {
+            GridCursos.PageIndex = e.NewPageIndex;
+            DataTable dtCursos = Session["CursosSalon"] as DataTable;
+            GridAlumnosSalon.DataSource = dtCursos;
+            GridAlumnosSalon.DataBind();
+        }
+
+        protected void gvAlumnosResult_PageIndexChanging(object sender, GridViewPageEventArgs e)
+        {
+            gvAlumnosResult.PageIndex = e.NewPageIndex;
+            BindingList<alumno> alumnos = Session["AlumnosEncontrados"] as BindingList<alumno>;
+            gvAlumnosResult.DataSource = alumnos;
+            gvAlumnosResult.DataBind();
+        }
     }
 }
