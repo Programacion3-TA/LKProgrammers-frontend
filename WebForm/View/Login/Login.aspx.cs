@@ -38,7 +38,7 @@ namespace WebForm.View.Login
                     Response.Redirect("/View/Profesor/ProfesorVista.aspx");
                     break;
                 case "Alumno":
-                    Response.Redirect("/View/Alumno/Alumno.aspx");
+                    Response.Redirect("/View/Alumno/AlumnoVista.aspx");
                     break;
             }
         }
@@ -66,7 +66,7 @@ namespace WebForm.View.Login
             else if (user is alumno)//ES EL ESTUDIANTE
             {
                 Session["Tipo"] = "Alumno";
-                Response.Redirect("/View/Alumno/Alumno.aspx");
+                Response.Redirect("/View/Alumno/AlumnoVista.aspx");
             }
             else if (user is personalAdministrativo) //ADMINISTRATIVO
             {

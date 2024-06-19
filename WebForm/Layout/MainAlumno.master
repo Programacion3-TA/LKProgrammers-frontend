@@ -7,7 +7,7 @@
 </asp:Content>
 <asp:Content ID="Content3" ContentPlaceHolderID="Navegacion" runat="server">
     <li class="nav-item mb-1">
-        <a href="/View/Alumno/Alumno.aspx">
+        <a href="/View/Alumno/AlumnoVista.aspx">
             <i class="fa-solid fa-house me-1"></i>
             Principal/Cursos
         </a>
@@ -21,7 +21,7 @@
     </li>
 
     <li class="nav-item mb-1">
-        <a href="#">
+        <a href="/View/Alumno/NotaAlumno.aspx">
             <i class="fa-solid fa-star me-1"></i>
             Notas
         </a>
@@ -31,13 +31,6 @@
         <a href="/View/Alumno/AsistenciaAlumno.aspx">
             <i class="fa-solid fa-user-clock me-1"></i>
             Asistencias
-        </a>
-    </li>
-
-    <li class="nav-item mb-1">
-        <a href="#">
-            <i class="fa-solid fa-triangle-exclamation me-1"></i>
-            Exoneración
         </a>
     </li>
 </asp:Content>

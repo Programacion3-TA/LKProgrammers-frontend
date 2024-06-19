@@ -1,4 +1,4 @@
-﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Layout/MainAlumno.Master" AutoEventWireup="true" CodeBehind="Alumno.aspx.cs" Inherits="WebForm.View.Alumno" %>
+﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Layout/MainAlumno.Master" AutoEventWireup="true" CodeBehind="AlumnoVista.aspx.cs" Inherits="WebForm.View.AlumnoVista" %>
 <%@ Register Src="~/Components/Path.ascx" TagName="Path" TagPrefix="uc"%>
 <asp:Content ID="Content3" ContentPlaceHolderID="Title" runat="server">
     Principal
