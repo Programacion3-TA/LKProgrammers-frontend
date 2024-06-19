@@ -7,6 +7,7 @@ using System.Web.UI;
 using System.Web.UI.WebControls;
 using WebForm.ServicioWS;
 using WebForm.Utils;
+using System.Text.RegularExpressions;
 
 namespace WebForm
 {
@@ -47,8 +48,28 @@ namespace WebForm
             RenderizarPath();
 
             usuario _usuario = (usuario)Session["Usuario"];
-            string _tipo_usuario = (string)Session["Tipo"];
+            FotoPerfilAsp.ImageUrl = ObtenerFotoPerfil((string)Session["Tipo"], (char)_usuario.genero);
+            string _tipo_usuario = (( (char) _usuario.genero ) == 'M')? (string)Session["Tipo"] : Regex.Replace((string)Session["Tipo"], "o$", "") + "a";
             nombreUsuarioLbl.Text = $"{_usuario.nombres} {_usuario.apellidoPaterno} <span class=\"badge text-bg-primary\">{_tipo_usuario}</span>";
+        }
+
+        protected string ObtenerFotoPerfil(string rol, char genero)
+        {
+            string url = "/Public/img/";
+            switch (rol)
+            {
+                case "Alumno":
+                    url += (genero == 'M')? "alumno.jpg" : "alumna.jfif";
+                    break;
+                case "Profesor":
+                    url += (genero == 'M') ? "profesor.jfif" : "profesora.png";
+                    break;
+                case "Administrador":
+                    url += (genero == 'M') ? "admin.jpg" : "admin.jpg";
+                    break;
+            }
+
+            return url;
         }
 
         protected void CerrarSesionBtn_Click(object sender, EventArgs e)

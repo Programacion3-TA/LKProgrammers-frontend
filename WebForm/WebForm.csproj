@@ -92,10 +92,15 @@
     <Content Include="Public\css\estilos_cursos_cajas.css" />
     <Content Include="Public\css\main.css" />
     <Content Include="Public\css\MyNotification.css" />
+    <Content Include="Public\img\admin.jpg" />
+    <Content Include="Public\img\alumna.jfif" />
+    <Content Include="Public\img\alumno.jpg" />
     <Content Include="Public\img\images %281%29.png" />
     <Content Include="Public\img\logoColegio.jpeg" />
     <Content Include="Public\img\logoColegio.png" />
     <Content Include="Public\img\pedro.gif" />
+    <Content Include="Public\img\profesor.jfif" />
+    <Content Include="Public\img\profesora.png" />
     <Content Include="Public\js\bootstrap\bootstrap.bundle.js" />
     <Content Include="Public\js\bootstrap\bootstrap.bundle.min.js" />
     <Content Include="Public\js\bootstrap\bootstrap.esm.js" />
