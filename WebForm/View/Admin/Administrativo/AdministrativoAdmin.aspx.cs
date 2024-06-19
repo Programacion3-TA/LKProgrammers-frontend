@@ -18,13 +18,21 @@ namespace WebForm.View.Admin.Administrativo
         private BindingList<personalAdministrativo> personal;
         protected void Page_Load(object sender, EventArgs e)
         {
+            
             daoservicio = new ServicioWS.LKServicioWebClient();
-            CargarTabla();
+            if (!IsPostBack)
+            {
+                TxtCriterioBusqueda.Text = "";
+                personal = new BindingList<personalAdministrativo>(daoservicio.listarAdministradores().ToList());
+                Session["Personal"] = personal;
+                CargarTabla();
+            }
+            
+            
         }
 
         protected void CargarTabla()
         {
-            personal = new BindingList<personalAdministrativo>(daoservicio.listarAdministradores().ToList());
             GridAdministrativo.DataSource = personal;
             GridAdministrativo.DataBind();
         }
@@ -52,6 +60,8 @@ namespace WebForm.View.Admin.Administrativo
             LinkButton btn = (LinkButton)sender;
             int codigoBusca = int.Parse(btn.CommandArgument); // Recibe el codigo del trabajador
 
+            personal = Session["Personal"] as BindingList<personalAdministrativo>;
+
             personalAdministrativo trabajador = personal.ToList().Find(p => p.codigoPersonal == codigoBusca);
             TxtCode.Text = trabajador.codigoPersonal.ToString();
             TxtDNI.Text = trabajador.dni.ToString();
@@ -76,6 +86,8 @@ namespace WebForm.View.Admin.Administrativo
             int codigoBusca = int.Parse(btn.CommandArgument); // Recibe el codigo del trabajador
 
             usuario user_actual = Session["Usuario"] as usuario;
+
+            personal = Session["Personal"] as BindingList<personalAdministrativo>;
 
             if (user_actual.dni != daoservicio.obtenerDniDeCodigoAdmin(codigoBusca) ) // Si no es el usuario actual
             {
@@ -173,6 +185,7 @@ namespace WebForm.View.Admin.Administrativo
                     {
                         // se logró insertar
                         personal = new BindingList<personalAdministrativo>(daoservicio.listarAdministradores().ToList());
+                        Session["Personal"] = personal;
                         CargarTabla();
                     }
                     else
@@ -196,6 +209,7 @@ namespace WebForm.View.Admin.Administrativo
                 {
                     // se logró modificar
                     personal = new BindingList<personalAdministrativo>(daoservicio.listarAdministradores().ToList());
+                    Session["Personal"] = personal;
                     CargarTabla();
                 }
 
@@ -221,6 +235,7 @@ namespace WebForm.View.Admin.Administrativo
             personalAdministrativo personalAEliminar = Session["personalAEliminar"] as personalAdministrativo;
             int resultado = daoservicio.eliminarAdministrativo(personalAEliminar.codigoPersonal);
             personal = new BindingList<personalAdministrativo>(daoservicio.listarAdministradores().ToList());
+            Session["Personal"] = personal;
             CargarTabla();
         }
 
@@ -236,6 +251,7 @@ namespace WebForm.View.Admin.Administrativo
                     // Se ha encontrado personal
                     BindingList<personalAdministrativo> personalRecuperado = new BindingList<personalAdministrativo>(resultado.ToList());
                     personal = personalRecuperado;
+                    Session["Personal"] = personal;
                     CargarTabla();
                 }
                 else
@@ -265,7 +281,7 @@ namespace WebForm.View.Admin.Administrativo
         {
             // Se muestran todos los administradores
             personal = new BindingList<personalAdministrativo>(daoservicio.listarAdministradores().ToList());
-
+            Session["Personal"] = personal;
             CargarTabla();
         }
     }
