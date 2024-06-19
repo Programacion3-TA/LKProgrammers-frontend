@@ -25,15 +25,16 @@
 
     <div class="mx-auto d-flex flex-column justify-content-center">
         <h1 class="px-2">
-            Salon (<asp:Literal ID="LitSalonId" runat="server" />)
+            Salon <asp:Literal ID="LitSalonId" runat="server" />
         </h1>
+        <hr />
         <div class="container">
             <div class="container row">
-                <h2>Tutor
-                </h2>
+                <h2>Tutor</h2>
+                <hr />
                 <asp:GridView ID="GridTutor" runat="server" AutoGenerateColumns="false"
                     AllowPaging="true" PageSize="5"
-                    CssClass="table table-hover table-responsive table-striped">
+                    CssClass="table table-hover table-responsive table-striped" OnPageIndexChanging="GridTutor_PageIndexChanging">
                     <Columns>
                         <asp:BoundField DataField="codigoProfesor" HeaderText="Código" />
                         <asp:BoundField DataField="nombres" HeaderText="Nombre" />
@@ -44,8 +45,8 @@
                 </asp:GridView>
             </div>
             <div class="container row">
-                <h2>Alumnos
-                </h2>
+                <h2>Alumnos</h2>
+                <hr />
                 <div class="text-end p-3 mx-auto">
                     <asp:LinkButton
                         ID="BtnAgregar"
@@ -60,7 +61,7 @@
                     <ContentTemplate>
                         <asp:GridView ID="GridAlumnosSalon" runat="server" AutoGenerateColumns="false"
                             AllowPaging="true" PageSize="5"
-                            CssClass="table table-hover table-responsive table-striped">
+                            CssClass="table table-hover table-responsive table-striped" OnPageIndexChanging="GridAlumnosSalon_PageIndexChanging">
                             <Columns>
                                 <asp:BoundField DataField="codigoAlumno" HeaderText="Codigo" />
                                 <asp:BoundField DataField="dni" HeaderText="Dni" />
@@ -89,6 +90,7 @@
     <div class="container">
         <div class="container row">
             <h2>Cursos</h2>
+            <hr />
             <div class="text-end p-3 mx-auto">
                 <asp:LinkButton ID="BtnAgregarCurso" runat="server" Text="<i class='fas fa-plus pe-2'></i> Agregar Curso"
                     CssClass="btn btn-success" OnClick="BtnAgregarCurso_Click" />
@@ -97,7 +99,7 @@
                 <ContentTemplate>
                     <asp:GridView ID="GridCursos" runat="server" AutoGenerateColumns="false"
                         AllowPaging="true" PageSize="5"
-                        CssClass="table table-hover table-responsive table-striped">
+                        CssClass="table table-hover table-responsive table-striped" OnPageIndexChanging="GridCursos_PageIndexChanging">
                         <Columns> 
                             <asp:BoundField DataField="idCurso" HeaderText="ID" />
                             <asp:BoundField DataField="nombreCurso" HeaderText="Nombre" />
@@ -116,7 +118,7 @@
             </asp:UpdatePanel>
         </div>
     </div>
-    <!-- Fin de la Sección de Cursos -->
+    <!-- Fin de la Sección de Cursos -->    
     <div id="modalSalonDetalle" class="modal" tabindex="-1">
         <div class="modal-dialog">
             <div class="modal-content">
@@ -127,16 +129,24 @@
                 <div class="modal-body">
                     <asp:UpdatePanel runat="server">
                         <ContentTemplate>
-                            <asp:TextBox ID="TxtFiltroAlumno" runat="server"></asp:TextBox>
-                            <asp:LinkButton
-                                ID="lbBuscarAlumnoSalon"
-                                OnClick="lbBuscarAlumno_Click"
-                                runat="server"
-                                CssClass="btn btn-info"
-                                Text="<i class='fa-solid fa-magnifying-glass pe-2'></i> Buscar"
-                                UseSubmitBehavior="false" />
+                            <div class="row">
+                                <div class="col-md-8 mb-3">
+                                    <asp:TextBox ID="TxtFiltroAlumno" runat="server" CssClass="form-control" Placeholder="Ingresar nombre de alumno..."></asp:TextBox>
+                                </div>
+                                <div class="col-md-4 mb-3 d-flex align-items-center">
+                                    <asp:LinkButton
+                                        ID="lbBuscarAlumnoSalon"
+                                        OnClick="lbBuscarAlumno_Click"
+                                        runat="server"
+                                        CssClass="btn btn-info"
+                                        Text="<i class='fa-solid fa-magnifying-glass pe-2'></i> Buscar"
+                                        UseSubmitBehavior="false" />
+                                </div>
+                            </div>
+
+
                             <div class="container">
-                                <asp:GridView ID="gvAlumnosResult" runat="server" AllowPaging="true" PageSize="5" AutoGenerateColumns="false" CssClass="table table-hover table-responsive table-striped">
+                                <asp:GridView ID="gvAlumnosResult" runat="server" AllowPaging="true" PageSize="5" AutoGenerateColumns="false" CssClass="table table-hover table-responsive table-striped" OnPageIndexChanging="gvAlumnosResult_PageIndexChanging">
                                     <Columns>
                                         <asp:BoundField DataField="grado" HeaderText="Grado" />
                                         <asp:BoundField DataField="dni" HeaderText="Dni" />
@@ -158,8 +168,7 @@
             </div>
         </div>
     </div>
-    <!-- Modal para agregar salon -->
-     <!-- Modal Personal Administrativo (Editar, Ver, Agregar)-->
+    <!-- Modal para agregar curos -->
     <div id="modalAgregarCurso" class="modal" tabindex="-1">
         <div class="modal-dialog">
             <div class="modal-content">
@@ -201,35 +210,46 @@
                                         </asp:TemplateField>
                                     </Columns>
                                 </asp:GridView>
+                                <asp:Label ID="LblNoCursos" runat="server" Text="No se encontraron cursos con el criterio dé búsqueda." CssClass="form-label" Visible="false"></asp:Label>
                             </div>
-                            <div class="col-md-12  mb-3">
-                                <asp:Label ID="LblCursoID" runat="server" Text="Curso" CssClass="form-label" Visible="false"></asp:Label>
-                                <asp:TextBox ID="TxtCursoID" runat="server" CssClass="form-control" Enabled="false" Visible="false" ></asp:TextBox>
-                                <asp:Label ID="LblNombreCurso" runat="server" Text="Nombre" CssClass="form-label" Visible="false"></asp:Label>
-                                <asp:TextBox ID="TxtNombreCurso" runat="server" CssClass="form-control" Enabled="false" Visible="false" ></asp:TextBox>
+                             <div class="row">
+                                <div class="col-md-2 mb-3">
+                                    <asp:Label ID="LblCursoID" runat="server" Text="Curso" CssClass="form-label" Visible="false"></asp:Label>
+                                    <asp:TextBox ID="TxtCursoID" runat="server" CssClass="form-control" Enabled="false" Visible="false" ></asp:TextBox>
+                                </div>
+                                <div class="col-md-8 mb-3">
+                                    <asp:Label ID="LblNombreCurso" runat="server" Text="Nombre" CssClass="form-label" Visible="false"></asp:Label>
+                                    <asp:TextBox ID="TxtNombreCurso" runat="server" CssClass="form-control" Enabled="false" Visible="false" ></asp:TextBox>
+                                </div>
                             </div>
                         </ContentTemplate>
                     </asp:UpdatePanel>
-                    <div class="col-md-12  mb-3">
-                        <h6>Seleccionar horario</h6>
-                    </div>
-                    <div class="col-md-12  mb-3">
-                    </div>
+
+                    <hr />
+                    <h6>Seleccionar horario</h6>
+                    <hr />
+                    
                     <asp:UpdatePanel runat="server">
                         <ContentTemplate>
-                            <asp:Label ID="LblDia" runat="server" Text="Día" CssClass="form-label"></asp:Label>
-                            <asp:DropDownList ID="DDDía" runat="server" CssClass="form-select">
-                                <asp:ListItem Value="Lunes">Lunes</asp:ListItem>
-                                <asp:ListItem Value="Martes">Martes</asp:ListItem>
-                                <asp:ListItem Value="Miercoles">Miércoles</asp:ListItem>
-                                <asp:ListItem Value="Jueves">Jueves</asp:ListItem>
-                                <asp:ListItem Value="Viernes">Viernes</asp:ListItem>                            
-                            </asp:DropDownList>
-                             <div class="col-md-12  mb-3">
-                            <asp:Button ID="BtnBuscarHorario" runat="server" Text="Buscar Horarios" CssClass="btn btn-primary" OnClick="BtnBuscarHorario_Click1"/>
+                            <div class="row">
+                                <div class="col-md-1 mb-3">
+                                    <asp:Label ID="LblDia" runat="server" Text="Día" CssClass="form-label"></asp:Label>
+                                </div>
+                                <div class="col-md-4 mb-3">
+                                    <asp:DropDownList ID="DDDía" runat="server" CssClass="form-select">
+                                        <asp:ListItem Value="Lunes">Lunes</asp:ListItem>
+                                        <asp:ListItem Value="Martes">Martes</asp:ListItem>
+                                        <asp:ListItem Value="Miércoles">Miércoles</asp:ListItem>
+                                        <asp:ListItem Value="Jueves">Jueves</asp:ListItem>
+                                        <asp:ListItem Value="Viernes">Viernes</asp:ListItem>                            
+                                    </asp:DropDownList>
+                                </div>
+                                <div class="col-md-4 mb-3">
+                                    <asp:Button ID="BtnBuscarHorario" runat="server" Text="Buscar Horarios" CssClass="btn btn-primary" OnClick="BtnBuscarHorario_Click1"/>
+                                </div>
                             </div>
                             <div class="col-md-12  mb-3">
-                                <asp:GridView ID="GridHorario" runat="server" AllowPaging="true" AutoGenerateColumns="false" CssClass="table table-hover table-responsive table-striped">
+                                <asp:GridView ID="GridHorario" runat="server" AllowPaging="true" AutoGenerateColumns="false" CssClass="table table-hover table-responsive table-striped" DataKeyNames="id">
                                     <Columns>
                                         <asp:BoundField DataField="id" HeaderText ="ID" />
                                         <asp:BoundField DataField="dia" HeaderText ="Día" />
@@ -242,18 +262,12 @@
                                         </asp:TemplateField>
                                     </Columns>
                                 </asp:GridView>
-                            </div>
-                                         <!--<asp:Label ID="LblHoariosDisp" runat="server" Text="Horarios Disponibles" CssClass="form-label" Visible="false"></asp:Label>
-                                         <asp:DropDownList ID="DDHorariosDisponibles" runat="server" CssClass="form-select" Visible="false"></asp:DropDownList>
-                                         <asp:Label ID="LblInicio" runat="server" Text="Hora Inicio" CssClass="form-label" Visible="false"></asp:Label>
-                                         <asp:TextBox ID="TxtHoraInicio" runat="server" CssClass="form-control" Enabled="false" Visible="false"></asp:TextBox>
-                                         <asp:Label ID="LblFin" runat="server" Text="Hora Fin" CssClass="form-label" Visible="false"></asp:Label>
-                                         <asp:TextBox ID="TxtHoraFin" runat="server" CssClass="form-control" Enabled="false" Visible="false"></asp:TextBox>!-->
+                            </div>                                       
                                     </ContentTemplate>
                                 </asp:UpdatePanel>
                          </div>
                 <div class="modal-footer">
-                    <asp:Button ID="BtnGuardar" runat="server" Text="Guardar" CssClass="btn btn-primary"/>
+                    <asp:Button ID="BtnGuardarHorarioCurso" runat="server" Text="Guardar" CssClass="btn btn-primary" OnClick="BtnGuardarHorarioCurso_Click"/>
                     <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cerrar</button>
                 </div>
             </div>

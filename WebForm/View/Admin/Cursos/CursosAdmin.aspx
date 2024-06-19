@@ -24,7 +24,7 @@
     </nav>
     <div class="mx-auto d-flex flex-column justify-content-center">
         <h2 class="px-2">Cursos</h2>
-
+        <hr />
         <div class="container">
             <div class="container row">
                 <div class="text-end p-3 mx-auto">
