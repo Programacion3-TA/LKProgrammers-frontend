@@ -10,7 +10,7 @@ using System.Net;
 
 namespace WebForm.View
 {
-    public partial class Alumno : System.Web.UI.Page
+    public partial class AlumnoVista : System.Web.UI.Page
     {
         private ServicioWS.LKServicioWebClient serviciodao;
         protected void Page_Load(object sender, EventArgs e)
@@ -24,7 +24,7 @@ namespace WebForm.View
                 Confetti.Text = "<script>(new JSConfetti()).addConfetti()</script>";
                 Session["Confetti"] = false;
 
-                string script = "window.onload = function() { showNotification('Info', 'Hola PUCP, aquí disfrutando'); };";
+                string script = "window.onload = function() { showNotification('Info', 'Bienvenido!!! Ten un bonito día :D'); };";
                 ClientScript.RegisterStartupScript(GetType(), "", script, true);
             }
         }

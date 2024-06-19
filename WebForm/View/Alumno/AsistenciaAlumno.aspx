@@ -86,9 +86,6 @@
             </div>
         </div>
     </div>
-    <asp:Label ID="Algo" runat="server">
-
-    </asp:Label>
 </asp:Content>
 <asp:Content ID="Content5" ContentPlaceHolderID="Script" runat="server">
     <script src="/Public/js/modalHandler.js"></script>

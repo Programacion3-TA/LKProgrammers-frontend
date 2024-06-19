@@ -94,7 +94,13 @@
             </header>
 
             <div class="pe-4 ps-4 pt-2">
-                <div class="mb-2 d-flex align-items-center gap-2">
+                <div class="mb-2 d-flex align-items-center gap-2 w-100 flex-row">
+                    <nav style="--bs-breadcrumb-divider: '>';" class="w-100" aria-label="breadcrumb">
+                      <ol class="breadcrumb d-flex w-100">
+                        <%--<li class="breadcrumb-item"><a href="#">Home</a></li>--%>
+                        <asp:Label ID="PathUsuarios" runat="server"></asp:Label>
+                      </ol>
+                    </nav>
                     <asp:ContentPlaceHolder ID="Navusuarios" runat="server"></asp:ContentPlaceHolder>
                 </div>
                 <div class="line mt-2 mb-3"></div>

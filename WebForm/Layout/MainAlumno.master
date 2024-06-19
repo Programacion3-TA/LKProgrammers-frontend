@@ -7,7 +7,7 @@
 </asp:Content>
 <asp:Content ID="Content3" ContentPlaceHolderID="Navegacion" runat="server">
     <li class="nav-item mb-1">
-        <a href="/View/Alumno/Alumno.aspx">
+        <a href="/View/Alumno/AlumnoVista.aspx">
             <i class="fa-solid fa-house me-1"></i>
             Principal/Cursos
         </a>
@@ -21,7 +21,7 @@
     </li>
 
     <li class="nav-item mb-1">
-        <a href="#">
+        <a href="/View/Alumno/NotaAlumno.aspx">
             <i class="fa-solid fa-star me-1"></i>
             Notas
         </a>
@@ -33,16 +33,9 @@
             Asistencias
         </a>
     </li>
-
-    <li class="nav-item mb-1">
-        <a href="#">
-            <i class="fa-solid fa-triangle-exclamation me-1"></i>
-            Exoneración
-        </a>
-    </li>
 </asp:Content>
 <asp:Content ID="Content2_5" ContentPlaceHolderID="ImagenPerfil" runat="server">
-    <img src="/Public/img/pedro.gif" />
+    <img src="https://cdn5.vectorstock.com/i/1000x1000/52/54/male-student-graduation-avatar-profile-vector-12055254.jpg" />
 </asp:Content>
 <asp:Content ID="Content4" ContentPlaceHolderID="Navusuarios" runat="server">
     <asp:ContentPlaceHolder ID="Navusuarios" runat="server"></asp:ContentPlaceHolder>

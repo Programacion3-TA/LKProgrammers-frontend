@@ -17,25 +17,29 @@ namespace WebForm.View.Admin.Estudiantes
 
         protected void Page_Load(object sender, EventArgs e)
         {
-            daoservicio = new LKServicioWebClient();
-            
-            var resultado = daoservicio.listarAlumnos();
-            if (resultado != null)
+            daoservicio = new ServicioWS.LKServicioWebClient();
+            if (!IsPostBack)
             {
-                // Existen alumnos
-                alumnos = new BindingList<alumno>(resultado.ToList());
-                CargarTabla();
+                TxtCriterioBusqueda.Text = "";
+                var resultado = daoservicio.listarAlumnos();
+                if (resultado != null)
+                {
+                    // Existen alumnos
+                    alumnos = new BindingList<alumno>(resultado.ToList());
+                    Session["Alumnos"] = alumnos;
+                    CargarTabla();
                
-            }
-            else
-            {
-                LblNoAlumnos.Visible = true;
-            }                
-            
+                }
+                else
+                {
+                    LblNoAlumnos.Visible = true;
+                }     
+            }                                   
         }
 
         protected void CargarTabla()
         {
+            alumnos = Session["Alumnos"] as BindingList<alumno>;
             GridAlumnos.DataSource = alumnos;
             LblNoAlumnos.Visible = false;
             GridAlumnos.DataBind();
@@ -44,6 +48,8 @@ namespace WebForm.View.Admin.Estudiantes
         protected void GridAlumnos_PageIndexChanging(object sender, GridViewPageEventArgs e)
         {
             GridAlumnos.PageIndex = e.NewPageIndex;
+            alumnos = Session["Alumnos"] as BindingList<alumno>;
+            GridAlumnos.DataSource = alumnos;
             GridAlumnos.DataBind();
         }
 
@@ -52,7 +58,9 @@ namespace WebForm.View.Admin.Estudiantes
             LinkButton btn = (LinkButton)sender;
             int codigoBusca = int.Parse(btn.CommandArgument); // Recibe el codigo del alumno
 
-            alumno alumn = daoservicio.listarAlumnos().ToList().Find(alu => alu.codigoAlumno == codigoBusca);
+            alumnos = Session["Alumnos"] as BindingList<alumno>;
+
+            alumno alumn = alumnos.ToList().Find(alu => alu.codigoAlumno == codigoBusca);
             TxtCode.Text = alumn.codigoAlumno.ToString();
             TxtDNI.Text = alumn.dni.ToString();
             TxtDNI.Enabled = false;
@@ -77,10 +85,12 @@ namespace WebForm.View.Admin.Estudiantes
             int codigo = int.Parse(btn.CommandArgument);
 
             // Preguntar si se quiere eliminar de verdad
+            alumnos = Session["Alumnos"] as BindingList<alumno>;
             var elementoAEliminar = alumnos.FirstOrDefault(p => p.codigoAlumno == codigo);
             if (elementoAEliminar == null) return;
             alumno al = elementoAEliminar as alumno;
             Session["alumnoAEliminar"] = al;
+            
             LblWarning.Text = "¡Cuidado!";
             LblMensaje.Text = "¿Está seguro de que quiere eliminar al alumno " + al.nombres + " " + al.apellidoPaterno +
                 " con código " + al.codigoAlumno + " y DNI " + al.dni + "?";
@@ -112,7 +122,6 @@ namespace WebForm.View.Admin.Estudiantes
         protected void BntGuardar_Click(object sender, EventArgs e)
         {
             alumno al = new alumno();
-            bool actualizaOcrea = string.IsNullOrEmpty(TxtCode.Text);
             
             bool campoVacio = false;
 
@@ -161,12 +170,13 @@ namespace WebForm.View.Admin.Estudiantes
                 al.contrasenia = TxtContrasenia.Text;
             else campoVacio = true;
 
-            if (actualizaOcrea)
+            if (string.IsNullOrEmpty(TxtCode.Text))
             {
+                // Si esta vacio, se crea uno nuevo
                 if (campoVacio)
                 {
                     LblWarning.Text = "¡Atención!";
-                    LblMensaje.Text = "Se deben ingresar todos los datos del administrador.";
+                    LblMensaje.Text = "Se deben ingresar todos los datos del alumno.";
                     BtnAceptarEliminar.Visible = false;
 
                     CallJavascript("showModalFormWarning()");
@@ -182,6 +192,7 @@ namespace WebForm.View.Admin.Estudiantes
                         if (resultado != null)
                         {
                             alumnos = new BindingList<alumno>(resultado.ToList());
+                            Session["Alumnos"] = alumnos;
                             CargarTabla();
                         }
                         else
@@ -203,7 +214,7 @@ namespace WebForm.View.Admin.Estudiantes
                 }
    
             }
-            else
+            else // editar
             {
                 int result = daoservicio.editarAlumno(al);
                 if (result != 0)
@@ -212,6 +223,7 @@ namespace WebForm.View.Admin.Estudiantes
                     if (resultado != null)
                     {
                         alumnos = new BindingList<alumno>(resultado.ToList());
+                        Session["Alumnos"] = alumnos;
                         CargarTabla();
                     }
                     else LblNoAlumnos.Visible = true;
@@ -235,6 +247,7 @@ namespace WebForm.View.Admin.Estudiantes
             if (resultado2 != null)
             {
                 alumnos = new BindingList<alumno>(resultado2.ToList());
+                Session["Alumnos"] = alumnos;
                 CargarTabla();
             }
 
@@ -247,6 +260,7 @@ namespace WebForm.View.Admin.Estudiantes
             {
                 // Existen alumnos
                 alumnos = new BindingList<alumno>(resultado.ToList());
+                Session["Alumnos"] = alumnos;
                 CargarTabla();
 
             }
@@ -255,6 +269,42 @@ namespace WebForm.View.Admin.Estudiantes
         protected void LkBtnBuscar_Click(object sender, EventArgs e)
         {
             // Buscar
+            
+            if (!string.IsNullOrEmpty(TxtCriterioBusqueda.Text))
+            {
+                var resultado = daoservicio.buscarAlumnosTodosCriterios(TxtCriterioBusqueda.Text);
+
+                if (resultado != null)
+                {
+                    // Se ha encontrado personal
+                    BindingList<alumno> alumnosRecuperados = new BindingList<alumno>(resultado.ToList());
+                    alumnos = alumnosRecuperados;
+                    Session["Alumnos"] = alumnos;
+                    CargarTabla();
+                }
+                else
+                {
+                    // No se ha encontrado alumnos
+                    LblWarning.Text = "¡Atención!";
+                    LblMensaje.Text = "No se han encontrado alumnos con los criterios de búsqueda ingresados.";
+                    BtnAceptarEliminar.Visible = false;
+
+                    CallJavascript("showModalFormWarning()");
+                }
+            }
+            else
+            {
+                // No se ha ingresado un criterio de búsqueda
+                LblWarning.Text = "¡Atención!";
+                LblMensaje.Text = "Es necesario ingresar un criterio de búsqueda.";
+                BtnAceptarEliminar.Visible = false;
+
+                CallJavascript("showModalFormWarning()");
+            }
+
+            BtnRestaurar.Visible = true;
+
+
         }
     }
 }

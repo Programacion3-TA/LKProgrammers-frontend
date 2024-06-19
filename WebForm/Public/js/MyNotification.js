@@ -1,6 +1,6 @@
 ﻿function showNotification(tipo, mensaje, titulo = "", href="") {
     // Tipos: Ok, Bad, Info
-    // Mensaje: Cualquiera que no sea una carta de odio al ruso, tmr rayita
+    // Mensaje: String
     const iconos = {
         "Ok": "fa-check",
         "Bad": "fa-exclamation-triangle",
