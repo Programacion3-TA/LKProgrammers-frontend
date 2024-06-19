@@ -48,12 +48,55 @@ namespace WebForm.View.Alumno
         protected void BtnGenerarPdf__Click(object sender, EventArgs e)
         {
             // Diego
+            salon salon = (salon)Session["salonAlumno"];
+            alumno alumno = (alumno)Session["Usuario"];
+            string nombre = alumno.nombres;
+            nombre += " " + alumno.apellidoPaterno + " " + alumno.apellidoMaterno;
+            string idsalon = salon.id.ToString();
+            string grado = TransformarGrado(alumno.grado.ToString());
+            string nombreProfesor = salon.tutor.nombres + " " + salon.tutor.apellidoPaterno + " " + salon.tutor.apellidoMaterno;
+            Byte[] FileBuffer = serviciodao.reportePDFNotas(alumno.dni, nombre, grado, alumno.telefono, nombreProfesor,idsalon);
+            if (FileBuffer != null)
+            {
+                Response.Clear();
+                Response.ContentType = "application/pdf";
+                Response.AddHeader("content-length", FileBuffer.Length.ToString());
+                Response.BinaryWrite(FileBuffer);
+            }
         }
 
         protected void CallJavaScript(string func)
         {
             string script = "window.onload = function() {" + func + "; };";
             ClientScript.RegisterStartupScript(GetType(), "", script, true);
+        }
+        protected string TransformarGrado(string grado)
+        {
+            switch (grado)
+            {
+                case "INI2":
+                    return "2 años";
+                case "INI3":
+                    return "3 años";
+                case "INI4":
+                    return "4 años";
+                case "INI5":
+                    return "5 años";
+                case "PRIM1":
+                    return "Primero de Primaria";
+                case "PRIM2":
+                    return "Segundo de Primaria";
+                case "PRIM3":
+                    return "Tercero de Primaria";
+                case "PRIM4":
+                    return "Cuarto de Primaria";
+                case "PRIM5":
+                    return "Quinto de Primaria";
+                case "PRIM6":
+                    return "Sexto de Primaria";
+                default:
+                    return "Fallo en el grado";
+            }
         }
     }
 }
