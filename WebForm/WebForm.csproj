@@ -656,6 +656,12 @@
     <Content Include="Connected Services\ServicioWS\WebForm.ServicioWS.verificarUsuarioResponse.datasource">
       <DependentUpon>Reference.svcmap</DependentUpon>
     </Content>
+    <Content Include="Connected Services\ServicioWS\WebForm.ServicioWS.Buscar_horarios_libresResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Content>
+    <Content Include="Connected Services\ServicioWS\WebForm.ServicioWS.horario.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Content>
     <None Include="packages.config" />
     <Content Include="Public\js\bootstrap\bootstrap.min.js.map" />
     <Content Include="Public\js\bootstrap\bootstrap.js.map" />
