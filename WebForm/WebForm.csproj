@@ -118,9 +118,10 @@
     <Content Include="View\Admin\Salones\SalonDetalle.js" />
     <Content Include="View\Admin\Salones\SalonesAdmin.aspx" />
     <Content Include="View\Admin\Salones\SalonDetalle.aspx" />
-    <Content Include="View\Alumno\Alumno.aspx" />
+    <Content Include="View\Alumno\AlumnoVista.aspx" />
     <Content Include="View\Alumno\AsistenciaAlumno.aspx" />
     <Content Include="Public\js\modalHandler.js" />
+    <Content Include="View\Alumno\NotaAlumno.aspx" />
     <Content Include="View\Profesor\AsistenciaProfesor.aspx" />
     <Content Include="View\Alumno\CalendarioAlumno.aspx" />
     <Content Include="View\Profesor\asistenciasProfesor.js" />
@@ -248,12 +249,12 @@
     <Compile Include="View\Admin\Salones\SalonDetalle.aspx.designer.cs">
       <DependentUpon>SalonDetalle.aspx</DependentUpon>
     </Compile>
-    <Compile Include="View\Alumno\Alumno.aspx.cs">
-      <DependentUpon>Alumno.aspx</DependentUpon>
+    <Compile Include="View\Alumno\AlumnoVista.aspx.cs">
+      <DependentUpon>AlumnoVista.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
-    <Compile Include="View\Alumno\Alumno.aspx.designer.cs">
-      <DependentUpon>Alumno.aspx</DependentUpon>
+    <Compile Include="View\Alumno\AlumnoVista.aspx.designer.cs">
+      <DependentUpon>AlumnoVista.aspx</DependentUpon>
     </Compile>
     <Compile Include="View\Alumno\AsistenciaAlumno.aspx.cs">
       <DependentUpon>AsistenciaAlumno.aspx</DependentUpon>
@@ -261,6 +262,13 @@
     </Compile>
     <Compile Include="View\Alumno\AsistenciaAlumno.aspx.designer.cs">
       <DependentUpon>AsistenciaAlumno.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="View\Alumno\NotaAlumno.aspx.cs">
+      <DependentUpon>NotaAlumno.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="View\Alumno\NotaAlumno.aspx.designer.cs">
+      <DependentUpon>NotaAlumno.aspx</DependentUpon>
     </Compile>
     <Compile Include="View\Profesor\AsistenciaProfesor.aspx.cs">
       <DependentUpon>AsistenciaProfesor.aspx</DependentUpon>
@@ -654,6 +662,9 @@
       <DependentUpon>Reference.svcmap</DependentUpon>
     </Content>
     <Content Include="Connected Services\ServicioWS\WebForm.ServicioWS.verificarUsuarioResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Content>
+    <Content Include="Connected Services\ServicioWS\WebForm.ServicioWS.listarNotasAlumnoCursoResponse.datasource">
       <DependentUpon>Reference.svcmap</DependentUpon>
     </Content>
     <None Include="packages.config" />
