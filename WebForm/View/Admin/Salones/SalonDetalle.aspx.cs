@@ -144,7 +144,7 @@ namespace WebForm.View.Admin.Salones
             LinkButton btn = (LinkButton)sender;
             int idCurso = int.Parse(btn.CommandArgument);
             curso_id_glob = idCurso;
-            Response.Write("Curso seleccionado: " + idCurso);
+            LblCursoID.Visible = true;
         }
 
         // Método para buscar horarios disponibles en la base de datos
