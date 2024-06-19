@@ -39,6 +39,7 @@ namespace WebForm.View.Admin.Estudiantes
 
         protected void CargarTabla()
         {
+            alumnos = Session["Alumnos"] as BindingList<alumno>;
             GridAlumnos.DataSource = alumnos;
             LblNoAlumnos.Visible = false;
             GridAlumnos.DataBind();
@@ -47,6 +48,8 @@ namespace WebForm.View.Admin.Estudiantes
         protected void GridAlumnos_PageIndexChanging(object sender, GridViewPageEventArgs e)
         {
             GridAlumnos.PageIndex = e.NewPageIndex;
+            alumnos = Session["Alumnos"] as BindingList<alumno>;
+            GridAlumnos.DataSource = alumnos;
             GridAlumnos.DataBind();
         }
 

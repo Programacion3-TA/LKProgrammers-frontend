@@ -57,7 +57,7 @@
             <div class="container row">
                 <asp:GridView ID="GridProfesores" runat="server" AutoGenerateColumns="false"
                     AllowPaging="true" PageSize="5"
-                    CssClass="table table-hover table-responsive table-striped">
+                    CssClass="table table-hover table-responsive table-striped" OnPageIndexChanging="GridProfesores_PageIndexChanging">
                     <Columns>
                         <asp:BoundField DataField="codigoProfesor" HeaderText="Código" />
                         <asp:BoundField DataField="nombres" HeaderText="Nombre" />

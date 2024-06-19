@@ -36,6 +36,7 @@ namespace WebForm.View.Admin.Profesores
         
         private void CargarTabla()
         {
+            listProfesor = Session["Profesores"] as BindingList<profesor>;
             GridProfesores.DataSource = listProfesor;
             GridProfesores.DataBind();
         }
@@ -444,6 +445,14 @@ namespace WebForm.View.Admin.Profesores
             }
             CallJavascript("showModalFormCursosDictados()");
 
+        }
+
+        protected void GridProfesores_PageIndexChanging(object sender, GridViewPageEventArgs e)
+        {
+            GridProfesores.PageIndex = e.NewPageIndex;
+            listProfesor = Session["Profesores"] as BindingList<profesor>;
+            GridProfesores.DataSource = listProfesor;
+            GridProfesores.DataBind();
         }
     }
 }

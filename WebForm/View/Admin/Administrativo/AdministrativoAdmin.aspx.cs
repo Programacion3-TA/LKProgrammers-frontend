@@ -28,11 +28,11 @@ namespace WebForm.View.Admin.Administrativo
                 CargarTabla();
             }
             
-            
         }
 
         protected void CargarTabla()
         {
+            personal = Session["Personal"] as BindingList<personalAdministrativo>;
             GridAdministrativo.DataSource = personal;
             GridAdministrativo.DataBind();
         }
@@ -221,6 +221,8 @@ namespace WebForm.View.Admin.Administrativo
         protected void GridAdministrativo_PageIndexChanging(object sender, GridViewPageEventArgs e)
         {
             GridAdministrativo.PageIndex = e.NewPageIndex;
+            personal = Session["Personal"] as BindingList<personalAdministrativo>;
+            GridAdministrativo.DataSource = personal;
             GridAdministrativo.DataBind();
         }
 
