@@ -9,7 +9,7 @@
 <asp:Content ID="Content4" ContentPlaceHolderID="MainContent" runat="server">
     <div class="card">
         <div class="card-header">
-         <h1>Reporte del Alumno</h1>
+         <h1>Registro de asistencias del Alumno</h1>
         </div>
          <div class=" d-flex  flex-column gap-4" >
              <div class="container card-body">
@@ -78,10 +78,18 @@
          <div class="card-footer d-flex justify-content-between">
             <asp:Button ID="RegresarAsistenciasBtn" runat="server" Text="Regresar" CssClass="btn btn-secondary" OnClick="RegresarAsistenciasBtn_Click" />
             <asp:Button runat="server" ID="MostrarReporteBtn" Text="Generar reporte PDF" CssClass="btn btn-primary"
-                         OnClick="MostrarReporteBtn_Click" />
+                         OnClick="MostrarReporteBtn_Click" OnClientClick="openinNewTab()" />
          </div>
     </div>
          
 </asp:Content>
 <asp:Content ID="Content5" ContentPlaceHolderID="Script" runat="server">
+    <script>
+        function openinNewTab() {
+            window.document.forms[0].target = '_blank';
+            setTimeout(function () {
+                window.document.forms[0].target = '';
+            }, 0);
+        }
+    </script>
 </asp:Content>

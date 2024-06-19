@@ -70,10 +70,31 @@ namespace WebForm.View.Profesor
         {
             string[] Resultados = CursoDictadoDrpL.SelectedValue.Split('|');
             string CursoId = Resultados[1];
-
+            string salonId = Resultados[0];
+            alumno[] alumnos = daoServicio.listarAlumnosxsalon(int.Parse(salonId));
             competencia[] competencias = daoServicio.listarCompetencias(int.Parse(CursoId)) ?? new competencia[] { };
             CargarCompetencias(competencias);
+            CargarDropAlumnos(alumnos);
         }
+        protected void CargarDropAlumnos(alumno[] alumnos)
+        {
+            if(alumnos != null)
+            {
+                List<alumno> alumnosList = TransformarNombres(alumnos);
+                AlumnosDelCursoDrpl.DataSource = alumnosList; 
+                AlumnosDelCursoDrpl.DataBind();
+                Session["AlumnosCurso"] = alumnosList;
+            }
+        }
+        protected List<alumno> TransformarNombres(alumno[] alus)
+        {
+            foreach (alumno alumno in alus)
+            {
+                alumno.nombres += " " + alumno.apellidoPaterno + " " + alumno.apellidoMaterno;
+            }
+            return alus.ToList();
+        }
+
         protected void CargarCompetencias(competencia[] competencias)
         {
             List<competencia> competenciasList= competencias.ToList();
@@ -102,5 +123,61 @@ namespace WebForm.View.Profesor
             string script = "window.onload = function() {" + function + "; };";
             ClientScript.RegisterStartupScript(GetType(), "", script, true);
         }
+
+        protected void ReporteNotasAlumnoBtn_Click(object sender, EventArgs e)
+        {
+            string dniAlumno = AlumnosDelCursoDrpl.SelectedValue.ToString();
+            alumno alumno = daoServicio.listarAlumnosFiltro(dniAlumno).FirstOrDefault();
+            if (alumno != null)
+            {
+                alumno.nombres += " " + alumno.apellidoPaterno + " " + alumno.apellidoMaterno;
+                string grado = TransformarGrado(alumno.grado.ToString());
+                profesor prof = (profesor)(Session["Usuario"]);
+                string nombre = prof.nombres;
+                nombre += " " + prof.apellidoPaterno + " " + prof.apellidoMaterno;
+                string idsalon = ((int)Session["idsalon"]).ToString();
+
+                Byte[] FileBuffer = daoServicio.reportePDFNotas(dniAlumno,alumno.nombres,grado,alumno.telefono,nombre,idsalon);
+                if (FileBuffer != null)
+                {
+                    Response.Clear();
+                    Response.ContentType = "application/pdf";
+                    Response.AddHeader("content-length", FileBuffer.Length.ToString());
+                    Response.BinaryWrite(FileBuffer);
+                }
+
+            }
+
+        }
+        protected string TransformarGrado(string grado)
+        {
+            switch (grado)
+            {
+                case "INI2":
+                    return "2 años";
+                case "INI3":
+                    return "3 años";
+                case "INI4":
+                    return "4 años";
+                case "INI5":
+                    return "5 años";
+                case "PRIM1":
+                    return "Primero de Primaria";
+                case "PRIM2":
+                    return "Segundo de Primaria";
+                case "PRIM3":
+                    return "Tercero de Primaria";
+                case "PRIM4":
+                    return "Cuarto de Primaria";
+                case "PRIM5":
+                    return "Quinto de Primaria";
+                case "PRIM6":
+                    return "Sexto de Primaria";
+                default:
+                    return "Fallo en el grado";
+            }
+        }
     }
+
+   
 }
