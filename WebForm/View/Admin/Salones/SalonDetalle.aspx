@@ -73,7 +73,7 @@
                                     <ItemTemplate>
                                         <div style="display: flex; gap: 0.6em">
                                             <asp:LinkButton ID="BtnDelete" runat="server" Text="Quitar" CssClass="btn btn-danger"
-                                                CommandArgument='<%#Eval("dni") %>' OnClick="BtnQuitar_Click" />
+                                                CommandArgument='<%#Eval("dni") %>' OnClick="BtnQuitar_Click"  OnClientClick="return confirm('¿Desea eliminar?')" />
                                         </div>
                                     </ItemTemplate>
                                     <ItemStyle HorizontalAlign="Center" Width="200px" />
@@ -105,7 +105,7 @@
                                 <ItemTemplate>
                                     <div style="display: flex; gap: 0.6em">
                                         <asp:LinkButton ID="BtnEliminarCurso" runat="server" Text="Eliminar" CssClass="btn btn-danger"
-                                            CommandArgument='<%#Eval("idCurso") %>' OnClick="BtnEliminarCurso_Click" />
+                                            CommandArgument='<%#Eval("idCurso") %>' OnClick="BtnEliminarCurso_Click"  OnClientClick="return confirm('¿Desea eliminar?')" />
                                     </div>
                                 </ItemTemplate>
                                 <ItemStyle HorizontalAlign="Center" Width="200px" />
