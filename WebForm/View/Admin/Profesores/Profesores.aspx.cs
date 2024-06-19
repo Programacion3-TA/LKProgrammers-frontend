@@ -399,7 +399,7 @@ namespace WebForm.View.Admin.Profesores
             if (string.IsNullOrEmpty(TxtCriterioCursos.Text))
             {
                 // Si no se ha pasado un criterio, mostrar todos los disponibles
-                var resultado = daoServicio.CURSOS_LIBRES_DEL_ANIO();
+                var resultado = daoServicio.listarCursosSinProfesor();
 
                 if (resultado != null)
                 {
