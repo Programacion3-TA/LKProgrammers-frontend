@@ -35,7 +35,7 @@
                         <div class="card-body d-flex flex-column gap-3">
                                 <div class="form-group">
                                     <asp:Label ID="LblUsuario" runat="server" Text="Usuario" CssClass="form-label"></asp:Label>
-                                     <asp:TextBox ID="TxtUsuario" runat="server" CssClass="form-control" placeholder="Ingrese su usuario o correo electrónico..."></asp:TextBox>
+                                        <asp:TextBox ID="TxtUsuario" runat="server" CssClass="form-control" placeholder="Ingrese su usuario o correo electrónico..."></asp:TextBox>
                                 </div>
                                 <div class="form-group">
                                     <asp:Label ID="LblContrasenia" runat="server" Text="Constraseña" CssClass="form-label"></asp:Label>
