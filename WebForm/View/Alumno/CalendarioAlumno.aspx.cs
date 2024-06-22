@@ -98,7 +98,7 @@ namespace WebForm.View.CalendarioAlumno
             Func<int, string> horasAFormato = (int tiempoEnMinutos) => $"{tiempoEnMinutos / 60:D2}:{tiempoEnMinutos % 60:D2} - {(tiempoEnMinutos + bloqueMinutos) / 60:D2}:{(tiempoEnMinutos + bloqueMinutos) % 60:D2}";
             // Datos generales de la tabla
             tiempo horaInicioJornadaEscolar = new tiempo { hora = 8 },
-                horaFinJornadaEscolar = new tiempo { hora = 12, minuto=00 },
+                horaFinJornadaEscolar = new tiempo { hora = 14, minuto=00 },
                 horaReceso = new tiempo { hora = 10 };
             int minutosInicio = ObtenerTotalMinutos(horaInicioJornadaEscolar),
                 minutosFin = ObtenerTotalMinutos(horaFinJornadaEscolar);
