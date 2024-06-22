@@ -32,17 +32,6 @@ namespace WebForm
                 Session["MyNotification"] = null;
                 string script = "<script> showNotification(\"" + notf.Tipo + "\", \"" + notf.Mensaje+ "\", \""+notf.Titulo+"\") </script>";
                 ScriptsNotification.Text = script;
-                //Dictionary<string, string> StadoClase = new Dictionary<NotificationStates, string>
-                //{
-                //    {"Ok", "alert alert-success" },
-                //    {"Bad", "alert alert-danger" },
-                //    {"Info", "alert alert-primary" }
-                //};
-                //ErrorAlert.Text =
-                //    $"<div class=\"{StadoClase[notf.Estado]} my__notification position-fixed \" style=\"z-index:999;\" role=\"alert\">" +
-                //    "   <i class=\"fa fa-exclamation-triangle\" aria-hidden=\"true\"></i>" +
-                //    $"  {notf.Mensaje}" +
-                //    "</div>";
             }
 
             RenderizarPath();
@@ -83,28 +72,33 @@ namespace WebForm
         {
             Dictionary<string, string> Relaciones = new Dictionary<string, string>
             {
-                {"Alumno", "<i class=\"fa-solid fa-graduation-cap\"></i>" },
-                {"Profesor", "<i class=\"fa-solid fa-chalkboard-user\"></i>" },
-                {"Admin", "<i class=\"fa-solid fa-user-tie\"></i>" },
-                {"CalendarioAlumno", "<i class=\"fa-solid fa-calendar-days\"></i>" },
-                {"AsistenciaAlumno", "<i class=\"fa-solid fa-timeline\"></i>" },
-                {"NotaAlumno", "<i class=\"fa-solid fa-star\"></i>" },
-                {"CursoAlumno", "<i class=\"fa-solid fa-book\"></i>" },
-                {"AsistenciaProfesor", "<i class=\"fa-solid fa-timeline\"></i>" },
-                {"CalificarProfesor", "<i class=\"fa-solid fa-star\"></i>" },
-                {"CompetenciaProfesor", "<i class=\"fa-solid fa-box\"></i>" },
-                {"RegistroProfesor", "<i class=\"fa-solid fa-paper-plane\"></i>" },
+                { "Alumno", "<i style=\"color: #262626;\" class=\"fa-solid fa-graduation-cap\"></i>" },
+                {"Profesor", "<i style =\"color: #262626;\" class=\"fa-solid fa-chalkboard-user\"></i>" },
+                {"Admin", "<i style =\"color: #262626;\" class=\"fa-solid fa-user-tie\"></i>" },
+                {"CalendarioAlumno", "<i style =\"color: #262626;\" class=\"fa-solid fa-calendar-days\"></i>" },
+                {"AsistenciaAlumno", "<i style =\"color: #262626;\" class=\"fa-solid fa-timeline\"></i>" },
+                {"NotaAlumno", "<i style =\"color: #262626;\" class=\"fa-solid fa-star\"></i>" },
+                {"CursoAlumno", "<i style =\"color: #262626;\" class=\"fa-solid fa-book\"></i>" },
+                {"AsistenciaProfesor", "<i style =\"color: #262626;\" class=\"fa-solid fa-timeline\"></i>" },
+                {"CalificarProfesor", "<i style =\"color: #262626;\" class=\"fa-solid fa-star\"></i>" },
+                {"CompetenciaProfesor", "<i style =\"color: #262626;\" class=\"fa-solid fa-box\"></i>" },
+                {"RegistroProfesor", "<i style =\"color: #262626;\" class=\"fa-solid fa-paper-plane\"></i>" },
             };
-            string Ruta = Request.Url.ToString().Split(new string[] { "View/" }, StringSplitOptions.None)[1];
+            string Ruta = Request
+                .Url
+                .ToString()
+                .Split('?')
+                [0]
+                .Split(new string[] { "View/" }, StringSplitOptions.None)[1];
             string[] Atribs = Ruta.Split('/');
             Atribs[Atribs.Length - 1] = Atribs[Atribs.Length - 1].Split('.')[0];
-            string html = MyReact.CreateComponent("li", "class=\"breadcrumb-item\" style=\"color: #000;\"",
-                MyReact.CreateComponent("a", "href=\"#\" style=\"color: #000;\"", "<i style=\"color: #000;\" class=\"fa-solid fa-house fa-5xs me-2\"></i> Colegio"));
+            string html = MyReact.CreateComponent("li", "class=\"breadcrumb-item\" style=\"color: #262626;\"",
+                MyReact.CreateComponent("a", "href=\"#\" style=\"color: #262626; text-decoration: none;\"", "<i style=\"color: #262626;\" class=\"fa-solid fa-house fa-5xs me-2\"></i> Colegio"));
             foreach(string rut in Atribs)
             {
                 string icono = (Relaciones.ContainsKey(rut)) ? Relaciones[rut] : "";
-                html += MyReact.CreateComponent("li", "class=\"breadcrumb-item\" style=\"color: #000;\"",
-                    MyReact.CreateComponent("a", "href=\"#\" style=\"color: #000;\"", $"{icono} {rut}")); ;
+                html += MyReact.CreateComponent("li", "class=\"breadcrumb-item\" style=\"color: #525252;\"",
+                    MyReact.CreateComponent("a", "href=\"#\" style=\"color: #262626; text-decoration: none;\"", $"{icono} {rut}")); ;
             }
             PathUsuariosLit.Text = html;
             // <li class="breadcrumb-item"><a href="#">Home</a></li>
