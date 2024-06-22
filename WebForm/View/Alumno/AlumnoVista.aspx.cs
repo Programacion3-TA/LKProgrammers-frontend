@@ -70,5 +70,10 @@ namespace WebForm.View
 
             CursosContainer.Text = html;
         }
+
+        protected void AlgoClick(object sender, EventArgs e)
+        {
+            Algo.Text = ((Button)sender).CommandArgument;
+        }
     }
 }
