@@ -9,21 +9,24 @@
 </asp:Content>
 <asp:Content ID="Content4" ContentPlaceHolderID="MainContent" runat="server">
     <asp:ScriptManager runat="server"></asp:ScriptManager>
+    <div class="w-100 d-flex justify-content-between  mb-3 ">
+            <asp:UpdatePanel runat="server">
+                <ContentTemplate>
+                    <div class="d-flex gap-2 align-items-center">
+                        <asp:Button ID="BtnAgregar" CssClass="btn btn-primary" runat="server" Text="-15" OnClick="BtnRestar_Click"/>
+                        <span>
+                            Bloques:
+                            <asp:Literal ID="LblBloques" runat="server"></asp:Literal>
+                            min
+                        </span>
+                        <asp:Button ID="BtnRestar" CssClass="btn btn-primary" runat="server" Text="+15" OnClick="BtnAgregar_Click"/>
+                    </div>
+                </ContentTemplate>
+            </asp:UpdatePanel>
+        <asp:Button runat="server" Text="Reporte de Horario" CssClass="btn btn-primary" OnClick="BtnReporteHorario_Click" />
+    </div>
     <asp:UpdatePanel runat="server">
         <ContentTemplate>
-            <div class="w-100 d-flex justify-content-between  mb-3 ">
-                <div class="d-flex gap-2 align-items-center">
-                    <asp:Button ID="BtnAgregar" CssClass="btn btn-primary" runat="server" Text="-15" OnClick="BtnRestar_Click"/>
-                    <span>
-                        Bloques:
-                        <asp:Literal ID="LblBloques" runat="server"></asp:Literal>
-                        min
-                    </span>
-                    <asp:Button ID="BtnRestar" CssClass="btn btn-primary" runat="server" Text="+15" OnClick="BtnAgregar_Click"/>
-                </div>
-
-                <asp:Button runat="server" Text="Reporte de Horario" CssClass="btn btn-primary" OnClick="BtnReporteHorario_Click" />
-            </div>
             <table class="table table-bordered align-middle w-100 h-100">
                 <thead>
                     <tr>
