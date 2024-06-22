@@ -19,36 +19,6 @@ namespace WebForm.View.CalendarioAlumno
             daoServicio = new LKServicioWebClient();
             cursoHorario[] Horarios = daoServicio.listarCursosHorarioAlumnos( ( (alumno)Session["Usuario"]).dni );
             RenderizarCalendario(Horarios);
-
-            // Pruebas estaticas
-            //cursoHorario[] curHor = new cursoHorario[]
-            //{
-            //    new cursoHorario{idsalon=1, profesor="12345678", curso=new curso{id=1,nombre="Matematicas", descripcion="XD"}, horarioDictado=
-            //        new horario[] {
-            //            new horario{ id=1, horaInicio=new tiempo{ hora=8, minuto=0}, horaFin=new tiempo{ hora=10, minuto=0}, dia=diaSemana.Lunes },
-            //            new horario{ id=1, horaInicio=new tiempo{ hora=8, minuto=0}, horaFin=new tiempo{ hora=10, minuto=0}, dia=diaSemana.Martes },
-            //        }
-            //    },
-            //    new cursoHorario{idsalon=2, profesor="12345679", curso=new curso{id=1,nombre="Lenguaje", descripcion="XD"}, horarioDictado=
-            //        new horario[] {
-            //            new horario{ id=1, horaInicio=new tiempo{ hora=10, minuto=0}, horaFin=new tiempo{ hora=12, minuto=0}, dia=diaSemana.Lunes },
-            //            new horario{ id=1, horaInicio=new tiempo{ hora=10, minuto=0}, horaFin=new tiempo{ hora=12, minuto=0}, dia=diaSemana.Martes },
-            //        }
-            //    },
-            //    new cursoHorario{idsalon=2, profesor="12345679", curso=new curso{id=1,nombre="Ciencias y tecnología", descripcion="XD"}, horarioDictado=
-            //        new horario[] {
-            //            new horario{ id=1, horaInicio=new tiempo{ hora=8, minuto=0}, horaFin=new tiempo{ hora=10, minuto=0}, dia=diaSemana.Miercoles },
-            //            new horario{ id=1, horaInicio=new tiempo{ hora=10, minuto=0}, horaFin=new tiempo{ hora=12, minuto=0}, dia=diaSemana.Viernes },
-            //        }
-            //    },
-            //    new cursoHorario{idsalon=2, profesor="12345679", curso=new curso{id=1,nombre="Historia", descripcion="XD"}, horarioDictado=
-            //        new horario[] {
-            //            new horario{ id=1, horaInicio=new tiempo{ hora=8, minuto=0}, horaFin=new tiempo{ hora=10, minuto=0}, dia=diaSemana.Jueves },
-            //            new horario{ id=1, horaInicio=new tiempo{ hora=10, minuto=0}, horaFin=new tiempo{ hora=12, minuto=0}, dia=diaSemana.Miercoles },
-            //        }
-            //    }
-            //};
-            //RenderizarCalendario(curHor);
         }
 
         protected void RenderizarCalendario(cursoHorario[] cursosHorarios)
