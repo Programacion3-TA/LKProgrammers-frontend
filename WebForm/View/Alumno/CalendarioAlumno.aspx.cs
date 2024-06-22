@@ -18,60 +18,9 @@ namespace WebForm.View.CalendarioAlumno
         protected string[,] Calendario;
         protected void Page_Load(object sender, EventArgs e)
         {
-            Session["Minutos"] = Session["Minutos"] ?? 30;
-            LblBloques.Text = $"{Session["Minutos"]}";
-
             daoServicio = new LKServicioWebClient();
-            CursosHorarios = daoServicio.listarCursosHorarioAlumnos(((alumno)Session["Usuario"]).dni);
-            RenderizarCalendario((int)Session["Minutos"]);
-            // Pruebas estaticas
-            //CursosHorarios = new cursoHorario[]
-            //{
-            //    new cursoHorario{idsalon=1, profesor="12345678", curso=new curso{id=1,nombre="Matematicas", descripcion="XD"}, horarioDictado=
-            //        new horario[] {
-            //            new horario{ id=1, horaInicio=new tiempo{ hora=8, minuto=0}, horaFin=new tiempo{ hora=10, minuto=0}, dia=diaSemana.Lunes },
-            //            new horario{ id=1, horaInicio=new tiempo{ hora=8, minuto=0}, horaFin=new tiempo{ hora=10, minuto=0}, dia=diaSemana.Martes },
-            //        }
-            //    },
-            //    new cursoHorario{idsalon=2, profesor="12345679", curso=new curso{id=1,nombre="Lenguaje", descripcion="XD"}, horarioDictado=
-            //        new horario[] {
-            //            new horario{ id=1, horaInicio=new tiempo{ hora=10, minuto=0}, horaFin=new tiempo{ hora=12, minuto=0}, dia=diaSemana.Lunes },
-            //            new horario{ id=1, horaInicio=new tiempo{ hora=10, minuto=0}, horaFin=new tiempo{ hora=12, minuto=0}, dia=diaSemana.Martes },
-            //        }
-            //    },
-            //    new cursoHorario{idsalon=2, profesor="12345679", curso=new curso{id=1,nombre="Ciencias y tecnología", descripcion="XD"}, horarioDictado=
-            //        new horario[] {
-            //            new horario{ id=1, horaInicio=new tiempo{ hora=8, minuto=0}, horaFin=new tiempo{ hora=10, minuto=0}, dia=diaSemana.Miercoles },
-            //            new horario{ id=1, horaInicio=new tiempo{ hora=10, minuto=0}, horaFin=new tiempo{ hora=12, minuto=0}, dia=diaSemana.Viernes },
-            //        }
-            //    },
-            //    new cursoHorario{idsalon=2, profesor="12345679", curso=new curso{id=1,nombre="Historia", descripcion="XD"}, horarioDictado=
-            //        new horario[] {
-            //            new horario{ id=1, horaInicio=new tiempo{ hora=8, minuto=0}, horaFin=new tiempo{ hora=10, minuto=0}, dia=diaSemana.Jueves },
-            //            new horario{ id=1, horaInicio=new tiempo{ hora=10, minuto=0}, horaFin=new tiempo{ hora=12, minuto=0}, dia=diaSemana.Miercoles },
-            //        }
-            //    }
-            //};
-            //RenderizarCalendario((int) Session["Minutos"]);
-        }
-
-        protected void BtnAgregar_Click(object sender, EventArgs e)
-        {
-            int num = (int) Session["Minutos"];
-            if (num >= 60) return;
-            num += 15;
-            RenderizarCalendario(num);
-            Session["Minutos"] = num;
-            LblBloques.Text = $"{num}";
-        }
-        protected void BtnRestar_Click(object sender, EventArgs e)
-        {
-            int num = (int)Session["Minutos"];
-            if (num <= 15) return;
-            num -= 15;
-            RenderizarCalendario(num);
-            Session["Minutos"] = num;
-            LblBloques.Text = $"{num}";
+            cursoHorario[] Horarios = daoServicio.listarCursosHorarioAlumnos( ( (alumno)Session["Usuario"]).dni );
+            RenderizarCalendario(Horarios);
         }
 
         protected void RenderizarCalendario(int bloqueMinutos = 30)
