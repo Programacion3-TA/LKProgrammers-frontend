@@ -121,7 +121,15 @@ namespace WebForm.View.Admin.Salones
             salon op = new salon();
             if (string.IsNullOrEmpty(TxtCode.Text)) // crear
             {
-                op.id = serviciodao.listarSalones().Max(s => s.id) + 1;
+                var f = serviciodao.listarSalones();
+                if (f == null)
+                {
+                    op.id = 1;
+                }
+                else
+                {
+                    op.id = serviciodao.listarSalones().Max(s => s.id) + 1;
+                }
             }
             else // actualizar
             {
