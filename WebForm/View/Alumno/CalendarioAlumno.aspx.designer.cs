@@ -24,6 +24,42 @@ namespace WebForm.View.CalendarioAlumno
         protected global::WebForm.Components.Path MyCustomControl1;
 
         /// <summary>
+        /// Control BtnAgregar.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Button BtnAgregar;
+
+        /// <summary>
+        /// Control LblBloques.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Literal LblBloques;
+
+        /// <summary>
+        /// Control BtnRestar.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Button BtnRestar;
+
+        /// <summary>
+        /// Control CalendarHeader.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Literal CalendarHeader;
+
+        /// <summary>
         /// Control CalendarContainer.
         /// </summary>
         /// <remarks>
