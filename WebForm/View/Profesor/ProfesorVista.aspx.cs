@@ -35,10 +35,12 @@ namespace WebForm.View.ProfesorVista
             Random rand = new Random();
             string nombres = ((profesor)Session["Usuario"]).nombres + " " + ((profesor)Session["Usuario"]).apellidoPaterno;
 
+
             if (cursoHorarios != null)
             {
                 foreach (cursoHorario cursoHor in cursoHorarios)
                 {
+
                     Panel cursoPanel = new Panel
                     {
                         CssClass = "cursoCaja",
@@ -65,6 +67,7 @@ namespace WebForm.View.ProfesorVista
                     cursoPanel.Controls.Add(cursoLink);
 
                     CursosProfesorPHl.Controls.Add(cursoPanel);
+
                 }
             }
         }

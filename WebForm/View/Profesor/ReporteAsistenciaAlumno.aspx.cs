@@ -22,8 +22,8 @@ namespace WebForm.View.Profesor
                 string fechaFin = Request.QueryString["fechaFin"];
 
                 LLenarInformacion(dniAlumno,fechaIni,fechaFin);
-
             }
+            MostrarAsistencias((List<asistencia>)Session["AsistenciasReporteAlumno"]);
         }
         protected void LLenarInformacion(string dniAlumno,string fechaIni,string fechaFin)
         {
@@ -45,7 +45,7 @@ namespace WebForm.View.Profesor
             NombreTutorTxtRep.Text = profesor.nombres + " " + profesor.apellidoPaterno + " " + profesor.apellidoMaterno;
 
             asistencias.RemoveAll(x => x.fechaHora < FechaIni || x.fechaHora > FechaFin);
-            MostrarAsistencias(asistencias);
+            Session["AsistenciasReporteAlumno"] = asistencias;
         }
         protected void MostrarAsistencias(List<asistencia> asistencias)
         {
@@ -107,6 +107,12 @@ namespace WebForm.View.Profesor
                 default:
                     return "Fallo en el grado";
             }
+        }
+
+        protected void AsistenciaAlumnoGrid_PageIndexChanging(object sender, GridViewPageEventArgs e)
+        {
+            AsistenciaAlumnoGrid.PageIndex = e.NewPageIndex;
+            AsistenciaAlumnoGrid.DataBind();
         }
     }
 }
