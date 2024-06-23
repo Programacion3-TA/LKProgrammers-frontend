@@ -111,6 +111,8 @@ namespace WebForm.View.AsistenciaProfesor
             DateTime fechaHoy = DateTime.Now.Date;//comparamos fechas
             // List<DateTime> fechasReg = (List<DateTime>)Session["fechas"];
             List<DateTime> fechas = (List<DateTime>)Session["fechasAsistencia"];
+            if (fechas.Count == 0) return false;
+
             DateTime fechasReg = fechas[0];
             return fechaHoy.Equals(fechasReg);
         }

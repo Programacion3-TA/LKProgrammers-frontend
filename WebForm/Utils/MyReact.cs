@@ -15,14 +15,15 @@ namespace WebForm.Utils
             public String tag;
             public String props;
         };
-
+        /*
         public static Dictionary<tipoElemento, htmlElementStandar> standarTypes = new Dictionary<tipoElemento, htmlElementStandar>
         {
             { tipoElemento.Heading, new htmlElementStandar {tag="h{}", props= "" } },
             { tipoElemento.Parrafo, new htmlElementStandar { tag ="p", props= "" } },
             { tipoElemento.Enlace, new htmlElementStandar { tag ="a", props= "href={}" } },
             { tipoElemento.Imagen, new htmlElementStandar { tag ="img", props= "src={}" } }
-        };
+        };*/
+
         public static String CreateComponent(String tag, Dictionary<String, String> props, String children)
         {
             String html = $"<{tag}";
@@ -39,7 +40,7 @@ namespace WebForm.Utils
             html += $"</{tag}>";
             return html;
         }
-
+        
         public static String CreateComponent(String tag, String props, String children)
         {
             String html = $"<{tag} {props}";
@@ -48,7 +49,7 @@ namespace WebForm.Utils
             html += $"</{tag}>";
             return html;
         }
-
+        /*
         public static String CreateComponentByType(elemento elem, String props, String children)
         {
             String html = "";
@@ -71,7 +72,7 @@ namespace WebForm.Utils
 
             return html;
         }
-
+        */
         //public static String createComponentsList(Dictionary<String, String> keys, String type, Dictionary<String, String> props, List<String> childrens)
         //{
         //    String html = "";

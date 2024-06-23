@@ -19,10 +19,10 @@
 <asp:Content ID="Content4" ContentPlaceHolderID="MainContent" runat="server">
     <asp:ScriptManager runat="server"></asp:ScriptManager>
     <asp:Label ID="Pruebas" runat="server"></asp:Label>
-    <h1>Asistencias del salon</h1>
-    <div class="container">
+    <h1 class="pl-4">Asistencias del salon</h1>
+    <div class="container ">
         <div class="container row pb-2 pt-2">
-            <div class="card mb-4">
+            <div class="card mb-4 p-0">
                 
                     <h2 class="card-header">Asistencias por alumno</h2>
                     <div class="d-flex gap-3 border-2 flex-column card-body">

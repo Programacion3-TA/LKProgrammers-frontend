@@ -20,7 +20,7 @@ namespace WebForm.View.CursoAlumno
         {
             //String html = MyReact.createComponent("h1", null, "Hola mundo");
             //MyCont.Text = html;
-
+            /*
             paginaCurso pag = new paginaCurso();
             pag.id = 1;
             pag.secciones = new seccion[]{
@@ -57,11 +57,12 @@ namespace WebForm.View.CursoAlumno
                 badgesComp += MyReact.CreateComponent("span", new Dictionary<string, string> { { "class", "badge rounded-pill text-bg-primary p-2 text-truncate" }, { "style", "max-width: 60%;" } }, competencia);
             }
             BadgesContainer.Text = badgesComp;
-            renderizarSecciones(pag);
+            renderizarSecciones(pag);*/
         }
-
+        /*
         protected void renderizarSecciones(paginaCurso pag)
         {
+
             String seccComp = "";
             foreach (seccion secc in pag.secciones)
             {
@@ -82,6 +83,6 @@ namespace WebForm.View.CursoAlumno
             }
 
             SeccionesContainer.Text = seccComp;
-        }
+        }*/
     }
 }
