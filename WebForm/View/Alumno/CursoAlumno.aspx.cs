@@ -16,6 +16,7 @@ namespace WebForm.View.CursoAlumno
 {
     public partial class CursoAlumno : System.Web.UI.Page
     {
+        
         protected void Page_Load(object sender, EventArgs e)
         {
             //String html = MyReact.createComponent("h1", null, "Hola mundo");

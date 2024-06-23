@@ -23,10 +23,10 @@ namespace WebForm.View.CalendarioAlumno
             RenderizarCalendario(Horarios);
         }
 
-        protected void RenderizarCalendario(int bloqueMinutos = 30)
+        protected void RenderizarCalendario(cursoHorario[] CursosHorarios)
         {
             if (CursosHorarios == null) CursosHorarios = new cursoHorario[] { };
-
+            int bloqueMinutos = 30;
             // Calendario
             CalendarHeader.Text = string.Join(
                 "",
