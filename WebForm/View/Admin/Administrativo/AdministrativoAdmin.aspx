@@ -5,15 +5,6 @@
 <asp:Content ID="Content2" ContentPlaceHolderID="Styles" runat="server">
 </asp:Content>
 <asp:Content ID="Content3" ContentPlaceHolderID="MainContent" runat="server">
-    <nav style="--bs-breadcrumb-divider: '>'; font-size: 14px" class="p-2">
-        <ol class="breadcrumb">
-            <li class="breadcrumb-item">
-                <i class="fa-solid fa-house"></i>
-            </li>
-            <li class="breadcrumb-item">Personal Administrativo</li>
-        </ol>
-    </nav>
-
     <div class="container">
         <div class="mx-auto d-flex flex-column justify-content-center">
             <h2 class="px-2">Personal Administrativo</h2>

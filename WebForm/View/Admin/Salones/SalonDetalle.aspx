@@ -10,7 +10,7 @@
 <asp:Content ID="Content4" ContentPlaceHolderID="Navusuarios" runat="server">
 </asp:Content>
 <asp:Content ID="Content5" ContentPlaceHolderID="MainContent" runat="server">
-    <nav style="--bs-breadcrumb-divider: '>'; font-size: 14px" class="p-2">
+    <%--<nav style="--bs-breadcrumb-divider: '>'; font-size: 14px" class="p-2">
         <ol class="breadcrumb">
             <li class="breadcrumb-item">
                 <i class="fa-solid fa-house"></i>
@@ -18,7 +18,7 @@
             <li class="breadcrumb-item">Salones</li>
             <li class="breadcrumb-item">Detalle</li>
         </ol>
-    </nav>
+    </nav>--%>
     <%--No toques el ScriptManager--%>
     <asp:ScriptManager runat="server"></asp:ScriptManager>
     <%--No toques el ScriptManager--%>

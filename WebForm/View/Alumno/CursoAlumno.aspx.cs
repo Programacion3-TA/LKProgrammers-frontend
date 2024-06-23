@@ -64,7 +64,7 @@ namespace WebForm.View.CursoAlumno
                 );
             }
 
-            SeccionesContainer.Text = seccComp;
-        }
+        //    SeccionesContainer.Text = seccComp;
+        //}
     }
 }
