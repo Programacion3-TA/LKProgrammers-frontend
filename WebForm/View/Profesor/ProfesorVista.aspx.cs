@@ -35,12 +35,12 @@ namespace WebForm.View.ProfesorVista
 
             StringBuilder strBuild = new StringBuilder();
             string nombres = ((profesor)Session["Usuario"]).nombres + " "+((profesor)Session["Usuario"]).apellidoPaterno;
-            LinkButton linkButton = new LinkButton();
-            linkButton.Click += new EventHandler(CursoProfesorBtn_Click);
             if (cursoHorarios != null)
             {
                 foreach (cursoHorario cursoHor in cursoHorarios)
                 {
+                    LinkButton linkButton = new LinkButton();   
+                    linkButton.Click += new EventHandler(CursoProfesorBtn_Click);
                     linkButton.ID = $"CursoProfesorBtn-{cursoHor.curso.id}";
                     linkButton.CssClass = "d-flex flex-column cursoCaja";
                     linkButton.CommandArgument = $"{cursoHor.idsalon}|{cursoHor.curso.id}"; // se manda como argumento
