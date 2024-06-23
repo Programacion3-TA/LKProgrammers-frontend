@@ -19,9 +19,6 @@ namespace WebForm.View.CalendarioAlumno
         protected string[,] Calendario;
         protected void Page_Load(object sender, EventArgs e)
         {
-            Session["Minutos"] = Session["Minutos"] ?? 30;
-            LblBloques.Text = $"{Session["Minutos"]}";
-
             daoServicio = new LKServicioWebClient();
             CursosHorarios = CursosHorarios ?? daoServicio.listarCursosHorarioAlumnos(((alumno)Session["Usuario"]).dni);
             RenderizarCalendario((int)Session["Minutos"]);
