@@ -12,6 +12,7 @@ using iText.Layout;
 using iText.Layout.Borders;
 using iText.Layout.Element;
 using iText.Layout.Properties;
+using iText.Layout.Renderer;
 using WebForm.ServicioWS;
 
 namespace WebForm.Utils
@@ -47,28 +48,46 @@ namespace WebForm.Utils
             Dictionary<string, int> coloresUsados = new Dictionary<string, int> { };
 
             // Agregar contenido al documento
-            //document.Add(new Image(ImageDataFactory.Create("~/Public/img/logoColegio.jpeg")));
-            Div divisionTitulo = new Div().SetMarginBottom(20f).SetWidth(UnitValue.CreatePercentValue(100));
-            divisionTitulo.Add(
-                new Paragraph("Reporte de Horario")
-                    .SetBold()
-                    .SetFontSize(36f)
+            Table elementosEnLinea = new Table(3)
+                .SetMarginBottom(20f)
+                .SetBorder(new SolidBorder(0f))
+                .SetWidth(UnitValue.CreatePercentValue(100));
+
+            elementosEnLinea.AddCell(
+                new Cell().Add(
+                    new Image(ImageDataFactory.Create("https://scontent.flim26-1.fna.fbcdn.net/v/t39.30808-6/432456066_3123769707755812_5281883627838040299_n.jpg?_nc_cat=110&ccb=1-7&_nc_sid=5f2048&_nc_ohc=B6tdn6PUvboQ7kNvgGD5kss&_nc_ht=scontent.flim26-1.fna&oh=00_AYC8DYIrxI4m4XA_KCHjgqql1Q1ic9R34aOkMNVf9RMkGA&oe=667CCAD8"))
+                       .SetWidth(50)
+                ).SetBorder(new SolidBorder(new DeviceRgb(0xff, 0xff, 0xff), 0f))
             );
 
-            divisionTitulo.Add(
-                new Table(2)
-                    .AddCell(
-                        new Cell()
-                            .Add(new Paragraph("Fecha actual"))
-                            .SetBackgroundColor(new DeviceRgb(0xde, 0xe2, 0xe6))
-                    )
-                    .AddCell(
-                        new Cell()
-                            .Add(new Paragraph( DateTime.Now.ToString("dd/MM/yyyy", new CultureInfo("es-ES")) ))
-                    )
+            elementosEnLinea.AddCell(
+                new Cell().Add(
+                    new Paragraph("Reporte de Horario")
+                        .SetBold()
+                        .SetFontSize(36f)
+                )
+                    .SetBorder(new SolidBorder(new DeviceRgb(0xff, 0xff, 0xff), 0f))
+                    .SetHorizontalAlignment(HorizontalAlignment.CENTER)
             );
 
-            document.Add(divisionTitulo);
+            elementosEnLinea.AddCell(
+                new Cell().Add(
+                    new Table(2)
+                        .AddCell(
+                            new Cell()
+                                .Add(new Paragraph("Fecha actual"))
+                                .SetBackgroundColor(new DeviceRgb(0xde, 0xe2, 0xe6))
+                        )
+                        .AddCell(
+                            new Cell()
+                                .Add(new Paragraph( DateTime.Now.ToString("dd/MM/yyyy", new CultureInfo("es-ES")) ))
+                        )
+                )
+                    .SetBorder(new SolidBorder(new DeviceRgb(0xff, 0xff, 0xff), 0f))
+                    .SetTextAlignment(TextAlignment.RIGHT)
+            );
+
+            document.Add(elementosEnLinea);
 
             document.Add(
                 new Table(6)
@@ -99,12 +118,12 @@ namespace WebForm.Utils
                     .AddCell(
                         new Cell(1, 1).Add(new Paragraph($"{alum.grado.ToString()}"))
                     )
-                    .AddCell(
-                        new Cell(1, 1).Add(new Paragraph("Salon")).SetBackgroundColor(new DeviceRgb(0xe9, 0xec, 0xef))
-                    )
-                    .AddCell(
-                        new Cell(1, 1).Add(new Paragraph("Insertar salon"))
-                    )
+                    //.AddCell(
+                    //    new Cell(1, 1).Add(new Paragraph("Salon")).SetBackgroundColor(new DeviceRgb(0xe9, 0xec, 0xef))
+                    //)
+                    //.AddCell(
+                    //    new Cell(1, 1).Add(new Paragraph("Insertar salon"))
+                    //)
                     .AddCell(
                         new Cell(1, 1).Add(new Paragraph("Telefono")).SetBackgroundColor(new DeviceRgb(0xe9, 0xec, 0xef))
                     )
@@ -112,12 +131,12 @@ namespace WebForm.Utils
                         new Cell(1, 1).Add(new Paragraph($"{alum.telefono}"))
                     )
                     // Fila 4
-                    .AddCell(
-                        new Cell(1, 1).Add(new Paragraph("Nombre del tutor")).SetBackgroundColor(new DeviceRgb(0xe9, 0xec, 0xef))
-                    )
-                    .AddCell(
-                        new Cell(1, 3).Add(new Paragraph("Insertar nombre"))
-                    )
+                    //.AddCell(
+                    //    new Cell(1, 1).Add(new Paragraph("Nombre del tutor")).SetBackgroundColor(new DeviceRgb(0xe9, 0xec, 0xef))
+                    //)
+                    //.AddCell(
+                    //    new Cell(1, 3).Add(new Paragraph("Insertar nombre"))
+                    //)
             );
 
             int totalFilas = calendario.GetLength(0),
