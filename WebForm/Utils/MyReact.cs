@@ -15,7 +15,7 @@ namespace WebForm.Utils
             public String tag;
             public String props;
         };
-
+        
         public static Dictionary<tipoElemento, htmlElementStandar> standarTypes = new Dictionary<tipoElemento, htmlElementStandar>
         {
             { tipoElemento.Heading, new htmlElementStandar {tag="h{}", props= "" } },
@@ -84,5 +84,6 @@ namespace WebForm.Utils
         //    }
         //    return html;
         //}
+        
     }
 }
