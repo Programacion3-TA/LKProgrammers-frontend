@@ -132,6 +132,8 @@ namespace WebForm.View.Admin.AnioAcademico
                 op.fechaInicio = DateTime.Parse(TxtFechaInicio.Text);
                 op.fechaFinSpecified = true;
                 op.fechaFin = DateTime.Parse(TxtFechaFin.Text);
+                op.fechaCerradoSpecified = true;
+                op.fechaCerrado = DateTime.Parse(TxtFechaCerrado.Text);
                 serviciodao.editar_age(op);
                 cargarAnioVigente();
                 cargarAniosEscolares();
