@@ -53,7 +53,7 @@ namespace WebForm.View
             {
                 profesor profe = serviciodao.buscarProfesorDeCurso(cur.id);
                 if (profe == null) continue;
-                String nombreProfesor = profe.nombres+" "+profe.apellidoPaterno + " "+profe.apellidoMaterno;
+                string nombreProfesor = profe.nombres+" "+profe.apellidoPaterno + " "+profe.apellidoMaterno;
                 Panel cursoPanel = new Panel
                 {
                     CssClass = "cursoCaja",
@@ -69,7 +69,7 @@ namespace WebForm.View
                 LinkButton cursoLink = new LinkButton
                 {
                     ID = $"CursoAlumnoBtn-{cur.id}",
-                    CommandArgument = $"{dni}|{cur.id}",
+                    CommandArgument = $"{cur.nombre}|{cur.id}",
                     Text = "Ver detalles",
                     CssClass = "btn btn-link"
                 };
@@ -82,9 +82,10 @@ namespace WebForm.View
         {
             LinkButton btn = (LinkButton)sender;
             string[] args = btn.CommandArgument.Split('|');
-            string dni_alumno = args[0];
+            string name_curso = args[0];
             string idCurso = args[1];
             Session["CURSO"] = int.Parse(idCurso);
+            Session["Curname"] = name_curso;
             // Redirigir a la página cursosVista con los parámetros necesarios
             Response.Redirect("/View/Alumno/CursoAlumno.aspx");
         }
