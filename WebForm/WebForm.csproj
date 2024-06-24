@@ -527,6 +527,9 @@
     <Content Include="Connected Services\ServicioWS\WebForm.ServicioWS.acceder_a_paginaResponse.datasource">
       <DependentUpon>Reference.svcmap</DependentUpon>
     </Content>
+    <Content Include="Connected Services\ServicioWS\WebForm.ServicioWS.aceptarJustificacionResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Content>
     <Content Include="Connected Services\ServicioWS\WebForm.ServicioWS.actualizaIncidenciaResponse.datasource">
       <DependentUpon>Reference.svcmap</DependentUpon>
     </Content>
@@ -707,6 +710,9 @@
     <Content Include="Connected Services\ServicioWS\WebForm.ServicioWS.listarAlumnosFiltroResponse.datasource">
       <DependentUpon>Reference.svcmap</DependentUpon>
     </Content>
+    <Content Include="Connected Services\ServicioWS\WebForm.ServicioWS.listarAlumnosFiltroSinSalonResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Content>
     <Content Include="Connected Services\ServicioWS\WebForm.ServicioWS.listarAlumnosResponse.datasource">
       <DependentUpon>Reference.svcmap</DependentUpon>
     </Content>
@@ -809,6 +815,9 @@
     <Content Include="Connected Services\ServicioWS\WebForm.ServicioWS.modificar_textoResponse.datasource">
       <DependentUpon>Reference.svcmap</DependentUpon>
     </Content>
+    <Content Include="Connected Services\ServicioWS\WebForm.ServicioWS.negaJustificacionResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Content>
     <Content Include="Connected Services\ServicioWS\WebForm.ServicioWS.nota.datasource">
       <DependentUpon>Reference.svcmap</DependentUpon>
     </Content>
@@ -857,14 +866,6 @@
     <Content Include="Connected Services\ServicioWS\WebForm.ServicioWS.verificarUsuarioResponse.datasource">
       <DependentUpon>Reference.svcmap</DependentUpon>
     </Content>
-
-    <Content Include="Connected Services\ServicioWS\WebForm.ServicioWS.aceptarJustificacionResponse.datasource">
-      <DependentUpon>Reference.svcmap</DependentUpon>
-    </Content>
-    <Content Include="Connected Services\ServicioWS\WebForm.ServicioWS.negaJustificacionResponse.datasource">
-      <DependentUpon>Reference.svcmap</DependentUpon>
-    </Content>
-
     <None Include="packages.config" />
     <Content Include="Public\js\bootstrap\bootstrap.min.js.map" />
     <Content Include="Public\js\bootstrap\bootstrap.js.map" />

@@ -200,7 +200,7 @@
                                     UseSubmitBehavior="false"/>
                             </div>
                             <div class="col-md-12 mb-3">
-                                <asp:GridView ID="GVCursos" runat="server" AllowPaging="true" PageSize="5" AutoGenerateColumns="false" CssClass="table table-hover table-responsive table-striped">
+                                <asp:GridView ID="GVCursos" runat="server" AllowPaging="true" PageSize="5" AutoGenerateColumns="false" CssClass="table table-hover table-responsive table-striped" OnPageIndexChanging="GVCursos_PageIndexChanging">
                                     <Columns>
                                         <asp:BoundField DataField="idCurso" HeaderText="ID" />
                                         <asp:BoundField DataField="nombreCurso" HeaderText="Nombre" />
@@ -254,7 +254,7 @@
                                 </div>
                             </div>
                             <div class="col-md-12  mb-3">
-                                <asp:GridView ID="GridHorario" runat="server" AllowPaging="true" AutoGenerateColumns="false" CssClass="table table-hover table-responsive table-striped" DataKeyNames="id">
+                                <asp:GridView ID="GridHorario" runat="server" AllowPaging="true" AutoGenerateColumns="false" CssClass="table table-hover table-responsive table-striped" DataKeyNames="id" OnPageIndexChanging="GridHorario_PageIndexChanging">
                                     <Columns>
                                         <asp:BoundField DataField="id" HeaderText ="ID" />
                                         <asp:BoundField DataField="dia" HeaderText ="Día" />
