@@ -49,6 +49,7 @@
             </div>
         </div>
     </div>
+    <!-- modal competencias -->
     <div id="modalCompetencia" class="modal" tabindex="-1">
     <div class="modal-dialog">
         <div class="modal-content">
@@ -57,8 +58,7 @@
                 <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
             </div>
             <div class="modal-body">
-                <!-- Add your modal content here -->
-                <!-- Example: -->
+               
                 <asp:Label ID="LblCode" runat="server" Text="Identificador" CssClass="form-label"></asp:Label>
                 <asp:TextBox ID="TxtID" runat="server" CssClass="form-control mb-2" Enabled="false"></asp:TextBox>
 

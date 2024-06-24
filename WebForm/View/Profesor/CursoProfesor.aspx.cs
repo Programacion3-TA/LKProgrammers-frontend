@@ -87,52 +87,52 @@ namespace WebForm.View.CursoProfesor
             SectionTitle.Text = secc.titulo + "  ";
         }
 
-        protected System.Void BTN_AgregarSeccion_Click()
+        protected void BTN_AgregarSeccion_Click()
+        {
+            
+        }
+
+        protected void AgregarContenido_Click()
         {
 
         }
 
-        protected System.Void AgregarContenido_Click()
+        protected void ModificarSeccion_Click()
         {
 
         }
 
-        protected System.Void ModificarSeccion_Click()
+        protected void EliminaSeccion_Click()
         {
 
         }
 
-        protected System.Void EliminaSeccion_Click()
+        protected void EditarParrafo_Click()
         {
 
         }
 
-        protected System.Void EditarParrafo_Click()
+        protected void EliminarParrafo_Click()
         {
 
         }
 
-        protected System.Void EliminarParrafo_Click()
+        protected void EditarLink_Click()
         {
 
         }
 
-        protected System.Void EditarLink_Click()
+        protected void EliminarLink_Click()
         {
 
         }
 
-        protected System.Void EliminarLink_Click()
+        protected void EditarImagen_Click()
         {
 
         }
 
-        protected System.Void EditarImagen_Click()
-        {
-
-        }
-
-        protected System.Void EliminarImagne_Click()
+        protected void EliminarImagne_Click()
         {
 
         }
