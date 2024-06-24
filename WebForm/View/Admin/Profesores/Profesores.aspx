@@ -17,6 +17,11 @@
     </nav>--%>
     <div class="mx-auto d-flex flex-column justify-content-center">
         <h2 class="px-2">Profesores </h2>
+
+        <div>
+            <a href="/View/Admin/Profesores/HistorialProfesor.aspx" class="btn btn-primary">Ver lista de profesores eliminados</a>
+        </div>
+
         <div class="container">
             <hr />
 
