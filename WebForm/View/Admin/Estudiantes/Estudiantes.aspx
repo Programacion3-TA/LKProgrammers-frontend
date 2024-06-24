@@ -19,7 +19,7 @@
         <h2 class="px-2">Estudiantes</h2>
 
         <div>
-            <a href="/View/Admin/Estudiantes/Historial.aspx" class="btn btn-primary">Ver historial de estudiantes eliminados</a>
+            <a href="/View/Admin/Estudiantes/HistorialEstudiante.aspx" class="btn btn-primary">Ver historial de estudiantes eliminados</a>
         </div>
 
         <hr />

@@ -205,7 +205,8 @@
     <Content Include="View\Admin\Cursos\CursosAdmin.aspx" />
     <Content Include="View\Admin\Estudiantes\Estudiantes.aspx" />
     <Content Include="View\Admin\Estudiantes\EstudianteAgregar.js" />
-    <Content Include="View\Admin\Estudiantes\Historial.aspx" />
+    <Content Include="View\Admin\Estudiantes\HistorialEstudiante.aspx" />
+    <Content Include="View\Admin\Profesores\HistorialProfesor.aspx" />
     <Content Include="View\Admin\Profesores\Profesores.js" />
     <Content Include="View\Admin\Profesores\Profesores.aspx" />
     <Content Include="View\Admin\Salones\Salon.js" />
@@ -323,12 +324,19 @@
     <Compile Include="View\Admin\Estudiantes\Estudiantes.aspx.designer.cs">
       <DependentUpon>Estudiantes.aspx</DependentUpon>
     </Compile>
-    <Compile Include="View\Admin\Estudiantes\Historial.aspx.cs">
-      <DependentUpon>Historial.aspx</DependentUpon>
+    <Compile Include="View\Admin\Estudiantes\HistorialEstudiante.aspx.cs">
+      <DependentUpon>HistorialEstudiante.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
-    <Compile Include="View\Admin\Estudiantes\Historial.aspx.designer.cs">
-      <DependentUpon>Historial.aspx</DependentUpon>
+    <Compile Include="View\Admin\Estudiantes\HistorialEstudiante.aspx.designer.cs">
+      <DependentUpon>HistorialEstudiante.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="View\Admin\Profesores\HistorialProfesor.aspx.cs">
+      <DependentUpon>HistorialProfesor.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="View\Admin\Profesores\HistorialProfesor.aspx.designer.cs">
+      <DependentUpon>HistorialProfesor.aspx</DependentUpon>
     </Compile>
     <Compile Include="View\Admin\Profesores\Profesores.aspx.cs">
       <DependentUpon>Profesores.aspx</DependentUpon>
@@ -863,6 +871,12 @@
       <DependentUpon>Reference.svcmap</DependentUpon>
     </Content>
     <Content Include="Connected Services\ServicioWS\WebForm.ServicioWS.restaurarUsuarioResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Content>
+    <Content Include="Connected Services\ServicioWS\WebForm.ServicioWS.buscarProfesEliminadosTodosCriteriosResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Content>
+    <Content Include="Connected Services\ServicioWS\WebForm.ServicioWS.listarProfesoresEliminadosResponse.datasource">
       <DependentUpon>Reference.svcmap</DependentUpon>
     </Content>
     <None Include="packages.config" />
