@@ -16,9 +16,10 @@ namespace WebForm.View.CursoProfesor
         private paginaCurso pag;
         protected void Page_Load(object sender, EventArgs e)
         {
-            id_cursoP = (int)Session["CURSO"];
-            nombre_s = (string)Session["Curname"];
-            pag = servicio.pagina_init(id_cursoP);
+            servicio = new LKServicioWebClient();
+            int id_cursoP = int.Parse(Request.QueryString["cursoId"]);
+            string nombre_s = Request.QueryString["cursoNombre"];
+            paginaCurso pag = servicio.pagina_init(id_cursoP);
             PageTitle.Text = nombre_s;
         }
     }
