@@ -56,7 +56,7 @@ namespace WebForm.View
                 string nombreProfesor = profe.nombres+" "+profe.apellidoPaterno + " "+profe.apellidoMaterno;
                 Panel cursoPanel = new Panel
                 {
-                    CssClass = "card"
+                    CssClass = "card cajita"
                     //BackColor = System.Drawing.ColorTranslator.FromHtml(PruebasColores[rand.Next(0, PruebasColores.Length)])
                 };
                 cursoPanel.Controls.Add(new LiteralControl($"<div class=\"p-2 card-body\" style=\"background-color: {PruebasColores[rand.Next(0, PruebasColores.Length)]}\">"));

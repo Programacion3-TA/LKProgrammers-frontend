@@ -35,7 +35,7 @@ namespace WebForm.View.ProfesorVista
             Random rand = new Random();
             string nombres = ((profesor)Session["Usuario"]).nombres + " " + ((profesor)Session["Usuario"]).apellidoPaterno;
 
-
+            int pos = 0;
             if (cursoHorarios != null)
             {
                 foreach (cursoHorario cursoHor in cursoHorarios)
@@ -53,17 +53,17 @@ namespace WebForm.View.ProfesorVista
                     cursoPanel.Controls.Add(new LiteralControl($"<p>Profesor: {nombres}</p>"));
                     cursoPanel.Controls.Add(new LiteralControl($"<p>Código curso: {cursoHor.curso.id}</p>"));
                     cursoPanel.Controls.Add(new LiteralControl($"<p>Salón: {cursoHor.idsalon}</p>"));
-                    cursoPanel.Controls.Add(new LiteralControl("</div>"));
-
+                    //cursoPanel.Controls.Add(new LiteralControl($"<a>Salón: {cursoHor.idsalon}</a>"));
                     LinkButton cursoLink = new LinkButton
                     {
-                        ID = $"CursoProfesorBtn-{cursoHor.curso.id}",
+                        ID = $"CursoProfesorBtn-{cursoHor.curso.id}-{pos++}",
                         CommandArgument = $"{cursoHor.curso.id}|{cursoHor.curso.nombre}",
                         Text = "Ver detalles",
-                        CssClass = "btn btn-link"
+                        CssClass = "btn btn-primary"
                     };
                     cursoLink.Click += new EventHandler(CursoProfesorBtn_Click);
                     cursoPanel.Controls.Add(cursoLink);
+                    cursoPanel.Controls.Add(new LiteralControl("</div>"));
                     CursosProfesorPHl.Controls.Add(cursoPanel);
 
                 }
