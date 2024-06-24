@@ -201,6 +201,7 @@
     <Content Include="View\Admin\AnioAcademico\AniosAcademicos.aspx" />
     <Content Include="View\Admin\AnioAcademico\AnioAcademico.js" />
     <Content Include="View\Admin\Cursos\CompetenciasCurso.aspx" />
+    <Content Include="View\Admin\Cursos\CompetenciasCurso.js" />
     <Content Include="View\Admin\Cursos\Curso.js" />
     <Content Include="View\Admin\Cursos\CursosAdmin.aspx" />
     <Content Include="View\Admin\Estudiantes\Estudiantes.aspx" />
