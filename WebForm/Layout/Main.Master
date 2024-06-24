@@ -79,6 +79,15 @@
         <!--offcanvas, determina un sidebar que se esconde dependiendo de la pantalla -->
 
         <main class="flex-fill bg-light">
+            <div class="ps-4 pt-2 d-flex d-md-none text-white" style="background-color:#0D2F37">
+                 <a href="#" class="text-white"
+                     data-bs-toggle="offcanvas"
+                     data-bs-target="#miaside">
+                    <i class="fa-solid fa-bars"></i>
+                </a>
+                 <span class="ms-3">San Pedro Nolasco</span>
+            </div>
+
             <header class="navbar pe-3 ps-3">
                 <div class="d-flex h-100 align-items-center">
                     <asp:Image ID="FotoPerfilAsp" runat="server"/>
