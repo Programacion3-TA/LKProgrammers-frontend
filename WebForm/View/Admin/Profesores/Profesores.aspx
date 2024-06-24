@@ -180,7 +180,7 @@
                            <h5>Cursos Actualmente Dictando</h5>
                             <asp:GridView ID="GVCursosDictados" runat="server" AutoGenerateColumns="false"
                                 AllowPaging="true" PageSize="5"
-                                CssClass="table table-hover table-responsive table-striped">
+                                CssClass="table table-hover table-responsive table-striped" OnPageIndexChanging="GVCursosDictados_PageIndexChanging">
                                 <Columns>
                                     <asp:BoundField DataField="id" HeaderText="Código" />
                                     <asp:BoundField DataField="nombre" HeaderText="Nombre" />
@@ -209,7 +209,7 @@
                             </div>
                             <br />
                             <asp:GridView ID="GVCursosEncontrados" runat="server" AutoGenerateColumns="false"
-                                AllowPaging="true" PageSize="5"
+                                AllowPaging="true" PageSize="5" OnPageIndexChanging="GVCursosEncontrados_PageIndexChanging"
                                 CssClass="table table-hover table-responsive table-striped">
                                 <Columns>
                                     <asp:BoundField DataField="id" HeaderText="Código" />

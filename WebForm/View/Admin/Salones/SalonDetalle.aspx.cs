@@ -116,6 +116,7 @@ namespace WebForm.View.Admin.Salones
             LblNombreCurso.Visible = false;
             TxtNombreCurso.Visible = false;
             GVCursos.Visible = false;
+            GridHorario.Visible = false;
             CallJavascript("showModalAgregarCurso()");
         }
         protected void BtnBuscarCurso_Click(object sender, EventArgs e)
@@ -124,9 +125,11 @@ namespace WebForm.View.Admin.Salones
             TxtCursoID.Visible = false;
             LblNombreCurso.Visible = false;
             TxtNombreCurso.Visible = false;
+            GridHorario.Visible = false;
             string criterioBusqueda = TxtCriterioBusquedaCurso.Text; //Nombre
             
             DataTable cursos = BuscarCursos(criterioBusqueda);
+            Session["CursosDisponiblesPag"] = cursos;
             if (cursos != null && cursos.Rows.Count > 0)
             {
                 GVCursos.Visible = true;
@@ -138,7 +141,6 @@ namespace WebForm.View.Admin.Salones
                 // No se encontraron cursos con el criterio de búsqueda
                 LblNoCursos2.Visible = true;
                 GVCursos.Visible = false;
-
             }
             CallJavascript("showModalAgregarCurso()");
         }
@@ -229,7 +231,7 @@ namespace WebForm.View.Admin.Salones
                 // Vincula los datos al GridView de horarios disponibles
                 GridHorario.DataSource = horariosDisponibles;
                 GridHorario.DataBind();
-
+                Session["HorariosEncontrados"] = horariosDisponibles;
                 // Mostrar el GridView
                 GridHorario.Visible = true;
             }
@@ -293,8 +295,8 @@ namespace WebForm.View.Admin.Salones
         {
             GridCursos.PageIndex = e.NewPageIndex;
             DataTable dtCursos = Session["CursosSalon"] as DataTable;
-            GridAlumnosSalon.DataSource = dtCursos;
-            GridAlumnosSalon.DataBind();
+            GridCursos.DataSource = dtCursos;
+            GridCursos.DataBind();
         }
 
         protected void gvAlumnosResult_PageIndexChanging(object sender, GridViewPageEventArgs e)
@@ -304,5 +306,23 @@ namespace WebForm.View.Admin.Salones
             gvAlumnosResult.DataSource = alumnos;
             gvAlumnosResult.DataBind();
         }
+
+        protected void GVCursos_PageIndexChanging(object sender, GridViewPageEventArgs e)
+        {
+            GVCursos.PageIndex = e.NewPageIndex;
+            DataTable cursosd = Session["CursosDisponiblesPag"] as DataTable;
+            GVCursos.DataSource = cursosd;
+            GVCursos.DataBind();
+            GVCursos.Visible = true;
+        }
+
+        protected void GridHorario_PageIndexChanging(object sender, GridViewPageEventArgs e)
+        {
+            GridCursos.PageIndex = e.NewPageIndex;
+            DataTable dtCursos = Session["HorariosEncontrados"] as DataTable;
+            GridCursos.DataSource = dtCursos;
+            GridCursos.DataBind();
+        }
+    
     }
 }
