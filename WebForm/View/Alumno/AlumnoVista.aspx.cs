@@ -12,7 +12,7 @@ namespace WebForm.View
 {
     public partial class AlumnoVista : System.Web.UI.Page
     {
-        private ServicioWS.LKServicioWebClient serviciodao;
+        private LKServicioWebClient serviciodao;
         protected void Page_Load(object sender, EventArgs e)
         {
             serviciodao = new LKServicioWebClient();
@@ -49,13 +49,13 @@ namespace WebForm.View
             alumno alum = (alumno)Session["Usuario"];
             string dni = alum.dni;
             List<curso> cursos = (serviciodao.listarCursosPorAlumno(dni) ?? new curso[] { }).ToList();
-
             string html = "";
             foreach (curso cur in cursos)
             {
-
+                profesor profe = serviciodao.buscarProfesorDeCurso(cur.id);
                 // Falta modificar esto
-                String nombreProfesor = "Heider";
+                if (profe == null) continue;
+                String nombreProfesor = profe.nombres+" "+profe.apellidoPaterno + " "+profe.apellidoMaterno;
                 html += "" +
                     $"<a href=\"/View/Alumno/CursoAlumno.aspx\" class=\"d-flex flex-column cursoCaja\" style=\"text-decoration:none;\">" +
                     $"   <div class=\"h-50\" style=\"background-color:" + PruebasColores[rand.Next(0, PruebasColores.Length)] + "\"></div>" +

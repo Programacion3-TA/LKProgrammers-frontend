@@ -65,7 +65,8 @@
 
              </div>
              <asp:GridView ID="AsistenciaAlumnoGrid" runat="server" AutoGenerateColumns="false"
-                   AllowPaging ="true" CssClass="table table-hover table-responsive table-striped">
+                   AllowPaging ="true" CssClass="table table-hover table-responsive table-striped" OnPageIndexChanging="AsistenciaAlumnoGrid_PageIndexChanging"
+                 PageSize="5">
                  <Columns>
                      <asp:BoundField DataField="fechaFormato" HeaderText="Fecha y Hora registrada" ItemStyle-HorizontalAlign="Center"  ItemStyle-VerticalAlign="Middle"/>
                       <asp:BoundField DataField="estado" HeaderText="Estado de Asistencia" ItemStyle-HorizontalAlign="Center"  ItemStyle-VerticalAlign="Middle"/>

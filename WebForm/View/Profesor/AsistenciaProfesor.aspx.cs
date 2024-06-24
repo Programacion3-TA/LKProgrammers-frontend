@@ -27,34 +27,36 @@ namespace WebForm.View.AsistenciaProfesor
             // MesesDropDown.DataSource;
 
             int idsalon = (int)Session["idsalon"] ;
-            if (!IsPostBack) {
+            if (!IsPostBack)
+            {
                 //if (!((string)(Session["Tipo"])).Equals("Profesor")) ; evita que ingresen cuentasn que no son tipo Profesor
                 Session["errorFechas"] = false;
                 // profesor profesor = (profesor)Session["Usuario"];
                 //cuando cargue, ya se verifico si es tutor 
 
                 if (idsalon == -1) Response.Redirect("/View/Profesor/ErroNoTutor.aspx");
-                CargarFechas(idsalon);
                 List<alumno> alumnos = (daoServicio.listarAlumnosxsalon(idsalon) ?? new alumno[] { }).ToList();
+                ModificarNombres(alumnos);
                 Session["alumnosAsistencia"] = alumnos;
+                Session["fechasAsistencia"] = (daoServicio.listarFechasAsistenciaSalon(idsalon) ?? new DateTime[] { }).ToList();
                 Session["RealizoAsistenica"] = VerificarRegistroAsistenciaActual();
-                CargarAlumnosDropDown();
-
             }
-            CargarFechas(idsalon);
 
+            CargarAlumnosDropDown((List<alumno>)Session["alumnosAsistencia"]);
+            FiltrarMesBtn_Click(sender, e);
         }
 
-        protected void CargarAlumnosDropDown()
+        protected void CargarAlumnosDropDown(List<alumno> alumnos)
         {
-            List<alumno> alumnos = (List<alumno>)Session["alumnosAsistencia"];
-            foreach(alumno alu in alumnos)
+            AlumnosDrpDown.DataSource = alumnos;
+            AlumnosDrpDown.DataBind();
+        }
+        protected void ModificarNombres(List<alumno> alumnos)
+        {
+            foreach (alumno alu in alumnos)
             {
                 alu.nombres += $" {alu.apellidoPaterno} {alu.apellidoMaterno}";
             }
-            
-            AlumnosDrpDown.DataSource = alumnos;
-            AlumnosDrpDown.DataBind();
         }
 
         protected void BtnNiegaRegistros_Click(object sender, EventArgs e)
@@ -62,11 +64,9 @@ namespace WebForm.View.AsistenciaProfesor
             CallJavascript("showModal('bloqueoRegistroModal')");
         }
 
-        protected void CargarFechas(int _idsalon)
+        protected void CargarFechas(List<DateTime> fechas)
         {
-            listaFechasEntero = (daoServicio.listarFechasAsistenciaSalon(_idsalon) ?? new DateTime[]{ }).ToList();
-            listaFechasFiltrado = listaFechasEntero.ToList();
-            GridAsistenciasFechas.DataSource = listaFechasFiltrado; //verificar el Datafield
+            GridAsistenciasFechas.DataSource = fechas; //verificar el Datafield
             GridAsistenciasFechas.DataBind();
         }
 
@@ -110,7 +110,8 @@ namespace WebForm.View.AsistenciaProfesor
         {
             DateTime fechaHoy = DateTime.Now.Date;//comparamos fechas
             // List<DateTime> fechasReg = (List<DateTime>)Session["fechas"];
-            DateTime fechasReg = listaFechasEntero[0];
+            List<DateTime> fechas = (List<DateTime>)Session["fechasAsistencia"];
+            DateTime fechasReg = fechas[0];
             return fechaHoy.Equals(fechasReg);
         }
 
@@ -137,11 +138,17 @@ namespace WebForm.View.AsistenciaProfesor
         protected void FiltrarMesBtn_Click(object sender, EventArgs e)
         {
             //talvez deberia estar en el backend -> PASARLO
-
+            string filtro = MesesDropDown.Text;
+            List<DateTime> fechas = (List<DateTime>)Session["fechasAsistencia"];
+            if (filtro == "")
+            {
+                CargarFechas(fechas);
+                return;
+            }
             int mes = int.Parse(MesesDropDown.Text);
-            listaFechasFiltrado = listaFechasEntero.Where( d => d.Month == mes ).ToList();
-            GridAsistenciasFechas.DataSource = listaFechasFiltrado;
-            GridAsistenciasFechas.DataBind();
+
+            listaFechasFiltrado = fechas.Where(d => d.Month == mes).ToList();
+            CargarFechas(listaFechasFiltrado);
         }
 
         protected void AsistenciasAlumnoBtn_Click(object sender, EventArgs e)
@@ -177,7 +184,6 @@ namespace WebForm.View.AsistenciaProfesor
 
         protected void GridAsistenciasFechas_PageIndexChanging(object sender, GridViewPageEventArgs e)
         {
-            GridAsistenciasFechas.DataSource = listaFechasFiltrado;    
             GridAsistenciasFechas.PageIndex = e.NewPageIndex;
             GridAsistenciasFechas.DataBind();
         }
