@@ -79,7 +79,7 @@ namespace WebForm.View.ProfesorVista
             string idCurso = args[0];
             string name_curso = args[1];
             Session["CURSO"] = int.Parse(idCurso);
-            Session["Curname"] = name_curso;
+            Session["Curname"] = (string)name_curso;
             // Redirigir a la página cursosVista con los parámetros necesarios
             Response.Redirect("/View/Profesor/ProfesorVista/CursoProfesor.aspx");
         }
