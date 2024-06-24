@@ -92,8 +92,12 @@ namespace WebForm.Utils
                     "       </a></li>" +
                     "   </ul>" +
                     "</div>";
+                html += CreateComponent("div", "class=\"d-flex justify-content-between\"", childHtml);
             }
-            html += CreateComponent("div", "class=\"d-flex justify-content-between\"", childHtml);
+            else
+            {
+                html = childHtml;
+            }
 
             return html;
         }
