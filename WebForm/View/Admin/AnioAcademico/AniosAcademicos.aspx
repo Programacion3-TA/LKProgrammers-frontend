@@ -121,8 +121,11 @@
                         <div class="col-md-12  mb-3">
                             <asp:Label ID="LblFechaCerrado" runat="server" Text="Fecha del Cierre" CssClass="form-label"></asp:Label>
                             <asp:TextBox ID="TxtFechaCerrado" runat="server" CssClass="form-control" Enabled="true" type="date"></asp:TextBox>
+                            
                         </div>
-                          
+                        <div class="col-md-12  mb-3">
+                                Al ingresar una fecha de cierre, se da como concluído el año académico.
+                        </div>  
                     </div>
                 </div>
                 <div class="modal-footer">
