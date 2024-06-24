@@ -15,12 +15,12 @@ namespace WebForm.View.ProfesorVista
     {
 
         /// <summary>
-        /// Control CursosProfesorPHl.
+        /// Control CursosContainer.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.PlaceHolder CursosProfesorPHl;
+        protected global::System.Web.UI.WebControls.PlaceHolder CursosContainer;
     }
 }
