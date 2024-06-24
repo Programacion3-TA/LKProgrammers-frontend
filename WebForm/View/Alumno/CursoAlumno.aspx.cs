@@ -1,16 +1,13 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Drawing;
 using System.Linq;
-using System.Security.Cryptography;
-using System.Security.Policy;
-using System.Text;
 using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
-using System.Web.UI.WebControls.WebParts;
-using WebForm.Utils;
+using System.Text;
 using WebForm.ServicioWS;
+using System.Net;
+using WebForm.Utils;
 
 namespace WebForm.View.CursoAlumno
 {
