@@ -867,7 +867,8 @@
       <DependentUpon>Reference.svcmap</DependentUpon>
     </Content>
     <Content Include="Connected Services\ServicioWS\WebForm.ServicioWS.listarAsistenciasSinJustificarResponse.datasource">
-
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Content>
     <Content Include="Connected Services\ServicioWS\WebForm.ServicioWS.listar_CONTENIDOSResponse.datasource">
       <DependentUpon>Reference.svcmap</DependentUpon>
     </Content>
