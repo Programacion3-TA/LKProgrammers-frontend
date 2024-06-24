@@ -147,7 +147,7 @@
 
                              <div  class="col-md-12  mb-3">
                                  <asp:Label ID="LblContrasenia" runat="server" Text="Contraseña" CssClass="form-label"></asp:Label>
-                                 <asp:TextBox ID="TxtContrasenia" runat="server" CssClass="form-control" ></asp:TextBox>    
+                                 <asp:TextBox ID="TxtContrasenia" runat="server" CssClass="form-control" TextMode="Password"></asp:TextBox>    
                              </div>
 
                             <div  class="col-md-12  mb-3">

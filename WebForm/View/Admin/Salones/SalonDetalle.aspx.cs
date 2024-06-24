@@ -48,6 +48,8 @@ namespace WebForm.View.Admin.Salones
 
         protected void BtnAgregar_Click(object sender, EventArgs e)
         {
+            LblNoAlumnosDisp.Visible = false;
+            gvAlumnosResult.Visible = false;
             CallJavascript("showModalFormSalon()");
         }
         protected void BtnQuitar_Click(object sender, EventArgs e)
@@ -67,7 +69,19 @@ namespace WebForm.View.Admin.Salones
         protected void lbBuscarAlumno_Click(object sender, EventArgs e)
         {
             string nombre = TxtFiltroAlumno.Text;
-            alumnosSalon = new BindingList<alumno>(serviciodao.listarAlumnosFiltro(nombre).ToList());
+            var resultado = serviciodao.listarAlumnosFiltroSinSalon(nombre);
+            gvAlumnosResult.Visible = true;
+            if (resultado != null)
+            {
+                alumnosSalon = new BindingList<alumno>(resultado.ToList());
+                LblNoAlumnosDisp.Visible = false;
+            }
+            else
+            {
+                LblNoAlumnosDisp.Visible = true;
+                alumnosSalon = new BindingList<alumno>();
+            }
+
             gvAlumnosResult.DataSource = alumnosSalon;
             Session["AlumnosEncontrados"] = alumnosSalon;
             gvAlumnosResult.DataBind();

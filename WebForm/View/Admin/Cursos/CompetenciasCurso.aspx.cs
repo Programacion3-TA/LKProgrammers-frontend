@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Linq;
+using System.ServiceModel.Channels;
 using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
@@ -11,7 +12,7 @@ namespace WebForm.View.Admin.Cursos
 {
     public partial class CompetenciasCurso : System.Web.UI.Page
     {
-        private int cursoId;
+        private int cursoId;        
         private LKServicioWebClient servicioDAO = new LKServicioWebClient();
         private BindingList<competencia> competenciasCurso = new BindingList<competencia>();
         protected void Page_Load(object sender, EventArgs e)
@@ -19,15 +20,20 @@ namespace WebForm.View.Admin.Cursos
             cursoId = Int32.Parse(Request.QueryString["curso"]);
             string nombreCurso = servicioDAO.listarCursos().ToList().Find(c => c.id == cursoId).nombre;
             LtCurso.Text = nombreCurso;
-            cargarTabla();
-            
+            if (!IsPostBack)
+            {
+                var list = servicioDAO.listarCompetencias(cursoId);
+                if (list != null)
+                {
+                    competenciasCurso = new BindingList<competencia>(list);
+                    Session["CompetenciasCurso"] = competenciasCurso;
+                    cargarTabla();
+                }
+            }
         }
 
         private void cargarTabla()
-        {
-            var list = servicioDAO.listarCompetencias(cursoId);
-            if(list!=null)
-                competenciasCurso = new BindingList<competencia>(list);
+        {            
             GridCompetenciasCurso.DataSource = competenciasCurso;
             GridCompetenciasCurso.DataBind();
         }
@@ -40,11 +46,20 @@ namespace WebForm.View.Admin.Cursos
         {
             TxtID.Text = ((LinkButton)sender).CommandArgument;
             competencia comp = new competencia();
+            competenciasCurso = Session["CompetenciasCurso"] as BindingList<competencia>;
+
             comp = competenciasCurso.ToList().Find(c => c.id == Int32.Parse(TxtID.Text));
             TxtDescripcion.Text = comp.descripcion;
             TxtPeso.Text = comp.peso.ToString();
             CallJavascript("showModalFormCompetencia()");
-            cargarTabla();
+
+            var list = servicioDAO.listarCompetencias(cursoId);
+            if (list != null)
+            {
+                competenciasCurso = new BindingList<competencia>(list);
+                Session["CompetenciasCurso"] = competenciasCurso;
+                cargarTabla();
+            }
         }
 
         protected void BtnQuitar_Click(object sender, EventArgs e)
@@ -79,6 +94,14 @@ namespace WebForm.View.Admin.Cursos
         {
             string script = "window.onload = function() {" + function + "; };";
             ClientScript.RegisterStartupScript(GetType(), "", script, true);
+        }
+
+        protected void GridCompetenciasCurso_PageIndexChanging(object sender, GridViewPageEventArgs e)
+        {
+            GridCompetenciasCurso.PageIndex = e.NewPageIndex;
+            competenciasCurso = Session["CompetenciasCurso"] as BindingList<competencia>;
+            GridCompetenciasCurso.DataSource = competenciasCurso;
+            GridCompetenciasCurso.DataBind();
         }
     }
 }

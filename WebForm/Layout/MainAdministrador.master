@@ -60,7 +60,7 @@
 
 <asp:Content ID="Content4" ContentPlaceHolderID="ImagenPerfil" runat="server">
     <asp:ContentPlaceHolder ID="ImagenPerfil" runat="server">
-        <i class="fas fa-user text-white"></i>
+        
     </asp:ContentPlaceHolder> 
 </asp:Content>
 

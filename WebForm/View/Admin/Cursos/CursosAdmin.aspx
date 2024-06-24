@@ -14,14 +14,7 @@
 </asp:Content>
 
 <asp:Content ID="Content5" ContentPlaceHolderID="MainContent" runat="server">
-    <nav style="--bs-breadcrumb-divider: '>'; font-size: 14px" class="p-2">
-        <ol class="breadcrumb">
-            <li class="breadcrumb-item">
-                <i class="fa-solid fa-house"></i>
-            </li>
-            <li class="breadcrumb-item">Cursos Vigentes</li>
-        </ol>
-    </nav>
+
     <div class="mx-auto d-flex flex-column justify-content-center">
         <h2 class="px-2">Cursos</h2>
         <hr />
@@ -36,7 +29,7 @@
 
             <div class="container row">
                 <asp:GridView ID="GridCursos" runat="server" AutoGenerateColumns="false"
-                    AllowPaging="true" PageSize="5"
+                    AllowPaging="true" PageSize="5" OnPageIndexChanging="GridCursos_PageIndexChanging"
                     CssClass="table table-hover table-responsive table-striped">
                     <Columns>
                         <asp:BoundField DataField="id" HeaderText="Código" />
