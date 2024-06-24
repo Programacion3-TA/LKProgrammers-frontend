@@ -40,12 +40,21 @@ namespace WebForm.View.AsistenciaProfesor
                 Session["alumnosAsistencia"] = alumnos;
                 Session["fechasAsistencia"] = (daoServicio.listarFechasAsistenciaSalon(idsalon) ?? new DateTime[] { }).ToList();
                 Session["RealizoAsistenica"] = VerificarRegistroAsistenciaActual();
+                Session["asistenciasSinJustificar"] = (daoServicio.listarAsistenciasSinJustificar(idsalon) ?? new asistencia[]{}).ToList();
             }
-
+            CargarCantidad();
             CargarAlumnosDropDown((List<alumno>)Session["alumnosAsistencia"]);
             FiltrarMesBtn_Click(sender, e);
         }
-
+        protected void CargarCantidad()
+        {
+            List<asistencia> asisSinJustificar = (List<asistencia>)Session["asistenciasSinJustificar"];
+            if (asisSinJustificar.Count == 0) {
+                CantidadJusitficacionesLbl.Text = "";
+                return;
+            }
+            CantidadJusitficacionesLbl.Text = asisSinJustificar.Count.ToString();
+        }
         protected void CargarAlumnosDropDown(List<alumno> alumnos)
         {
             AlumnosDrpDown.DataSource = alumnos;
@@ -111,6 +120,8 @@ namespace WebForm.View.AsistenciaProfesor
             DateTime fechaHoy = DateTime.Now.Date;//comparamos fechas
             // List<DateTime> fechasReg = (List<DateTime>)Session["fechas"];
             List<DateTime> fechas = (List<DateTime>)Session["fechasAsistencia"];
+            if (fechas.Count == 0) return false;
+
             DateTime fechasReg = fechas[0];
             return fechaHoy.Equals(fechasReg);
         }
@@ -187,5 +198,36 @@ namespace WebForm.View.AsistenciaProfesor
             GridAsistenciasFechas.PageIndex = e.NewPageIndex;
             GridAsistenciasFechas.DataBind();
         }
+
+        protected void JustificacionesBtn_Click(object sender, EventArgs e)
+        {
+            List<asistencia> asisSinJustificar = (List<asistencia>)Session["asistenciasSinJustificar"];
+            CargarAsistenciasSinJustificar(asisSinJustificar);
+            CallJavascript("showModal('JustificacionModal')");
+        }
+        protected void CargarAsistenciasSinJustificar(List<asistencia> asistencias)
+        {
+            AsistenciasSinJustificarGrid.DataSource = asistencias;
+            AsistenciasSinJustificarGrid.DataBind();
+        }
+        /*
+protected void eliminarAsistencia_Click(object sender, EventArgs e)
+{
+   Button btn = (Button)sender;
+   string fechaElim = btn.CommandArgument;
+   DateTime fecha= DateTime.Parse(fechaElim);
+
+   List<alumno> alumnos = (List<alumno>)Session["alumnosAsistencia"];
+   int eliminado = 0;
+   foreach(alumno alu in alumnos)
+   {
+       asistencia asis = new asistencia();
+       asis.dniAlumno = alu.dni;
+       asis.fechaHora = fecha;
+       asis.fechaHoraSpecified = true;
+       eliminado = 
+   }
+
+}*/
     }
 }

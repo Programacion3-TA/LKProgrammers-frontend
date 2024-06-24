@@ -42,6 +42,15 @@ namespace WebForm.View.Admin.Historial
         protected global::System.Web.UI.WebControls.LinkButton LkBtnBuscar;
 
         /// <summary>
+        /// Control BtnRestaurar.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.LinkButton BtnRestaurar;
+
+        /// <summary>
         /// Control LblNoAlumnos.
         /// </summary>
         /// <remarks>
