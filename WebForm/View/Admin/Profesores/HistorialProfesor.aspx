@@ -1,4 +1,4 @@
-﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Layout/MainAlumno.master" AutoEventWireup="true" CodeBehind="HistorialProfesor.aspx.cs" Inherits="WebForm.View.Admin.Profesores.Historial" %>
+﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Layout/MainAdministrador.master" AutoEventWireup="true" CodeBehind="HistorialProfesor.aspx.cs" Inherits="WebForm.View.Admin.Profesores.Historial" %>
 <asp:Content ID="Content1" ContentPlaceHolderID="Title" runat="server">
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="Styles" runat="server">

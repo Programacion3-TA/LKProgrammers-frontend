@@ -22,48 +22,119 @@ namespace WebForm.View.CursoProfesor
             string nombre_s = Request.QueryString["cursoNombre"];
             paginaCurso pag = servicio.pagina_init(id_cursoP);
             PageTitle.Text = nombre_s;
-            //pag.secciones = servicio.listar_CONTENIDOS(id_cursoP) ?? new seccion[] { };
-            pag.id = 1;
-            pag.secciones = new seccion[]{
-                new seccion(){ id=1, titulo="Semana 1", orden=1, elementos=new elemento[]{
-                    new heading(){ id=1, contenido="Operaciones basicas", orden=1, nivel=1, tipoElemento=tipoElemento.Heading},
-                    new parrafo(){ id=2, contenido="Lorem ipsum dolor sit amet, consectetur adipiscing elit. Morbi ac placerat diam. Sed posuere turpis eget ante venenatis, elementum vestibulum velit eleifend. Donec fermentum, lorem quis blandit iaculis, sem risus hendrerit dui, at posuere velit urna quis diam. Nunc vitae suscipit turpis, eu porta nunc. Duis id ex non lorem auctor finibus. Ut venenatis eu tortor sed interdum. Vestibulum tristique nisi sed diam fringilla iaculis. Aenean tellus ligula, scelerisque at iaculis id, dictum vel quam", orden=2, tipoElemento=tipoElemento.Parrafo},
-                    new parrafo(){ id=3, contenido="Lorem ipsum dolor sit amet, consectetur adipiscing elit. Morbi ac placerat diam. Sed posuere turpis eget ante venenatis, elementum vestibulum velit eleifend. Donec fermentum, lorem quis blandit iaculis, sem risus hendrerit dui, at posuere velit urna quis diam. Nunc vitae suscipit turpis, eu porta nunc. Duis id ex non lorem auctor finibus. Ut venenatis eu tortor sed interdum. Vestibulum tristique nisi sed diam fringilla iaculis. Aenean tellus ligula, scelerisque at iaculis id, dictum vel quam", orden=3, tipoElemento=tipoElemento.Parrafo},
-                    new enlace(){ id=4, contenido="Enlace a google", orden=4, href="https://google.com", tipoElemento=tipoElemento.Enlace},
-                    new imagen(){ id=5, contenido="", orden=5, tipoElemento=tipoElemento.Imagen},
-                    new parrafo(){ id=6, contenido="Fuiste rickrolleado", orden=6, tipoElemento=tipoElemento.Parrafo}
-                } },
-                new seccion(){ id=2, titulo="Semana 2", orden=2 },
-                new seccion(){ id=3, titulo="Semana 3", orden=3 },
-                new seccion(){ id=4, titulo="Semana 4", orden=4 }
-            };
-
+            pag.secciones = servicio.listar_CONTENIDOS(id_cursoP) ?? new seccion[] { };
             renderizarSecciones(pag);
         }
 
         protected void renderizarSecciones(paginaCurso pagina)
-
         {
-
-            String seccComp = "";
             foreach (seccion secc in pagina.secciones)
             {
-                String seccHtmlId = $"secc{secc.id}";
-                seccComp += MyReact.CreateComponent(
-                    "div", "class=\"accordion-item\"",
-                        MyReact.CreateComponent("h2", "class=\"accordion-header\"",
-                            MyReact.CreateComponent("button", $"class=\"accordion-button collapsed\" type=\"button\" data-bs-toggle=\"collapse\" data-bs-target=\"#{seccHtmlId}\" aria-expanded=\"false\" aria-controls=\"{seccHtmlId}\"", secc.titulo)
-                        ) +
-                        MyReact.CreateComponent("div", $"id=\"{seccHtmlId}\" class=\"accordion-collapse collapse\" data-bs-parent=\"#accordionFlushExample\"",
-                            MyReact.CreateComponent("div", "class=\"accordion-body\"", secc.elementos == null ? "" : secc.elementos.Aggregate("",
-                                (concatenacion, elem) => concatenacion +
-                                    MyReact.CreateComponentByType(elem, "", elem.contenido, true)
-                                )
-                            )
-                        )
-                );
+                muestraSubtitulo(secc);
+                if (secc.elementos == null) continue;
+                foreach (elemento ele in secc.elementos)
+                {
+                    switch (ele.tipoElemento)
+                    {
+                        case tipoElemento.Heading:
+                            // Código para manejar el caso "Heading"
+                            muestraCabecera((heading)ele);
+                            break;
+
+                        case tipoElemento.Parrafo:
+                            // Código para manejar el caso "Parrafo"
+                            muestraParrafo((parrafo)ele);
+                            break;
+
+                        case tipoElemento.Enlace:
+                            // Código para manejar el caso "Enlace"
+                            muestraEnlace((enlace)ele);
+                            break;
+
+                        case tipoElemento.Imagen:
+                            // Código para manejar el caso "Imagen"
+                            muestraImagen((imagen)ele);
+                            break;
+
+                        default:
+                            continue;
+                            break;
+                    }
+                }
             }
-            SeccionesContainer.Text = seccComp;
+        }
+        //MUESTRAS DE LOS DATOS
+        protected void muestraParrafo(parrafo ele)
+        {
+            SectionText.Text = ele.contenido;
+        }
+        protected void muestraCabecera(heading ele)
+        {
+            SectionTitle.Text = ele.contenido;
+        }
+        protected void muestraEnlace(enlace ele)
+        {
+            LinkExterno.Text = ele.contenido;
+        }
+        protected void muestraImagen(imagen ele)
+        {
+            string base64String = Convert.ToBase64String(ele.img);
+            string imageSrc = "data:image/jpeg;base64," + base64String;
+            Imagenes.ImageUrl = imageSrc;
+        }
+        protected void muestraSubtitulo(seccion secc)
+        {
+            SectionTitle.Text = secc.titulo + "  ";
+        }
+
+        protected System.Void BTN_AgregarSeccion_Click()
+        {
+
+        }
+
+        protected System.Void AgregarContenido_Click()
+        {
+
+        }
+
+        protected System.Void ModificarSeccion_Click()
+        {
+
+        }
+
+        protected System.Void EliminaSeccion_Click()
+        {
+
+        }
+
+        protected System.Void EditarParrafo_Click()
+        {
+
+        }
+
+        protected System.Void EliminarParrafo_Click()
+        {
+
+        }
+
+        protected System.Void EditarLink_Click()
+        {
+
+        }
+
+        protected System.Void EliminarLink_Click()
+        {
+
+        }
+
+        protected System.Void EditarImagen_Click()
+        {
+
+        }
+
+        protected System.Void EliminarImagne_Click()
+        {
+
         }
     }
 }
