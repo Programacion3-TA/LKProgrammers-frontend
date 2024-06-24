@@ -48,7 +48,6 @@ namespace WebForm.Utils
             html += $"</{tag}>";
             return html;
         }
-
         public static String CreateComponentByType(elemento elem, String props, String children)
         {
             String html = "";
@@ -65,7 +64,7 @@ namespace WebForm.Utils
                     html = CreateComponent($"a", $"{props} href=\"{( (enlace)elem ).href}\"", children);
                     break;
                 case tipoElemento.Imagen:
-                    html = CreateComponent($"img", $"{props} src=\"{((imagen)elem).source}\"", children);
+                    html = CreateComponent($"img", $"{props} src=\"{((imagen)elem).img}\"", children);
                     break;
             }
 

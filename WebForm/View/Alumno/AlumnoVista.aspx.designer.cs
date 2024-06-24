@@ -30,7 +30,7 @@ namespace WebForm.View
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Literal CursosContainer;
+        protected global::System.Web.UI.WebControls.PlaceHolder CursosContainer;
 
         /// <summary>
         /// Control Algo.
