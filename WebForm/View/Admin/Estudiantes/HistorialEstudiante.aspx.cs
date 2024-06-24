@@ -98,6 +98,20 @@ namespace WebForm.View.Admin.Historial
             }
 
         }
+        protected void BtnMostrarTodo_Click(object sender, EventArgs e)
+        {
+            alumno[] __alumnos = daoservicio.listarAlumnosEliminados();
+            if (__alumnos != null)
+            {
+                alumnos = new BindingList<alumno>(__alumnos);
+            }
+            else
+            {
+                alumnos = new BindingList<alumno>();
+            }
+            Session["AlumnosEliminados"] = alumnos;
+            CargarTabla();
+        }
 
         private void CallJavascript(string function)
         {

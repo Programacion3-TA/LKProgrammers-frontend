@@ -31,7 +31,7 @@ namespace WebForm.View.Profesor
             DateTime FechaFin = DateTime.Parse(fechaFin);
 
             alumno alumno = daoServicio.listarAlumnosFiltro(dniAlumno).ToList().FirstOrDefault();
-            List<asistencia> asistencias = daoServicio.listarAsitencias(dniAlumno).ToList();
+            List<asistencia> asistencias = (daoServicio.listarAsitencias(dniAlumno) ?? new asistencia[]{}).ToList();
             profesor profesor = (profesor)Session["Usuario"];
 
             NombeAlumnoTxtRep.Text = alumno.nombres + " " + alumno.apellidoPaterno + " " + alumno.apellidoMaterno;
@@ -49,6 +49,12 @@ namespace WebForm.View.Profesor
         }
         protected void MostrarAsistencias(List<asistencia> asistencias)
         {
+            if (asistencias.Count == 0) {
+                AsistenciaAlumnoGrid.Visible = false;     
+                
+            }
+
+            AsistenciaAlumnoGrid.Visible = true;
             AsistenciaAlumnoGrid.DataSource = asistencias;
             AsistenciaAlumnoGrid.DataBind();
         }

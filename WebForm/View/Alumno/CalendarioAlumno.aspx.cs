@@ -155,7 +155,11 @@ namespace WebForm.View.CalendarioAlumno
                     int indI = (minutosInicioCurHor - minutosInicio) / bloqueMinutos,
                         indF = (minutosFinCurHor - minutosInicio) / bloqueMinutos;
                     for(int i = indI; (i < indF) && (i*bloqueMinutos + minutosInicio < minutosFin); i++)
+                    {
+                        if (minutosInicio + i * bloqueMinutos == ObtenerTotalMinutos(horaReceso))
+                            continue;
                         Calendario[i, ((int) hor.dia) + 1] = curHor?.curso?.nombre;
+                    }
                 }
             }
             string html = "";

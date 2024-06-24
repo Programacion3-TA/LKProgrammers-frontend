@@ -30,8 +30,12 @@
             </div>
             <div class="col-md-2">
                 <!-- Columna -->                    
-                <asp:LinkButton ID="LkBtnBuscar" runat="server" Text=" Buscar"
-                    CssClass="btn btn-primary" OnClick="LkBtnBuscar_Click"/>
+                <div class="col-md-2 d-flex align-items-center gap-2">
+                    <asp:LinkButton ID="LkBtnBuscar" runat="server" Text=" Buscar"
+                        CssClass="btn btn-primary" OnClick="LkBtnBuscar_Click"/>
+                    <asp:LinkButton ID="BtnRestaurar" runat="server" Text="Mostrar todos"
+                        CssClass="btn btn-outline-success" OnClick="BtnMostrarTodo_Click"/>
+                </div>
             </div>
         </div>
         <hr />

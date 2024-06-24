@@ -17,12 +17,11 @@
    <!-- <uc:Path ID="MyCustomControl1" runat="server" TiposURL="Asistencia"/>-->
 </asp:Content>
 <asp:Content ID="Content4" ContentPlaceHolderID="MainContent" runat="server">
-    <asp:ScriptManager runat="server"></asp:ScriptManager>
     <asp:Label ID="Pruebas" runat="server"></asp:Label>
-    <h1>Asistencias del salon</h1>
-    <div class="container">
+    <h1 class="pl-4">Asistencias del salon</h1>
+    <div class="container ">
         <div class="container row pb-2 pt-2">
-            <div class="card mb-4">
+            <div class="card mb-4 p-0">
                 
                     <h2 class="card-header">Asistencias por alumno</h2>
                     <div class="d-flex gap-3 border-2 flex-column card-body">
@@ -37,11 +36,13 @@
                                 <asp:TextBox ID="FechaFinalTxt" runat="server" CssClass="form-control" TextMode="Date"></asp:TextBox>
                             </div>
                         </div>
-                        <div class="d-flex gap-4">
-                            <asp:Label ID="AlumnoLbl" runat="server" Text="Label" CssClass="form-check-label" Font-Bold="true">Alumno:</asp:Label>
-                            <asp:DropDownList ID="AlumnosDrpDown" runat="server" CssClass="form-select" DataTextField="nombres" DataValueField="dni">
-                            </asp:DropDownList>
-                            <asp:Button ID="AsistenciasAlumnoBtn" runat="server" Text="Obtener Asistencias" CssClass="btn btn-success" OnClick="AsistenciasAlumnoBtn_Click"/>
+                        <div class="d-flex flex-column gap-2">
+                            <asp:Label ID="AlumnoLbl" runat="server" Text="Label" CssClass="form-check-label ms-5" Font-Bold="true">Seleccionar Alumno:</asp:Label>
+                            <div class="d-flex  justify-content-evenly ">
+                                <asp:DropDownList ID="AlumnosDrpDown" runat="server" CssClass="form-select w-75" DataTextField="nombres" DataValueField="dni">
+                                </asp:DropDownList>
+                                <asp:Button ID="AsistenciasAlumnoBtn" runat="server" Text="Obtener Asistencias" CssClass="btn btn-success" OnClick="AsistenciasAlumnoBtn_Click"/>
+                            </div>
                         </div>
                         
                     </div>
@@ -49,9 +50,14 @@
             <hr />
             <div>
                 <div class="text-end p-3 d-flex flex-row-reverse justify-content-between">
-                    <asp:LinkButton ID="BtnRegistrarAsistencia" runat="server" CssClass="btn btn-dark d-flex gap-2 end-0 align-items-center h-75"
-                        Text="<i class='fa-solid fa-clipboard-user'> </i> Agregar Asistencia " OnClick="BtnRegistrarAsistencia_Click">
-                    </asp:LinkButton>
+                    <div class="d-flex gap-3" >
+                        <asp:LinkButton ID="JustificacionesBtn" runat="server" CssClass="btn btn-primary h-75" OnClick="JustificacionesBtn_Click">Justificaciones
+                            <asp:Label ID="CantidadJusitficacionesLbl" runat="server" Text="" CssClass="badge text-bg-danger" ></asp:Label>
+                        </asp:LinkButton>
+                        <asp:LinkButton ID="BtnRegistrarAsistencia" runat="server" CssClass="btn btn-dark d-flex gap-2 end-0 align-items-center h-75"
+                            Text="<i class='fa-solid fa-clipboard-user'> </i> Agregar Asistencia " OnClick="BtnRegistrarAsistencia_Click">
+                        </asp:LinkButton>
+                    </div>
                     
                     <div class="input-group mb-3 w-50 d-flex gap-3 align-items-center fw-bolder">
                         <asp:Label ID="FiltroLbl" runat="server" Text="Filtrar por mes: "></asp:Label>
@@ -93,10 +99,11 @@
                                 <asp:Label runat="server" Text='<%# ParsearFecha((DateTime)Eval("Date")) %>'></asp:Label>
                             </ItemTemplate>
                         </asp:TemplateField>
-                        <asp:TemplateField HeaderText="Actualización de asistencias">
+                        <asp:TemplateField HeaderText="Acciones">
                             <ItemTemplate>
                                 <asp:Button runat="server" CssClass="btn btn-primary" Text="Editar" ID="editarAsistencia"
                                     CommandArgument='<%#Eval("Date") %>' OnClick="editarAsistencia_Click"/>
+
                             </ItemTemplate>
                             <ItemStyle HorizontalAlign="Center" Width="300px" />
                         </asp:TemplateField>
@@ -125,9 +132,47 @@
         </div>
     </div>
 
-
+    <asp:ScriptManager ID="ScriptManager1" runat="server"></asp:ScriptManager>
     <!--Modal para el ingreso de fechas-->
-  
+    <div class="modal " id="JustificacionModal" tabindex="-1" role="dialog" aria-labelledby="JustificacionModalTitle" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+    <div class="modal-content">
+        <div class="modal-header">
+        <h5 class="modal-title" id="JustificacionModalTitle">Modal title</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+        </button>
+        </div>
+        <div class="modal-body">
+            <asp:UpdatePanel ID="UpdatePanel1" runat="server">
+                <ContentTemplate>
+                    <asp:GridView ID="AsistenciasSinJustificarGrid" runat="server" AutoGenerateColumns="false" AllowPaging="true"  CssClass="table table-hover table-responsive table-striped">
+                        <Columns>
+                            <asp:BoundField DataField="dniAlumno" HeaderText="DNI"/>
+                            <asp:TemplateField>
+                                <ItemTemplate>
+                                    <asp:Label ID="Label1" runat="server" Text='<%# ParsearFecha((DateTime)Eval("fechaHora")) %>'></asp:Label>
+                                </ItemTemplate>
+                            </asp:TemplateField>
+                            <asp:BoundField DataField="justificacion" HeaderText="Justificacion"/>
+                            <asp:TemplateField HeaderText="Acciones">
+                                <ItemTemplate>
+                                    <asp:Button ID="Button2" runat="server" Text="Aprobar"  CssClass="btn btn-primary"/>
+                                    <asp:Button ID="Button1" runat="server" Text="Rechazar"  CssClass="btn btn-danger"/>
+                                </ItemTemplate>
+                            </asp:TemplateField>
+                        </Columns>
+                    </asp:GridView>
+                </ContentTemplate>
+            </asp:UpdatePanel>
+        </div>
+        <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+        <button type="button" class="btn btn-primary">Save changes</button>
+        </div>
+    </div>
+    </div>
+    </div>
 
 
 </asp:Content>
