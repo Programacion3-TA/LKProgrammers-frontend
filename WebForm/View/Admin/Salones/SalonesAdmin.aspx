@@ -44,7 +44,7 @@
                         <asp:TemplateField HeaderText="Acciones">
                             <ItemTemplate>
                                 <div style="display:flex;gap:0.6em">
-                                    <asp:Button ID="BtnVer" runat="server" Text="Ver" CssClass="btn btn-primary"
+                                    <asp:Button ID="BtnVer" runat="server" Text="Detalle" CssClass="btn btn-primary"
                                     CommandArgument='<%#Eval("id") %>' OnClick="BtnVer_Click" />
                                 <asp:Button ID="BtnEditar" runat="server" Text="Editar" CssClass="btn btn-warning"
                                     CommandArgument='<%#Eval("id") %>' OnClick="BtnEditar_Click" />

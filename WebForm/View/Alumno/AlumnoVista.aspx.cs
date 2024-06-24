@@ -56,26 +56,29 @@ namespace WebForm.View
                 string nombreProfesor = profe.nombres+" "+profe.apellidoPaterno + " "+profe.apellidoMaterno;
                 Panel cursoPanel = new Panel
                 {
-                    CssClass = "cursoCaja",
-                   // BackColor = System.Drawing.ColorTranslator.FromHtml(PruebasColores[rand.Next(0, PruebasColores.Length)])
-                };
 
-                cursoPanel.Controls.Add(new LiteralControl($"<div class=\"p-2 infoCaja\">"));
-                cursoPanel.Controls.Add(new LiteralControl($"<p>{cur.nombre}</p>"));
-                cursoPanel.Controls.Add(new LiteralControl("<div class=\"line\"></div>"));
-                cursoPanel.Controls.Add(new LiteralControl($"<p>Profesor: {nombreProfesor}</p>"));
-                cursoPanel.Controls.Add(new LiteralControl($"<p>Código curso: {cur.id}</p>"));
-                cursoPanel.Controls.Add(new LiteralControl($"<p>Salón: {cod_salon}</p>"));
-                cursoPanel.Controls.Add(new LiteralControl("</div>"));
+                    CssClass = "card cajita"
+                    //BackColor = System.Drawing.ColorTranslator.FromHtml(PruebasColores[rand.Next(0, PruebasColores.Length)])
+                };
+                cursoPanel.Controls.Add(new LiteralControl($"<div class=\"p-2 card-body\" style=\"background-color: {PruebasColores[rand.Next(0, PruebasColores.Length)]}\">"));
+                cursoPanel.Controls.Add(new LiteralControl($"</div>"));
+                cursoPanel.Controls.Add(new LiteralControl($"<div class=\"p-2 card-body\">"));
+                cursoPanel.Controls.Add(new LiteralControl($"<h5 class=\"card-title\">{cur.nombre}</h5>"));
+                cursoPanel.Controls.Add(new LiteralControl("<div class=\"line mb-2\"></div>"));
+                cursoPanel.Controls.Add(new LiteralControl($"<p class=\"card-text\">Profesor: {nombreProfesor}</p>"));
+                cursoPanel.Controls.Add(new LiteralControl($"<p class=\"card-text\">Código curso: {cur.id}</p>"));
+                cursoPanel.Controls.Add(new LiteralControl($"<p class=\"card-text\">Salón: {cod_salon}</p>"));
+
                 LinkButton cursoLink = new LinkButton
                 {
                     ID = $"CursoAlumnoBtn-{cur.id}",
                     CommandArgument = $"{cur.nombre}|{cur.id}",
                     Text = "Ver detalles",
-                    CssClass = "btn btn-link"
+                    CssClass = "btn btn-primary"
                 };
                 cursoLink.Click += new EventHandler(Curso_AlumnoBTN_click);
                 cursoPanel.Controls.Add(cursoLink);
+                cursoPanel.Controls.Add(new LiteralControl("</div>"));
                 CursosContainer.Controls.Add(cursoPanel);
             }
         }

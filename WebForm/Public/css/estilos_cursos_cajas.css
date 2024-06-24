@@ -3,6 +3,10 @@
     gap: 25px;
 }
 
+.cajita{
+    overflow: hidden;
+}
+
 .cursoCaja {
     width: 250px;
     height: 250px;

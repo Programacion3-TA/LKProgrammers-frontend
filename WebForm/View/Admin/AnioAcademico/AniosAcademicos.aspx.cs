@@ -53,7 +53,9 @@ namespace WebForm.View.Admin.AnioAcademico
             if(anio != null)
             {
                 anios = new BindingList<anioEscolar>(anio);
+               
             }
+            Session["Anios"] = anios;
             GVAnios.DataSource = anios;
             GVAnios.DataBind();
         }
@@ -73,10 +75,10 @@ namespace WebForm.View.Admin.AnioAcademico
         protected void EditRowClick(object sender, EventArgs e)
         {
             Button btn = (Button)sender;
-            string code = btn.CommandArgument; // recibo el codigo del profesor
-
+            string code = btn.CommandArgument;
+            anios = Session["Anios"] as BindingList<anioEscolar>;
             anioEscolar anio = anios.ToList().Find(x => x.id == int.Parse(code));
-            // Busco y recupero los datos del profe
+          
             TxtCode.Text = anio.id.ToString();
             TxtNombre.Text = anio.nombre;
             TxtFechaInicio.Text = anio.fechaInicio.ToString("yyyy-MM-dd");
@@ -99,12 +101,16 @@ namespace WebForm.View.Admin.AnioAcademico
         protected void BtnGuardar_Click(object sender, EventArgs e)
         {
             serviciodao = new LKServicioWebClient();
+            
             anioEscolar op = new anioEscolar();
-            var f = serviciodao.listarAnioEscolarVigente();
+            
+            var f = serviciodao.listarAniosEscolares();
+            
             BindingList<anioEscolar> Lis_anio = new BindingList<anioEscolar>();
+            
             if (f != null)
             {
-                Lis_anio = new BindingList<anioEscolar>(f);
+                Lis_anio = new BindingList<anioEscolar>(f.ToList());
             }
             if (string.IsNullOrEmpty(TxtCode.Text)) // crear
             {
@@ -137,6 +143,14 @@ namespace WebForm.View.Admin.AnioAcademico
         {
             string script = "window.onload = function() {" + function + "; };";
             ClientScript.RegisterStartupScript(GetType(), "", script, true);
+        }
+
+        protected void GVAnios_PageIndexChanging(object sender, GridViewPageEventArgs e)
+        {
+            GVAnios.PageIndex = e.NewPageIndex;
+            anios = Session["Anios"] as BindingList<anioEscolar>;
+            GVAnios.DataSource = anios;
+            GVAnios.DataBind();
         }
     }
 }

@@ -42,8 +42,6 @@
                          <ItemTemplate>
                              <asp:Button runat="server" Text="Editar" CssClass="btn btn-warning"
                                  CommandArgument='<%# Eval("id") %>' OnClick="EditRowClick" />
-                             <asp:Button runat="server" Text="Eliminar" CssClass="btn btn-danger"
-                                 CommandArgument='<%# Eval("id") %>' OnClick="DelRow_Click" Enabled="false" />
                          </ItemTemplate>
                      </asp:TemplateField>
                  </Columns>
@@ -69,7 +67,7 @@
 
             <div class="container row">
                 <asp:GridView ID="GVAnios" runat="server" AutoGenerateColumns="false"
-                    AllowPaging="true" PageSize="5"
+                    AllowPaging="true" PageSize="5" OnPageIndexChanging="GVAnios_PageIndexChanging"
                     CssClass="table table-hover table-responsive table-striped">
                     <Columns>
                         <asp:BoundField DataField="id" HeaderText="Código" />

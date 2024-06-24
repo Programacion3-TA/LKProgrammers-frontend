@@ -119,6 +119,8 @@
         </div>
     </div>
     <!-- Fin de la Sección de Cursos -->    
+    <!-- Modal Alumnos-->
+
     <div id="modalSalonDetalle" class="modal" tabindex="-1">
         <div class="modal-dialog">
             <div class="modal-content">
@@ -141,6 +143,9 @@
                                         CssClass="btn btn-info"
                                         Text="<i class='fa-solid fa-magnifying-glass pe-2'></i> Buscar"
                                         UseSubmitBehavior="false" />
+                                </div>
+                                <div class="col-md-4 mb-3 d-flex align-items-center">
+                                    <asp:Label ID="LblNoAlumnosDisp" runat="server" Text="No se encontraron alumnos." CssClass="form-label" Visible="false"></asp:Label>
                                 </div>
                             </div>
 
