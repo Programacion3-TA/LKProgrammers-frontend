@@ -20,11 +20,12 @@
 
 <asp:Content ID="Content4" ContentPlaceHolderID="MainContent" runat="server">
     <div class="container d-flex align-items-start flex-column gap-5">
-    <asp:Label ID="PageTitle" runat="server" Text="" CssClass="custom-title"></asp:Label>
-    <div class="d-flex gap-1 w-100 flex-wrap">
-        <asp:Literal ID="BadgesContainer" runat="server" Text=""></asp:Literal> 
+        <asp:Label ID="PageTitle" runat="server" Text="" CssClass="custom-title"></asp:Label>
+        <div class="d-flex gap-1 w-100 flex-wrap">
+            <asp:Literal ID="BadgesContainer" runat="server" Text=""></asp:Literal> 
+        </div>
     </div>
-    
 </asp:Content>
+
 <asp:Content ID="Content5" ContentPlaceHolderID="Script" runat="server">
 </asp:Content>

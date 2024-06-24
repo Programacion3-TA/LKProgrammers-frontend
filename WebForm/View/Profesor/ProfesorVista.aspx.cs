@@ -63,9 +63,7 @@ namespace WebForm.View.ProfesorVista
                         CssClass = "btn btn-link"
                     };
                     cursoLink.Click += new EventHandler(CursoProfesorBtn_Click);
-
                     cursoPanel.Controls.Add(cursoLink);
-
                     CursosProfesorPHl.Controls.Add(cursoPanel);
 
                 }
@@ -79,9 +77,10 @@ namespace WebForm.View.ProfesorVista
             string idCurso = args[0];
             string name_curso = args[1];
             Session["CURSO"] = int.Parse(idCurso);
-            Session["Curname"] = (string)name_curso;
+            Session["Curname"] = name_curso;
             // Redirigir a la página cursosVista con los parámetros necesarios
-            Response.Redirect("/View/Profesor/ProfesorVista/CursoProfesor.aspx");
+            //Response.Redirect("/View/Profesor/CursoProfesor.aspx");
+            Response.Redirect("/View/Profesor/CursoProfesor.aspx");
         }
     }
 }
