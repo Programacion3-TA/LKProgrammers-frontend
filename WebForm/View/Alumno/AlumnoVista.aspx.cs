@@ -56,6 +56,7 @@ namespace WebForm.View
                 string nombreProfesor = profe.nombres+" "+profe.apellidoPaterno + " "+profe.apellidoMaterno;
                 Panel cursoPanel = new Panel
                 {
+
                     CssClass = "card cajita"
                     //BackColor = System.Drawing.ColorTranslator.FromHtml(PruebasColores[rand.Next(0, PruebasColores.Length)])
                 };
@@ -67,6 +68,7 @@ namespace WebForm.View
                 cursoPanel.Controls.Add(new LiteralControl($"<p class=\"card-text\">Profesor: {nombreProfesor}</p>"));
                 cursoPanel.Controls.Add(new LiteralControl($"<p class=\"card-text\">Código curso: {cur.id}</p>"));
                 cursoPanel.Controls.Add(new LiteralControl($"<p class=\"card-text\">Salón: {cod_salon}</p>"));
+
                 LinkButton cursoLink = new LinkButton
                 {
                     ID = $"CursoAlumnoBtn-{cur.id}",

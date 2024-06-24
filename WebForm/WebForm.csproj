@@ -228,6 +228,7 @@
     <Content Include="View\Login\Login.aspx" />
     <Content Include="View\Profesor\ErroNoTutor.aspx" />
     <Content Include="View\Profesor\IncidenciaProfesor.aspx" />
+    <Content Include="View\Profesor\Justificacion.aspx" />
     <Content Include="View\Profesor\NotaProfesor.aspx" />
     <Content Include="View\Profesor\Profesor.css" />
     <Content Include="View\Profesor\Profesor.js" />
@@ -449,6 +450,13 @@
     </Compile>
     <Compile Include="View\Profesor\IncidenciaProfesor.aspx.designer.cs">
       <DependentUpon>IncidenciaProfesor.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="View\Profesor\Justificacion.aspx.cs">
+      <DependentUpon>Justificacion.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="View\Profesor\Justificacion.aspx.designer.cs">
+      <DependentUpon>Justificacion.aspx</DependentUpon>
     </Compile>
     <Compile Include="View\Profesor\NotaProfesor.aspx.cs">
       <DependentUpon>NotaProfesor.aspx</DependentUpon>
@@ -849,6 +857,14 @@
     <Content Include="Connected Services\ServicioWS\WebForm.ServicioWS.verificarUsuarioResponse.datasource">
       <DependentUpon>Reference.svcmap</DependentUpon>
     </Content>
+
+    <Content Include="Connected Services\ServicioWS\WebForm.ServicioWS.aceptarJustificacionResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Content>
+    <Content Include="Connected Services\ServicioWS\WebForm.ServicioWS.negaJustificacionResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Content>
+
     <None Include="packages.config" />
     <Content Include="Public\js\bootstrap\bootstrap.min.js.map" />
     <Content Include="Public\js\bootstrap\bootstrap.js.map" />

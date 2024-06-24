@@ -21,7 +21,7 @@
                 <div>
                     <label>Seleccione alumno:</label>
                     <asp:DropDownList ID="AlumnosDelCursoDrpl" runat="server" AutoPostBack="true"
-                       CssClass="form-select w-50" DataTextField="nombres" DataValueField="dni">
+                       CssClass="form-select w-50" DataTextField="nombres" DataValueField="dni" OnSelectedIndexChanged="AlumnosDelCursoDrpl_SelectedIndexChanged">
                     </asp:DropDownList>
                 </div>
                 <asp:Button ID="ReporteNotasAlumnoBtn" runat="server" Text="Obtener notas actuales" CssClass="btn btn-primary"  
@@ -32,7 +32,7 @@
                 <label>Seleccione un curso dictado:</label>
                 <asp:DropDownList ID="CursoDictadoDrpL" runat="server" AutoPostBack="true"
                 CssClass="form-select w-50" DataTextField="cursoDescrip" DataValueField="cursoIdent"
-                OnSelectedIndexChanged="CursoDictadoDrpL_SelectedIndexChanged" OnLoad="CursoDictadoDrpL_SelectedIndexChanged"></asp:DropDownList>
+                OnSelectedIndexChanged="CursoDictadoDrpL_SelectedIndexChanged" ></asp:DropDownList>
             </div>
         </div>
         <div class="card-body">

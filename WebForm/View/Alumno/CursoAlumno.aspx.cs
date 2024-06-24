@@ -21,6 +21,7 @@ namespace WebForm.View.CursoAlumno
             //String html = MyReact.createComponent("h1", null, "Hola mundo");
             //MyCont.Text = html;
 
+
             serviciodao = new LKServicioWebClient();
             paginaCurso pag = new paginaCurso();
             //pag.id = 1;
@@ -38,6 +39,7 @@ namespace WebForm.View.CursoAlumno
             //    new seccion(){ id=4, titulo="Semana 4", orden=4 }
             //};
 
+
             codigo_curso = (int)Session["CURSO"];
             PageTitle.Text = (string)Session["Curname"];
             //insertar funcion para obtener el codigo del curso al que el usuario hizo click
@@ -46,12 +48,14 @@ namespace WebForm.View.CursoAlumno
 
             List<String> badgesData = new List<String>();
             String badgesComp = "";
+
             foreach (seccion seccion in pag.secciones){
                 badgesData.Add(seccion.titulo);
                 badgesComp += MyReact.CreateComponent("span", new Dictionary<string, string> { { "class", "badge rounded-pill text-bg-primary p-2 text-truncate" }, { "style", "max-width: 60%;" } }, seccion.titulo);
             }
             BadgesContainer.Text = badgesComp;
             renderizarSecciones(pag);
+
         }
        
 

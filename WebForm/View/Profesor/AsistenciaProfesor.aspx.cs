@@ -201,32 +201,30 @@ namespace WebForm.View.AsistenciaProfesor
 
         protected void JustificacionesBtn_Click(object sender, EventArgs e)
         {
-            List<asistencia> asisSinJustificar = (List<asistencia>)Session["asistenciasSinJustificar"];
-            CargarAsistenciasSinJustificar(asisSinJustificar);
-            CallJavascript("showModal('JustificacionModal')");
+            Response.Redirect("/View/Profesor/Justificacion.aspx");
         }
         protected void CargarAsistenciasSinJustificar(List<asistencia> asistencias)
         {
-            AsistenciasSinJustificarGrid.DataSource = asistencias;
-            AsistenciasSinJustificarGrid.DataBind();
+            
         }
+
         /*
 protected void eliminarAsistencia_Click(object sender, EventArgs e)
 {
-   Button btn = (Button)sender;
-   string fechaElim = btn.CommandArgument;
-   DateTime fecha= DateTime.Parse(fechaElim);
+Button btn = (Button)sender;
+string fechaElim = btn.CommandArgument;
+DateTime fecha= DateTime.Parse(fechaElim);
 
-   List<alumno> alumnos = (List<alumno>)Session["alumnosAsistencia"];
-   int eliminado = 0;
-   foreach(alumno alu in alumnos)
-   {
-       asistencia asis = new asistencia();
-       asis.dniAlumno = alu.dni;
-       asis.fechaHora = fecha;
-       asis.fechaHoraSpecified = true;
-       eliminado = 
-   }
+List<alumno> alumnos = (List<alumno>)Session["alumnosAsistencia"];
+int eliminado = 0;
+foreach(alumno alu in alumnos)
+{
+asistencia asis = new asistencia();
+asis.dniAlumno = alu.dni;
+asis.fechaHora = fecha;
+asis.fechaHoraSpecified = true;
+eliminado = 
+}
 
 }*/
     }

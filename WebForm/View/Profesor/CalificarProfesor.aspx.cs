@@ -32,6 +32,7 @@ namespace WebForm.View.Profesor
                 cursoHorario[] cursosHorario = daoServicio.listarCursosPorProfesor(((profesor)Session["Usuario"]).dni);
                 Session["cursosHorario"] = cursosHorario;
                 CargarCursos((cursoHorario[])Session["cursosHorario"]);
+                CursoDictadoDrpL_SelectedIndexChanged(sender, e);
             }
         }
 
@@ -145,7 +146,6 @@ namespace WebForm.View.Profesor
                     Response.AddHeader("content-length", FileBuffer.Length.ToString());
                     Response.BinaryWrite(FileBuffer);
                 }
-
             }
 
         }
@@ -176,6 +176,12 @@ namespace WebForm.View.Profesor
                 default:
                     return "Fallo en el grado";
             }
+        }
+
+        protected void AlumnosDelCursoDrpl_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            string dni = AlumnosDelCursoDrpl.SelectedValue.ToString();
+            Session["dniAlumnoReporte"] = dni;
         }
     }
 
