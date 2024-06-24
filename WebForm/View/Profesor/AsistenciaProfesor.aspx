@@ -132,47 +132,7 @@
         </div>
     </div>
 
-    <asp:ScriptManager ID="ScriptManager1" runat="server"></asp:ScriptManager>
-    <!--Modal para el ingreso de fechas-->
-    <div class="modal " id="JustificacionModal" tabindex="-1" role="dialog" aria-labelledby="JustificacionModalTitle" aria-hidden="true">
-    <div class="modal-dialog" role="document">
-    <div class="modal-content">
-        <div class="modal-header">
-        <h5 class="modal-title" id="JustificacionModalTitle">Modal title</h5>
-        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-            <span aria-hidden="true">&times;</span>
-        </button>
-        </div>
-        <div class="modal-body">
-            <asp:UpdatePanel ID="UpdatePanel1" runat="server">
-                <ContentTemplate>
-                    <asp:GridView ID="AsistenciasSinJustificarGrid" runat="server" AutoGenerateColumns="false" AllowPaging="true"  CssClass="table table-hover table-responsive table-striped">
-                        <Columns>
-                            <asp:BoundField DataField="dniAlumno" HeaderText="DNI"/>
-                            <asp:TemplateField>
-                                <ItemTemplate>
-                                    <asp:Label ID="Label1" runat="server" Text='<%# ParsearFecha((DateTime)Eval("fechaHora")) %>'></asp:Label>
-                                </ItemTemplate>
-                            </asp:TemplateField>
-                            <asp:BoundField DataField="justificacion" HeaderText="Justificacion"/>
-                            <asp:TemplateField HeaderText="Acciones">
-                                <ItemTemplate>
-                                    <asp:Button ID="Button2" runat="server" Text="Aprobar"  CssClass="btn btn-primary"/>
-                                    <asp:Button ID="Button1" runat="server" Text="Rechazar"  CssClass="btn btn-danger"/>
-                                </ItemTemplate>
-                            </asp:TemplateField>
-                        </Columns>
-                    </asp:GridView>
-                </ContentTemplate>
-            </asp:UpdatePanel>
-        </div>
-        <div class="modal-footer">
-        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-        <button type="button" class="btn btn-primary">Save changes</button>
-        </div>
-    </div>
-    </div>
-    </div>
+  
 
 
 </asp:Content>

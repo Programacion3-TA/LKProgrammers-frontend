@@ -57,8 +57,9 @@ namespace WebForm.View
                 Panel cursoPanel = new Panel
                 {
                     CssClass = "cursoCaja",
-                    BackColor = System.Drawing.ColorTranslator.FromHtml(PruebasColores[rand.Next(0, PruebasColores.Length)])
+                   // BackColor = System.Drawing.ColorTranslator.FromHtml(PruebasColores[rand.Next(0, PruebasColores.Length)])
                 };
+
                 cursoPanel.Controls.Add(new LiteralControl($"<div class=\"p-2 infoCaja\">"));
                 cursoPanel.Controls.Add(new LiteralControl($"<p>{cur.nombre}</p>"));
                 cursoPanel.Controls.Add(new LiteralControl("<div class=\"line\"></div>"));
