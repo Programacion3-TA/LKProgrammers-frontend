@@ -454,5 +454,23 @@ namespace WebForm.View.Admin.Profesores
             GridProfesores.DataSource = listProfesor;
             GridProfesores.DataBind();
         }
+
+        protected void GVCursosDictados_PageIndexChanging(object sender, GridViewPageEventArgs e)
+        {
+            GVCursosDictados.PageIndex = e.NewPageIndex;
+            BindingList<curso> cursosDictados = Session["CursosDictados"] as BindingList<curso>;
+            GVCursosDictados.DataSource = cursosDictados;
+            GVCursosDictados.DataBind();
+            CallJavascript("showModalFormCursosDictados()");
+        }
+
+        protected void GVCursosEncontrados_PageIndexChanging(object sender, GridViewPageEventArgs e)
+        {
+            GVCursosEncontrados.PageIndex = e.NewPageIndex;
+            BindingList<curso> cursosDisp = Session["CursosDisponibles"] as BindingList<curso>;
+            GVCursosEncontrados.DataSource = cursosDisp;
+            GVCursosEncontrados.DataBind();
+            CallJavascript("showModalFormCursosDictados()");
+        }
     }
 }

@@ -1,4 +1,4 @@
-﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Layout/MainAdministrador.master" AutoEventWireup="true" CodeFile="AniosAcademicos.aspx.cs" Inherits="WebForm.View.Admin.AnioAcademico.AniosAcademicos" EnableEventValidation="false"%>
+﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Layout/MainAdministrador.master" AutoEventWireup="true" CodeBehind="~/View/Admin/AnioAcademico/AniosAcademicos.aspx.cs" Inherits="WebForm.View.Admin.AnioAcademico.AniosAcademicos" EnableEventValidation="false"%>
 <asp:Content ID="Content1" ContentPlaceHolderID="Title" runat="server">
     Vista de Años Académicos
 </asp:Content>
@@ -10,16 +10,6 @@
 </asp:Content>
 
 <asp:Content ID="Content5" ContentPlaceHolderID="MainContent" runat="server">
-
-<%--    <nav style="--bs-breadcrumb-divider: '>'; font-size: 14px" class="p-2">
-        <ol class="breadcrumb">
-            <li class="breadcrumb-item">
-                <i class="fa-solid fa-house"></i>
-            </li>
-            <li class="breadcrumb-item">Año Academico</li>
-        </ol>
-    </nav>--%>
-
     <div class="mx-auto d-flex flex-column justify-content-center">
         <h2 class="form-title">
             Año Escolar Vigente
