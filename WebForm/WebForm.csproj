@@ -205,6 +205,7 @@
     <Content Include="View\Admin\Cursos\CursosAdmin.aspx" />
     <Content Include="View\Admin\Estudiantes\Estudiantes.aspx" />
     <Content Include="View\Admin\Estudiantes\EstudianteAgregar.js" />
+    <Content Include="View\Admin\Estudiantes\Historial.aspx" />
     <Content Include="View\Admin\Profesores\Profesores.js" />
     <Content Include="View\Admin\Profesores\Profesores.aspx" />
     <Content Include="View\Admin\Salones\Salon.js" />
@@ -321,6 +322,13 @@
     </Compile>
     <Compile Include="View\Admin\Estudiantes\Estudiantes.aspx.designer.cs">
       <DependentUpon>Estudiantes.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="View\Admin\Estudiantes\Historial.aspx.cs">
+      <DependentUpon>Historial.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="View\Admin\Estudiantes\Historial.aspx.designer.cs">
+      <DependentUpon>Historial.aspx</DependentUpon>
     </Compile>
     <Compile Include="View\Admin\Profesores\Profesores.aspx.cs">
       <DependentUpon>Profesores.aspx</DependentUpon>

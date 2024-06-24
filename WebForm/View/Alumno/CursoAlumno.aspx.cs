@@ -19,52 +19,51 @@ namespace WebForm.View.CursoAlumno
 
         private int codigo_curso;
         private LKServicioWebClient serviciodao;
-        private List<seccionCURSO> paginaCurso;
-
+        private paginaCurso pagina;
         protected void Page_Load(object sender, EventArgs e)
         {
             //String html = MyReact.createComponent("h1", null, "Hola mundo");
             //MyCont.Text = html;
             serviciodao = new LKServicioWebClient();
-            codigo_curso = 1; //insertar funcion para obtener el codigo del curso al que el usuario hizo click
+            codigo_curso = (int)Session["CURSO"];
+            pagina = serviciodao.pagina_init(codigo_curso);
+            //insertar funcion para obtener el codigo del curso al que el usuario hizo click
             var pag = serviciodao.listar_CONTENIDOS(codigo_curso);
             List<String> badgesData = new List<String>();
             String badgesComp = "";
-            paginaCurso = new List<seccionCURSO>();
-            if (pag != null) { 
-                paginaCurso = pag.ToList();
-                foreach (seccionCURSO section in paginaCurso){
-                    String RAND = section.nombre_SECCION;
-                    badgesData.Add(RAND);
-                    badgesComp += MyReact.CreateComponent("span", new Dictionary<string, string> { { "class", "badge rounded-pill text-bg-primary p-2 text-truncate" }, { "style", "max-width: 60%;" } }, RAND);
-                } //asigna nombres de seccion (titulo de contenidos para mostrar)
+            if (pag != null) {
+                pagina.secciones = pag;
+                foreach (seccion seccion in pagina.secciones){
+                    badgesData.Add(seccion.titulo);
+                    badgesComp += MyReact.CreateComponent("span", new Dictionary<string, string> { { "class", "badge rounded-pill text-bg-primary p-2 text-truncate" }, { "style", "max-width: 60%;" } }, seccion.titulo);
+                }
                 BadgesContainer.Text = badgesComp;
-                renderizarSecciones();
+                renderizarSecciones(pagina);
             }
         }
 
-        protected void renderizarSecciones()
+        protected void renderizarSecciones(paginaCurso pagina)
         {
             String seccComp = "";
-            foreach (seccionCURSO secc in paginaCurso)
+            foreach (seccion secc in pagina.secciones)
             {
-                String seccHtmlId = $"secc{secc.id_curso}";
+                String seccHtmlId = $"secc{secc.id}";
                 seccComp += MyReact.CreateComponent(
                     "div", "class=\"accordion-item\"",
                         MyReact.CreateComponent("h2", "class=\"accordion-header\"",
-                            MyReact.CreateComponent("button", $"class=\"accordion-button collapsed\" type=\"button\" data-bs-toggle=\"collapse\" data-bs-target=\"#{seccHtmlId}\" aria-expanded=\"false\" aria-controls=\"{seccHtmlId}\"", secc.nombre_SECCION)
+                            MyReact.CreateComponent("button", $"class=\"accordion-button collapsed\" type=\"button\" data-bs-toggle=\"collapse\" data-bs-target=\"#{seccHtmlId}\" aria-expanded=\"false\" aria-controls=\"{seccHtmlId}\"", secc.titulo)
                         ) +
                         MyReact.CreateComponent("div", $"id=\"{seccHtmlId}\" class=\"accordion-collapse collapse\" data-bs-parent=\"#accordionFlushExample\"",
-                            MyReact.CreateComponent("div", "class=\"accordion-body\"", secc.CONTENIDOS_DE_SECCION == null? "" : secc.CONTENIDOS_DE_SECCION.Aggregate("",
+                            MyReact.CreateComponent("div", "class=\"accordion-body\"", secc.elementos == null ? "" : secc.elementos.Aggregate("",
                                 (concatenacion, elem) => concatenacion +
-                                    MyReact.CreateComponentByType(elem, "", elem.ID_CONTENIDO)
+                                    MyReact.CreateComponentByType(elem, "", elem.contenido)
                                 )
                             )
                         )
                 );
             }
 
-            SeccionesContainer.Text = seccComp;
-        }
+        //    SeccionesContainer.Text = seccComp;
+        //}
     }
 }

@@ -13,6 +13,9 @@
         "Info": "alert-primary"
     };
 
+    if (titulo == null) titulo = "";
+    if (href == null) href = "";
+
     const modal = document.getElementById("my_notification_modal");
     const h4 = document.getElementById("my_notification_modal--h4");
     const icon = document.getElementById("my_notification_modal--icon");

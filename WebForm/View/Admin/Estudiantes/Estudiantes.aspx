@@ -7,16 +7,20 @@
 </asp:Content>
 <asp:Content ID="Content4" ContentPlaceHolderID="MainContent" runat="server">
 
-    <nav style="--bs-breadcrumb-divider: '>'; font-size: 14px" class="p-2">
+    <%--<nav style="--bs-breadcrumb-divider: '>'; font-size: 14px" class="p-2">
         <ol class="breadcrumb">
             <li class="breadcrumb-item">
                 <i class="fa-solid fa-house"></i>
             </li>            
             <li class="breadcrumb-item">Estudiantes</li>
         </ol>
-    </nav>
+    </nav>--%>
     <div class="mx-auto d-flex flex-column justify-content-center">
         <h2 class="px-2">Estudiantes</h2>
+
+        <div>
+            <a href="/View/Admin/Estudiantes/Historial.aspx" class="btn btn-primary">Ver historial de estudiantes eliminados</a>
+        </div>
 
         <hr />
 
