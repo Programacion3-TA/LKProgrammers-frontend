@@ -128,7 +128,7 @@
                                 </div>
                                 <div class="col-md-6 mb-3">
                                     <asp:Label ID="LblPassword" runat="server" Text="Contraseña:" CssClass="form-label"></asp:Label>
-                                    <asp:TextBox ID="TxtPassword" runat="server" CssClass="form-control"></asp:TextBox>
+                                    <asp:TextBox ID="TxtPassword" runat="server" CssClass="form-control" TextMode="Password"></asp:TextBox>
                                 </div>
                                 <div class="col-md-6 mb-3">
                                     <asp:Label ID="LblTelefono" runat="server" Text="Teléfono:" CssClass="form-label"></asp:Label>
@@ -140,7 +140,7 @@
                                 </div>
                                 <div class="col-md-6 mb-3">
                                     <asp:Label ID="LblDNI" runat="server" Text="DNI del Profesor:" CssClass="form-label"></asp:Label>
-                                    <asp:TextBox ID="TxtDNI" runat="server" CssClass="form-control"></asp:TextBox>
+                                    <asp:TextBox ID="TxtDNI" runat="server" CssClass="form-control" ></asp:TextBox>
                                 </div>
                                 <div class="col-md-6 mb-3">
                                     <asp:Label ID="LblEspecialidad" runat="server" Text="Especialidad:" CssClass="form-label"></asp:Label>

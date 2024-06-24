@@ -10,15 +10,7 @@
 <asp:Content ID="Content4" ContentPlaceHolderID="Navusuarios" runat="server">
 </asp:Content>
 <asp:Content ID="Content5" ContentPlaceHolderID="MainContent" runat="server">
-    <%--<nav style="--bs-breadcrumb-divider: '>'; font-size: 14px" class="p-2">
-        <ol class="breadcrumb">
-            <li class="breadcrumb-item">
-                <i class="fa-solid fa-house"></i>
-            </li>
-            <li class="breadcrumb-item">Cursos Vigentes</li>
-            <li class="breadcrumb-item">Competencias del Curso</li>
-        </ol>
-    </nav>--%>
+
     <div class="mx-auto d-flex flex-column justify-content-center">
         <h2>Competencias de
             <asp:Literal ID="LtCurso" runat="server" /></h2>
@@ -40,7 +32,7 @@
             <div class="container row">
                 <asp:GridView ID="GridCompetenciasCurso" runat="server" AutoGenerateColumns="false"
                     AllowPaging="true" PageSize="5"
-                    CssClass="table table-hover table-responsive table-striped">
+                    CssClass="table table-hover table-responsive table-striped" OnPageIndexChanging="GridCompetenciasCurso_PageIndexChanging">
                     <Columns>
                         <asp:BoundField DataField="id" HeaderText="Codigo" />
                         <asp:BoundField DataField="descripcion" HeaderText="Descripcion" />
@@ -66,9 +58,9 @@
             </div>
             <div class="modal-body">
                 <!-- Add your modal content here -->
-                <!-- Example: -->.
-                <asp:Label ID="LblCode" runat="server" Text="ID" CssClass="form-label"></asp:Label>
-                <asp:TextBox ID="TxtID" runat="server" placeholder="ID" CssClass="form-control mb-2" Enabled="false"></asp:TextBox>
+                <!-- Example: -->
+                <asp:Label ID="LblCode" runat="server" Text="Identificador" CssClass="form-label"></asp:Label>
+                <asp:TextBox ID="TxtID" runat="server" CssClass="form-control mb-2" Enabled="false"></asp:TextBox>
 
                 <asp:Label ID="LblDesc" runat="server" Text="Descripción" CssClass="form-label"></asp:Label>
                 <asp:TextBox ID="TxtDescripcion" runat="server" placeholder="Descripción" CssClass="form-control mb-2"></asp:TextBox>

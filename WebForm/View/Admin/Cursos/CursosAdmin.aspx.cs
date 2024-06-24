@@ -16,22 +16,30 @@ namespace WebForm.View.Admin.Cursos
         protected void Page_Load(object sender, EventArgs e)
         {
             serviciodao = new ServicioWS.LKServicioWebClient();
-            cargarTabla();
+            
+            if (!IsPostBack)
+            {
+                var c = serviciodao.listarCursos();
+                if (c != null)
+                {
+                    cursos = new BindingList<curso>(c);
+                    
+                }
+                else
+                {
+                    cursos = new BindingList<curso>();
+                }
+                Session["Cursos"] = cursos;
+                cargarTabla();
+            }
+            
         }
 
         private void cargarTabla()
         {
-            var c = serviciodao.listarCursos();
-            if (c != null)
-            {
-                GridCursos.DataSource = new BindingList<curso>(c);
-            }
-            else
-            {
-                GridCursos.DataSource = new BindingList<curso>();
-            }
+            cursos = Session["Cursos"] as BindingList<curso>;
+            GridCursos.DataSource = cursos;
             GridCursos.DataBind();
-
         }
 
         protected void BtnNuevo_Click(object sender, EventArgs e)
@@ -58,6 +66,18 @@ namespace WebForm.View.Admin.Cursos
             Button btn = (Button)sender;
             string code = btn.CommandArgument;
             serviciodao.eliminar_cursos(int.Parse(code));
+            var c = serviciodao.listarCursos();
+            if (c != null)
+            {
+                cursos = new BindingList<curso>(c);
+
+            }
+            else
+            {
+                cursos = new BindingList<curso>();
+            }
+            Session["Cursos"] = cursos;
+
             cargarTabla();
         }
 
@@ -76,6 +96,19 @@ namespace WebForm.View.Admin.Cursos
                 op.nombre = TxtNombre.Text;
                 op.descripcion = TxtDescripción.Text;
                 serviciodao.insertar_cursos(op);
+
+                var c = serviciodao.listarCursos();
+                if (c != null)
+                {
+                    cursos = new BindingList<curso>(c);
+
+                }
+                else
+                {
+                    cursos = new BindingList<curso>();
+                }
+                Session["Cursos"] = cursos;
+
                 cargarTabla();
             }
             else //actualizar
@@ -84,6 +117,18 @@ namespace WebForm.View.Admin.Cursos
                 op.nombre = TxtNombre.Text;
                 op.descripcion = TxtDescripción.Text;
                 serviciodao.editar_cursos(op);
+
+                var c = serviciodao.listarCursos();
+                if (c != null)
+                {
+                    cursos = new BindingList<curso>(c);
+
+                }
+                else
+                {
+                    cursos = new BindingList<curso>();
+                }
+                Session["Cursos"] = cursos;
                 cargarTabla();
             }
             Response.Redirect(Request.Url.AbsoluteUri);
@@ -101,6 +146,14 @@ namespace WebForm.View.Admin.Cursos
         {
             string script = "window.onload = function() {" + function + "; };";
             ClientScript.RegisterStartupScript(GetType(), "", script, true);
+        }
+
+        protected void GridCursos_PageIndexChanging(object sender, GridViewPageEventArgs e)
+        {
+            GridCursos.PageIndex = e.NewPageIndex;
+            cursos = Session["Cursos"] as BindingList<curso>;
+            GridCursos.DataSource = cursos;
+            GridCursos.DataBind();
         }
     }
 }
