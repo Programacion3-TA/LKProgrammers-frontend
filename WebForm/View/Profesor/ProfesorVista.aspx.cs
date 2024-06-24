@@ -43,26 +43,26 @@ namespace WebForm.View.ProfesorVista
                 {
                     Panel cursoPanel = new Panel
                     {
-                        CssClass = "cursoCaja",
+                        CssClass = "card cajita",
                         //BackColor = System.Drawing.ColorTranslator.FromHtml(PruebasColores[rand.Next(0, PruebasColores.Length)])
                     };
-                    cursoPanel.Controls.Add(new LiteralControl($"<div class=\"h-50\" style=\"background-color:" + PruebasColores[rand.Next(0, PruebasColores.Length)] + "\"></div>"));
-                    cursoPanel.Controls.Add(new LiteralControl($"<div class=\"p-2 infoCaja\">"));
+                    cursoPanel.Controls.Add(new LiteralControl($"<div class=\"p-2 card-body\" style=\"background-color: {PruebasColores[rand.Next(0, PruebasColores.Length)]}\"></div>"));
+                    cursoPanel.Controls.Add(new LiteralControl($"<div class=\"p-2 card-body\">"));
                     cursoPanel.Controls.Add(new LiteralControl($"<p>{cursoHor.curso.nombre}</p>"));
-                    cursoPanel.Controls.Add(new LiteralControl("<div class=\"line\"></div>"));
-                    cursoPanel.Controls.Add(new LiteralControl($"<p>Profesor: {nombres}</p>"));
-                    cursoPanel.Controls.Add(new LiteralControl($"<p>Código curso: {cursoHor.curso.id}</p>"));
-                    cursoPanel.Controls.Add(new LiteralControl($"<p>Salón: {cursoHor.idsalon}</p>"));
-                    //cursoPanel.Controls.Add(new LiteralControl($"<a>Salón: {cursoHor.idsalon}</a>"));
-                    LinkButton cursoLink = new LinkButton
-                    {
-                        ID = $"CursoProfesorBtn-{cursoHor.curso.id}-{pos++}",
-                        CommandArgument = $"{cursoHor.curso.id}|{cursoHor.curso.nombre}",
-                        Text = "Ver detalles",
-                        CssClass = "btn btn-primary"
-                    };
-                    cursoLink.Click += new EventHandler(CursoProfesorBtn_Click);
-                    cursoPanel.Controls.Add(cursoLink);
+                    cursoPanel.Controls.Add(new LiteralControl("<div class=\"line mb-2\"></div>"));
+                    cursoPanel.Controls.Add(new LiteralControl($"<p class=\"card-text\">Profesor: {nombres}</p>"));
+                    cursoPanel.Controls.Add(new LiteralControl($"<p class=\"card-text\">Código curso: {cursoHor.curso.id}</p>"));
+                    cursoPanel.Controls.Add(new LiteralControl($"<p class=\"card-text\">Salón: {cursoHor.idsalon}</p>"));
+                    cursoPanel.Controls.Add(new LiteralControl($"<a class=\"btn btn-primary\" href=\"/View/Profesor/CursoProfesor.aspx?cursoId={cursoHor.curso.id}&cursoNombre={cursoHor.curso.nombre}\">Ver detalles</a>"));
+                    //LinkButton cursoLink = new LinkButton
+                    //{
+                    //    ID = $"CursoProfesorBtn-{cursoHor.curso.id}-{pos++}",
+                    //    CommandArgument = $"{cursoHor.curso.id}|{cursoHor.curso.nombre}",
+                    //    Text = "Ver detalles",
+                    //    CssClass = "btn btn-primary"
+                    //};
+                    //cursoLink.Click += new EventHandler(CursoProfesorBtn_Click);
+                    //cursoPanel.Controls.Add(cursoLink);
                     cursoPanel.Controls.Add(new LiteralControl("</div>"));
                     CursosContainer.Controls.Add(cursoPanel);
                 }
