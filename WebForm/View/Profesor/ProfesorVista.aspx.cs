@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Runtime.ConstrainedExecution;
 using System.Text;
 using System.Web;
 using System.Web.UI;
@@ -27,11 +28,11 @@ namespace WebForm.View.ProfesorVista
         private void MostrarCursos(cursoHorario[] cursoHorarios)
         {
             string[] PruebasColores = {
-                "#6691FF",
-                "#C6FF4E",
-                "#FFDD66",
-                "#FF6666"
-            };
+        "#6691FF",
+        "#C6FF4E",
+        "#FFDD66",
+        "#FF6666"
+    };
             Random rand = new Random();
             string nombres = ((profesor)Session["Usuario"]).nombres + " " + ((profesor)Session["Usuario"]).apellidoPaterno;
 
@@ -40,7 +41,6 @@ namespace WebForm.View.ProfesorVista
             {
                 foreach (cursoHorario cursoHor in cursoHorarios)
                 {
-
                     Panel cursoPanel = new Panel
                     {
                         CssClass = "cursoCaja",
@@ -64,11 +64,11 @@ namespace WebForm.View.ProfesorVista
                     cursoLink.Click += new EventHandler(CursoProfesorBtn_Click);
                     cursoPanel.Controls.Add(cursoLink);
                     cursoPanel.Controls.Add(new LiteralControl("</div>"));
-                    CursosProfesorPHl.Controls.Add(cursoPanel);
-
+                    CursosContainer.Controls.Add(cursoPanel);
                 }
             }
         }
+
 
         protected void CursoProfesorBtn_Click(object sender, EventArgs e)
         {
@@ -79,8 +79,7 @@ namespace WebForm.View.ProfesorVista
             Session["CURSO"] = int.Parse(idCurso);
             Session["Curname"] = name_curso;
             // Redirigir a la página cursosVista con los parámetros necesarios
-            //Response.Redirect("/View/Profesor/CursoProfesor.aspx");
-            Response.Redirect("/View/Profesor/CursoProfesor.aspx");
+            Response.Redirect("/View/Profesor/CursoProfesor.aspx");           
         }
     }
 }
