@@ -19,49 +19,42 @@ namespace WebForm.View.CursoAlumno
 
         private int codigo_curso;
         private LKServicioWebClient serviciodao;
-        private paginaCurso pagina;
         protected void Page_Load(object sender, EventArgs e)
         {
             //String html = MyReact.createComponent("h1", null, "Hola mundo");
             //MyCont.Text = html;
 
-            paginaCurso pag = new paginaCurso();
-            pag.id = 1;
-            pag.secciones = new seccion[]{
-                new seccion(){ id=1, titulo="Semana 1", orden=1, elementos=new elemento[]{
-                    new heading(){ id=1, contenido="Operaciones basicas", orden=1, nivel=1, tipoElemento=tipoElemento.Heading},
-                    new parrafo(){ id=2, contenido="Lorem ipsum dolor sit amet, consectetur adipiscing elit. Morbi ac placerat diam. Sed posuere turpis eget ante venenatis, elementum vestibulum velit eleifend. Donec fermentum, lorem quis blandit iaculis, sem risus hendrerit dui, at posuere velit urna quis diam. Nunc vitae suscipit turpis, eu porta nunc. Duis id ex non lorem auctor finibus. Ut venenatis eu tortor sed interdum. Vestibulum tristique nisi sed diam fringilla iaculis. Aenean tellus ligula, scelerisque at iaculis id, dictum vel quam", orden=2, tipoElemento=tipoElemento.Parrafo},
-                    new parrafo(){ id=3, contenido="Lorem ipsum dolor sit amet, consectetur adipiscing elit. Morbi ac placerat diam. Sed posuere turpis eget ante venenatis, elementum vestibulum velit eleifend. Donec fermentum, lorem quis blandit iaculis, sem risus hendrerit dui, at posuere velit urna quis diam. Nunc vitae suscipit turpis, eu porta nunc. Duis id ex non lorem auctor finibus. Ut venenatis eu tortor sed interdum. Vestibulum tristique nisi sed diam fringilla iaculis. Aenean tellus ligula, scelerisque at iaculis id, dictum vel quam", orden=3, tipoElemento=tipoElemento.Parrafo},
-                    new enlace(){ id=4, contenido="Enlace a google", orden=4, href="https://google.com", tipoElemento=tipoElemento.Enlace},
-                    new imagen(){ id=5, contenido="", orden=5, source="https://media.giphy.com/media/LXONhtCmN32YU/giphy.gif", width=100, height=100, tipoElemento=tipoElemento.Imagen},
-                    new parrafo(){ id=6, contenido="Fuiste rickrolleado", orden=6, tipoElemento=tipoElemento.Parrafo}
-                } },
-                new seccion(){ id=2, titulo="Semana 2", orden=2 },
-                new seccion(){ id=3, titulo="Semana 3", orden=3 },
-                new seccion(){ id=4, titulo="Semana 4", orden=4 }
-            };
-
-
             serviciodao = new LKServicioWebClient();
+            paginaCurso pag = new paginaCurso();
+            //pag.id = 1;
+            //pag.secciones = new seccion[]{
+            //    new seccion(){ id=1, titulo="Semana 1", orden=1, elementos=new elemento[]{
+            //        new heading(){ id=1, contenido="Operaciones basicas", orden=1, nivel=1, tipoElemento=tipoElemento.Heading},
+            //        new parrafo(){ id=2, contenido="Lorem ipsum dolor sit amet, consectetur adipiscing elit. Morbi ac placerat diam. Sed posuere turpis eget ante venenatis, elementum vestibulum velit eleifend. Donec fermentum, lorem quis blandit iaculis, sem risus hendrerit dui, at posuere velit urna quis diam. Nunc vitae suscipit turpis, eu porta nunc. Duis id ex non lorem auctor finibus. Ut venenatis eu tortor sed interdum. Vestibulum tristique nisi sed diam fringilla iaculis. Aenean tellus ligula, scelerisque at iaculis id, dictum vel quam", orden=2, tipoElemento=tipoElemento.Parrafo},
+            //        new parrafo(){ id=3, contenido="Lorem ipsum dolor sit amet, consectetur adipiscing elit. Morbi ac placerat diam. Sed posuere turpis eget ante venenatis, elementum vestibulum velit eleifend. Donec fermentum, lorem quis blandit iaculis, sem risus hendrerit dui, at posuere velit urna quis diam. Nunc vitae suscipit turpis, eu porta nunc. Duis id ex non lorem auctor finibus. Ut venenatis eu tortor sed interdum. Vestibulum tristique nisi sed diam fringilla iaculis. Aenean tellus ligula, scelerisque at iaculis id, dictum vel quam", orden=3, tipoElemento=tipoElemento.Parrafo},
+            //        new enlace(){ id=4, contenido="Enlace a google", orden=4, href="https://google.com", tipoElemento=tipoElemento.Enlace},
+            //        new imagen(){ id=5, contenido="", orden=5, tipoElemento=tipoElemento.Imagen},
+            //        new parrafo(){ id=6, contenido="Fuiste rickrolleado", orden=6, tipoElemento=tipoElemento.Parrafo}
+            //    } },
+            //    new seccion(){ id=2, titulo="Semana 2", orden=2 },
+            //    new seccion(){ id=3, titulo="Semana 3", orden=3 },
+            //    new seccion(){ id=4, titulo="Semana 4", orden=4 }
+            //};
+
             codigo_curso = (int)Session["CURSO"];
             PageTitle.Text = (string)Session["Curname"];
-            pagina = serviciodao.pagina_init(codigo_curso);
             //insertar funcion para obtener el codigo del curso al que el usuario hizo click
-            var pag = serviciodao.listar_CONTENIDOS(codigo_curso);
+            pag = serviciodao.pagina_init(codigo_curso);
+            pag.secciones = serviciodao.listar_CONTENIDOS(codigo_curso) ?? new seccion[] {};
+
             List<String> badgesData = new List<String>();
             String badgesComp = "";
-            if (pag != null) {
-                pagina.secciones = pag;
-                foreach (seccion seccion in pagina.secciones){
-                    badgesData.Add(seccion.titulo);
-                    badgesComp += MyReact.CreateComponent("span", new Dictionary<string, string> { { "class", "badge rounded-pill text-bg-primary p-2 text-truncate" }, { "style", "max-width: 60%;" } }, seccion.titulo);
-                }
-                BadgesContainer.Text = badgesComp;
-                renderizarSecciones(pagina);
+            foreach (seccion seccion in pag.secciones){
+                badgesData.Add(seccion.titulo);
+                badgesComp += MyReact.CreateComponent("span", new Dictionary<string, string> { { "class", "badge rounded-pill text-bg-primary p-2 text-truncate" }, { "style", "max-width: 60%;" } }, seccion.titulo);
             }
-
             BadgesContainer.Text = badgesComp;
-            renderizarSecciones(pag);*/
+            renderizarSecciones(pag);
         }
        
 
