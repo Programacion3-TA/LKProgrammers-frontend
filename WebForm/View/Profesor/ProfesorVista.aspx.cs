@@ -58,7 +58,7 @@ namespace WebForm.View.ProfesorVista
                     LinkButton cursoLink = new LinkButton
                     {
                         ID = $"CursoProfesorBtn-{cursoHor.curso.id}",
-                        CommandArgument = $"{cursoHor.idsalon}|{cursoHor.curso.id}",
+                        CommandArgument = $"{cursoHor.curso.id}|{cursoHor.curso.nombre}",
                         Text = "Ver detalles",
                         CssClass = "btn btn-link"
                     };
@@ -76,9 +76,10 @@ namespace WebForm.View.ProfesorVista
         {
             LinkButton btn = (LinkButton)sender;
             string[] args = btn.CommandArgument.Split('|');
-            string idSalon = args[0];
-            string idCurso = args[1];
-
+            string idCurso = args[0];
+            string name_curso = args[1];
+            Session["CURSO"] = int.Parse(idCurso);
+            Session["Curname"] = name_curso;
             // Redirigir a la página cursosVista con los parámetros necesarios
             Response.Redirect("/View/Profesor/ProfesorVista/CursoProfesor.aspx");
         }

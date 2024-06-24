@@ -44,6 +44,7 @@ namespace WebForm.View.CursoAlumno
 
             serviciodao = new LKServicioWebClient();
             codigo_curso = (int)Session["CURSO"];
+            PageTitle.Text = (string)Session["Curname"];
             pagina = serviciodao.pagina_init(codigo_curso);
             //insertar funcion para obtener el codigo del curso al que el usuario hizo click
             var pag = serviciodao.listar_CONTENIDOS(codigo_curso);
