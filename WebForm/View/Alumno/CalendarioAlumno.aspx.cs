@@ -81,7 +81,6 @@ namespace WebForm.View.CalendarioAlumno
         protected string ObtenerHTMLCalendario(int bloqueMinutos = 30)
         {
             if (CursosHorarios == null) CursosHorarios = new cursoHorario[] { };
-
             // Calendario
             CalendarHeader.Text = string.Join(
                 "",

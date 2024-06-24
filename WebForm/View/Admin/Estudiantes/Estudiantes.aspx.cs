@@ -21,7 +21,7 @@ namespace WebForm.View.Admin.Estudiantes
             if (!IsPostBack)
             {
                 TxtCriterioBusqueda.Text = "";
-                var resultado = daoservicio.listarAlumnos();
+                alumno[] resultado = daoservicio.listarAlumnos();
                 if (resultado != null)
                 {
                     // Existen alumnos
@@ -241,12 +241,11 @@ namespace WebForm.View.Admin.Estudiantes
         protected void BtnAceptarEliminar_Click(object sender, EventArgs e)
         {
             alumno alumnoAEliminar = Session["alumnoAEliminar"] as alumno;
-            int resultado1 = daoservicio.eliminarAlumno(alumnoAEliminar.codigoAlumno);
+            int resultado = daoservicio.eliminarAlumno(alumnoAEliminar.codigoAlumno);
 
-            var resultado2 = daoservicio.listarAlumnos();
-            if (resultado2 != null)
+            if (resultado != 0)
             {
-                alumnos = new BindingList<alumno>(resultado2.ToList());
+                alumnos = new BindingList<alumno>((daoservicio.listarAlumnos() ?? new alumno[] { }).ToList());
                 Session["Alumnos"] = alumnos;
                 CargarTabla();
             }
@@ -272,7 +271,7 @@ namespace WebForm.View.Admin.Estudiantes
             
             if (!string.IsNullOrEmpty(TxtCriterioBusqueda.Text))
             {
-                var resultado = daoservicio.buscarAlumnosTodosCriterios(TxtCriterioBusqueda.Text);
+                alumno[] resultado = daoservicio.buscarAlumnosTodosCriterios(TxtCriterioBusqueda.Text);
 
                 if (resultado != null)
                 {

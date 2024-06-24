@@ -16,11 +16,15 @@ namespace WebForm.View.CursoAlumno
 {
     public partial class CursoAlumno : System.Web.UI.Page
     {
+
+        private int codigo_curso;
+        private LKServicioWebClient serviciodao;
+        private paginaCurso pagina;
         protected void Page_Load(object sender, EventArgs e)
         {
             //String html = MyReact.createComponent("h1", null, "Hola mundo");
             //MyCont.Text = html;
-            /*
+
             paginaCurso pag = new paginaCurso();
             pag.id = 1;
             pag.secciones = new seccion[]{
@@ -37,34 +41,35 @@ namespace WebForm.View.CursoAlumno
                 new seccion(){ id=4, titulo="Semana 4", orden=4 }
             };
 
-            String badgesComp = "";
-            List<String> badgesData = new List<String>
-            {
-                "Reconocimiento de números: Identificar y escribir números del 1 al 100.",
-                "Secuencia numérica: Contar hacia adelante y hacia atrás desde cualquier número dentro del rango de 1 a 100.",
-                "Comparación de números: Comprender los conceptos de mayor que(>), menor que(<) e igual que(=) en relación con números hasta el 100.",
-                "Operaciones básicas: Suma y resta dentro del rango de 0 a 20, utilizando objetos físicos, imágenes o mentalmente.",
-                "Resolución de problemas: Entender y resolver problemas matemáticos simples que impliquen sumar y restar cantidades pequeñas.",
-                "Formas y figuras geométricas: Identificar y nombrar formas geométricas básicas como círculos, cuadrados, triángulos y rectángulos.",
-                "Medición: Comprender conceptos de tamaño y longitud utilizando términos como grande, pequeño, largo y corto. También introducir unidades de medida básicas como centímetros y metros.",
-                "Patrones: Identificar y crear patrones simples utilizando formas, colores o números.",
-                "Organización de datos: Clasificar y organizar objetos en categorías simples según atributos como forma, tamaño o color.",
-                "Conceptos de tiempo: Entender conceptos básicos de tiempo, como el día, la noche, el hoy, el ayer y el mañana.También empezar a leer y usar un reloj analógico básico para decir la hora en horas en punto y medias horas."
-            };
 
-            foreach (String competencia in badgesData)
-            {
-                badgesComp += MyReact.CreateComponent("span", new Dictionary<string, string> { { "class", "badge rounded-pill text-bg-primary p-2 text-truncate" }, { "style", "max-width: 60%;" } }, competencia);
+            serviciodao = new LKServicioWebClient();
+            codigo_curso = (int)Session["CURSO"];
+            pagina = serviciodao.pagina_init(codigo_curso);
+            //insertar funcion para obtener el codigo del curso al que el usuario hizo click
+            var pag = serviciodao.listar_CONTENIDOS(codigo_curso);
+            List<String> badgesData = new List<String>();
+            String badgesComp = "";
+            if (pag != null) {
+                pagina.secciones = pag;
+                foreach (seccion seccion in pagina.secciones){
+                    badgesData.Add(seccion.titulo);
+                    badgesComp += MyReact.CreateComponent("span", new Dictionary<string, string> { { "class", "badge rounded-pill text-bg-primary p-2 text-truncate" }, { "style", "max-width: 60%;" } }, seccion.titulo);
+                }
+                BadgesContainer.Text = badgesComp;
+                renderizarSecciones(pagina);
             }
+
             BadgesContainer.Text = badgesComp;
             renderizarSecciones(pag);*/
         }
-        /*
-        protected void renderizarSecciones(paginaCurso pag)
+       
+
+        protected void renderizarSecciones(paginaCurso pagina)
+
         {
 
             String seccComp = "";
-            foreach (seccion secc in pag.secciones)
+            foreach (seccion secc in pagina.secciones)
             {
                 String seccHtmlId = $"secc{secc.id}";
                 seccComp += MyReact.CreateComponent(
@@ -73,7 +78,7 @@ namespace WebForm.View.CursoAlumno
                             MyReact.CreateComponent("button", $"class=\"accordion-button collapsed\" type=\"button\" data-bs-toggle=\"collapse\" data-bs-target=\"#{seccHtmlId}\" aria-expanded=\"false\" aria-controls=\"{seccHtmlId}\"", secc.titulo)
                         ) +
                         MyReact.CreateComponent("div", $"id=\"{seccHtmlId}\" class=\"accordion-collapse collapse\" data-bs-parent=\"#accordionFlushExample\"",
-                            MyReact.CreateComponent("div", "class=\"accordion-body\"", secc.elementos == null? "" : secc.elementos.Aggregate("",
+                            MyReact.CreateComponent("div", "class=\"accordion-body\"", secc.elementos == null ? "" : secc.elementos.Aggregate("",
                                 (concatenacion, elem) => concatenacion +
                                     MyReact.CreateComponentByType(elem, "", elem.contenido)
                                 )
@@ -81,8 +86,8 @@ namespace WebForm.View.CursoAlumno
                         )
                 );
             }
-
             SeccionesContainer.Text = seccComp;
-        }*/
+        }
+
     }
 }

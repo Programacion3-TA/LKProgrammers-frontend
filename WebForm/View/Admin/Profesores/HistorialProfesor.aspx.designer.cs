@@ -7,47 +7,65 @@
 // </generado automáticamente>
 //------------------------------------------------------------------------------
 
-namespace WebForm.View
+namespace WebForm.View.Admin.Profesores
 {
 
 
-    public partial class AlumnoVista
+    public partial class Historial
     {
 
         /// <summary>
-        /// Control MyCustomControl1.
+        /// Control LblBuscar.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::WebForm.Components.Path MyCustomControl1;
+        protected global::System.Web.UI.WebControls.Label LblBuscar;
 
         /// <summary>
-        /// Control CursosContainer.
+        /// Control TxtCriterioBusqueda.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.PlaceHolder CursosContainer;
+        protected global::System.Web.UI.WebControls.TextBox TxtCriterioBusqueda;
 
         /// <summary>
-        /// Control Algo.
+        /// Control LkBtnBuscar.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Literal Algo;
+        protected global::System.Web.UI.WebControls.LinkButton LkBtnBuscar;
 
         /// <summary>
-        /// Control Confetti.
+        /// Control BtnRestaurar.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Literal Confetti;
+        protected global::System.Web.UI.WebControls.LinkButton BtnRestaurar;
+
+        /// <summary>
+        /// Control LblNoProfesor.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label LblNoProfesor;
+
+        /// <summary>
+        /// Control GridProfesoresEliminados.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.GridView GridProfesoresEliminados;
     }
 }

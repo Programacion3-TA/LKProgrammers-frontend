@@ -12,11 +12,11 @@
         <h1>Matemáticas para niños</h1>
 
         <div class="d-flex gap-1 w-100 flex-wrap">
-            <asp:Literal ID="BadgesContainer" runat="server" Text="Something went wrong..."></asp:Literal> 
+            <asp:Literal ID="BadgesContainer" runat="server" Text=""></asp:Literal> 
         </div>
 
         <div class="accordion accordion-flush w-100" id="accordionFlushExample">
-            <asp:Literal ID="SeccionesContainer" runat="server" Text="Something went wrong..."></asp:Literal>
+            <asp:Literal ID="SeccionesContainer" runat="server" Text=""></asp:Literal>
         </div>
         <script>
             console.log("Hola")

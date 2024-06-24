@@ -11,14 +11,14 @@
 
 <asp:Content ID="Content5" ContentPlaceHolderID="MainContent" runat="server">
 
-    <nav style="--bs-breadcrumb-divider: '>'; font-size: 14px" class="p-2">
+<%--    <nav style="--bs-breadcrumb-divider: '>'; font-size: 14px" class="p-2">
         <ol class="breadcrumb">
             <li class="breadcrumb-item">
                 <i class="fa-solid fa-house"></i>
             </li>
             <li class="breadcrumb-item">Año Academico</li>
         </ol>
-    </nav>
+    </nav>--%>
 
     <div class="mx-auto d-flex flex-column justify-content-center">
         <h2 class="form-title">
